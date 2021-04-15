@@ -9,10 +9,14 @@ public class QuestLog : MonoBehaviour
 
     private Dictionary<int, Quest> activeQuests = new Dictionary<int, Quest>();
 
+    /*
+     * Adds a Quest-object to the Dictionary activeQuests with the quest ID as key and the Quest object as value.
+     * Parameters: quest - A Quest-object.
+     */
     public void AddQuest(Quest quest)
     {
         activeQuests.Add(quest.GetQuestID(), quest);
-        Button theQuestButton = Instantiate(questButtonPrefab, transform.Find("Quest List Area").transform.Find("Viewport").transform.Find("Content"));
-        theQuestButton.GetComponent<QuestButton>().Initialize(quest.GetQuestTitle(), quest.GetQuestText(), quest.GetQuestID());
+        Button theQuestButton = Instantiate(questButtonPrefab, transform.Find("Quest List Area").transform.Find("Viewport").transform.Find("Content")); // Create a new Quest Button prefeb as a child to the "Content"-GameObject under the "Quest List Area"-GameObject.
+        theQuestButton.GetComponent<QuestButton>().Initialize(quest.GetQuestTitle(), quest.GetQuestText(), quest.GetQuestID()); // Add the information from the Quest-object to the "Quest Button"-GameObject.
     }
 }

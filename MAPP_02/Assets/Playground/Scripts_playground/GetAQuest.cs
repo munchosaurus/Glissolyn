@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Just a temporary script to test the Quest Log.
 public class GetAQuest : MonoBehaviour
 {
     [SerializeField] GameObject questLog;
