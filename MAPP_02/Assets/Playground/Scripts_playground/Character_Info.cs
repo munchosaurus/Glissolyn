@@ -47,6 +47,4 @@ public abstract class Character_Info : MonoBehaviour
     {
         intelligence += amount;
     }
-
-    
 }

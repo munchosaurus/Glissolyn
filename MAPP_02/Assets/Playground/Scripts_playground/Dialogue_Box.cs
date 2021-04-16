@@ -9,6 +9,7 @@ public class Dialogue_Box : MonoBehaviour
     [SerializeField] private Image dialogueImage;
 
     private string[] dialogue;
+    private string whosTalking;
     private int currentDialoguePart;
 
     /*
@@ -16,12 +17,13 @@ public class Dialogue_Box : MonoBehaviour
      * Parameters: dialogue - An array of strings, each string consisting of one part of the dialogue to be shown.
      *            sprite   - The dialogue sprite from the character that is talking.
      */
-    public void UpdateDialogue(string[] dialogue, Sprite sprite)
+    public void UpdateDialogue(string whosTalking, string[] dialogue, Sprite sprite)
     {
         this.dialogue = dialogue;
+        this.whosTalking = whosTalking;
         currentDialoguePart = 0;
         dialogueImage.sprite = sprite; // Updates the sprite to be shown in the dialogue.
-        dialogueText.text = dialogue[currentDialoguePart]; // Set the dialogue text to the first part of the dialogue.
+        BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
     }
 
@@ -36,7 +38,12 @@ public class Dialogue_Box : MonoBehaviour
         }
         else // If it does
         {
-            dialogueText.text = dialogue[currentDialoguePart]; // Set the dialogue text to be the next part of the dialogue.
+            BuildDialogueText(); // Set the dialogue text to be the next part of the dialogue.
         }
+    }
+
+    private void BuildDialogueText()
+    {
+        dialogueText.text = whosTalking + ": " + dialogue[currentDialoguePart];
     }
 }
