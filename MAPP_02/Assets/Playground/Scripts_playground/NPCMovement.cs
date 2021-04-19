@@ -13,20 +13,23 @@ public class NPCMovement : MonoBehaviour
 
     void Update()
     {
-        int movementNumber = randomNumber();
-        if (Vector3.Distance(player.transform.position, transform.position) <= 20f)
+        if (!isTalking)
         {
-            if (movementNumber == 5 && !isMoving && (isWalkable(transform.position + Vector3.up)))
-                StartCoroutine(MovePlayer(Vector3.up));
+            int movementNumber = randomNumber();
+            if (Vector3.Distance(player.transform.position, transform.position) <= 20f)
+            {
+                if (movementNumber == 5 && !isMoving && (isWalkable(transform.position + Vector3.up)))
+                    StartCoroutine(MovePlayer(Vector3.up));
 
-            if (movementNumber == 50 && !isMoving && (isWalkable(transform.position + Vector3.left)))
-                StartCoroutine(MovePlayer(Vector3.left));
+                if (movementNumber == 50 && !isMoving && (isWalkable(transform.position + Vector3.left)))
+                    StartCoroutine(MovePlayer(Vector3.left));
 
-            if (movementNumber == 100 && !isMoving && (isWalkable(transform.position + Vector3.down)))
-                StartCoroutine(MovePlayer(Vector3.down));
+                if (movementNumber == 100 && !isMoving && (isWalkable(transform.position + Vector3.down)))
+                    StartCoroutine(MovePlayer(Vector3.down));
 
-            if (movementNumber == 150 && !isMoving && (isWalkable(transform.position + Vector3.right)))
-                StartCoroutine(MovePlayer(Vector3.right));
+                if (movementNumber == 150 && !isMoving && (isWalkable(transform.position + Vector3.right)))
+                    StartCoroutine(MovePlayer(Vector3.right));
+            }
         }
     }
 
@@ -60,4 +63,13 @@ public class NPCMovement : MonoBehaviour
         return true;
     }
 
+    public void StopMoving()
+    {
+        isTalking = true;
+    }
+
+    public void StartMoving()
+    {
+        isTalking = false;
+    }
 }

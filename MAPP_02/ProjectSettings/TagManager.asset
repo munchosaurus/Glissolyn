@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Path
   - Wall
+  - Dialogue Box
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Path
-  - 
-  - 
+  - NPC
+  - Player
   - 
   - 
   - 

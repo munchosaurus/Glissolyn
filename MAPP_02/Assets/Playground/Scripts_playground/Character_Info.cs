@@ -9,7 +9,13 @@ public abstract class Character_Info : MonoBehaviour
     [SerializeField] protected int agility;
     [SerializeField] protected int intelligence;
 
+    protected GameObject thePlayer;
     protected Dictionary<int, Ability> abilities = new Dictionary<int, Ability>();
+
+    private void Start()
+    {
+        thePlayer = GameObject.FindGameObjectWithTag("Player");
+    }
 
     public string GetName()
     {
