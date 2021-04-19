@@ -2,17 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability : MonoBehaviour
+public abstract class Ability : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected static int ABILITY_ID_COUNTER = 0; // Static variable, its shared between all Ability-objects to keep track of how many abilities have been assigned.
+    protected int id;
+    protected new string name;
+
+    public Ability(string name)
     {
-        
+        this.id = ABILITY_ID_COUNTER;
+        this.name = name;
+        ABILITY_ID_COUNTER++; // Increase ABILITY_ID_COUNTER by 1 to make sure the next ability that is created has an ID that is 1 higher than this quest.
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetID()
     {
-        
+        return id;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public void Use(GameObject target)
+    {
+
     }
 }

@@ -1,12 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Character_Info : MonoBehaviour
 {
-    protected new string name;
-    protected int health;
-    protected int strength;
-    protected int agility;
-    protected int intelligence;
+    [SerializeField] protected new string name;
+    [SerializeField] protected int health;
+    [SerializeField] protected int strength;
+    [SerializeField] protected int agility;
+    [SerializeField] protected int intelligence;
+
+    protected Dictionary<int, Ability> abilities = new Dictionary<int, Ability>();
 
     public string GetName()
     {
@@ -27,6 +30,11 @@ public abstract class Character_Info : MonoBehaviour
     {
         return intelligence;
     }
+
+    public Dictionary<int, Ability> GetAbilities()
+    {
+        return abilities;
+    }
         
     public void SetName(string name)
     {
@@ -46,5 +54,15 @@ public abstract class Character_Info : MonoBehaviour
     public void ModifyIntelligence(int amount)
     {
         intelligence += amount;
+    }
+
+    public void AddAbility(Ability ability)
+    {
+        abilities.Add(ability.GetID(), ability);
+    }
+
+    public void RemoveAbility(int abilityID)
+    {
+        abilities.Remove(abilityID);
     }
 }

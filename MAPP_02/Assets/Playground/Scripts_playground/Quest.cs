@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Quest
+public abstract class Quest
 {
-    private static int QUEST_ID_COUNTER = 0; // Static variable, its shared between all Quest-objects to keep track of how many quests have been assigned.
-    private string questTitle;
-    private string questText;
-    private int questID;
+    protected static int QUEST_ID_COUNTER = 0; // Static variable, its shared between all Quest-objects to keep track of how many quests have been assigned.
+    protected string questTitle;
+    protected string questText;
+    protected int questID;
     
     public Quest(string questTitle, string questText)
     {
