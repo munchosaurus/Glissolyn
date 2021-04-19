@@ -29,7 +29,7 @@ public class Grid_movement : MonoBehaviour
         float elapsedTime = 0;
         originalPos = transform.position;
         targetPos = originalPos + direction;
-
+        
         while (elapsedTime < timeToMove) {
             transform.position = Vector3.Lerp(originalPos, targetPos, (elapsedTime / timeToMove));
             elapsedTime += Time.deltaTime;
