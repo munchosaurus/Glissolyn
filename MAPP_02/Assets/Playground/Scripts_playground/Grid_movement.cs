@@ -11,6 +11,7 @@ public class Grid_movement : MonoBehaviour
     public bool isTalking;
     public LayerMask wallLayer;
     public GameObject rotation;
+
     void Update() 
     {
         if (!isTalking)
@@ -38,7 +39,7 @@ public class Grid_movement : MonoBehaviour
     }
 
     private IEnumerator MovePlayer(Vector3 direction) {
-        if (isWalkable(direction)) {
+        if (IsWalkable(direction)) {
             isMoving = true;
             float elapsedTime = 0;
             originalPos = transform.position;
@@ -56,7 +57,7 @@ public class Grid_movement : MonoBehaviour
 
     }
 
-    private bool isWalkable(Vector3 targetPos) {
+    private bool IsWalkable(Vector3 targetPos) {
         if (Physics2D.OverlapCircle(targetPos, 0.3f, wallLayer) != null) 
         {
             return false;
@@ -73,4 +74,9 @@ public class Grid_movement : MonoBehaviour
     {
         isTalking = false;
     }
+
+    public bool GetMoving() {
+        return isMoving;    
+    }
+
 }
