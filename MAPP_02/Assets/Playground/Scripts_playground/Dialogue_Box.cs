@@ -23,7 +23,10 @@ public class Dialogue_Box : MonoBehaviour
     {
         theMovementScript = theNPC.gameObject.GetComponent<NPCMovement>();
         Time.timeScale = 0;
-        theMovementScript.StopMoving();
+        if(theMovementScript != null)
+        {
+            theMovementScript.StopMoving();
+        }
         this.dialogue = theNPC.GetDialogue();
         this.whosTalking = theNPC.GetName();
         currentDialoguePart = 0;
@@ -44,7 +47,10 @@ public class Dialogue_Box : MonoBehaviour
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 dialogueIsActive = false;
-                theMovementScript.StartMoving(); // Allow the npc to start moving again.
+                if (theMovementScript != null)
+                {
+                    theMovementScript.StartMoving(); // Allow the npc to start moving again.
+                }
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().StartMovement(); // Allow the player to start moving again;
                 Time.timeScale = 1;
             }
