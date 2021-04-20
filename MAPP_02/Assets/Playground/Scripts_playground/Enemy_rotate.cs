@@ -6,19 +6,18 @@ public class Enemy_rotate : MonoBehaviour
 {
     [SerializeField] private GameObject rotationKnob;
     [SerializeField] float rotationCoolDown;
-    private int directionIndex;
-    private float timer;
     [SerializeField] private int startingDirection; // Choose which direction you want the zombie to start with by choosing 0-3'
     [SerializeField] private LayerMask wallLayer; // Choose what layers the Enemy shouldn't be faced towards
-    [SerializeField] private bool[] availableDirections = new bool[4];
+    private bool[] availableDirections = new bool[4];
+    private int directionIndex;
+    private float timer;
 
     private void Start()
     {
-        //Looks at what directions that should be iterable based upon the chosen layers in wallLayer
+        // Looks at what directions that should be iterable based upon the chosen layers in wallLayer
         SetAvailableDirections();
+        // Sets the starting direction for the zombie
         directionIndex = startingDirection;
-
-        
     }
 
     private void Update()
@@ -34,8 +33,10 @@ public class Enemy_rotate : MonoBehaviour
         
     }
 
+
+        // Changes position of the child object rotationKnob which will be used to detect players
     private void ChangeFacing(int i) {
-        if (availableDirections[i] || i > 3)
+        if (availableDirections[i] || i > availableDirections.Length)
         {
             switch (i)
             {
@@ -69,7 +70,7 @@ public class Enemy_rotate : MonoBehaviour
             ChangeFacing(i + 1);
         }
     }
-
+        // Looks at the 4 tiles next to the Zombie in both X and Y directions to determine what directions the zombie should be able to face towards
     private void SetAvailableDirections() {
         if (Physics2D.OverlapCircle(transform.position + Vector3.up, 0.2f, wallLayer) != null)
         {
