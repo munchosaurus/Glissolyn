@@ -12,7 +12,6 @@ public class Enemy_Find_player : MonoBehaviour
 
     private RaycastHit2D target;
     private Vector3 raycastEnd;
-    private Vector3 currentDirection;
     private bool shouldMove;
 
     private void Start()
@@ -26,12 +25,11 @@ public class Enemy_Find_player : MonoBehaviour
         if(!target)
         {
             target = Physics2D.Raycast(transform.position, directionObject.localPosition, raycastLength, playerLayer);
-            print("no targer");
         }
         else if (shouldMove)
         {
             shouldMove = false;
-            print("targer: " + target.transform.position);
+            print("Found target: " + target.transform.position);
             StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));
             gameObject.GetComponent<NPC_Info>().Interact();
         }
