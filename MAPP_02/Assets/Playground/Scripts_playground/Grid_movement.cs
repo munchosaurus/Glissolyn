@@ -29,17 +29,18 @@ public class Grid_movement : MonoBehaviour
                 StartCoroutine(MovePlayer());
             }
 
+            else if (Input.GetKey(KeyCode.D) && !isMoving)
+            {
+                direction = Vector3.right;
+                StartCoroutine(MovePlayer());
+            }
+
             else if (Input.GetKey(KeyCode.S) && !isMoving) {
                 direction = Vector3.down;
                 StartCoroutine(MovePlayer());
             }
 
-            else if (Input.GetKey(KeyCode.D) && !isMoving) {
-                direction = Vector3.right;
-                StartCoroutine(MovePlayer());
-            }
-
-            else if (!isMoving && currentFacing != direction) {
+            if (!isMoving && currentFacing != direction) {
                 Rotate(direction);
             }
         }
