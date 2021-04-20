@@ -4,28 +4,40 @@ using UnityEngine;
 
 public class Enemy_Find_player : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private Vector3 position;
+    [SerializeField] private Transform directionObject;
     [SerializeField] private float timeToMove = 0.5f;
     [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private int raycastLength;
 
+    private int VECTOR_INVERSE_MULTIPLIER = -1;
+    private RaycastHit2D target;
+    private Vector3 raycastEnd;
+    private Vector3 currentDirection;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.CompareTag("Player")) {
-            
-            if (!collision.GetComponent<Grid_movement>().GetMoving()) {
+        if(!target)
+        {
+            UpdateRaycastEnd(Vector3.zero + directionObject.localPosition);
 
-                Move(player.transform.position + position);
+            target = Physics2D.Raycast(transform.position, raycastEnd, playerLayer);
+        }
+        else
+        {
+            Move(target.collider.gameObject.transform.position - (currentDirection * VECTOR_INVERSE_MULTIPLIER));
+        }
+    }
 
-            }
+    private void UpdateRaycastEnd(Vector3 direction)
+    {
+        if (direction != currentDirection)
+        {
+            raycastEnd = transform.position + direction * raycastLength;
         }
     }
 
     private IEnumerator Move(Vector3 direction)
     {
-
-
             float elapsedTime = 0;
             Vector3 originalPos = transform.position;
             while (elapsedTime < timeToMove)

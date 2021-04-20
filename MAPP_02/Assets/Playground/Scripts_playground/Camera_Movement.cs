@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Camera_Movement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-
     private Transform thePlayer;
     private Vector3 desiredPos;
 
