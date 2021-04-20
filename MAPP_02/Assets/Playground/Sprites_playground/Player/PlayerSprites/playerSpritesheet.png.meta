@@ -148,9 +148,9 @@ TextureImporter:
       name: playerSpritesheet_0
       rect:
         serializedVersion: 2
-        x: 70
+        x: 33
         y: 0
-        width: 520
+        width: 557
         height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -253,7 +253,7 @@ TextureImporter:
       name: playerSpritesheet_5
       rect:
         serializedVersion: 2
-        x: 2921
+        x: 2958
         y: 0
         width: 520
         height: 512
