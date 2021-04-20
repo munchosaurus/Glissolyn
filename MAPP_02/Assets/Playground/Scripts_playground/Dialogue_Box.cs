@@ -22,6 +22,7 @@ public class Dialogue_Box : MonoBehaviour
     public void UpdateDialogue(NPC_Info theNPC)
     {
         theMovementScript = theNPC.gameObject.GetComponent<NPCMovement>();
+        Time.timeScale = 0;
         theMovementScript.StopMoving();
         this.dialogue = theNPC.GetDialogue();
         this.whosTalking = theNPC.GetName();
@@ -45,7 +46,7 @@ public class Dialogue_Box : MonoBehaviour
                 dialogueIsActive = false;
                 theMovementScript.StartMoving(); // Allow the npc to start moving again.
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().StartMovement(); // Allow the player to start moving again;
-
+                Time.timeScale = 1;
             }
             else // If it does
             {

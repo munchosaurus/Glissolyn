@@ -10,39 +10,50 @@ public class Grid_movement : MonoBehaviour
     public bool directionPossible;
     public bool isTalking;
     public LayerMask wallLayer;
-
+    public GameObject rotation;
     void Update() 
     {
         if (!isTalking)
         {
-            if (Input.GetKey(KeyCode.W) && !isMoving && isWalkable(transform.position + Vector3.up))
-                StartCoroutine(MovePlayer(Vector3.up));
+            if (Input.GetKey(KeyCode.W) && !isMoving ) {
+                rotation.transform.position = transform.position + Vector3.up;
+                StartCoroutine(MovePlayer(rotation.transform.position));
+            }
 
-            if (Input.GetKey(KeyCode.A) && !isMoving && isWalkable(transform.position + Vector3.left))
-                StartCoroutine(MovePlayer(Vector3.left));
+            if (Input.GetKey(KeyCode.A) && !isMoving ) {
+                rotation.transform.position = transform.position + Vector3.left;
+                StartCoroutine(MovePlayer(rotation.transform.position));
+            }
 
-            if (Input.GetKey(KeyCode.S) && !isMoving && isWalkable(transform.position + Vector3.down))
-                StartCoroutine(MovePlayer(Vector3.down));
+            if (Input.GetKey(KeyCode.S) && !isMoving ) {
+                rotation.transform.position = transform.position + Vector3.down;
+                StartCoroutine(MovePlayer(rotation.transform.position));
+            }
 
-            if (Input.GetKey(KeyCode.D) && !isMoving && isWalkable(transform.position + Vector3.right))
-                StartCoroutine(MovePlayer(Vector3.right));
+            if (Input.GetKey(KeyCode.D) && !isMoving ) {
+                rotation.transform.position = transform.position + Vector3.right;
+                StartCoroutine(MovePlayer(rotation.transform.position));
+            }
         }
     }
 
     private IEnumerator MovePlayer(Vector3 direction) {
-        isMoving = true;
-        float elapsedTime = 0;
-        originalPos = transform.position;
-        targetPos = originalPos + direction;
-        while (elapsedTime < timeToMove) {
-            transform.position = Vector3.Lerp(originalPos, targetPos, (elapsedTime / timeToMove));
-            elapsedTime += Time.deltaTime;
-            yield return null;
+        if (isWalkable(direction)) {
+            isMoving = true;
+            float elapsedTime = 0;
+            originalPos = transform.position;
+            while (elapsedTime < timeToMove)
+            {
+                transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.position = direction;
+
+            isMoving = false;
         }
 
-        transform.position = targetPos;
-
-        isMoving = false;
     }
 
     private bool isWalkable(Vector3 targetPos) {

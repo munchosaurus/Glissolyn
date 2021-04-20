@@ -8,7 +8,7 @@ public class NPCMovement : MonoBehaviour
     private Vector3 originalPos, targetPos;
     private float timeToMove = 1.2f;
     private bool isTalking;
-    public LayerMask wallLayer;
+    public LayerMask blockingLayer;
     public GameObject player;
 
     void Update()
@@ -19,21 +19,21 @@ public class NPCMovement : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) <= 20f)
             {
                 if (movementNumber == 5 && !isMoving && (isWalkable(transform.position + Vector3.up)))
-                    StartCoroutine(MovePlayer(Vector3.up));
+                    StartCoroutine(Move(Vector3.up));
 
                 if (movementNumber == 50 && !isMoving && (isWalkable(transform.position + Vector3.left)))
-                    StartCoroutine(MovePlayer(Vector3.left));
+                    StartCoroutine(Move(Vector3.left));
 
                 if (movementNumber == 100 && !isMoving && (isWalkable(transform.position + Vector3.down)))
-                    StartCoroutine(MovePlayer(Vector3.down));
+                    StartCoroutine(Move(Vector3.down));
 
                 if (movementNumber == 150 && !isMoving && (isWalkable(transform.position + Vector3.right)))
-                    StartCoroutine(MovePlayer(Vector3.right));
+                    StartCoroutine(Move(Vector3.right));
             }
         }
     }
 
-    private IEnumerator MovePlayer(Vector3 direction)
+    private IEnumerator Move(Vector3 direction)
     {
         isMoving = true;
         float elapsedTime = 0;
@@ -56,7 +56,7 @@ public class NPCMovement : MonoBehaviour
 
     private bool isWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.3f, wallLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.3f, blockingLayer) != null)
         {
             return false;
         }
