@@ -11,6 +11,7 @@ public class Grid_movement : MonoBehaviour
     public bool isTalking;
     public LayerMask wallLayer;
     public GameObject rotation;
+    [SerializeField] private Animator playerAnimator;
 
     void Update() 
     {
@@ -19,21 +20,25 @@ public class Grid_movement : MonoBehaviour
             if (Input.GetKey(KeyCode.W) && !isMoving ) {
                 rotation.transform.position = transform.position + Vector3.up;
                 StartCoroutine(MovePlayer(rotation.transform.position));
+                playerAnimator.SetTrigger("facingUp");
             }
 
             if (Input.GetKey(KeyCode.A) && !isMoving ) {
                 rotation.transform.position = transform.position + Vector3.left;
                 StartCoroutine(MovePlayer(rotation.transform.position));
+                playerAnimator.SetTrigger("facingLeft");
             }
 
             if (Input.GetKey(KeyCode.S) && !isMoving ) {
                 rotation.transform.position = transform.position + Vector3.down;
                 StartCoroutine(MovePlayer(rotation.transform.position));
+                playerAnimator.SetTrigger("facingDown");
             }
 
             if (Input.GetKey(KeyCode.D) && !isMoving ) {
                 rotation.transform.position = transform.position + Vector3.right;
                 StartCoroutine(MovePlayer(rotation.transform.position));
+                playerAnimator.SetTrigger("facingRight");
             }
         }
     }
@@ -53,6 +58,7 @@ public class Grid_movement : MonoBehaviour
             transform.position = direction;
 
             isMoving = false;
+            playerAnimator.SetTrigger("stopMoving");
         }
 
     }

@@ -4687,6 +4687,7 @@ GameObject:
   - component: {fileID: 1364153032}
   - component: {fileID: 1364153031}
   - component: {fileID: 1364153030}
+  - component: {fileID: 1364153033}
   m_Layer: 0
   m_Name: Enemy_playground
   m_TagString: Untagged
@@ -4734,8 +4735,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -6759408756675147483, guid: bf9b265aaedd502428c81eace97fdc90, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4760,9 +4761,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.0012566149, y: 0.0012566969}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.0198257, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4780,12 +4781,31 @@ Transform:
   m_GameObject: {fileID: 1364153029}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1903390951}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1364153033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364153029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ecd30fa222080d945bd586700b94d959, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1423248879
 GameObject:
   m_ObjectHideFlags: 0
@@ -5387,6 +5407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1991329683}
+  position: {x: 0, y: 0, z: 0}
+  timeToMove: 0.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1903390953
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5496,7 +5521,7 @@ Transform:
   m_GameObject: {fileID: 1991329683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 756257980}
   m_Father: {fileID: 0}
@@ -5520,6 +5545,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 136
   rotation: {fileID: 756257979}
+  playerAnimator: {fileID: 1991329691}
 --- !u!50 &1991329687
 Rigidbody2D:
   serializedVersion: 4
