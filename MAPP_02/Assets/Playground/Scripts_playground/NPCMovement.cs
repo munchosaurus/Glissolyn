@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCMovement : MonoBehaviour
 {
     [SerializeField] private Animator npcAnimator;
+    [SerializeField] private int maximumNumberToRandomize;
     private bool isMoving;
     private Vector3 originalPos, targetPos;
     [SerializeField] private float timeToMove;
@@ -23,13 +24,13 @@ public class NPCMovement : MonoBehaviour
                 if (movementNumber == 5 && !isMoving && (isWalkable(transform.position + Vector3.up)))
                     StartCoroutine(Move(Vector3.up));
 
-                if (movementNumber == 50 && !isMoving && (isWalkable(transform.position + Vector3.left)))
+                if (movementNumber == 10 && !isMoving && (isWalkable(transform.position + Vector3.left)))
                     StartCoroutine(Move(Vector3.left));
 
-                if (movementNumber == 100 && !isMoving && (isWalkable(transform.position + Vector3.down)))
+                if (movementNumber == 15 && !isMoving && (isWalkable(transform.position + Vector3.down)))
                     StartCoroutine(Move(Vector3.down));
 
-                if (movementNumber == 150 && !isMoving && (isWalkable(transform.position + Vector3.right)))
+                if (movementNumber == 20 && !isMoving && (isWalkable(transform.position + Vector3.right)))
                     StartCoroutine(Move(Vector3.right));
             }
         }
@@ -55,7 +56,7 @@ public class NPCMovement : MonoBehaviour
     }
 
     private int randomNumber() {
-        int number = Random.Range(1, 500);
+        int number = Random.Range(1, maximumNumberToRandomize);
         return number;
     }
 
