@@ -3919,7 +3919,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4884,6 +4884,7 @@ MonoBehaviour:
     m_Bits: 256
   raycastLength: 3
   zombieAnimator: {fileID: 1364153033}
+  playerObject: {fileID: 1991329683}
 --- !u!114 &1364153036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5644,6 +5645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfb8938b6f6fb84589680cf01b1296b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
   directionPossible: 0
   isTalking: 0
   wallLayer:
@@ -5940,8 +5942,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1991329683}
     - target: {fileID: 1682736738858333402, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: npcAnimator
+      value: 
+      objectReference: {fileID: 526003191}
+    - target: {fileID: 1682736738858333402, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
       propertyPath: blockingLayer.m_Bits
       value: 392
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.0198257
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682736738858333403, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d310b0a409f8790468f197ef38a2c5c9, type: 3}
