@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid_movement : MonoBehaviour
 {
-    private bool isMoving;
+    public bool isMoving;
     private float timeToMove = 0.35f;
     private Vector3 originalPos;
     public bool directionPossible;
@@ -97,7 +97,6 @@ public class Grid_movement : MonoBehaviour
         {
             playerAnimator.SetTrigger("faceLeft");
         }
-        //playerAnimator.SetTrigger("stopMoving");
         currentFacing = direction;
         rotation.transform.position = transform.position + direction;
     }

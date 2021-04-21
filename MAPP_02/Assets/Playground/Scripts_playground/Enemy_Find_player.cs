@@ -7,7 +7,8 @@ public class Enemy_Find_player : MonoBehaviour
     [SerializeField] private float timeToMove = 0.35f;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float raycastLength;
-
+    [SerializeField] private Animator zombieAnimator;
+    [SerializeField] private GameObject playerObject;
     private RaycastHit2D target;
     private bool shouldMove;
 
@@ -15,6 +16,7 @@ public class Enemy_Find_player : MonoBehaviour
     {
         shouldMove = true;
     }
+     //!
 
     private void Update()
     {
@@ -24,10 +26,12 @@ public class Enemy_Find_player : MonoBehaviour
         }
         else if (shouldMove)
         {
-            shouldMove = false;
-            print("Found target: " + target.transform.position);
-            StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));
-            gameObject.GetComponent<NPC_Info>().Interact();
+            if (!playerObject.GetComponent<Grid_movement>().isMoving) {
+                shouldMove = false;
+                print("Found target: " + target.transform.position);
+                StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));
+                gameObject.GetComponent<NPC_Info>().Interact();
+            }
         }
     }
 
@@ -35,13 +39,28 @@ public class Enemy_Find_player : MonoBehaviour
     {
             float elapsedTime = 0;
             Vector3 originalPos = transform.position;
-            while (elapsedTime < timeToMove)
-            {
-                transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * target.distance));
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            transform.position = direction;
+        if (direction.x < transform.position.x)
+        {
+            zombieAnimator.SetTrigger("moveLeft");
+        }
+        else if (direction.x > transform.position.x)
+        {
+            zombieAnimator.SetTrigger("moveRight");
+        }
+        else if (direction.y < transform.position.y)
+        {
+            zombieAnimator.SetTrigger("moveDown");
+        }
+        else if (direction.y > transform.position.y)
+        {
+            zombieAnimator.SetTrigger("moveUp");
+        }
+        while (elapsedTime < timeToMove)
+        {
+             transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * target.distance));
+             elapsedTime += Time.deltaTime;
+             yield return null;
+        }
+        transform.position = direction;
     }
 }

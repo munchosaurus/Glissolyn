@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NPCMovement : MonoBehaviour
 {
+    [SerializeField] private Animator npcAnimator;
     private bool isMoving;
     private Vector3 originalPos, targetPos;
-    private float timeToMove = 1.2f;
+    private float timeToMove = 0.7f;
     private bool isTalking;
     public LayerMask blockingLayer;
     public GameObject player;
+
 
     void Update()
     {
@@ -38,6 +40,7 @@ public class NPCMovement : MonoBehaviour
         isMoving = true;
         float elapsedTime = 0;
         originalPos = transform.position;
+        AnimateMovement(direction);
         targetPos = originalPos + direction;
         while (elapsedTime < timeToMove)
         {
@@ -47,6 +50,7 @@ public class NPCMovement : MonoBehaviour
         }
         transform.position = targetPos;
         isMoving = false;
+        AnimateRotation(direction);
     }
 
     private int randomNumber() {
@@ -71,5 +75,62 @@ public class NPCMovement : MonoBehaviour
     public void StartMoving()
     {
         isTalking = false;
+    }
+
+    public void AnimateMovement(Vector3 direction) {
+        if (direction == Vector3.up)
+        {
+            npcAnimator.SetTrigger("moveUp");
+        }
+        else if (direction == Vector3.down)
+        {
+            npcAnimator.SetTrigger("moveDown");
+        }
+        else if (direction == Vector3.right)
+        {
+            npcAnimator.SetTrigger("moveRight");
+        }
+        else if (direction == Vector3.left)
+        {
+            npcAnimator.SetTrigger("moveLeft");
+        }
+    }
+
+    public void AnimateRotation(Vector3 direction) {
+        if (direction == Vector3.up)
+        {
+            npcAnimator.SetTrigger("faceUp");
+        }
+        else if (direction == Vector3.down)
+        {
+            npcAnimator.SetTrigger("faceDown");
+        }
+        else if (direction == Vector3.right)
+        {
+            npcAnimator.SetTrigger("faceRight");
+        }
+        else if (direction == Vector3.left)
+        {
+            npcAnimator.SetTrigger("faceLeft");
+        }
+   }
+
+    public void TurnToPlayer(Vector3 direction) {
+        if (direction.x < transform.position.x)
+        {
+            npcAnimator.SetTrigger("faceLeft");
+        }
+        else if (direction.x > transform.position.x)
+        {
+            npcAnimator.SetTrigger("faceRight");
+        }
+        else if (direction.y < transform.position.y)
+        {
+            npcAnimator.SetTrigger("faceDown");
+        }
+        else if (direction.y > transform.position.y)
+        {
+            npcAnimator.SetTrigger("faceUp");
+        }
     }
 }

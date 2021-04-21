@@ -16,6 +16,7 @@ public class Player_Buttons : MonoBehaviour
             Collider2D interactable = Physics2D.OverlapCircle(objectChecker.position, 0.3f, interactableLayer);
             if (interactable != null && !isTalking) {
                 interactable.GetComponent<NPC_Info>().Interact();
+                interactable.GetComponent<NPCMovement>().TurnToPlayer(transform.position);
                 isTalking = true;
             }
             else
