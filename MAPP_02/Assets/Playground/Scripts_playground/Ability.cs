@@ -6,6 +6,7 @@ public abstract class Ability : MonoBehaviour
 {
     protected int id;
     protected new string name;
+    protected Character_Info user;
 
     public Ability(string name, int id)
     {
@@ -23,8 +24,8 @@ public abstract class Ability : MonoBehaviour
         return name;
     }
 
-    public virtual void Use(GameObject target)
+    public virtual void Use(Character_Info user, Character_Info target)
     {
-
+        
     }
 }

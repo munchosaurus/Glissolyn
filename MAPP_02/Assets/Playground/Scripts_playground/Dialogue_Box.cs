@@ -38,9 +38,9 @@ public class Dialogue_Box : MonoBehaviour
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 dialogueIsActive = false;
                 Game_Controller.ResumeGame();
-                if(theNPCInfo.GetComponent<NPCMovement>() != null)
+                if(theNPCInfo.GetComponent<NPC_Movement>() != null)
                 {
-                    theNPCInfo.GetComponent<NPCMovement>().TurnBackToPreviousFacing();
+                    theNPCInfo.GetComponent<NPC_Movement>().TurnBackToPreviousFacing();
                 }
             }
             else // If it does

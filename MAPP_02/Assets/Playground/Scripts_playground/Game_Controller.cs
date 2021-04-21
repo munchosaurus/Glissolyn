@@ -7,6 +7,29 @@ public static class Game_Controller
     private static readonly int WORLD_SCENE_ID = 1;
 
     private static bool isGamePaused;
+    private static Dialogue_Box theDialogueBox;
+    private static QuestLog theQuestLog;
+    private static Player_Info thePlayerInfo;
+
+    public static void SetDialogueBox(Dialogue_Box db)
+    {
+        theDialogueBox = db;
+    }
+
+    public static void SetQuestLog(QuestLog ql)
+    {
+        theQuestLog = ql;
+    }
+
+    public static void SetPlayerInfo(Player_Info pi)
+    {
+        thePlayerInfo = pi;
+    }
+
+    public static QuestLog GetQuestLog()
+    {
+        return theQuestLog;
+    }
 
     public static void PauseGame()
     {

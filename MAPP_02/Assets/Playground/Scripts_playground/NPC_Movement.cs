@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCMovement : MonoBehaviour
+public class NPC_Movement : MonoBehaviour
 {
     [SerializeField] private Animator npcAnimator;
     private bool isMoving;
