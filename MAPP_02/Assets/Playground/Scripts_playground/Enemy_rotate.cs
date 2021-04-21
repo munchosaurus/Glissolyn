@@ -8,6 +8,7 @@ public class Enemy_rotate : MonoBehaviour
     [SerializeField] float rotationCoolDown;
     [SerializeField] private int startingDirection; // Choose which direction you want the zombie to start with by choosing 0-3'
     [SerializeField] private LayerMask wallLayer; // Choose what layers the Enemy shouldn't be faced towards
+    [SerializeField] private Animator zombieAnimator;
     private bool[] availableDirections = new bool[4];
     private int directionIndex;
     private float timer;
@@ -42,21 +43,25 @@ public class Enemy_rotate : MonoBehaviour
             {
                 case 0:
                     rotationKnob.transform.position = transform.position + Vector3.up;
+                    zombieAnimator.SetTrigger("faceUp");
                     break;
 
                 case 1:
 
                     rotationKnob.transform.position = transform.position + Vector3.left;
+                    zombieAnimator.SetTrigger("faceLeft");
                     break;
 
                 case 2:
 
                     rotationKnob.transform.position = transform.position + Vector3.down;
+                    zombieAnimator.SetTrigger("faceDown");
                     break;
 
                 case 3:
 
                     rotationKnob.transform.position = transform.position + Vector3.right;
+                    zombieAnimator.SetTrigger("faceRight");
                     break;
             }
             directionIndex = i+1;

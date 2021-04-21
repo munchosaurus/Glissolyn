@@ -7,7 +7,7 @@ public class Enemy_Find_player : MonoBehaviour
     [SerializeField] private float timeToMove = 0.35f;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float raycastLength;
-
+    [SerializeField] private Animator zombieAnimator;
     private RaycastHit2D target;
     private bool shouldMove;
 
