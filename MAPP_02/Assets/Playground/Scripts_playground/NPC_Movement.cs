@@ -11,8 +11,12 @@ public class NPC_Movement : MonoBehaviour
     [SerializeField] private float timeToMove;
     private Vector3 facing;
     public LayerMask blockingLayer;
-    public GameObject player;
+    private GameObject player;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     void Update()
     {
