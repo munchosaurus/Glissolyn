@@ -8,14 +8,14 @@ public class NPCMovement : MonoBehaviour
     private bool isMoving;
     private Vector3 originalPos, targetPos;
     private float timeToMove = 0.7f;
-    private bool isTalking;
+    private Vector3 facing;
     public LayerMask blockingLayer;
     public GameObject player;
 
 
     void Update()
     {
-        if (!isTalking)
+        if (!Game_Controller.IsGamePaused())
         {
             int movementNumber = randomNumber();
             if (Vector3.Distance(player.transform.position, transform.position) <= 20f)
@@ -39,11 +39,12 @@ public class NPCMovement : MonoBehaviour
     {
         isMoving = true;
         float elapsedTime = 0;
-        originalPos = transform.position;
         AnimateMovement(direction);
+        originalPos = transform.position;
         targetPos = originalPos + direction;
         while (elapsedTime < timeToMove)
         {
+            
             transform.position = Vector3.Lerp(originalPos, targetPos, (elapsedTime / timeToMove));
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -67,16 +68,6 @@ public class NPCMovement : MonoBehaviour
         return true;
     }
 
-    public void StopMoving()
-    {
-        isTalking = true;
-    }
-
-    public void StartMoving()
-    {
-        isTalking = false;
-    }
-
     public void AnimateMovement(Vector3 direction) {
         if (direction == Vector3.up)
         {
@@ -94,6 +85,8 @@ public class NPCMovement : MonoBehaviour
         {
             npcAnimator.SetTrigger("moveLeft");
         }
+
+        facing = direction;
     }
 
     public void AnimateRotation(Vector3 direction) {
@@ -115,22 +108,19 @@ public class NPCMovement : MonoBehaviour
         }
    }
 
-    public void TurnToPlayer(Vector3 direction) {
-        if (direction.x < transform.position.x)
+    public void TurnToPlayer(Vector3 playerFacing) {
+        AnimateRotation(-playerFacing);
+    }
+
+    public void TurnBackToPreviousFacing()
+    {
+        if (isMoving)
         {
-            npcAnimator.SetTrigger("faceLeft");
+            AnimateRotation(facing);
         }
-        else if (direction.x > transform.position.x)
+        else
         {
-            npcAnimator.SetTrigger("faceRight");
-        }
-        else if (direction.y < transform.position.y)
-        {
-            npcAnimator.SetTrigger("faceDown");
-        }
-        else if (direction.y > transform.position.y)
-        {
-            npcAnimator.SetTrigger("faceUp");
+            AnimateMovement(facing);
         }
     }
 }

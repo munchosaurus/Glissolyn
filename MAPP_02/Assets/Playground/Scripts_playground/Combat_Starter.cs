@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Combat_Starter : MonoBehaviour
+public static class Combat_Info
 {
-    // Start is called before the first frame update
-    void Start()
+    private static Enemy_Info enemyInfo;
+    private static Player_Info playerInfo;
+
+    public static void Initialize()
     {
-        
+        playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Info>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void ChangeEnemyInfo(Enemy_Info eInfo)
     {
-        
+        enemyInfo = eInfo;
+    }
+
+    public static Enemy_Info GetEnemyInfo()
+    {
+        return enemyInfo;
+    }
+
+    public static Player_Info GetPlayerInfo()
+    {
+        return playerInfo;
     }
 }

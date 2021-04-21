@@ -8,7 +8,6 @@ public class Grid_movement : MonoBehaviour
     private float timeToMove = 0.35f;
     private Vector3 originalPos;
     public bool directionPossible;
-    public bool isTalking;
     public LayerMask wallLayer;
     public GameObject rotation;
     [SerializeField] private Animator playerAnimator;
@@ -17,7 +16,7 @@ public class Grid_movement : MonoBehaviour
 
     void Update() 
     {
-        if (!isTalking)
+        if (!Game_Controller.IsGamePaused())
         {   
             if (Input.GetKey(KeyCode.W) && !isMoving) {
                 direction = Vector3.up;
@@ -109,18 +108,12 @@ public class Grid_movement : MonoBehaviour
         return true;
     }
 
-    public void StopMovement()
-    {
-        isTalking = true;
-    }
-
-    public void StartMovement()
-    {
-        isTalking = false;
-    }
-
     public bool GetMoving() {
         return isMoving;    
     }
 
+    public Vector3 GetFacing()
+    {
+        return currentFacing;
+    }
 }

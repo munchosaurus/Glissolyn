@@ -6,9 +6,7 @@ public class Dialogue_Box : MonoBehaviour
     [SerializeField] private Text dialogueText;
     [SerializeField] private Image dialogueImage;
 
-    private NPCMovement theMovementScript;
-    private string[] dialogue;
-    private string whosTalking;
+    private NPC_Info theNPCInfo;
     private int currentDialoguePart;
     private bool dialogueIsActive;
 
@@ -17,18 +15,12 @@ public class Dialogue_Box : MonoBehaviour
      * Parameters: dialogue - An array of strings, each string consisting of one part of the dialogue to be shown.
      *            sprite   - The dialogue sprite from the character that is talking.
      */
-    public void UpdateDialogue(NPC_Info theNPC)
+    public void UpdateDialogue(NPC_Info theNPCInfo)
     {
-        theMovementScript = theNPC.gameObject.GetComponent<NPCMovement>();
-        Time.timeScale = 0;
-        if(theMovementScript != null)
-        {
-            theMovementScript.StopMoving();
-        }
-        this.dialogue = theNPC.GetDialogue();
-        this.whosTalking = theNPC.GetName();
+        Game_Controller.PauseGame();
+        this.theNPCInfo = theNPCInfo;;
+        dialogueImage.sprite = theNPCInfo.GetDialogueSprite();
         currentDialoguePart = 0;
-        dialogueImage.sprite = theNPC.GetDialogueSprite(); // Updates the sprite to be shown in the dialogue.
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         dialogueIsActive = true;
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
@@ -41,16 +33,15 @@ public class Dialogue_Box : MonoBehaviour
         {
             currentDialoguePart++; // Increase the position in the dialogue we want to show to access the next part.
 
-            if (currentDialoguePart >= dialogue.Length) // Check if the position exists
+            if (currentDialoguePart >= theNPCInfo.GetDialogue().Length) // Check if the position exists
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 dialogueIsActive = false;
-                if (theMovementScript != null)
+                Game_Controller.ResumeGame();
+                if(theNPCInfo.GetComponent<NPCMovement>() != null)
                 {
-                    theMovementScript.StartMoving(); // Allow the npc to start moving again.
+                    theNPCInfo.GetComponent<NPCMovement>().TurnBackToPreviousFacing();
                 }
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().StartMovement(); // Allow the player to start moving again;
-                Time.timeScale = 1;
             }
             else // If it does
             {
@@ -63,6 +54,6 @@ public class Dialogue_Box : MonoBehaviour
 
     private void BuildDialogueText()
     {
-        dialogueText.text = whosTalking + ": " + dialogue[currentDialoguePart];
+        dialogueText.text = theNPCInfo.GetName() + ": " + theNPCInfo.GetDialogue()[currentDialoguePart];
     }
 }
