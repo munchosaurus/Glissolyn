@@ -31,6 +31,11 @@ public static class Game_Controller
         return theQuestLog;
     }
 
+    public static Dialogue_Box GetDialogueBox()
+    {
+        return theDialogueBox;
+    }
+
     public static void PauseGame()
     {
         Time.timeScale = 0;

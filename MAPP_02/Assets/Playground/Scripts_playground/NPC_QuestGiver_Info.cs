@@ -8,9 +8,6 @@ public class NPC_QuestGiver_Info : NPC_Info
     [SerializeField] private string[] questActiveDialogue;
     [SerializeField] private string[] questCompletedDialogue;
 
-    private bool questHasBeenGiven;
-
-
     override
     public void Interact()
     {

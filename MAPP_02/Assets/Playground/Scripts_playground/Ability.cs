@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ability : MonoBehaviour
+public abstract class Ability
 {
     protected int id;
-    protected new string name;
+    protected string name;
     protected Character_Info user;
 
     public Ability(string name, int id)

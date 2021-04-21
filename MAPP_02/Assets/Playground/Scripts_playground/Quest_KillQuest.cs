@@ -10,7 +10,7 @@ public class Quest_KillQuest : Quest
     public Quest_KillQuest(string questTitle, string questText, int id, string enemyToKill, int amountToKill) : base(questTitle, questText, id)
     {
         this.amountToKill = amountToKill;
-        questText = questText + "\n\n" +  enemyToKill + killed + "/" + amountToKill;
+        this.questText = this.questText + "\n\n" +  enemyToKill + " killed: " + killed + "/" + amountToKill;
     }
 
     override
