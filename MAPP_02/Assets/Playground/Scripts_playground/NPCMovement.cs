@@ -114,7 +114,7 @@ public class NPCMovement : MonoBehaviour
 
     public void TurnBackToPreviousFacing()
     {
-        if (isMoving)
+        if (!isMoving)
         {
             AnimateRotation(facing);
         }
