@@ -7,7 +7,7 @@ public class NPCMovement : MonoBehaviour
     [SerializeField] private Animator npcAnimator;
     private bool isMoving;
     private Vector3 originalPos, targetPos;
-    private float timeToMove = 0.7f;
+    [SerializeField] private float timeToMove;
     private Vector3 facing;
     public LayerMask blockingLayer;
     public GameObject player;
