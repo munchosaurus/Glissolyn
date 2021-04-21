@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestQuest : Quest
 {
-    public TestQuest(string questTitle, string questText) : base(questTitle, questText)
+    public TestQuest(string questTitle, string questText, int id) : base(questTitle, questText, id)
     {
 
     }

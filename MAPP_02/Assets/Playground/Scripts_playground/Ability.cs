@@ -4,15 +4,13 @@ using UnityEngine;
 
 public abstract class Ability : MonoBehaviour
 {
-    protected static int ABILITY_ID_COUNTER = 0; // Static variable, its shared between all Ability-objects to keep track of how many abilities have been assigned.
     protected int id;
     protected new string name;
 
-    public Ability(string name)
+    public Ability(string name, int id)
     {
-        this.id = ABILITY_ID_COUNTER;
+        this.id = id;
         this.name = name;
-        ABILITY_ID_COUNTER++; // Increase ABILITY_ID_COUNTER by 1 to make sure the next ability that is created has an ID that is 1 higher than this quest.
     }
 
     public int GetID()
@@ -25,7 +23,7 @@ public abstract class Ability : MonoBehaviour
         return name;
     }
 
-    public void Use(GameObject target)
+    public virtual void Use(GameObject target)
     {
 
     }
