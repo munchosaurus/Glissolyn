@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Move", menuName = "Enemy/Create new move")]
-public class MoveBase : MonoBehaviour
+[CreateAssetMenu(fileName = "Move", menuName = "Character/Create new move")]
+public class MoveBase : ScriptableObject
 {
     // Start is called before the first frame update
     [SerializeField] string name;
+
+    [TextArea]
     [SerializeField] string description;
-    [SerializeField] EnemyType type;
+    [SerializeField] CharacterType type;
     [SerializeField] int power;
     [SerializeField] int accuracy;
     [SerializeField] int PP;
@@ -23,7 +25,7 @@ public class MoveBase : MonoBehaviour
         return description;
     }
 
-    public EnemyType GetType()
+    public CharacterType GetType()
     {
         return type;
     }

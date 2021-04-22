@@ -7,7 +7,7 @@ public class Enemy_rotate : MonoBehaviour
     [SerializeField] private GameObject rotationKnob;
     [SerializeField] float rotationCoolDown;
     [SerializeField] private int startingDirection; // Choose which direction you want the zombie to start with by choosing 0-3'
-    [SerializeField] private LayerMask wallLayer; // Choose what layers the Enemy shouldn't be faced towards
+    [SerializeField] private LayerMask wallLayer; // Choose what layers the Character shouldn't be faced towards
     [SerializeField] private Animator zombieAnimator;
     private bool[] availableDirections = new bool[4];
     private int directionIndex;

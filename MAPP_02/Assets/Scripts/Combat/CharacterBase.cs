@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Enemy", menuName = "Enemy/Create new enemy")]
-public class EnemyBase : ScriptableObject
+[CreateAssetMenu(fileName = "Character", menuName = "Character/Create new player")]
+public class CharacterBase : ScriptableObject
 {
     [SerializeField] string name;
     [TextArea]
     [SerializeField] string description;
 
-    [SerializeField] Sprite enemySprite;
+    [SerializeField] public Sprite sprite;
 
-    [SerializeField] EnemyType type;
+    [SerializeField] CharacterType type;
 
     //Stats
     [SerializeField] int maxHP;
@@ -28,7 +28,7 @@ public class EnemyBase : ScriptableObject
         return name;
     }
 
-    public string Description()
+    public string GetDescription()
     {
         return description;
     }
@@ -72,7 +72,7 @@ public class EnemyBase : ScriptableObject
 [System.Serializable]
 public class LearnableMoves
 {
-    [SerializeField] MoveBase moveBase;
+    [SerializeField] public MoveBase moveBase;
     [SerializeField] int level;
 
     public MoveBase GetMove()
@@ -88,7 +88,7 @@ public class LearnableMoves
 }
 
 
-public enum EnemyType
+public enum CharacterType
 {
     None,
     Undead,

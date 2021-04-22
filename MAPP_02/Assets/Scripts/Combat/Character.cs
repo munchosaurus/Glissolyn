@@ -2,36 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy
+public class Character
 {
-    EnemyBase _base;
-    int level;
+    public CharacterBase _base;
+    public int level;
 
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
-    public Enemy(EnemyBase _base, int level)
+    public Character(CharacterBase _base, int level)
     {
         this._base = _base;
         this.level = level;
-        HP = _base.GetMaxHP();
+        HP = MaxHP();
 
         Moves = new List<Move>();
 
-        /*     foreach(var move in _base.GetLearnableMoves())
+             foreach(var move in _base.GetLearnableMoves())
              {
                  if(move.GetLevel() <= level)
                  {
-                     Moves.Add(new Move(move.Base));
-               }
+                     Moves.Add(new Move(move.moveBase));
+                 }
 
                  if(Moves.Count >= 4)
                  {
                      break;
                  }
              }
-         }
-         */
+    }
+         
 
 
         int Attack()
@@ -58,5 +58,5 @@ public class Enemy
         {
             return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 10);
         }
-    }
+    
 }

@@ -49,7 +49,7 @@ public class Dialogue_Box : MonoBehaviour
                 {
                     theMovementScript.StartMoving(); // Allow the npc to start moving again.
                 }
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().StartMovement(); // Allow the player to start moving again;
+                GameObject.FindGameObjectWithTag("Character").GetComponent<Grid_movement>().StartMovement(); // Allow the player to start moving again;
                 Time.timeScale = 1;
             }
             else // If it does
