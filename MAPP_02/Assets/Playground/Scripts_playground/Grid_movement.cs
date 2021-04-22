@@ -116,4 +116,28 @@ public class Grid_movement : MonoBehaviour
     {
         return currentFacing;
     }
+
+    public void MoveUp()
+    {
+        direction = Vector3.up;
+        StartCoroutine(MovePlayer());
+    }
+
+    public void MoveLeft()
+    {
+        direction = Vector3.left;
+        StartCoroutine(MovePlayer());
+    }
+
+    public void MoveRight()
+    {
+        direction = Vector3.right;
+        StartCoroutine(MovePlayer());
+    }
+
+    public void MoveDown()
+    {
+        direction = Vector3.down;
+        StartCoroutine(MovePlayer());
+    }
 }
