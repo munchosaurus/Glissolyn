@@ -36,6 +36,7 @@ public class QuestLog : MonoBehaviour
     public void Toggle()
     {
         gameObject.SetActive(!gameObject.activeInHierarchy);
+        Game_Controller.TogglePause(gameObject.activeInHierarchy);
     }
 
     public bool IsOpen()

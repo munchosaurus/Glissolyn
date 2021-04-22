@@ -4,8 +4,6 @@ public class Interface_Buttons : MonoBehaviour
 {
     private Grid_movement playerMovementScript;
 
-    private bool moveIsPressed;
-
     private void Start()
     {
         playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>();
@@ -44,7 +42,7 @@ public class Interface_Buttons : MonoBehaviour
 
     public void QuestLogClick()
     {
-        if (!Game_Controller.IsGamePaused() || Game_Controller.GetMenu().IsOpen())
+        if (!Game_Controller.IsGamePaused() || Game_Controller.GetQuestLog().IsOpen())
         {
             Game_Controller.GetQuestLog().Toggle();
         }

@@ -8,9 +8,9 @@ public class NPC_Info : Character_Info
     // A dummy method to give the child-classes a method to override that can still be called from a NPC_Info-object.
     public virtual void Interact()
     {
-        if (gameObject.GetComponent<NPC_Movement>() != false)
+        if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove))
         {
-            gameObject.GetComponent<NPC_Movement>().TurnToPlayer(GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().GetFacing());
+            npcmove.TurnToPlayer(GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().GetFacing());
         }
         Game_Controller.GetDialogueBox().UpdateDialogue(this);
     }

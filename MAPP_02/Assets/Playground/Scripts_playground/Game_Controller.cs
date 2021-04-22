@@ -53,16 +53,17 @@ public static class Game_Controller
         return theMenu;
     }
 
-    public static void PauseGame()
+    public static void TogglePause(bool toggle)
     {
-        Time.timeScale = 0;
-        isGamePaused = true;
-    }
-
-    public static void ResumeGame()
-    {
-        Time.timeScale = 1;
-        isGamePaused = false;
+        if (toggle)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+        isGamePaused = toggle;
     }
 
     public static bool IsGamePaused()

@@ -8,7 +8,6 @@ public class Dialogue_Box : MonoBehaviour
 
     private NPC_Info theNPCInfo;
     private int currentDialoguePart;
-    private bool dialogueIsActive;
 
     /*
      * Updates what the dialogue will be, the image of the character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
@@ -17,27 +16,25 @@ public class Dialogue_Box : MonoBehaviour
      */
     public void UpdateDialogue(NPC_Info theNPCInfo)
     {
-        Game_Controller.PauseGame();
         this.theNPCInfo = theNPCInfo;;
         dialogueImage.sprite = theNPCInfo.GetDialogueSprite();
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
-        dialogueIsActive = true;
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
+        Game_Controller.TogglePause(gameObject.activeInHierarchy);
     }
 
     // Updates the dialogue text to show the next part of the dialogue. Or if the dialogue is over, deactivate the "Dialogue Box"-GameObject.
     public bool NextDialoguePart()
     {
-        if (dialogueIsActive)
+        if (gameObject.activeInHierarchy)
         {
             currentDialoguePart++; // Increase the position in the dialogue we want to show to access the next part.
 
             if (currentDialoguePart >= theNPCInfo.GetDialogue().Length) // Check if the position exists
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
-                dialogueIsActive = false;
-                Game_Controller.ResumeGame();
+                Game_Controller.TogglePause(gameObject.activeInHierarchy);
                 if(theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script
                 {
                     npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
@@ -49,7 +46,7 @@ public class Dialogue_Box : MonoBehaviour
             }
         }
 
-        return dialogueIsActive;
+        return gameObject.activeInHierarchy;
     }
 
     private void BuildDialogueText()
