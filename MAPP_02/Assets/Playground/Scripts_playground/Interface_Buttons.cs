@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Interface_Buttons : MonoBehaviour
 {
-    [SerializeField] private Transform objectChecker;
-    [SerializeField] private LayerMask interactableLayer;
+    
 
     public void UpClick()
     {
@@ -32,6 +31,14 @@ public class Interface_Buttons : MonoBehaviour
 
     public void MenuClick()
     {
-        Game_Controller.GetMenu().Toggle();
+        if (!Game_Controller.IsGamePaused())
+        {
+            Game_Controller.GetMenu().Toggle();
+        }
+    }
+
+    public void InteractClick()
+    {
+        Game_Controller.GetPlayerInfo().Interact();
     }
 }

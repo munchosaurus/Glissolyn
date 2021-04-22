@@ -38,9 +38,9 @@ public class Dialogue_Box : MonoBehaviour
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 dialogueIsActive = false;
                 Game_Controller.ResumeGame();
-                if(theNPCInfo.GetComponent<NPC_Movement>() != null)
+                if(theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script
                 {
-                    theNPCInfo.GetComponent<NPC_Movement>().TurnBackToPreviousFacing();
+                    npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
                 }
             }
             else // If it does
@@ -54,6 +54,6 @@ public class Dialogue_Box : MonoBehaviour
 
     private void BuildDialogueText()
     {
-        dialogueText.text = theNPCInfo.GetName() + ": " + theNPCInfo.GetDialogue()[currentDialoguePart];
+        dialogueText.text = theNPCInfo.GetName() + ": " + theNPCInfo.GetDialogue()[currentDialoguePart]; // Building a part of the dialogue like this "<Name of the speaker>: <Text>"
     }
 }

@@ -6,8 +6,6 @@ public static class Game_Controller
     private static readonly int MAIN_MENU_SCENE_ID = 0;
     private static readonly int WORLD_SCENE_ID = 1;
     private static readonly int COMBAT_SCENE_ID = 2;
-    
-
 
     private static bool isGamePaused;
     private static Dialogue_Box theDialogueBox;
@@ -43,6 +41,11 @@ public static class Game_Controller
     public static Dialogue_Box GetDialogueBox()
     {
         return theDialogueBox;
+    }
+
+    public static Player_Info GetPlayerInfo()
+    {
+        return thePlayerInfo;
     }
 
     public static Menu GetMenu()

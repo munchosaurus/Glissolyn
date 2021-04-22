@@ -1,7 +1,10 @@
-using System.Collections.Generic;
+using UnityEngine;
 
 public class Player_Info : Character_Info
 {
+    [SerializeField] private Transform interactChecker;
+    [SerializeField] private LayerMask interactableLayer;
+
     private int playerLevel; 
     private int statPoints;
     private int experience;
@@ -30,5 +33,22 @@ public class Player_Info : Character_Info
         }
 
         return false;
+    }
+
+    public void Interact()
+    {
+        Collider2D interactable = Physics2D.OverlapCircle(interactChecker.position, 0.3f, interactableLayer);
+        if (interactable != null && !Game_Controller.IsGamePaused())
+        {
+            interactable.GetComponent<NPC_Info>().Interact();
+            if (interactable.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove))
+            {
+                npcmove.TurnToPlayer(transform.position);
+            }
+        }
+        else
+        {
+            Game_Controller.GetDialogueBox().NextDialoguePart();
+        }
     }
 }
