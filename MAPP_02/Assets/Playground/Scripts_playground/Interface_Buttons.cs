@@ -2,36 +2,57 @@ using UnityEngine;
 
 public class Interface_Buttons : MonoBehaviour
 {
-    
+    private Grid_movement playerMovementScript;
+
+    private bool moveIsPressed;
+
+    private void Start()
+    {
+        playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>();
+    }
 
     public void UpClick()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().MoveUp();
+
+        playerMovementScript.MoveUp();
+
     }
 
     public void LeftClick()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().MoveLeft();
+
+        playerMovementScript.MoveLeft();
     }
 
     public void RightClick()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().MoveRight();
+
+        playerMovementScript.MoveRight();
     }
 
     public void DownClick()
     {
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().MoveDown();
+
+        playerMovementScript.MoveDown();
     }
+
+    public void MoveRelease()
+    {
+        playerMovementScript.StopMoving();
+    }
+
 
     public void QuestLogClick()
     {
-        Game_Controller.GetQuestLog().Toggle();
+        if (!Game_Controller.IsGamePaused() || Game_Controller.GetMenu().IsOpen())
+        {
+            Game_Controller.GetQuestLog().Toggle();
+        }
     }
 
     public void MenuClick()
     {
-        if (!Game_Controller.IsGamePaused())
+        if (!Game_Controller.IsGamePaused() || Game_Controller.GetMenu().IsOpen())
         {
             Game_Controller.GetMenu().Toggle();
         }
@@ -39,6 +60,13 @@ public class Interface_Buttons : MonoBehaviour
 
     public void InteractClick()
     {
-        Game_Controller.GetPlayerInfo().Interact();
+        if (!Game_Controller.IsGamePaused())
+        {
+            Game_Controller.GetPlayerInfo().Interact();
+        }
+        else
+        {
+            Game_Controller.GetDialogueBox().NextDialoguePart();
+        }
     }
 }

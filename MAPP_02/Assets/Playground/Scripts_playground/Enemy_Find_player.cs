@@ -18,7 +18,7 @@ public class Enemy_Find_player : MonoBehaviour
     }
      //!
 
-    private void Update()
+    private void LateUpdate()
     {
         if(!target)
         {
@@ -26,7 +26,7 @@ public class Enemy_Find_player : MonoBehaviour
         }
         else if (shouldMove)
         {
-            if (!playerObject.GetComponent<Grid_movement>().isMoving) {
+            if (!playerObject.GetComponent<Grid_movement>().GetMoving()) {
                 shouldMove = false;
                 print("Found target: " + target.transform.position);
                 StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));

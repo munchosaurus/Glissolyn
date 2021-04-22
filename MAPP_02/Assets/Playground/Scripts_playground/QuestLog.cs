@@ -37,4 +37,9 @@ public class QuestLog : MonoBehaviour
     {
         gameObject.SetActive(!gameObject.activeInHierarchy);
     }
+
+    public bool IsOpen()
+    {
+        return gameObject.activeInHierarchy;
+    }
 }

@@ -4,48 +4,58 @@ using UnityEngine;
 
 public class Grid_movement : MonoBehaviour
 {
-    public bool isMoving;
+    [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private GameObject rotation;
+    [SerializeField] private Animator playerAnimator;
+
+    private bool isMoving;
     private float timeToMove = 0.35f;
     private Vector3 originalPos;
-    public bool directionPossible;
-    public LayerMask wallLayer;
-    public GameObject rotation;
-    [SerializeField] private Animator playerAnimator;
-    private Vector3 currentFacing;
-    private Vector3 direction;
+    private bool shouldMove;
+    private Vector3 currentFacing = Vector3.zero;
+    private Vector3 direction = Vector3.zero;
 
     void Update() 
     {
         if (!Game_Controller.IsGamePaused())
-        {   
-            if (Input.GetKey(KeyCode.W) && !isMoving) {
+        {
+            /*if (Input.GetKey(KeyCode.W) && !isMoving) {
                 direction = Vector3.up;
-                StartCoroutine(MovePlayer());
+                StartCoroutine(MovePlayer(direction));
             }
 
             else if (Input.GetKey(KeyCode.A) && !isMoving) {
                 direction = Vector3.left;
-                StartCoroutine(MovePlayer());
+                StartCoroutine(MovePlayer(direction));
             }
 
             else if (Input.GetKey(KeyCode.D) && !isMoving)
             {
                 direction = Vector3.right;
-                StartCoroutine(MovePlayer());
+                StartCoroutine(MovePlayer(direction));
             }
 
             else if (Input.GetKey(KeyCode.S) && !isMoving) {
                 direction = Vector3.down;
-                StartCoroutine(MovePlayer());
+                StartCoroutine(MovePlayer(direction));
             }
 
             if (!isMoving && currentFacing != direction) {
+                Rotate(direction);
+            }*/
+            if (shouldMove && !isMoving)
+            {
+                StartCoroutine(MovePlayer(direction));
+            }
+
+            if (!isMoving && currentFacing != direction)
+            {
                 Rotate(direction);
             }
         }
     }
 
-    private IEnumerator MovePlayer() {
+    private IEnumerator MovePlayer(Vector3 direction) {
         if (IsWalkable(transform.position + direction)) {
             float elapsedTime = 0;
             originalPos = transform.position;
@@ -66,6 +76,7 @@ public class Grid_movement : MonoBehaviour
                 playerAnimator.SetTrigger("moveLeft");
             }
             isMoving = true;
+            rotation.transform.position = transform.position + direction;
             while (elapsedTime < timeToMove)
             {
                 transform.position = Vector3.Lerp(originalPos, originalPos + direction, elapsedTime / timeToMove);
@@ -74,7 +85,6 @@ public class Grid_movement : MonoBehaviour
             }
             transform.position = originalPos + direction;
             currentFacing = Vector3.zero;
-            
         }
         isMoving = false;
     }
@@ -120,24 +130,29 @@ public class Grid_movement : MonoBehaviour
     public void MoveUp()
     {
         direction = Vector3.up;
-        StartCoroutine(MovePlayer());
+        shouldMove = true;
     }
 
     public void MoveLeft()
     {
         direction = Vector3.left;
-        StartCoroutine(MovePlayer());
+        shouldMove = true;
     }
 
     public void MoveRight()
     {
         direction = Vector3.right;
-        StartCoroutine(MovePlayer());
+        shouldMove = true;
     }
 
     public void MoveDown()
     {
         direction = Vector3.down;
-        StartCoroutine(MovePlayer());
+        shouldMove = true;
+    }
+
+    public void StopMoving()
+    {
+        shouldMove = false;
     }
 }

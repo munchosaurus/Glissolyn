@@ -7,6 +7,7 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private Dialogue_Box theDialogueBox;
     [SerializeField] private QuestLog theQuestLog;
     [SerializeField] private Player_Info thePlayerInfo;
+    [SerializeField] private Menu theMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,6 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetDialogueBox(theDialogueBox);
         Game_Controller.SetQuestLog(theQuestLog);
         Game_Controller.SetPlayerInfo(thePlayerInfo);
+        Game_Controller.SetMenu(theMenu);
     }
 }
