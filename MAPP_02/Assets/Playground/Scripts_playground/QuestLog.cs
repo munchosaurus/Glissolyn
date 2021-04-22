@@ -32,4 +32,9 @@ public class QuestLog : MonoBehaviour
     {
         return activeQuests.ContainsKey(id);
     }
+
+    public void Toggle()
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
+    }
 }

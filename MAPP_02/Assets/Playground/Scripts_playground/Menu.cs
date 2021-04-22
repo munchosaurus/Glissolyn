@@ -3,25 +3,29 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    private int mainMenuSceneIndex = 0;
 
-    public void LoadGame()
+    public void LoadGameClick()
     {
         // TODO
     }
 
-    public void SaveGame()
+    public void SaveGameClick()
     {
         // TODO
     }
 
-    public void Settings()
+    public void SettingsClick()
     {
         // TODO
     }
 
-    public void Quit()
+    public void QuitClick()
     {
-        SceneManager.LoadScene(mainMenuSceneIndex);
+        Game_Controller.GoToMainMenu();
+    }
+
+    public void Toggle()
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 }
