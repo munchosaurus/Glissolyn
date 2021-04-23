@@ -1,49 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public abstract class Quest
+public class Quest
 {
-    protected string questTitle;
-    protected string questText;
-    protected int questID;
-    protected bool isCompleted;
-
-    public Quest(string questTitle, string questText, int id)
+    private static int QUEST_ID_COUNTER = 0;
+    private string questTitle;
+    private string questText;
+    private int questID;
+    
+    public Quest(string questTitle, string questText)
     {
         this.questTitle = questTitle;
         this.questText = questText;
-        this.questID = id;
+        this.questID = QUEST_ID_COUNTER;
+        QUEST_ID_COUNTER++;
     }
 
-    // Return the questTitle-string
     public string GetQuestTitle()
     {
         return questTitle;
     }
 
-    // Return the questText-string
     public string GetQuestText()
     {
         return questText;
     }
 
-    // Return the questID as an integer.
     public int GetQuestID()
     {
         return questID;
-    }
-
-    public bool IsCompleted()
-    {
-        return isCompleted;
-    }
-
-    public virtual void UpdateQuest()
-    {
-
-    }
-
-    public virtual bool CompleteQuest()
-    {
-        return isCompleted;
     }
 }

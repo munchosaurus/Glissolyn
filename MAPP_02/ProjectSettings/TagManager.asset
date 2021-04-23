@@ -3,20 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Path
-  - Wall
-  - Dialogue Box
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Wall
+  - 
   - Water
   - UI
-  - Path
-  - NPC
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -41,15 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 948111117
-    locked: 0
-  - name: Wall
-    uniqueID: 3020567787
-    locked: 0
-  - name: Player
-    uniqueID: 413725789
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
