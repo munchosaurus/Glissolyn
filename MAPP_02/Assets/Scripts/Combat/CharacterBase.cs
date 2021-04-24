@@ -17,9 +17,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] int maxHP;
     [SerializeField] int attack;
     [SerializeField] int defense;
-    [SerializeField] int spAttack;
-    [SerializeField] int spDefense;
-    [SerializeField] int speed;
+
 
     [SerializeField] List<LearnableMoves> learnableMoves;
 
@@ -48,20 +46,6 @@ public class CharacterBase : ScriptableObject
         return defense;
     }
 
-    public int GetSpAttack()
-    {
-        return spAttack;
-    }
-
-    public int GetSpDefense()
-    {
-        return spDefense;
-    }
-
-    public int GetSpeed()
-    {
-        return speed;
-    }
 
     public List<LearnableMoves> GetLearnableMoves()
     {

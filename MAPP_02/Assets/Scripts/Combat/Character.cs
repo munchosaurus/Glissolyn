@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character
 {
-    public CharacterBase _base;
+    public CharacterBase Base;
     public int level;
 
     public int HP { get; set; }
@@ -12,9 +12,9 @@ public class Character
 
     public Character(CharacterBase _base, int level)
     {
-        this._base = _base;
+        this.Base = _base;
         this.level = level;
-        HP = MaxHP();
+        HP = _base.GetMaxHP();
 
         Moves = new List<Move>();
 
@@ -33,30 +33,44 @@ public class Character
     }
          
 
+        public int Attack()
+        {
+        return Base.GetAttack();
+       // return Mathf.FloorToInt((Base.GetAttack() * level) / 100f) + 5;
+        }
+        public int Defense()
+        {
+        return Base.GetDefense();
+      //  return Mathf.FloorToInt((Base.GetDefense() * level) / 100f) + 5;
+    }
 
-        int Attack()
+        public int MaxHP()
         {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 5);
-        }
-        int Defense()
+        return Base.GetMaxHP();
+      //  return Mathf.FloorToInt((Base.GetMaxHP() * level) / 100f) + 10;
+    }
+
+    public bool TakeDamage(Move move, Character character)
+    {
+        float modifiers = Random.Range(0.85f, 1f);
+   //     float a = (2 * character.level + 10) / 250f;
+   //     float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;
+        int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
+
+        HP -= damage;
+        if(HP <= 0)
         {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 5);
+            HP = 0;
+            return true;
         }
-        int SpAttack()
-        {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 5);
-        }
-        int SpDefense()
-        {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 5);
-        }
-        int Speed()
-        {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 5);
-        }
-        int MaxHP()
-        {
-            return Mathf.FloorToInt((_base.GetAttack() * level / 100f) + 10);
-        }
+
+        return false; 
+    }
+
+    public Move GetRandomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
     
 }

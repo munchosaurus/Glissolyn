@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
-    [SerializeField] Slider health;
+    [SerializeField] GameObject health;
 
-    public void SetHP()
+
+    public void SetHP(float HP)
     {
-        health.value =  health.maxValue;
+        health.transform.localScale = new Vector3 (HP, 1f);
     }
+
+
 }

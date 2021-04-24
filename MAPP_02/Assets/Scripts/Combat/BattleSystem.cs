@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class BattleSystem : MonoBehaviour
 {
@@ -26,14 +26,14 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator SetupBattle()
     {
         PlayerUnit.Setup();
-        PlayerHud.SetData(PlayerUnit.character);
+        PlayerHud.SetData(PlayerUnit.Character);
         EnemyUnit.Setup();
-        EnemyHud.SetData(EnemyUnit.character);
+        EnemyHud.SetData(EnemyUnit.Character);
 
-        dialogBox.SetMoveNames(PlayerUnit.character.Moves);
+        dialogBox.SetMoveNames(PlayerUnit.Character.Moves);
 
         //$ möjliggör att man kan lägga till värden i strängen.
-        yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.character._base.getName()}!");
+        yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.getName()}!");
         yield return new WaitForSeconds(1.3f);
 
         PlayerAction();
@@ -56,12 +56,15 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-  /*  public IEnumerator PerformPlayerMove(Button button)
+    /*
+    public IEnumerator PerformPlayerMove(int index)
     {
-        var move = PlayerUnit.character.Moves[]
-            yield return dialogBox.TypeDialog($"{PlayerUnit.character._base.name} used {move.Base.GetName()}");
+        var move = PlayerUnit.Character.Moves[index];
+            yield return dialogBox.TypeDialog($"{PlayerUnit.Character.Base.name} used {move.Base.GetName()}");
     }
-*/
+    */
+
+
     private void Update()
     {
         if(state == BattleState.PlayerAction)
@@ -75,19 +78,137 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.PlayerMove)
         {
+     
             Button b1 = a1.GetComponent<Button>();
             Button b2 = a2.GetComponent<Button>();
             Button b3 = a3.GetComponent<Button>();
             Button b4 = a4.GetComponent<Button>();
 
-     /*       b1.onClick.AddListener(PerformPlayerMove());
-            b2.onClick.AddListener(PerformPlayerMove());
-            b3.onClick.AddListener(PerformPlayerMove());
-            b4.onClick.AddListener(PerformPlayerMove());
-     */
+           
+           b1.onClick.AddListener(PerformPlayerMoveOne);
+           b2.onClick.AddListener(PerformPlayerMoveTwo);
+           b3.onClick.AddListener(PerformPlayerMoveThree);
+           b4.onClick.AddListener(PerformPlayerMoveFour);
+           
         }
+    }
 
+    //temporär funktion som är identiska förutom index.
+    private void PerformPlayerMoveOne()
+    {
+        dialogBox.EnableMoveSelector(false);
+        dialogBox.EnableDialogText(true);
+        state = BattleState.Busy;
 
+        var move = PlayerUnit.Character.Moves[0];
+        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+
+        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
+        new WaitForSeconds(1f);
+
+        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        EnemyHud.UpdateHP();
+
+        if (isDead)
+        {
+            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+        } else
+        {
+            StartCoroutine(EnemyMove());
+        }
+    }
+    private void PerformPlayerMoveTwo()
+    {
+        dialogBox.EnableMoveSelector(false);
+        dialogBox.EnableDialogText(true);
+        state = BattleState.Busy;
+        var move = PlayerUnit.Character.Moves[1];
+        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+
+        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
+        new WaitForSeconds(1f);
+
+        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        EnemyHud.UpdateHP();
+
+        if (isDead)
+        {
+            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+        }
+        else
+        {
+            EnemyMove();
+        }
+    }
+
+    private void PerformPlayerMoveThree()
+    {
+        dialogBox.EnableMoveSelector(false);
+        dialogBox.EnableDialogText(true);
+        state = BattleState.Busy;
+        var move = PlayerUnit.Character.Moves[2];
+        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+
+        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
+        new WaitForSeconds(1f);
+
+        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        EnemyHud.UpdateHP();
+
+        if (isDead)
+        {
+            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+        }
+        else
+        {
+            EnemyMove();
+        }
+    }
+    private void PerformPlayerMoveFour()
+    {
+        dialogBox.EnableMoveSelector(false);
+        dialogBox.EnableDialogText(true);
+        state = BattleState.Busy;
+        var move = PlayerUnit.Character.Moves[3];
+        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+
+        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
+        new WaitForSeconds(1f);
+
+        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        EnemyHud.UpdateHP();
+
+        if (isDead)
+        {
+            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+        }
+        else
+        {
+            EnemyMove();
+        }
+    }
+
+    private IEnumerator EnemyMove()
+    {
+        state = BattleState.EnemyMove;
+
+        var move = EnemyUnit.Character.GetRandomMove();
+        PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
+
+        yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
+        yield return new WaitForSeconds(1f);
+
+        bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        PlayerHud.UpdateHP();
+
+        if (isDead)
+        {
+            yield return dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} died.");
+        }
+        else
+        {
+            PlayerAction();
+        }
     }
 }
 public enum BattleState

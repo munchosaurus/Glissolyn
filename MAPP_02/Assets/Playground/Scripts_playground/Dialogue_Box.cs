@@ -13,9 +13,9 @@ public class Dialogue_Box : MonoBehaviour
     private bool dialogueIsActive;
 
     /*
-     * Updates what the dialogue will be, the image of the character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
+     * Updates what the dialogue will be, the image of the Character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
      * Parameters: dialogue - An array of strings, each string consisting of one part of the dialogue to be shown.
-     *            sprite   - The dialogue sprite from the character that is talking.
+     *            sprite   - The dialogue sprite from the Character that is talking.
      */
     public void UpdateDialogue(NPC_Info theNPC)
     {
