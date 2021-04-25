@@ -23,7 +23,7 @@ public class BattleHud : MonoBehaviour
     {
         _character = character;
         nameText.text = character.Base.getName();
-        levelText.text = "Lvl " + character.level;
+        levelText.text = "Lvl " + character.Level;
         hpBar.SetHP((float)character.HP / character.MaxHP());
     }
 

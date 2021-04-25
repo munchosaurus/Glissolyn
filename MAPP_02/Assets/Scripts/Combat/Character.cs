@@ -5,16 +5,16 @@ using UnityEngine;
 public class Character
 {
     public CharacterBase Base;
-    public int level;
+    public int Level;
 
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
     public Character(CharacterBase _base, int level)
     {
-        this.Base = _base;
-        this.level = level;
-        HP = _base.GetMaxHP();
+        Base = _base;
+        Level = level;
+        HP = MaxHP();
 
         Moves = new List<Move>();
 
@@ -35,32 +35,33 @@ public class Character
 
         public int Attack()
         {
-        return Base.GetAttack();
-       // return Mathf.FloorToInt((Base.GetAttack() * level) / 100f) + 5;
+        //return Base.GetAttack();
+        return Mathf.FloorToInt((Base.GetAttack() * Level) / 100f) + 5;
         }
         public int Defense()
         {
-        return Base.GetDefense();
-      //  return Mathf.FloorToInt((Base.GetDefense() * level) / 100f) + 5;
+      //  return Base.GetDefense();
+        return Mathf.FloorToInt((Base.GetDefense() * Level) / 100f) + 5;
     }
 
         public int MaxHP()
         {
-        return Base.GetMaxHP();
-      //  return Mathf.FloorToInt((Base.GetMaxHP() * level) / 100f) + 10;
+       // return Base.GetMaxHP();
+        return Mathf.FloorToInt((Base.GetMaxHP() * Level) / 100f) + 10;
     }
 
     public bool TakeDamage(Move move, Character character)
     {
         float modifiers = Random.Range(0.85f, 1f);
-   //     float a = (2 * character.level + 10) / 250f;
-   //     float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;
+        float a = (2 * character.Level + 10) / 250f;
+        float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;
         int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
 
         HP -= damage;
         if(HP <= 0)
         {
             HP = 0;
+            
             return true;
         }
 

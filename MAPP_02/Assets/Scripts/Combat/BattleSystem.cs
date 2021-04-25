@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 public class BattleSystem : MonoBehaviour
@@ -34,7 +35,7 @@ public class BattleSystem : MonoBehaviour
 
         //$ möjliggör att man kan lägga till värden i strängen.
         yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.getName()}!");
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.5f);
 
         PlayerAction();
 
@@ -103,18 +104,20 @@ public class BattleSystem : MonoBehaviour
         var move = PlayerUnit.Character.Moves[0];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
-        new WaitForSeconds(1f);
+        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
+        new WaitForSecondsRealtime(1f);
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
         EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
+            new WaitForSecondsRealtime(1f);
+            EndBattle(true);
         } else
         {
-            StartCoroutine(EnemyMove());
+            EnemyMove();
         }
     }
     private void PerformPlayerMoveTwo()
@@ -125,15 +128,17 @@ public class BattleSystem : MonoBehaviour
         var move = PlayerUnit.Character.Moves[1];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
-        new WaitForSeconds(1f);
+        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
+        new WaitForSecondsRealtime(1f);
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
         EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
+            new WaitForSecondsRealtime(1f);
+            EndBattle(true);
         }
         else
         {
@@ -149,15 +154,17 @@ public class BattleSystem : MonoBehaviour
         var move = PlayerUnit.Character.Moves[2];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
-        new WaitForSeconds(1f);
+        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
+        new WaitForSecondsRealtime(1f); 
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
         EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
+            new WaitForSecondsRealtime(1f);
+            EndBattle(true);
         }
         else
         {
@@ -172,15 +179,17 @@ public class BattleSystem : MonoBehaviour
         var move = PlayerUnit.Character.Moves[3];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        StartCoroutine(dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} used {move.Base.name}."));
-        new WaitForSeconds(1f);
+        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
+        new WaitForSecondsRealtime(1f);
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
         EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            StartCoroutine(dialogBox.TypeDialog($"{EnemyUnit.Character.Base.getName()} died."));
+            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
+            new WaitForSecondsRealtime(1f);
+            EndBattle(true);
         }
         else
         {
@@ -188,26 +197,38 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator EnemyMove()
+    private void EnemyMove()
     {
         state = BattleState.EnemyMove;
 
         var move = EnemyUnit.Character.GetRandomMove();
         PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
-        yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
-        yield return new WaitForSeconds(1f);
+        dialogBox.SetDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
+        new WaitForSecondsRealtime(1f);
 
         bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
         PlayerHud.UpdateHP();
 
         if (isDead)
         {
-            yield return dialogBox.TypeDialog($"{PlayerUnit.Character.Base.getName()} died.");
+            dialogBox.SetDialog($"{PlayerUnit.Character.Base.getName()} died.");
+            new WaitForSecondsRealtime(1f);
+            EndBattle(true);
         }
         else
         {
             PlayerAction();
+        }
+    }
+
+    void EndBattle(bool IsBattleOver)
+    {
+        if (IsBattleOver)
+        {
+            dialogBox.SetDialog("IsBattleOver = true");
+            //ladda andra scenen. 
+            //SceneManager.LoadScene("NamnPåScenen");
         }
     }
 }

@@ -21,8 +21,8 @@ MonoBehaviour:
   defense: 5
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
-    level: 3
+    level: 1
   - moveBase: {fileID: 11400000, guid: 7fc2dbad8b9434f41bfc305d355ae2e9, type: 2}
-    level: 3
+    level: 1
   - moveBase: {fileID: 11400000, guid: 515fe51c2ad8f7547bab5d2b192ee859, type: 2}
-    level: 3
+    level: 1
