@@ -50,6 +50,7 @@ public class Character
         return Mathf.FloorToInt((Base.GetMaxHP() * Level) / 100f) + 10;
     }
 
+    
     public bool TakeDamage(Move move, Character character)
     {
         float modifiers = Random.Range(0.85f, 1f);

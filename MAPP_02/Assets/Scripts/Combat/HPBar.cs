@@ -12,5 +12,4 @@ public class HPBar : MonoBehaviour
         health.transform.localScale = new Vector3 (HP, 1f);
     }
 
-
 }

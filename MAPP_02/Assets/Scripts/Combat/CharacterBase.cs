@@ -13,7 +13,7 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] CharacterType type;
 
-    //Stats
+
     [SerializeField] int maxHP;
     [SerializeField] int attack;
     [SerializeField] int defense;

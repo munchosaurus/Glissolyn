@@ -57,15 +57,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-    /*
-    public IEnumerator PerformPlayerMove(int index)
-    {
-        var move = PlayerUnit.Character.Moves[index];
-            yield return dialogBox.TypeDialog($"{PlayerUnit.Character.Base.name} used {move.Base.GetName()}");
-    }
-    */
-
-
     private void Update()
     {
         if(state == BattleState.PlayerAction)
