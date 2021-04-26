@@ -16,7 +16,6 @@ public class Enemy_Find_player : MonoBehaviour
     {
         shouldMove = true;
     }
-     //!
 
     private void LateUpdate()
     {
@@ -37,8 +36,8 @@ public class Enemy_Find_player : MonoBehaviour
 
     private IEnumerator Move(Vector3 direction)
     {
-            float elapsedTime = 0;
-            Vector3 originalPos = transform.position;
+        float elapsedTime = 0;
+        Vector3 originalPos = transform.position;
         if (direction.x < transform.position.x)
         {
             zombieAnimator.SetTrigger("moveLeft");
@@ -57,9 +56,9 @@ public class Enemy_Find_player : MonoBehaviour
         }
         while (elapsedTime < timeToMove)
         {
-             transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * target.distance));
-             elapsedTime += Time.deltaTime;
-             yield return null;
+            transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * target.distance));
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
         transform.position = direction;
     }

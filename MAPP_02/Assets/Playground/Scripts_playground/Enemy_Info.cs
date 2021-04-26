@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class Enemy_Info : NPC_Info
 {
+    [SerializeField] CharacterBase Base;
+
     override
     public void Interact()
     {
         base.Interact();
-        Game_Controller.StartCombat();
+    }
+
+    public CharacterBase GetBase()
+    {
+        return Base;
     }
 }

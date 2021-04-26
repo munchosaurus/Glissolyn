@@ -6,44 +6,51 @@ using System;
 
 public class BattleSystem : MonoBehaviour
 {
+    [SerializeField] bool testing;
     [SerializeField] BattleUnit PlayerUnit;
     [SerializeField] BattleUnit EnemyUnit;
     [SerializeField] BattleHud PlayerHud;
     [SerializeField] BattleHud EnemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] CharacterBase player;
+    [SerializeField] CharacterBase enemy;
 
-    [SerializeField] Button fight;
-    [SerializeField] Button run;
-    [SerializeField] Button a1, a2, a3, a4;
-
-    BattleState state;
-   // int currentAction;
+    //BattleState state;
+    //int currentAction;
     void Start()
     {
-        StartCoroutine(SetupBattle());
+        if (!testing)
+        {
+            player = Combat_Info.GetPlayer();
+            enemy = Combat_Info.GetEnemy();
+        }
+        print(player.GetName() + "Vs." + enemy.GetName());
+        StartCoroutine(SetupBattle(player, enemy));
          
     }
 
-    public IEnumerator SetupBattle()
+    public IEnumerator SetupBattle(CharacterBase player, CharacterBase enemy)
     {
-        PlayerUnit.Setup();
+        PlayerUnit.Setup(player);
         PlayerHud.SetData(PlayerUnit.Character);
-        EnemyUnit.Setup();
+        EnemyUnit.Setup(enemy);
         EnemyHud.SetData(EnemyUnit.Character);
 
         dialogBox.SetMoveNames(PlayerUnit.Character.Moves);
+        print("Encountered: " + EnemyUnit.Character.Base.GetName());
 
         //$ möjliggör att man kan lägga till värden i strängen.
-        yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.getName()}!");
+        yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.GetName()}!");
+        print("Time to wait");
         yield return new WaitForSeconds(1.5f);
-
+        print("Waited");
         PlayerAction();
 
     }
 
     public void PlayerAction()
     {
-        state = BattleState.PlayerAction;
+        //state = BattleState.PlayerAction;
         StartCoroutine(dialogBox.TypeDialog("Choose an action"));
         dialogBox.EnableActionSelector(true);
         
@@ -51,7 +58,7 @@ public class BattleSystem : MonoBehaviour
 
     public void PlayerMove()
     {
-        state = BattleState.PlayerMove;
+        //state = BattleState.PlayerMove;
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
@@ -59,130 +66,30 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        if(state == BattleState.PlayerAction)
-        {
-            Button b1 = fight.GetComponent<Button>();
-            Button b2 = run.GetComponent<Button>();
 
-            b1.onClick.AddListener(PlayerMove);
-            b2.onClick.AddListener(PlayerMove);
-        }
-
-        if (state == BattleState.PlayerMove)
-        {
-     
-            Button b1 = a1.GetComponent<Button>();
-            Button b2 = a2.GetComponent<Button>();
-            Button b3 = a3.GetComponent<Button>();
-            Button b4 = a4.GetComponent<Button>();
-
-           
-           b1.onClick.AddListener(PerformPlayerMoveOne);
-           b2.onClick.AddListener(PerformPlayerMoveTwo);
-           b3.onClick.AddListener(PerformPlayerMoveThree);
-           b4.onClick.AddListener(PerformPlayerMoveFour);
-           
-        }
     }
 
-    //temporär funktion som är identiska förutom index.
-    private void PerformPlayerMoveOne()
+    public void PerformPlayerMove(int index)
     {
         dialogBox.EnableMoveSelector(false);
         dialogBox.EnableDialogText(true);
-        state = BattleState.Busy;
+        //state = BattleState.Busy;
 
-        var move = PlayerUnit.Character.Moves[0];
+        var move = PlayerUnit.Character.Moves[index];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
         dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
-        new WaitForSecondsRealtime(1f);
+        //TODO Wait a little bit
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
         EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
-            new WaitForSecondsRealtime(1f);
+            dialogBox.SetDialog($"{EnemyUnit.Character.Base.GetName()} died.");
+            //TODO Wait a little bit
             EndBattle(true);
         } else
-        {
-            EnemyMove();
-        }
-    }
-    private void PerformPlayerMoveTwo()
-    {
-        dialogBox.EnableMoveSelector(false);
-        dialogBox.EnableDialogText(true);
-        state = BattleState.Busy;
-        var move = PlayerUnit.Character.Moves[1];
-        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-
-        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
-        new WaitForSecondsRealtime(1f);
-
-        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-        EnemyHud.UpdateHP();
-
-        if (isDead)
-        {
-            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
-            new WaitForSecondsRealtime(1f);
-            EndBattle(true);
-        }
-        else
-        {
-            EnemyMove();
-        }
-    }
-
-    private void PerformPlayerMoveThree()
-    {
-        dialogBox.EnableMoveSelector(false);
-        dialogBox.EnableDialogText(true);
-        state = BattleState.Busy;
-        var move = PlayerUnit.Character.Moves[2];
-        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-
-        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
-        new WaitForSecondsRealtime(1f); 
-
-        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-        EnemyHud.UpdateHP();
-
-        if (isDead)
-        {
-            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
-            new WaitForSecondsRealtime(1f);
-            EndBattle(true);
-        }
-        else
-        {
-            EnemyMove();
-        }
-    }
-    private void PerformPlayerMoveFour()
-    {
-        dialogBox.EnableMoveSelector(false);
-        dialogBox.EnableDialogText(true);
-        state = BattleState.Busy;
-        var move = PlayerUnit.Character.Moves[3];
-        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-
-        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
-        new WaitForSecondsRealtime(1f);
-
-        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-        EnemyHud.UpdateHP();
-
-        if (isDead)
-        {
-            dialogBox.SetDialog($"{EnemyUnit.Character.Base.getName()} died.");
-            new WaitForSecondsRealtime(1f);
-            EndBattle(true);
-        }
-        else
         {
             EnemyMove();
         }
@@ -190,21 +97,21 @@ public class BattleSystem : MonoBehaviour
 
     private void EnemyMove()
     {
-        state = BattleState.EnemyMove;
+        //state = BattleState.EnemyMove;
 
         var move = EnemyUnit.Character.GetRandomMove();
         PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
         dialogBox.SetDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
-        new WaitForSecondsRealtime(1f);
+        //TODO Wait a little bit
 
         bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
         PlayerHud.UpdateHP();
 
         if (isDead)
         {
-            dialogBox.SetDialog($"{PlayerUnit.Character.Base.getName()} died.");
-            new WaitForSecondsRealtime(1f);
+            dialogBox.SetDialog($"{PlayerUnit.Character.Base.GetName()} died.");
+            //TODO Wait a little bit
             EndBattle(true);
         }
         else
@@ -218,8 +125,8 @@ public class BattleSystem : MonoBehaviour
         if (IsBattleOver)
         {
             dialogBox.SetDialog("IsBattleOver = true");
-            //ladda andra scenen. 
-            //SceneManager.LoadScene("NamnPåScenen");
+            //TODO Gör saker beroende på vem som vann.
+            Game_Controller.EndCombat();
         }
     }
 }

@@ -2,26 +2,26 @@ using UnityEngine;
 
 public static class Combat_Info
 {
-    private static Enemy_Info enemyInfo;
-    private static Player_Info playerInfo;
+    private static CharacterBase enemy;
+    private static CharacterBase player;
 
     public static void Initialize()
     {
-        playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Info>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Info>().GetBase();
     }
 
-    public static void ChangeEnemyInfo(Enemy_Info eInfo)
+    public static void ChangeEnemy(CharacterBase enemyBase)
     {
-        enemyInfo = eInfo;
+        enemy = enemyBase;
     }
 
-    public static Enemy_Info GetEnemyInfo()
+    public static CharacterBase GetEnemy()
     {
-        return enemyInfo;
+        return enemy;
     }
 
-    public static Player_Info GetPlayerInfo()
+    public static CharacterBase GetPlayer()
     {
-        return playerInfo;
+        return player;
     }
 }

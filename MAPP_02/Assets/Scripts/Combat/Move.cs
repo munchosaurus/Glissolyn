@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Move
 {
-    // Start is called before the first frame update
     public MoveBase Base {
         get;
         set;
