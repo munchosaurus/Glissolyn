@@ -6,7 +6,7 @@ using UnityEngine;
 public class MoveBase : ScriptableObject
 {
     // Start is called before the first frame update
-    [SerializeField] string name;
+    [SerializeField] new string name;
 
     [TextArea]
     [SerializeField] string description;
@@ -25,7 +25,7 @@ public class MoveBase : ScriptableObject
         return description;
     }
 
-    public CharacterType GetType()
+    public new CharacterType GetType()
     {
         return type;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Character", menuName = "Character/Create new player")]
 public class CharacterBase : ScriptableObject
 {
-    [SerializeField] string name;
+    [SerializeField] new string name;
     [TextArea]
     [SerializeField] string description;
 

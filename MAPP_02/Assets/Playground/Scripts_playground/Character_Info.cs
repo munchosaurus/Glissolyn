@@ -14,7 +14,7 @@ public abstract class Character_Info : MonoBehaviour
 
     private void Start()
     {
-        thePlayer = GameObject.FindGameObjectWithTag("Character");
+        thePlayer = GameObject.FindGameObjectWithTag("Player");
     }
 
     public string GetName()
