@@ -23,15 +23,18 @@ public class Enemy_rotate : MonoBehaviour
 
     private void Update()
     {
-        if (timer > rotationCoolDown)
+        if (!Game_Controller.IsGamePaused())
         {
-            ChangeFacing(directionIndex);
-            timer = 0;
+            if (timer > rotationCoolDown)
+            {
+                ChangeFacing(directionIndex);
+                timer = 0;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+            }
         }
-        else {
-            timer += Time.deltaTime;
-        }
-        
     }
 
 

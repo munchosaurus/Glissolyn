@@ -21,6 +21,11 @@ public abstract class Character_Info : MonoBehaviour
     {
         return name;
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
         
     public int GetStrength()
     {
@@ -45,6 +50,16 @@ public abstract class Character_Info : MonoBehaviour
     public void SetName(string name)
     {
         this.name = name;
+    }
+
+    public void ReduceHealth(int amount)
+    {
+        health -= amount;
+    }
+
+    public void IncreaseHealth(int amount)
+    {
+        health += amount;
     }
 
     public void ModifyStrength(int amount)

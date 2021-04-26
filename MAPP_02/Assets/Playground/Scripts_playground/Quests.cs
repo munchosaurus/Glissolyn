@@ -7,6 +7,7 @@ public static class Quests
     public static void Initialize()
     {
         // Add all quests here with allQuests.add(<the quest ID>, new <the quest>)
+        allQuests.Add(0, new Quest_KillQuest("First Quest", "This is your first quest. Mrs McDougal wants you to Kill a Zombie.", 0, "Zombie", 1));
     }
 
     public static Quest GetQuest(int id)

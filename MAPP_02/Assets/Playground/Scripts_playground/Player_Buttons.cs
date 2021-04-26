@@ -4,9 +4,6 @@ public class Player_Buttons : MonoBehaviour
 {
     [SerializeField] private Transform objectChecker;
     [SerializeField] private LayerMask interactableLayer;
-    [SerializeField] private Dialogue_Box theDialogueBox;
-
-    private bool isTalking;
 
     // Update is called once per frame
     void Update()
@@ -14,16 +11,29 @@ public class Player_Buttons : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             Collider2D interactable = Physics2D.OverlapCircle(objectChecker.position, 0.3f, interactableLayer);
-            if (interactable != null && !isTalking) {
+            if (interactable != null && !Game_Controller.IsGamePaused())
+            {
                 interactable.GetComponent<NPC_Info>().Interact();
-                interactable.GetComponent<NPCMovement>().TurnToPlayer(transform.position);
-                isTalking = true;
+                interactable.GetComponent<NPC_Movement>().TurnToPlayer(transform.position);
             }
             else
             {
-                if (!theDialogueBox.NextDialoguePart())
+                Game_Controller.GetDialogueBox().NextDialoguePart();
+            }
+        }
+
+        if (!Game_Controller.IsGamePaused())
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                GameObject ql = Game_Controller.GetQuestLog().gameObject;
+                if (!ql.activeInHierarchy)
                 {
-                    isTalking = false;
+                    ql.SetActive(true);
+                }
+                else
+                {
+                    ql.SetActive(false);
                 }
             }
         }
