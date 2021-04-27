@@ -6,7 +6,6 @@ using System;
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] bool testing;
     [SerializeField] BattleUnit PlayerUnit;
     [SerializeField] BattleUnit EnemyUnit;
     [SerializeField] BattleHud PlayerHud;
@@ -19,13 +18,7 @@ public class BattleSystem : MonoBehaviour
     //int currentAction;
     void Start()
     {
-        if (!testing)
-        {
-            player = Combat_Info.GetPlayer();
-            enemy = Combat_Info.GetEnemy();
-        }
         StartCoroutine(SetupBattle(player, enemy));
-         
     }
 
     public IEnumerator SetupBattle(CharacterBase player, CharacterBase enemy)
@@ -123,7 +116,6 @@ public class BattleSystem : MonoBehaviour
             dialogBox.SetDialog("IsBattleOver = true");
             Combat_Info.PlayerWins();
             //Combat_Info.EnemyWins();
-            //HEj
             Game_Controller.ToggleCombatState(false);
         }
     }

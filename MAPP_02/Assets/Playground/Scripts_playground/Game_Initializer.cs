@@ -10,6 +10,7 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private Menu theMenu;
     [SerializeField] private GameObject worldInterface;
     [SerializeField] private GameObject battleSystem;
+    [SerializeField] private Character_Screen characterScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetMenu(theMenu);
         Game_Controller.SetWorldInterface(worldInterface);
         Game_Controller.SetBattleSystem(battleSystem);
+        Game_Controller.SetCharacterScreen(characterScreen);
         Combat_Info.Initialize();
         //thePlayerInfo.SetName(Game_Controller.GetPlayerName());
     }

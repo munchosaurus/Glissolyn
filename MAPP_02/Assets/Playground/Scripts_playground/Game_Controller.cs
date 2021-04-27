@@ -13,6 +13,7 @@ public static class Game_Controller
     private static QuestLog theQuestLog;
     private static Player_Info thePlayerInfo;
     private static Menu theMenu;
+    private static Character_Screen characterScreen;
     private static GameObject worldInterface;
     private static GameObject battleSystem;
 
@@ -47,6 +48,12 @@ public static class Game_Controller
     {
         battleSystem = bs;
     }
+
+    public static void SetCharacterScreen(Character_Screen cs)
+    {
+        characterScreen = cs;
+    }
+
     public static QuestLog GetQuestLog()
     {
         return theQuestLog;
@@ -65,6 +72,11 @@ public static class Game_Controller
     public static Menu GetMenu()
     {
         return theMenu;
+    }
+
+    public static Character_Screen GetCharacterScreen()
+    {
+        return characterScreen;
     }
 
     public static void TogglePause(bool toggle)
