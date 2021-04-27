@@ -20,7 +20,7 @@ public class NPC_Movement : MonoBehaviour
 
     void Update()
     {
-        if (!Game_Controller.IsGamePaused())
+        if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
             int movementNumber = randomNumber();
             if (Vector3.Distance(player.transform.position, transform.position) <= 20f)

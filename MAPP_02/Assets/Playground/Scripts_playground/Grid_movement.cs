@@ -17,7 +17,7 @@ public class Grid_movement : MonoBehaviour
 
     void Update() 
     {
-        if (!Game_Controller.IsGamePaused())
+        if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
             /*if (Input.GetKey(KeyCode.W) && !isMoving) {
                 direction = Vector3.up;

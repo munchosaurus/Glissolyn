@@ -87,8 +87,8 @@ public static class Game_Controller
 
     public static void ToggleCombatState(bool toggle)
     {
-        GameObject.FindGameObjectWithTag("World Interface").SetActive(!toggle);
-        GameObject.FindGameObjectWithTag("BattleSystem").SetActive(toggle);
+        worldInterface.SetActive(!toggle);
+        battleSystem.SetActive(toggle);
 
         isCombatActive = toggle;
     }

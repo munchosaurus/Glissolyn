@@ -24,7 +24,6 @@ public class BattleSystem : MonoBehaviour
             player = Combat_Info.GetPlayer();
             enemy = Combat_Info.GetEnemy();
         }
-        print(player.GetName() + "Vs." + enemy.GetName());
         StartCoroutine(SetupBattle(player, enemy));
          
     }
@@ -37,13 +36,10 @@ public class BattleSystem : MonoBehaviour
         EnemyHud.SetData(EnemyUnit.Character);
 
         dialogBox.SetMoveNames(PlayerUnit.Character.Moves);
-        print("Encountered: " + EnemyUnit.Character.Base.GetName());
 
         //$ möjliggör att man kan lägga till värden i strängen.
         yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.GetName()}!");
-        print("Time to wait");
         yield return new WaitForSeconds(1.5f);
-        print("Waited");
         PlayerAction();
 
     }
