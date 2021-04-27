@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a71fe918c69b94bbd1ebfc4c289dac, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  name: PlayerOne
+  name: Player
   description: 
   sprite: {fileID: 21300000, guid: 85957e6fa91110348a94a9bd23d05dd5, type: 3}
-  type: 4
+  type: 6
   maxHP: 100
   strength: 0
   agility: 0
   intelligence: 0
+  experienceBase: 0
+  currentHP: 100
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 7fc2dbad8b9434f41bfc305d355ae2e9, type: 2}
     level: 1

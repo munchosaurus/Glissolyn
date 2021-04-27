@@ -23,8 +23,7 @@ public class BattleSystem : MonoBehaviour
             player = Combat_Info.GetPlayer();
             enemy = Combat_Info.GetEnemy();
         }
-        StartCoroutine(SetupBattle(player, enemy));
-         
+        StartCoroutine(SetupBattle(player, enemy));     
     }
 
 
@@ -39,6 +38,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($" You encountered a {EnemyUnit.Character.Base.GetName()}!");
         yield return new WaitForSeconds(1.3f);
+        //if(PlayerUnit.GetAgility() > EnemyUnit.GetAgility()){
         PlayerAction();
 
     }
@@ -118,6 +118,7 @@ public class BattleSystem : MonoBehaviour
             Combat_Info.PlayerWins();
             //Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
+            EnemyUnit.Character.SetCurrentHP();
         }
     }
 
@@ -127,14 +128,7 @@ public class BattleSystem : MonoBehaviour
         {
             dialogBox.EnableActionSelector(false);
             Game_Controller.ToggleCombatState(false);
+            EnemyUnit.Character.SetCurrentHP();
         }
     }
-}
-public enum BattleState
-{
-    Start,
-    PlayerAction,
-    PlayerMove,
-    EnemyMove,
-    Busy
 }

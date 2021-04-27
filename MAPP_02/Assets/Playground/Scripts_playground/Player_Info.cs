@@ -5,8 +5,9 @@ public class Player_Info : Character_Info
     [SerializeField] private Transform interactChecker;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
+    
 
-    private int health;
+    [SerializeField] private int health;
     private int strength;
     private int agility;
     private int intelligence;
