@@ -5,7 +5,7 @@ public class Player_Info : Character_Info
     [SerializeField] private Transform interactChecker;
     [SerializeField] private LayerMask interactableLayer;
 
-    private int playerLevel; 
+    private int playerLevel;
     private int statPoints;
     private int experience;
 
