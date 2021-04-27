@@ -25,14 +25,11 @@ public class BattleDialogBox : MonoBehaviour
 
     public IEnumerator TypeDialog(string dialog)
     {
-        print(dialog);
         dialogText.text = "";
         foreach(var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
-            print("Added a letter to dialogue");
             yield return new WaitForSeconds(1f / lettersPerSecond);
-            print("Waited");
         }
     }
 

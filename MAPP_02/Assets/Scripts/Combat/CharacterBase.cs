@@ -16,6 +16,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] int strength;
     [SerializeField] int agility;
     [SerializeField] int intelligence;
+    [SerializeField] int experienceBase;
 
 
     [SerializeField] List<LearnableMoves> learnableMoves;
@@ -93,6 +94,11 @@ public class CharacterBase : ScriptableObject
     public int GetIntelligence()
     {
         return intelligence;
+    }
+
+    public int GetExperienceBase()
+    {
+        return experienceBase;
     }
 
     public List<LearnableMoves> GetLearnableMoves()
