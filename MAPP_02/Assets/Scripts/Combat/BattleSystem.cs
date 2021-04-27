@@ -84,6 +84,7 @@ public class BattleSystem : MonoBehaviour
         {
             dialogBox.SetDialog($"{EnemyUnit.Character.Base.GetName()} died.");
             //TODO Wait a little bit
+            yield return new WaitForSeconds(2f);
             EndBattle(true);
         } else
         {
@@ -109,6 +110,7 @@ public class BattleSystem : MonoBehaviour
         {
             dialogBox.SetDialog($"{PlayerUnit.Character.Base.GetName()} died.");
             //TODO Wait a little bit
+            yield return new WaitForSeconds(2f);
             EndBattle(true);
         }
         else
