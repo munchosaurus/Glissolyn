@@ -6,22 +6,66 @@ using UnityEngine;
 public class CharacterBase : ScriptableObject
 {
     [SerializeField] new string name;
-    [TextArea]
-    [SerializeField] string description;
+    [TextArea][SerializeField] string description;
 
     [SerializeField] public Sprite sprite;
 
     [SerializeField] CharacterType type;
 
-
     [SerializeField] int maxHP;
-    [SerializeField] int attack;
-    [SerializeField] int defense;
+    [SerializeField] int strength;
+    [SerializeField] int agility;
+    [SerializeField] int intelligence;
 
 
     [SerializeField] List<LearnableMoves> learnableMoves;
 
-    public string getName()
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public void SetMaxHP(int maxHP)
+    {
+        this.maxHP = maxHP;
+    }
+
+    public void ModifyMaxHP(int amount)
+    {
+        maxHP += amount;
+    }
+
+    public void SetStrength(int strength)
+    {
+        this.strength = strength;
+    }
+
+    public void ModifyStrength(int amount)
+    {
+        strength += amount;
+    }
+
+    public void SetAgility(int agility)
+    {
+        this.agility = agility;
+    }
+
+    public void ModifyAgility(int amount)
+    {
+        agility += amount;
+    }
+
+    public void SetIntelligence(int intelligence)
+    {
+        this.intelligence = intelligence;
+    }
+
+    public void ModifyIntelligence(int amount)
+    {
+        intelligence += amount;
+    }
+
+    public string GetName()
     {
         return name;
     }
@@ -36,16 +80,20 @@ public class CharacterBase : ScriptableObject
         return maxHP;
     }
 
-    public int GetAttack()
+    public int GetStrength()
     {
-        return attack;
+        return strength;
     }
 
-    public int GetDefense()
+    public int GetAgility()
     {
-        return defense;
+        return agility;
     }
 
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
 
     public List<LearnableMoves> GetLearnableMoves()
     {

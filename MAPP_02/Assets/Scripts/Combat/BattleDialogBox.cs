@@ -25,11 +25,14 @@ public class BattleDialogBox : MonoBehaviour
 
     public IEnumerator TypeDialog(string dialog)
     {
+        print(dialog);
         dialogText.text = "";
         foreach(var letter in dialog.ToCharArray())
         {
             dialogText.text += letter;
+            print("Added a letter to dialogue");
             yield return new WaitForSeconds(1f / lettersPerSecond);
+            print("Waited");
         }
     }
 
@@ -50,7 +53,7 @@ public class BattleDialogBox : MonoBehaviour
 
     public void SetMoveNames(List<Move> moves)
     {
-        for(int i =0; i<moveTexts.Count; i++)
+        for(int i=0; i<moveTexts.Count; i++)
         {
             if(i < moves.Count){
                 moveTexts[i].text = moves[i].Base.name;

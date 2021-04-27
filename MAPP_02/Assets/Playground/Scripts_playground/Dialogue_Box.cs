@@ -39,6 +39,11 @@ public class Dialogue_Box : MonoBehaviour
                 {
                     npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
                 }
+                else if(theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
+                {
+                    Combat_Info.ChangeEnemy(eInfo.GetBase());
+                    Game_Controller.ToggleCombatState(true);
+                }
             }
             else // If it does
             {

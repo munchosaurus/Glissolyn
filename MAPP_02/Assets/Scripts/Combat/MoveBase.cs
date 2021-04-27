@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Move", menuName = "Character/Create new move")]
 public class MoveBase : ScriptableObject
 {
-    // Start is called before the first frame update
     [SerializeField] new string name;
 
     [TextArea]

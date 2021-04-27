@@ -1,18 +1,13 @@
 using UnityEngine;
 
-public abstract class Quest
+public abstract class Quest : ScriptableObject
 {
-    protected string questTitle;
-    protected string questText;
-    protected int questID;
+    [SerializeField] protected string questTitle;
+    [TextArea][SerializeField] protected string questDescription;
+    [SerializeField] protected int questID;
     protected bool isCompleted;
-
-    public Quest(string questTitle, string questText, int id)
-    {
-        this.questTitle = questTitle;
-        this.questText = questText;
-        this.questID = id;
-    }
+    protected QuestButton questButton;
+    protected string questText;
 
     // Return the questTitle-string
     public string GetQuestTitle()
@@ -23,6 +18,7 @@ public abstract class Quest
     // Return the questText-string
     public string GetQuestText()
     {
+        BuildQuestText();
         return questText;
     }
 
@@ -37,9 +33,19 @@ public abstract class Quest
         return isCompleted;
     }
 
+    public void SetButton(QuestButton qb)
+    {
+        questButton = qb;
+    }
+
+    protected virtual void BuildQuestText()
+    {
+        questText = questDescription;
+    }
+
     public virtual void UpdateQuest()
     {
-
+        questButton.UpdateQuestText(questText);
     }
 
     public virtual bool CompleteQuest()
