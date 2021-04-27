@@ -14,11 +14,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] CharacterBase player;
     [SerializeField] CharacterBase enemy;
-    private float timer;
-    private float startTime;
 
-    //BattleState state;
-    //int currentAction;
     void Start()
     {
         if (!testing)
@@ -40,16 +36,14 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.SetMoveNames(PlayerUnit.Character.Moves);
 
-        //$ möjliggör att man kan lägga till värden i strängen.
         yield return dialogBox.TypeDialog($" You encountered a {EnemyUnit.Character.Base.GetName()}!");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.3f);
         PlayerAction();
 
     }
 
     public void PlayerAction()
     {
-        //state = BattleState.PlayerAction;
         StartCoroutine(dialogBox.TypeDialog("Choose an action"));
         dialogBox.EnableActionSelector(true);
         
@@ -57,7 +51,6 @@ public class BattleSystem : MonoBehaviour
 
     public void PlayerMove()
     {
-        //state = BattleState.PlayerMove;
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableDialogText(false);
         dialogBox.EnableMoveSelector(true);
@@ -72,22 +65,19 @@ public class BattleSystem : MonoBehaviour
     {
         dialogBox.EnableMoveSelector(false);
         dialogBox.EnableDialogText(true);
-        //state = BattleState.Busy;
 
         var move = PlayerUnit.Character.Moves[index];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        StartCoroutine(dialogBox.TypeDialog($" You used ability: {move.Base.GetName()}"));
-
-        //TODO Wait a little bit
+        yield return dialogBox.TypeDialog($" You used ability: {move.Base.GetName()}");
+        yield return new WaitForSeconds(1.3f);
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
-        EnemyHud.UpdateHP();
+        yield return EnemyHud.UpdateHP();
 
         if (isDead)
         {
-            dialogBox.TypeDialog($"{EnemyUnit.Character.Base.GetName()} died.");
-            //TODO Wait a little bit
+            yield return dialogBox.TypeDialog($"The {EnemyUnit.Character.Base.GetName()} died.");
             yield return new WaitForSeconds(2f);
             EndBattle(true);
         } else
@@ -97,29 +87,25 @@ public class BattleSystem : MonoBehaviour
     }
 
     private IEnumerator EnemyMove()
-    {
-        //state = BattleState.EnemyMove;
-        yield return new WaitForSeconds(2f);
-
+    {    
         var move = EnemyUnit.Character.GetRandomMove();
         PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
-        dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
-        //TODO Wait a little bit
+        yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}");
+        yield return new WaitForSeconds(1.3f);
 
         bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
-        PlayerHud.UpdateHP();
+        yield return PlayerHud.UpdateHP();
 
         if (isDead)
         {
-            dialogBox.TypeDialog($"{PlayerUnit.Character.Base.GetName()} died.");
-            //TODO Wait a little bit
+            yield return dialogBox.TypeDialog($"The {PlayerUnit.Character.Base.GetName()} died.");
             yield return new WaitForSeconds(2f);
             EndBattle(true);
         }
         else
         {
-            yield return new WaitForSeconds(2f);
+            
             PlayerAction();
         }
     }
@@ -128,8 +114,16 @@ public class BattleSystem : MonoBehaviour
     {
         if (IsBattleOver)
         {
-            dialogBox.TypeDialog("IsBattleOver = true");
-            //TODO Gör saker beroende på vem som vann.
+            Combat_Info.PlayerWins();
+            //Combat_Info.EnemyWins();
+            Game_Controller.ToggleCombatState(false);
+        }
+    }
+
+    public void Run(bool run)
+    {
+        if (run)
+        {
             Game_Controller.ToggleCombatState(false);
         }
     }
