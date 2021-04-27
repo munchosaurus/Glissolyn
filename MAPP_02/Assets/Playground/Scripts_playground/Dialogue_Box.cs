@@ -43,6 +43,7 @@ public class Dialogue_Box : MonoBehaviour
                 {
                     Combat_Info.ChangeEnemy(eInfo);
                     Game_Controller.ToggleCombatState(true);
+                    Game_Controller.GetBattleSystem().StartCombat();
                 }
             }
             else // If it does

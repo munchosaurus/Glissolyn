@@ -15,8 +15,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] CharacterBase player;
     [SerializeField] CharacterBase enemy;
 
-    void Start()
+    public void StartCombat()
     {
+        dialogBox.SetDialog("");
         if (!testing)
         {
             player = Combat_Info.GetPlayer();
@@ -124,6 +125,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (run)
         {
+            dialogBox.EnableActionSelector(false);
             Game_Controller.ToggleCombatState(false);
         }
     }
