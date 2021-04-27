@@ -14,6 +14,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] CharacterBase player;
     [SerializeField] CharacterBase enemy;
+    private float timer;
+    private float startTime;
 
     //BattleState state;
     //int currentAction;
@@ -29,6 +31,7 @@ public class BattleSystem : MonoBehaviour
          
     }
 
+
     public IEnumerator SetupBattle(CharacterBase player, CharacterBase enemy)
     {
         PlayerUnit.Setup(player);
@@ -37,13 +40,10 @@ public class BattleSystem : MonoBehaviour
         EnemyHud.SetData(EnemyUnit.Character);
 
         dialogBox.SetMoveNames(PlayerUnit.Character.Moves);
-        print("Encountered: " + EnemyUnit.Character.Base.GetName());
 
         //$ möjliggör att man kan lägga till värden i strängen.
-        yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.GetName()}!");
-        print("Time to wait");
-        yield return new WaitForSeconds(1.5f);
-        print("Waited");
+        yield return dialogBox.TypeDialog($" You encountered a {EnemyUnit.Character.Base.GetName()}!");
+        yield return new WaitForSeconds(2f);
         PlayerAction();
 
     }
@@ -64,11 +64,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-    private void Update()
-    {
-
-    }
-
     public void PerformPlayerMove(int index)
     {
         dialogBox.EnableMoveSelector(false);
@@ -78,7 +73,8 @@ public class BattleSystem : MonoBehaviour
         var move = PlayerUnit.Character.Moves[index];
         EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        dialogBox.SetDialog($"You used ability: {move.Base.GetName()}");
+        StartCoroutine(dialogBox.TypeDialog($" You used ability: {move.Base.GetName()}"));
+
         //TODO Wait a little bit
 
         bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
@@ -91,13 +87,14 @@ public class BattleSystem : MonoBehaviour
             EndBattle(true);
         } else
         {
-            EnemyMove();
+            StartCoroutine(EnemyMove());
         }
     }
 
-    private void EnemyMove()
+    private IEnumerator EnemyMove()
     {
         //state = BattleState.EnemyMove;
+        yield return new WaitForSeconds(3f);
 
         var move = EnemyUnit.Character.GetRandomMove();
         PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
@@ -116,6 +113,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
+            yield return new WaitForSeconds(3f);
             PlayerAction();
         }
     }

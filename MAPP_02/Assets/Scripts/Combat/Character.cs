@@ -39,7 +39,7 @@ public class Character
     }
 
 
-    public bool TakeDamage(Move move, Character character)
+    public bool TakeDamage(Move move, Character attacker)
     {
         float modifiers = Random.Range(0.85f, 1f);
         /*float a = (2 * character.Level + 10) / 250f;
