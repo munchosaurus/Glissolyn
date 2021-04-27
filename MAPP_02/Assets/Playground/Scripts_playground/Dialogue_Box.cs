@@ -41,7 +41,7 @@ public class Dialogue_Box : MonoBehaviour
                 }
                 else if(theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
                 {
-                    Combat_Info.ChangeEnemy(eInfo.GetBase());
+                    Combat_Info.ChangeEnemy(eInfo);
                     Game_Controller.ToggleCombatState(true);
                 }
             }

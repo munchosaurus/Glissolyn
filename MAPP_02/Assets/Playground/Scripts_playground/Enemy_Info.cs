@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy_Info : NPC_Info
 {
     [SerializeField] CharacterBase Base;
+    [SerializeField] int level;
 
     override
     public void Interact()
@@ -15,5 +16,10 @@ public class Enemy_Info : NPC_Info
     public CharacterBase GetBase()
     {
         return Base;
+    }
+
+    public int GetLevel()
+    {
+        return level;
     }
 }

@@ -121,7 +121,8 @@ public class BattleSystem : MonoBehaviour
         if (IsBattleOver)
         {
             dialogBox.SetDialog("IsBattleOver = true");
-            //TODO Gör saker beroende på vem som vann.
+            Combat_Info.PlayerWins();
+            //Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
         }
     }
