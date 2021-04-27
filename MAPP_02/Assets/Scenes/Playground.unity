@@ -6643,7 +6643,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1723494121}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: PerformPlayerMove
+        m_MethodName: pointClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6809,7 +6809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1723494121}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: PerformPlayerMove
+        m_MethodName: pointClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8904,7 +8904,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1723494121}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: PerformPlayerMove
+        m_MethodName: pointClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12117,7 +12117,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1723494121}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: PerformPlayerMove
+        m_MethodName: pointClick
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

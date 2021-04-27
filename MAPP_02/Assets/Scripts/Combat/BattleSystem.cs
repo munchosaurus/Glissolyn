@@ -26,7 +26,6 @@ public class BattleSystem : MonoBehaviour
             player = Combat_Info.GetPlayer();
             enemy = Combat_Info.GetEnemy();
         }
-        print(player.GetName() + "Vs." + enemy.GetName());
         StartCoroutine(SetupBattle(player, enemy));
          
     }
@@ -64,7 +63,12 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-    public void PerformPlayerMove(int index)
+    public void pointClick(int i)
+    {
+        StartCoroutine(PerformPlayerMove(i));
+    }
+
+    public IEnumerator PerformPlayerMove(int index)
     {
         dialogBox.EnableMoveSelector(false);
         dialogBox.EnableDialogText(true);
@@ -82,7 +86,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
-            dialogBox.SetDialog($"{EnemyUnit.Character.Base.GetName()} died.");
+            dialogBox.TypeDialog($"{EnemyUnit.Character.Base.GetName()} died.");
             //TODO Wait a little bit
             yield return new WaitForSeconds(2f);
             EndBattle(true);
@@ -95,12 +99,12 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EnemyMove()
     {
         //state = BattleState.EnemyMove;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         var move = EnemyUnit.Character.GetRandomMove();
         PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
-        dialogBox.SetDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
+        dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used {move.Base.GetName()}");
         //TODO Wait a little bit
 
         bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
@@ -108,14 +112,14 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
-            dialogBox.SetDialog($"{PlayerUnit.Character.Base.GetName()} died.");
+            dialogBox.TypeDialog($"{PlayerUnit.Character.Base.GetName()} died.");
             //TODO Wait a little bit
             yield return new WaitForSeconds(2f);
             EndBattle(true);
         }
         else
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             PlayerAction();
         }
     }
@@ -124,7 +128,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (IsBattleOver)
         {
-            dialogBox.SetDialog("IsBattleOver = true");
+            dialogBox.TypeDialog("IsBattleOver = true");
             //TODO Gör saker beroende på vem som vann.
             Game_Controller.ToggleCombatState(false);
         }
