@@ -11,7 +11,7 @@ public class Player_Info : Character_Info
     private int agility;
     private int intelligence;
 
-    private int playerLevel; 
+    private int playerLevel;
     private int statPoints;
     private int experience;
 
