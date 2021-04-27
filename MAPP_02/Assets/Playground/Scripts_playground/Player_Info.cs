@@ -83,7 +83,9 @@ public class Player_Info : Character_Info
 
     public void ModifyExperience(int amount)
     {
+        print("Player exp before: " + experience);
         experience += amount;
+        print("Player exp after: " + experience);
     }
 
     public bool SpendStatPoint()
