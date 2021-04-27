@@ -123,6 +123,7 @@ public class BattleSystem : MonoBehaviour
             dialogBox.SetDialog("IsBattleOver = true");
             Combat_Info.PlayerWins();
             //Combat_Info.EnemyWins();
+            //HEj
             Game_Controller.ToggleCombatState(false);
         }
     }
