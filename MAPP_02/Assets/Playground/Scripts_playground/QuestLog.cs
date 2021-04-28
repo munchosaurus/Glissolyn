@@ -7,6 +7,7 @@ public class QuestLog : MonoBehaviour
     [SerializeField] private Button questButtonPrefab;
 
     private Dictionary<int, Quest> activeQuests = new Dictionary<int, Quest>();
+    private QuestButton currentOpenQuestButton;
 
     /*
      * Adds a Quest-object to the Dictionary activeQuests with the quest ID as key and the Quest object as value.
@@ -48,8 +49,17 @@ public class QuestLog : MonoBehaviour
         }
     }
 
+    public void SetCurrentOpenQuest(QuestButton questButton)
+    {
+        currentOpenQuestButton = questButton;
+    }
+
     public void Toggle()
     {
+        if (currentOpenQuestButton != null)
+        {
+            currentOpenQuestButton.OnClick();
+        }
         gameObject.SetActive(!gameObject.activeInHierarchy);
         Game_Controller.TogglePause(gameObject.activeInHierarchy);
     }

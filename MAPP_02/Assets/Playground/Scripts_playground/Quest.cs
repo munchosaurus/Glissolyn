@@ -3,11 +3,18 @@ using UnityEngine;
 public abstract class Quest : ScriptableObject
 {
     [SerializeField] protected string questTitle;
-    [TextArea][SerializeField] protected string questDescription;
+    [TextArea] [SerializeField] protected string questDescription;
     [SerializeField] protected int questID;
-    protected bool isCompleted;
+    [SerializeField] protected int experienceReward;
+    [SerializeField] protected QuestClearState questClearState;
+    protected bool isCompleted = false;
     protected QuestButton questButton;
     protected string questText;
+
+    public virtual void Init()
+    {
+        isCompleted = false;
+    }
 
     // Return the questTitle-string
     public string GetQuestTitle()
@@ -50,6 +57,11 @@ public abstract class Quest : ScriptableObject
 
     public virtual bool CompleteQuest()
     {
+        if (isCompleted)
+        {
+            Game_Controller.UpdateWorldToQuestClearState(questClearState);
+            Game_Controller.GetPlayerInfo().ModifyExperience(experienceReward);
+        }
         return isCompleted;
     }
 
@@ -60,4 +72,10 @@ public enum QuestType
 {
     QuestTypeError,
     KILL_QUEST
+}
+
+public enum QuestClearState
+{
+    NONE,
+    OPEN_VILLAGE_EXIT
 }

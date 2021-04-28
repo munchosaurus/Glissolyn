@@ -53,7 +53,7 @@ public class Character_Screen : MonoBehaviour
 
     public void IncreaseIntelligence()
     {
-        Game_Controller.GetPlayerInfo().GetBase().ModifyStrength(INCREASE_BY_ONE);
+        Game_Controller.GetPlayerInfo().GetBase().ModifyIntelligence(INCREASE_BY_ONE);
         Game_Controller.GetPlayerInfo().SpendStatPoint();
         UpdateValues();
     }
