@@ -33,6 +33,21 @@ public class QuestLog : MonoBehaviour
         return activeQuests.ContainsKey(quest.GetQuestID());
     }
 
+    public void UpdateKillQuestsWithEnemyType(CharacterBase _base)
+    { 
+        foreach(KeyValuePair<int, Quest> entry in activeQuests)
+        {
+            if(entry.Value.GetQuestType() == QuestType.KILL_QUEST)
+            {
+                Quest_KillQuest q = entry.Value as Quest_KillQuest;
+                if(q.GetEnemyToKill() == _base)
+                {
+                    q.UpdateQuest();
+                }
+            }
+        }
+    }
+
     public void Toggle()
     {
         gameObject.SetActive(!gameObject.activeInHierarchy);

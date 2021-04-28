@@ -4,7 +4,7 @@ using UnityEngine;
 public class Quest_KillQuest : Quest
 {
     [SerializeField] private int amountToKill;
-    [SerializeField] CharacterBase enemyToKill;
+    [SerializeField] private CharacterBase enemyToKill;
     private string objectiveText;
     private int killed;
 
@@ -35,5 +35,16 @@ public class Quest_KillQuest : Quest
         }
 
         return isCompleted;
+    }
+
+    public CharacterBase GetEnemyToKill()
+    {
+        return enemyToKill;
+    }
+
+    override
+    public QuestType GetQuestType()
+    {
+        return QuestType.KILL_QUEST;
     }
 }

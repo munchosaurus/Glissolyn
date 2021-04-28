@@ -52,4 +52,12 @@ public abstract class Quest : ScriptableObject
     {
         return isCompleted;
     }
+
+    public abstract QuestType GetQuestType();
+}
+
+public enum QuestType
+{
+    QuestTypeError,
+    KILL_QUEST
 }

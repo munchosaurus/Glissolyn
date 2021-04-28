@@ -5,16 +5,16 @@ using UnityEngine;
 public class Character
 {
     public CharacterBase Base;
-    public int Level = 10;
+    public int Level;
 
     public int CurrentHP;
     public List<Move> Moves { get; set; }
 
     //TODO konstruktor tar emot level, före spelare samt fiende
-    public Character(CharacterBase Base)
+    public Character(CharacterBase Base, int level)
     {
         this.Base = Base;
-        //Level = level;
+        Level = level;
         SetCurrentHP();
        
         Moves = new List<Move>();
@@ -35,7 +35,7 @@ public class Character
 
     public int MaxHP()
     {
-        if (Base.GetType() == CharacterType.Player)
+        if (Base.GetTypes().Contains(CharacterType.Player))
         {
             return Base.GetMaxHP();
         }
@@ -52,7 +52,7 @@ public class Character
 
     public void SetCurrentHP()
     {
-        if (Base.GetType() == CharacterType.Player)
+        if (Base.GetTypes().Contains(CharacterType.Player))
         {
             CurrentHP = Game_Controller.GetPlayerInfo().GetHealth();
         }
@@ -70,17 +70,17 @@ public class Character
         int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
 
         CurrentHP -= damage;
-        if (Base.GetType() == CharacterType.Player)
+        if (Base.GetTypes().Contains(CharacterType.Player))
         {
             Game_Controller.GetPlayerInfo().ReduceHealth(damage);
         }
 
-            if (GetCurrentHP() <= 0)
+        if (GetCurrentHP() <= 0)
         {
-            CurrentHP = 0;     
+            CurrentHP = 0;
             return true;
         }
-        return false; 
+        return false;
     }
 
     public Move GetRandomMove()

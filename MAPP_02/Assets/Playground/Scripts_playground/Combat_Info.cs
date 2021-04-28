@@ -26,8 +26,18 @@ public static class Combat_Info
         return player;
     }
 
+    public static int GetEnemyLevel()
+    {
+        return enemy.GetLevel();
+    }
+
+    public static int GetPlayerLevel()
+    {
+        return Game_Controller.GetPlayerInfo().GetPlayerLevel();
+    }
     public static void PlayerWins()
     {
+        Game_Controller.GetQuestLog().UpdateKillQuestsWithEnemyType(enemy.GetBase());
         enemy.gameObject.SetActive(false);
         Game_Controller.GetPlayerInfo().ModifyExperience(enemy.GetBase().GetExperienceBase() * enemy.GetLevel()/2);
     }

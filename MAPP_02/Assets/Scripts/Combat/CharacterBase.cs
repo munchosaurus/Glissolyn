@@ -10,7 +10,7 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] public Sprite sprite;
 
-    [SerializeField] CharacterType type;
+    [SerializeField] List<CharacterType> types;
 
     [SerializeField] int maxHP;
     [SerializeField] int strength;
@@ -100,7 +100,7 @@ public class CharacterBase : ScriptableObject
         return experienceBase;
     }
 
-    public new CharacterType GetType() => type;
+    public List<CharacterType> GetTypes() => types;
 
     public List<LearnableMoves> GetLearnableMoves()
     {
