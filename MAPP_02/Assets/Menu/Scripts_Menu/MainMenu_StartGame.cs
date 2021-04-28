@@ -4,14 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu_StartGame : MonoBehaviour
-    
 
 {
-    [SerializeField] private GameObject nameSelection;
 
     public void StartGame()
     {
-        nameSelection.SetActive(true);
+        SceneManager.LoadScene(1);
     }
 
 }

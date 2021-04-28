@@ -7,19 +7,18 @@ public class Character
     public CharacterBase Base;
     public int Level = 10;
 
-    public int CurrentHP;
+    public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
-    //TODO konstruktor tar emot level, före spelare samt fiende
-    public Character(CharacterBase Base)
+    public Character(CharacterBase _base)
     {
-        this.Base = Base;
+        this.Base = _base;
         //Level = level;
-        SetCurrentHP();
-       
+        HP = MaxHP();
+
         Moves = new List<Move>();
 
-        foreach (var move in Base.GetLearnableMoves())
+        foreach (var move in _base.GetLearnableMoves())
         {
             if (move.GetLevel() <= Level)
             {
@@ -35,51 +34,26 @@ public class Character
 
     public int MaxHP()
     {
-        if (Base.GetType() == CharacterType.Player)
-        {
-            return Base.GetMaxHP();
-        }
-        else
-        {
-            return (Base.GetMaxHP() * Level) / 5;
-        }
+        // return Base.GetMaxHP();
+        return Mathf.FloorToInt((Base.GetMaxHP() * Level) / 100f) + 10;
     }
 
-    public int GetCurrentHP()
-    {
-        return CurrentHP;
-    }
 
-    public void SetCurrentHP()
-    {
-        if (Base.GetType() == CharacterType.Player)
-        {
-            CurrentHP = Game_Controller.GetPlayerInfo().GetHealth();
-        }
-        else
-        {
-            CurrentHP = MaxHP();
-        }
-    }
-
-    public bool TakeDamage(Move move, Character attacker)
+    public bool TakeDamage(Move move, Character character)
     {
         float modifiers = Random.Range(0.85f, 1f);
         /*float a = (2 * character.Level + 10) / 250f;
         float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;*/
         int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
 
-        CurrentHP -= damage;
-        if (Base.GetType() == CharacterType.Player)
+        HP -= damage;
+        if(HP <= 0)
         {
-            Game_Controller.GetPlayerInfo().ReduceHealth(damage);
-        }
-
-            if (GetCurrentHP() <= 0)
-        {
-            CurrentHP = 0;     
+            HP = 0;
+            
             return true;
         }
+
         return false; 
     }
 

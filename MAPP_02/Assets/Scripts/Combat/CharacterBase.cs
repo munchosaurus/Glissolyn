@@ -18,6 +18,7 @@ public class CharacterBase : ScriptableObject
     [SerializeField] int intelligence;
     [SerializeField] int experienceBase;
 
+
     [SerializeField] List<LearnableMoves> learnableMoves;
 
     public void SetName(string name)
@@ -100,8 +101,6 @@ public class CharacterBase : ScriptableObject
         return experienceBase;
     }
 
-    public new CharacterType GetType() => type;
-
     public List<LearnableMoves> GetLearnableMoves()
     {
         return learnableMoves;
@@ -134,8 +133,7 @@ public enum CharacterType
     Monster,
     Beast,
     Humanoid,
-    Magical,
-    Player
+    Magical
 }
 
 

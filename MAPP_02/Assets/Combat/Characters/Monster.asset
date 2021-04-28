@@ -16,12 +16,9 @@ MonoBehaviour:
   description: brains etc.
   sprite: {fileID: 21300000, guid: 833373ab17f84cd4bb5bcdbe49bfdcca, type: 3}
   type: 2
-  maxHP: 50
-  strength: 1
-  agility: 1
-  intelligence: 1
-  experienceBase: 1
-  currentHP: 50
+  maxHP: 100
+  attack: 5
+  defense: 5
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
     level: 1
