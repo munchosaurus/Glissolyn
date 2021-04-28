@@ -48,7 +48,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableMoveSelector(true);
     }
 
-    public void pointClick(int i)
+    public void PointClick(int i)
     {
         StartCoroutine(PerformPlayerMove(i));
     }

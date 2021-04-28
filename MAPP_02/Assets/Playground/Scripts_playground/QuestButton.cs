@@ -23,7 +23,7 @@ public class QuestButton : MonoBehaviour
     public void OnClick()
     {
         GameObject.Find("Quest Text Area").GetComponentInChildren<Text>().text = text; // Find the "Quest Text Area"-GameObject in the active scene and then find the Text-Component on one of its children. 
-                                                                                       // It works since there is only one child with a Text-component.
+                                                                                      // It works since there is only one child with a Text-component.
                                                                                        // Change that Text-components text to the questText from the Quest which this button represents.
     }
 
