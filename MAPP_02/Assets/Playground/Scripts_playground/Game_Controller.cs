@@ -124,4 +124,9 @@ public static class Game_Controller
     {
         playerName = pn;
     }
+
+    public static BattleSystem GetBattleSystem()
+    {
+        return battleSystem.GetComponent<BattleSystem>();
+    }
 }
