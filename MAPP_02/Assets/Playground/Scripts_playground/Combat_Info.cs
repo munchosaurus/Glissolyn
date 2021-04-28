@@ -1,27 +1,39 @@
+using System;
 using UnityEngine;
 
 public static class Combat_Info
 {
-    private static Enemy_Info enemyInfo;
-    private static Player_Info playerInfo;
+    private static Enemy_Info enemy;
+    private static CharacterBase player;
 
     public static void Initialize()
     {
-        playerInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<Player_Info>();
+        player = Game_Controller.GetPlayerInfo().GetBase();
     }
 
-    public static void ChangeEnemyInfo(Enemy_Info eInfo)
+    public static void ChangeEnemy(Enemy_Info enemyInfo)
     {
-        enemyInfo = eInfo;
+        enemy = enemyInfo;
     }
 
-    public static Enemy_Info GetEnemyInfo()
+    public static CharacterBase GetEnemy()
     {
-        return enemyInfo;
+        return enemy.GetBase();
     }
 
-    public static Player_Info GetPlayerInfo()
+    public static CharacterBase GetPlayer()
     {
-        return playerInfo;
+        return player;
+    }
+
+    public static void PlayerWins()
+    {
+        enemy.gameObject.SetActive(false);
+        Game_Controller.GetPlayerInfo().ModifyExperience(enemy.GetBase().GetExperienceBase() * enemy.GetLevel()/2);
+    }
+
+    public static void EnemyWins()
+    {
+        //TODO - Do stuff when enemy wins.
     }
 }

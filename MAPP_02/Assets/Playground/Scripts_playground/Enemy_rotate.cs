@@ -23,7 +23,7 @@ public class Enemy_rotate : MonoBehaviour
 
     private void Update()
     {
-        if (!Game_Controller.IsGamePaused())
+        if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
             if (timer > rotationCoolDown)
             {

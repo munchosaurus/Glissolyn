@@ -48,6 +48,14 @@ public class Interface_Buttons : MonoBehaviour
         }
     }
 
+    public void CharacterClick()
+    {
+        if (!Game_Controller.IsGamePaused() || Game_Controller.GetCharacterScreen().IsOpen())
+        {
+            Game_Controller.GetCharacterScreen().Toggle();
+        }
+    }
+
     public void MenuClick()
     {
         if (!Game_Controller.IsGamePaused() || Game_Controller.GetMenu().IsOpen())

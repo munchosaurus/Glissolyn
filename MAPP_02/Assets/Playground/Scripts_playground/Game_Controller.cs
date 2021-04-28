@@ -4,14 +4,20 @@ using UnityEngine.SceneManagement;
 public static class Game_Controller
 {
     private static readonly int MAIN_MENU_SCENE_ID = 0;
-    private static readonly int WORLD_SCENE_ID = 1;
-    private static readonly int COMBAT_SCENE_ID = 2;
+    //private static readonly int WORLD_SCENE_ID = 1;
+    //private static readonly int COMBAT_SCENE_ID = 2;
 
     private static bool isGamePaused;
+    private static bool isCombatActive;
     private static Dialogue_Box theDialogueBox;
     private static QuestLog theQuestLog;
     private static Player_Info thePlayerInfo;
     private static Menu theMenu;
+    private static Character_Screen characterScreen;
+    private static GameObject worldInterface;
+    private static GameObject battleSystem;
+
+    private static string playerName;
 
     public static void SetDialogueBox(Dialogue_Box db)
     {
@@ -31,6 +37,21 @@ public static class Game_Controller
     public static void SetMenu(Menu menu)
     {
         theMenu = menu;
+    }
+
+    public static void SetWorldInterface(GameObject wi)
+    {
+        worldInterface = wi;
+    }
+
+    public static void SetBattleSystem(GameObject bs)
+    {
+        battleSystem = bs;
+    }
+
+    public static void SetCharacterScreen(Character_Screen cs)
+    {
+        characterScreen = cs;
     }
 
     public static QuestLog GetQuestLog()
@@ -53,6 +74,11 @@ public static class Game_Controller
         return theMenu;
     }
 
+    public static Character_Screen GetCharacterScreen()
+    {
+        return characterScreen;
+    }
+
     public static void TogglePause(bool toggle)
     {
         if (toggle)
@@ -71,18 +97,36 @@ public static class Game_Controller
         return isGamePaused;
     }
 
-    public static void StartCombat()
+    public static void ToggleCombatState(bool toggle)
     {
-        SceneManager.LoadScene(COMBAT_SCENE_ID);
+        worldInterface.SetActive(!toggle);
+        battleSystem.SetActive(toggle);
+
+        isCombatActive = toggle;
     }
 
-    public static void EndCombat()
+    public static bool IsCombatActive()
     {
-        SceneManager.LoadScene(WORLD_SCENE_ID);
+        return isCombatActive;
     }
 
     public static void GoToMainMenu()
     {
         SceneManager.LoadScene(MAIN_MENU_SCENE_ID);
+    }
+
+    public static string GetPlayerName()
+    {
+        return playerName;
+    }
+
+    public static void SetPlayerName(string pn)
+    {
+        playerName = pn;
+    }
+
+    public static BattleSystem GetBattleSystem()
+    {
+        return battleSystem.GetComponent<BattleSystem>();
     }
 }

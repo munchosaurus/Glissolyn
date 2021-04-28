@@ -19,6 +19,7 @@ public class MainMenu_NameSelection : MonoBehaviour
             "Press ENTER WORLD to start exploring the world of Glyssolin!";
         enterButtonToHide.SetActive(false);
         startGameButton.SetActive(true);
+        Game_Controller.SetPlayerName(playerName);
 
     }
 

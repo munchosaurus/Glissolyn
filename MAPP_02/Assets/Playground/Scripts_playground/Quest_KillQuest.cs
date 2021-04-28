@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Quest", menuName = "Quest/Create new Kill Quest")]
 public class Quest_KillQuest : Quest
 {
-    private int amountToKill;
+    [SerializeField] private int amountToKill;
+    [SerializeField] CharacterBase enemyToKill;
+    private string objectiveText;
     private int killed;
-
-    public Quest_KillQuest(string questTitle, string questText, int id, string enemyToKill, int amountToKill) : base(questTitle, questText, id)
-    {
-        this.amountToKill = amountToKill;
-        this.questText = this.questText + "\n\n" +  enemyToKill + " killed: " + killed + "/" + amountToKill;
-    }
 
     override
     public void UpdateQuest()
@@ -20,6 +15,14 @@ public class Quest_KillQuest : Quest
         {
             killed++;
         }
+        questButton.UpdateQuestText(GetQuestText());
+    }
+
+    override
+    protected void BuildQuestText()
+    {
+        objectiveText = enemyToKill.GetName() + ": " + killed + "/" + amountToKill;
+        questText = questDescription + "\n\n" + objectiveText;
     }
     
     override

@@ -246,7 +246,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 37392507}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PerformPlayerMove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &68976961
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,8 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2f38c89e8ae064095d3bed1feb1b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: b67e153c6e92966478516b8ae8ffcea3, type: 2}
-  level: 1
 --- !u!114 &249868013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +628,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 269874007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PerformPlayerMove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &358665223
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,17 +749,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea01e0fad5688846869d78e0e0544df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testing: 1
   PlayerUnit: {fileID: 1154238653}
   EnemyUnit: {fileID: 249868012}
   PlayerHud: {fileID: 1358150447}
   EnemyHud: {fileID: 1406341949}
   dialogBox: {fileID: 640404590}
-  fight: {fileID: 575638958}
-  run: {fileID: 1518788755}
-  a1: {fileID: 37392509}
-  a2: {fileID: 269874009}
-  a3: {fileID: 1223905814}
-  a4: {fileID: 591085166}
+  player: {fileID: 11400000, guid: 04d7aa9084d44854f93ca0f246b53c36, type: 2}
+  enemy: {fileID: 11400000, guid: f6d1ad9e0187c0b4aa51195e9c74c8b8, type: 2}
 --- !u!4 &369768793
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,13 +1133,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PlayerMove
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1249,7 +1268,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591085164}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PerformPlayerMove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &640404586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,8 +1710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2f38c89e8ae064095d3bed1feb1b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _base: {fileID: 11400000, guid: 04d7aa9084d44854f93ca0f246b53c36, type: 2}
-  level: 5
 --- !u!1 &1184990344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,7 +1983,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1223905812}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PerformPlayerMove
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1230105517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,7 +2684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1518788754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369768792}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: PlayerMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1617279316
 GameObject:
   m_ObjectHideFlags: 0
