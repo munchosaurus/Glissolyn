@@ -7,11 +7,11 @@ public class Player_Info : Character_Info
     [SerializeField] private CharacterBase Base;
 
     private int health;
-    private int strength;
+    /*private int strength;
     private int agility;
-    private int intelligence;
+    private int intelligence;*/
 
-    private int playerLevel;
+    private int playerLevel = 1; 
     private int statPoints;
     private int experience;
 
@@ -41,7 +41,7 @@ public class Player_Info : Character_Info
         return health;
     }
 
-    public int GetStrength()
+    /*public int GetStrength()
     {
         return strength;
     }
@@ -54,6 +54,16 @@ public class Player_Info : Character_Info
     public int GetIntelligence()
     {
         return intelligence;
+    }*/
+
+    public int GetStatPoints()
+    {
+        return statPoints;
+    }
+
+    public void SetPlayerLevel(int level)
+    {
+        playerLevel = level;
     }
 
     public void ReduceHealth(int amount)
@@ -66,7 +76,7 @@ public class Player_Info : Character_Info
         health += amount;
     }
 
-    public void ModifyStrength(int amount)
+    /*public void ModifyStrength(int amount)
     {
         strength += amount;
     }
@@ -79,22 +89,22 @@ public class Player_Info : Character_Info
     public void ModifyIntelligence(int amount)
     {
         intelligence += amount;
-    }
+    }*/
 
     public void ModifyExperience(int amount)
     {
         experience += amount;
+        if(experience >= playerLevel * 10)
+        {
+            print("Player level increased");
+            playerLevel++;
+            statPoints += 3;
+        }
     }
 
-    public bool SpendStatPoint()
+    public void SpendStatPoint()
     {
-        if(statPoints > 0)
-        {
-            statPoints--;
-            return true;
-        }
-
-        return false;
+        statPoints--;
     }
 
     public void Interact()
