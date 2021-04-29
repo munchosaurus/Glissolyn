@@ -10,8 +10,8 @@ public class MainMenu_Introduction : MonoBehaviour
 	[SerializeField] private float timeToWait;
 	private string story1 = "Greetings brave warrior!" +
 		" Welcome to the world of Glyssolin.";
-	private string story2 = "This is a game of battling and exploring.";
-	private string story3 = "Before you get started, please allow the inhabitants of the world to know your name";
+	private string story2 = "Before you get started, please allow the inhabitants" +
+		" of the world to know your name";
 	[SerializeField] private GameObject buttonToChangeTo;
 	[SerializeField] private GameObject nextButtonObject;
 	[SerializeField] private Button nextButton;
@@ -46,16 +46,6 @@ public class MainMenu_Introduction : MonoBehaviour
 
 			case 2:
 				foreach (char c in story2)
-				{
-					
-					txt.text += c;
-					yield return new WaitForSeconds(timeToWait);
-				}
-				nextButton.interactable = true;
-				break;
-
-			case 3:
-				foreach (char c in story3)
 				{
 					txt.text += c;
 					yield return new WaitForSeconds(timeToWait);
