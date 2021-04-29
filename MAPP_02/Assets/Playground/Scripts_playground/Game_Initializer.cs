@@ -12,6 +12,9 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
 
+    private int playerStartingLevel = 1;
+    private int playerStartingHealth = 100;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,8 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetBattleSystem(battleSystem);
         Game_Controller.SetCharacterScreen(characterScreen);
         Combat_Info.Initialize();
+        thePlayerInfo.SetPlayerLevel(playerStartingLevel);
+        thePlayerInfo.SetHealth(playerStartingHealth);
         //thePlayerInfo.SetName(Game_Controller.GetPlayerName());
     }
 }

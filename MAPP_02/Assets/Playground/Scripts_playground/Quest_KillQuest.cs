@@ -4,9 +4,17 @@ using UnityEngine;
 public class Quest_KillQuest : Quest
 {
     [SerializeField] private int amountToKill;
-    [SerializeField] CharacterBase enemyToKill;
+    [SerializeField] private CharacterBase enemyToKill;
     private string objectiveText;
     private int killed;
+
+    override
+    public void Init()
+    {
+        killed = 0;
+        objectiveText = "";
+        base.Init();
+    }
 
     override
     public void UpdateQuest()
@@ -34,6 +42,27 @@ public class Quest_KillQuest : Quest
             Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
 
-        return isCompleted;
+        return base.CompleteQuest();
+    }
+
+    public int GetKilled()
+    {
+        return killed;
+    }
+
+    public void SetKilled(int killed)
+    {
+        this.killed = killed;
+    }
+
+    public CharacterBase GetEnemyToKill()
+    {
+        return enemyToKill;
+    }
+
+    override
+    public QuestType GetQuestType()
+    {
+        return QuestType.KILL_QUEST;
     }
 }

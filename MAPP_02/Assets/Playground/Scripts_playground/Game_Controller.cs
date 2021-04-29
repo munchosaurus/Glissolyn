@@ -129,4 +129,9 @@ public static class Game_Controller
     {
         return battleSystem.GetComponent<BattleSystem>();
     }
+
+    public static void UpdateWorldToQuestClearState(QuestClearState qcs)
+    {
+        //TODO If-satser för om qcs == <ett QuestClearState> och vad som ska hända i så fall.
+    }
 }

@@ -11,7 +11,7 @@ public class Player_Info : Character_Info
     private int agility;
     private int intelligence;*/
 
-    private int playerLevel = 1; 
+    private int playerLevel; 
     private int statPoints;
     private int experience;
 
@@ -74,6 +74,11 @@ public class Player_Info : Character_Info
     public void IncreaseHealth(int amount)
     {
         health += amount;
+    }
+
+    public void SetHealth(int health)
+    {
+        this.health = health;
     }
 
     /*public void ModifyStrength(int amount)

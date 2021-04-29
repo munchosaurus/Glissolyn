@@ -5,20 +5,21 @@ using UnityEngine;
 public class Character
 {
     public CharacterBase Base;
-    public int Level = 10;
+    public int Level;
 
-    public int HP { get; set; }
+    public int CurrentHP;
     public List<Move> Moves { get; set; }
 
-    public Character(CharacterBase _base)
+    //TODO konstruktor tar emot level, före spelare samt fiende
+    public Character(CharacterBase Base, int level)
     {
-        this.Base = _base;
-        //Level = level;
-        HP = MaxHP();
-
+        this.Base = Base;
+        Level = level;
+        SetCurrentHP();
+       
         Moves = new List<Move>();
 
-        foreach (var move in _base.GetLearnableMoves())
+        foreach (var move in Base.GetLearnableMoves())
         {
             if (move.GetLevel() <= Level)
             {
@@ -34,10 +35,32 @@ public class Character
 
     public int MaxHP()
     {
-        // return Base.GetMaxHP();
-        return Mathf.FloorToInt((Base.GetMaxHP() * Level) / 100f) + 10;
+        if (Base.GetTypes().Contains(CharacterType.Player))
+        {
+            return Base.GetMaxHP();
+        }
+        else
+        {
+            return (Base.GetMaxHP() * Level) / 5;
+        }
     }
 
+    public int GetCurrentHP()
+    {
+        return CurrentHP;
+    }
+
+    public void SetCurrentHP()
+    {
+        if (Base.GetTypes().Contains(CharacterType.Player))
+        {
+            CurrentHP = Game_Controller.GetPlayerInfo().GetHealth();
+        }
+        else
+        {
+            CurrentHP = MaxHP();
+        }
+    }
 
     public bool TakeDamage(Move move, Character attacker)
     {
@@ -46,15 +69,18 @@ public class Character
         float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;*/
         int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
 
-        HP -= damage;
-        if(HP <= 0)
+        CurrentHP -= damage;
+        if (Base.GetTypes().Contains(CharacterType.Player))
         {
-            HP = 0;
-            
-            return true;
+            Game_Controller.GetPlayerInfo().ReduceHealth(damage);
         }
 
-        return false; 
+        if (GetCurrentHP() <= 0)
+        {
+            CurrentHP = 0;
+            return true;
+        }
+        return false;
     }
 
     public Move GetRandomMove()

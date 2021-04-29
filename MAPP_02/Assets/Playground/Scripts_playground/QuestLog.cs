@@ -7,6 +7,7 @@ public class QuestLog : MonoBehaviour
     [SerializeField] private Button questButtonPrefab;
 
     private Dictionary<int, Quest> activeQuests = new Dictionary<int, Quest>();
+    private QuestButton currentOpenQuestButton;
 
     /*
      * Adds a Quest-object to the Dictionary activeQuests with the quest ID as key and the Quest object as value.
@@ -33,8 +34,32 @@ public class QuestLog : MonoBehaviour
         return activeQuests.ContainsKey(quest.GetQuestID());
     }
 
+    public void UpdateKillQuestsWithEnemyType(CharacterBase _base)
+    { 
+        foreach(KeyValuePair<int, Quest> entry in activeQuests)
+        {
+            if(entry.Value.GetQuestType() == QuestType.KILL_QUEST)
+            {
+                Quest_KillQuest q = entry.Value as Quest_KillQuest;
+                if(q.GetEnemyToKill() == _base)
+                {
+                    q.UpdateQuest();
+                }
+            }
+        }
+    }
+
+    public void SetCurrentOpenQuest(QuestButton questButton)
+    {
+        currentOpenQuestButton = questButton;
+    }
+
     public void Toggle()
     {
+        if (currentOpenQuestButton != null)
+        {
+            currentOpenQuestButton.OnClick();
+        }
         gameObject.SetActive(!gameObject.activeInHierarchy);
         Game_Controller.TogglePause(gameObject.activeInHierarchy);
     }
