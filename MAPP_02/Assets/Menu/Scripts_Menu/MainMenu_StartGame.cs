@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_StartGame : MonoBehaviour
     
-
+    
 {
-    [SerializeField] private GameObject nameSelection;
+    [SerializeField] private GameObject introductionScreen;
 
-    public void StartGame()
+    public void openIntroductionScreen()
     {
-        nameSelection.SetActive(true);
+        introductionScreen.SetActive(true);
     }
-
 }
 
