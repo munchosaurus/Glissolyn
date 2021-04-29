@@ -2186,6 +2186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   inputField: {fileID: 1221752207}
+  inputFieldToDisable: {fileID: 1460651042}
   textDisplay: {fileID: 2002131772}
   enterButtonToHide: {fileID: 593907780}
   startGameButton: {fileID: 1153156453}
