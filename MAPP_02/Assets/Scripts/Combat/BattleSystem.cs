@@ -50,11 +50,7 @@ public class BattleSystem : MonoBehaviour
 
     public void PointClick(int i)
     {
-        if(PlayerUnit.Character.Moves.Count > i)
-        {
-            StartCoroutine(PerformPlayerMove(i));
-        }
-        
+        StartCoroutine(PerformPlayerMove(i));
     }
 
     public IEnumerator PerformPlayerMove(int index)
