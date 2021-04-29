@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 3705851}
   - component: {fileID: 3705850}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: MainMenu Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,6 +886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introductionScreen: {fileID: 37962282}
+  mainMenuPanel: {fileID: 3705848}
 --- !u!1 &538545592
 GameObject:
   m_ObjectHideFlags: 0

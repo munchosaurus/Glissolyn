@@ -17,8 +17,6 @@ public class MainMenu_Introduction : MonoBehaviour
 
 	void Awake()
 	{
-		//txt = GetComponent<Text>();
-		txt.text = "";
 		storyNumber = 1;
 		StartCoroutine("PlayText");
 	}
