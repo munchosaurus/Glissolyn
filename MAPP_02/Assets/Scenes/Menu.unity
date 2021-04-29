@@ -315,8 +315,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 256.7, y: -146.3}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 618, y: -241}
+  m_SizeDelta: {x: 320, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82736117
 MonoBehaviour:
@@ -331,11 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   txt: {fileID: 119661761}
-  timeToWait: 0.1
-  story1: Welcome to the world of Glyssolin brave warrior!
-  story2: In this world, you will need to fight your way through and solve puzzles
-    to finish the game
-  story3: But first, press next to enter your name
+  timeToWait: 0.05
   buttonToChangeTo: {fileID: 181734787}
   nextButtonObject: {fileID: 82736115}
   nextButton: {fileID: 82736118}
@@ -468,7 +464,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 53.9}
-  m_SizeDelta: {x: 800, y: 250}
+  m_SizeDelta: {x: 1400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119661761
 MonoBehaviour:
@@ -492,11 +488,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c940c9bd5ef7a2f43b0d27b110fede63, type: 3}
-    m_FontSize: 50
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 5
-    m_MaxSize: 70
+    m_MaxSize: 300
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -549,8 +545,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 257, y: -146.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 618.1, y: -242.8}
+  m_SizeDelta: {x: 320, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181734789
 MonoBehaviour:
