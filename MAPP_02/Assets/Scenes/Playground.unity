@@ -167,6 +167,7 @@ Transform:
   m_Father: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &54341338
@@ -198,6 +199,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+=======
+  m_RootOrder: 5
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   m_RootOrder: 5
 >>>>>>> parent of 71f1cf6 (merge)
@@ -4555,6 +4559,7 @@ Tilemap:
     e33: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &318026394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4593,6 +4598,11 @@ Transform:
 --- !u!1001 &382264379
 PrefabInstance:
   m_ObjectHideFlags: 0
+=======
+--- !u!1001 &382264379
+PrefabInstance:
+  m_ObjectHideFlags: 0
+>>>>>>> parent of 71f1cf6 (merge)
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
@@ -4601,7 +4611,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 2
+=======
+      value: 1
+>>>>>>> parent of 71f1cf6 (merge)
 =======
       value: 1
 >>>>>>> parent of 71f1cf6 (merge)
@@ -4815,7 +4829,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 1
+=======
+  m_RootOrder: 0
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   m_RootOrder: 0
 >>>>>>> parent of 71f1cf6 (merge)
@@ -5640,12 +5658,18 @@ RectTransform:
   m_Children:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 318026395}
   - {fileID: 1728718426}
   - {fileID: 982493299}
   - {fileID: 7767747098489515067}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+=======
+  - {fileID: 1732895292}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   - {fileID: 1732895292}
   m_Father: {fileID: 0}
@@ -5664,6 +5688,7 @@ RectTransform:
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &2114067850
 GameObject:
+<<<<<<< HEAD
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5681,10 +5706,32 @@ GameObject:
   m_IsActive: 1
 --- !u!212 &2114067851
 SpriteRenderer:
+=======
+>>>>>>> parent of 71f1cf6 (merge)
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114067852}
+  - component: {fileID: 2114067851}
+  m_Layer: 0
+  m_Name: rock with moss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &2114067851
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> parent of 71f1cf6 (merge)
   m_GameObject: {fileID: 2114067850}
   m_Enabled: 1
   m_CastShadows: 0
@@ -5744,7 +5791,11 @@ Transform:
   m_Father: {fileID: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 12
+=======
+  m_RootOrder: 11
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   m_RootOrder: 11
 >>>>>>> parent of 71f1cf6 (merge)
@@ -5923,11 +5974,14 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fcca300f6c06b974cb7f09490b2b8916, type: 3}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &7767747098489515067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 7767747098489515066}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 71f1cf6 (merge)
 =======
 >>>>>>> parent of 71f1cf6 (merge)
 =======
