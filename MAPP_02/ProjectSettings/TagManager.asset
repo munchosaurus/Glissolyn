@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Path
+  - Wall
+  - Dialogue Box
+  - BattleSystem
+  - World Interface
+>>>>>>> Main
   layers:
   - Default
   - TransparentFX
