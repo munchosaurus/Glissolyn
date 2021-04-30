@@ -165,6 +165,7 @@ Transform:
   m_Children:
   - {fileID: 58412812}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &54341338
@@ -196,6 +197,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+=======
+  m_RootOrder: 5
+>>>>>>> parent of 71f1cf6 (merge)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &58412811
 GameObject:
@@ -4545,6 +4549,7 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+<<<<<<< HEAD
 --- !u!1 &318026394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4576,6 +4581,8 @@ Transform:
   m_Father: {fileID: 2048904062}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of 71f1cf6 (merge)
 --- !u!1001 &382264379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4585,7 +4592,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6994861999412046920, guid: defc28a8aa5176d4da888688a07798e2, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< HEAD
       value: 2
+=======
+      value: 1
+>>>>>>> parent of 71f1cf6 (merge)
       objectReference: {fileID: 0}
     - target: {fileID: 6994861999412046920, guid: defc28a8aa5176d4da888688a07798e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4705,7 +4716,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 8
+=======
+  m_RootOrder: 7
+>>>>>>> parent of 71f1cf6 (merge)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617253606
 GameObject:
@@ -5608,12 +5623,18 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+<<<<<<< HEAD
   - {fileID: 318026395}
   - {fileID: 1728718426}
   - {fileID: 982493299}
   - {fileID: 7767747098489515067}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+=======
+  - {fileID: 1732895292}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+>>>>>>> parent of 71f1cf6 (merge)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5700,7 +5721,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 12
+=======
+  m_RootOrder: 11
+>>>>>>> parent of 71f1cf6 (merge)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7767747098489515066
 PrefabInstance:
@@ -5871,8 +5896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcca300f6c06b974cb7f09490b2b8916, type: 3}
+<<<<<<< HEAD
 --- !u!4 &7767747098489515067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 7767747098489515066}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 71f1cf6 (merge)
