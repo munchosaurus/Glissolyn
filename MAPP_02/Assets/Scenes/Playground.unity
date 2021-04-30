@@ -166,6 +166,7 @@ Transform:
   - {fileID: 58412812}
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &54341338
@@ -197,6 +198,9 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+=======
+  m_RootOrder: 5
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   m_RootOrder: 5
 >>>>>>> parent of 71f1cf6 (merge)
@@ -4550,6 +4554,7 @@ Tilemap:
     e32: 0
     e33: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &318026394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4583,6 +4588,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 =======
 >>>>>>> parent of 71f1cf6 (merge)
+=======
+>>>>>>> parent of 71f1cf6 (merge)
 --- !u!1001 &382264379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4593,7 +4600,11 @@ PrefabInstance:
     - target: {fileID: 6994861999412046920, guid: defc28a8aa5176d4da888688a07798e2, type: 3}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
       value: 2
+=======
+      value: 1
+>>>>>>> parent of 71f1cf6 (merge)
 =======
       value: 1
 >>>>>>> parent of 71f1cf6 (merge)
@@ -4803,7 +4814,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 1
+=======
+  m_RootOrder: 0
+>>>>>>> parent of 71f1cf6 (merge)
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &624619749
 GameObject:
@@ -5624,12 +5639,18 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 318026395}
   - {fileID: 1728718426}
   - {fileID: 982493299}
   - {fileID: 7767747098489515067}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+=======
+  - {fileID: 1732895292}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   - {fileID: 1732895292}
   m_Father: {fileID: 0}
@@ -5722,7 +5743,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 12
+=======
+  m_RootOrder: 11
+>>>>>>> parent of 71f1cf6 (merge)
 =======
   m_RootOrder: 11
 >>>>>>> parent of 71f1cf6 (merge)
@@ -5897,10 +5922,13 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcca300f6c06b974cb7f09490b2b8916, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!4 &7767747098489515067 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 7767747098489515066}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of 71f1cf6 (merge)
 =======
 >>>>>>> parent of 71f1cf6 (merge)
