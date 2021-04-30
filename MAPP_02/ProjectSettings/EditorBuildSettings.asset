@@ -4,18 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  m_Scenes: []
-=======
-=======
->>>>>>> parent of 71f1cf6 (merge)
-=======
->>>>>>> parent of 71f1cf6 (merge)
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 836732d069d5d794685ef45f8a83b554
+  - enabled: 1
+    path: Assets/Scenes/Playground.unity
+    guid: 464758e158919104387017aa8b497f0e
+  - enabled: 1
+    path: Assets/Scenes/Combat Scene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
->>>>>>> parent of 71f1cf6 (merge)
   m_configObjects: {}
