@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:MAPP_02/Assets/Playground/Scripts_playground/EnemyPatrol.cs.meta
 guid: b0df06dfc38342947af09797ae6ece61
+=======
+guid: 14db4c93dc06b2243858b14210049653
+>>>>>>> Main:MAPP_02/Assets/Menu/Scripts_Menu/MainMenu_OpenWorld.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
