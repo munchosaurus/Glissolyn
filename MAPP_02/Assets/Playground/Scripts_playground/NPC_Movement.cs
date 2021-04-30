@@ -5,37 +5,67 @@ using UnityEngine;
 public class NPC_Movement : MonoBehaviour
 {
     [SerializeField] private Animator npcAnimator;
-    [SerializeField] private int maximumNumberToRandomize;
+    [SerializeField] private float timeToMove;
+    [SerializeField] private GameObject gridClaimer;
+    [SerializeField] private int walkCDLow;
+    [SerializeField] private int walkCDHigh;
+    [SerializeField] private int maximumDistance;
     private bool isMoving;
     private Vector3 originalPos, targetPos;
-    [SerializeField] private float timeToMove;
     private Vector3 facing;
     public LayerMask blockingLayer;
     private GameObject player;
+    private float walkCooldown;
+    private float walkTimer;
+    private Vector3 spawnPos;
+    
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        spawnPos = gameObject.transform.position;
     }
 
     void Update()
     {
         if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
-            int movementNumber = randomNumber();
-            if (Vector3.Distance(player.transform.position, transform.position) <= 20f)
+            
+            if (Vector3.Distance(player.transform.position, transform.position) <= 20f && walkTimer >= walkCooldown && !isMoving)
             {
-                if (movementNumber == 5 && !isMoving && (isWalkable(transform.position + Vector3.up)))
-                    StartCoroutine(Move(Vector3.up));
+                List<int> bannedNumbers = new List<int>();
+                int movementNumber;
+                do
+                {
+                    movementNumber = Random.Range(0, 4);
+                    if (!IsWalkable(transform.position + GetDirection(movementNumber)))
+                    {
+                        bannedNumbers.Add(movementNumber);
+                    }
+                } while (bannedNumbers.Contains(movementNumber) && bannedNumbers.Count < 4);
 
-                if (movementNumber == 10 && !isMoving && (isWalkable(transform.position + Vector3.left)))
-                    StartCoroutine(Move(Vector3.left));
+                if(bannedNumbers.Count >= 4)
+                {
+                    walkTimer = 0;
+                    walkCooldown = 5;
+                }
 
-                if (movementNumber == 15 && !isMoving && (isWalkable(transform.position + Vector3.down)))
-                    StartCoroutine(Move(Vector3.down));
 
-                if (movementNumber == 20 && !isMoving && (isWalkable(transform.position + Vector3.right)))
-                    StartCoroutine(Move(Vector3.right));
+                Vector3 direction = GetDirection(movementNumber);
+
+                if (IsWalkable(transform.position + direction) && Vector3.Distance(transform.position + direction, spawnPos) <= maximumDistance)
+                {
+                    StartCoroutine(Move(direction));
+                    gridClaimer.transform.parent = null;
+                    gridClaimer.transform.position = transform.position + direction;
+                    
+                    walkCooldown = Random.Range(walkCDLow, walkCDHigh);
+                    walkTimer = 0;
+                }
+            }
+            else
+            {
+                walkTimer += Time.deltaTime;
             }
         }
     }
@@ -49,27 +79,41 @@ public class NPC_Movement : MonoBehaviour
         targetPos = originalPos + direction;
         while (elapsedTime < timeToMove)
         {
-            
             transform.position = Vector3.Lerp(originalPos, targetPos, (elapsedTime / timeToMove));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         transform.position = targetPos;
         isMoving = false;
+        gridClaimer.transform.position = transform.position;
+        gridClaimer.transform.parent = gameObject.transform;
         AnimateRotation(direction);
     }
 
-    private int randomNumber() {
-        int number = Random.Range(1, maximumNumberToRandomize);
-        return number;
+    private Vector3 GetDirection(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                return Vector3.up;
+            case 1:
+                return Vector3.left;
+            case 2:
+                return Vector3.right;
+            case 3:
+                return Vector3.down;
+            default:
+                return Vector3.zero;
+        }
     }
 
-    private bool isWalkable(Vector3 targetPos)
+    private bool IsWalkable(Vector3 targetPos)
     {
         if (Physics2D.OverlapCircle(targetPos, 0.3f, blockingLayer) != null)
         {
             return false;
         }
+        
         return true;
     }
 
