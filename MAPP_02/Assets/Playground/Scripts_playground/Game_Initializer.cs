@@ -28,6 +28,6 @@ public class Game_Initializer : MonoBehaviour
         Combat_Info.Initialize();
         thePlayerInfo.SetPlayerLevel(playerStartingLevel);
         thePlayerInfo.SetHealth(playerStartingHealth);
-        //thePlayerInfo.SetName(Game_Controller.GetPlayerName());
+        thePlayerInfo.SetName(Game_Controller.GetPlayerName());
     }
 }
