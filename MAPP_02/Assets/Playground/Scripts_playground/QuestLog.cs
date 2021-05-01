@@ -49,7 +49,7 @@ public class QuestLog : MonoBehaviour
         }
     }
 
-    public void SetCurrentOpenQuest(QuestButton questButton)
+    public void SetCurrentOpenQuestButton(QuestButton questButton)
     {
         currentOpenQuestButton = questButton;
     }

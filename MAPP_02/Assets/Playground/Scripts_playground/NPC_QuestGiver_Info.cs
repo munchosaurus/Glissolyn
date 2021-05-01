@@ -26,6 +26,7 @@ public class NPC_QuestGiver_Info : NPC_Info
         else if (!questToGive.IsCompleted() && !Game_Controller.GetQuestLog().HasQuest(questToGive))
         {
             Game_Controller.GetQuestLog().AddQuest(questToGive);
+            Game_Controller.GetQuestLog().SetCurrentOpenQuestButton(questToGive.GetQuestButton());
         }
         else if (questToGive.CompleteQuest())
         {
