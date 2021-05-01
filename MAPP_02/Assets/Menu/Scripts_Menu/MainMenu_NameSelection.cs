@@ -27,7 +27,6 @@ public class MainMenu_NameSelection : MonoBehaviour
     //Sets the playername in the welcome screen and displays the ENTER WORLD button
     public void SetName() {
         playerName = inputField.GetComponent<Text>().text;
-        
         textDisplay.GetComponent<Text>().text = "Welcome " + playerName + "! " +
             "Press ENTER WORLD to start exploring the world of Glyssolin!";
         inputFieldToDisable.SetActive(false);
