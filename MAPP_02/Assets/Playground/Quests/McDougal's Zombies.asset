@@ -17,5 +17,5 @@ MonoBehaviour:
   questID: 0
   experienceReward: 10
   questClearState: 0
-  amountToKill: 1
+  amountToKill: 5
   enemyToKill: {fileID: 11400000, guid: f6d1ad9e0187c0b4aa51195e9c74c8b8, type: 2}
