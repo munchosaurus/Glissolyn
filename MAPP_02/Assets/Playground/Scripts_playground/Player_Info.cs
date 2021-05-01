@@ -5,6 +5,7 @@ public class Player_Info : Character_Info
     [SerializeField] private Transform interactChecker;
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
+    [SerializeField] private Sprite playerSprite;
 
     private int health;
     /*private int strength;
@@ -14,6 +15,12 @@ public class Player_Info : Character_Info
     private int playerLevel; 
     private int statPoints;
     private int experience;
+    private int nextLevelExperience;
+
+    private void SetNextLevelExperience()
+    {
+        nextLevelExperience = playerLevel * 10;
+    }
 
     public void SetName(string name)
     {
@@ -31,6 +38,11 @@ public class Player_Info : Character_Info
         return experience;
     }
 
+    public int GetNextLevelExperience()
+    {
+        return nextLevelExperience;
+    }
+
     public CharacterBase GetBase()
     {
         return Base;
@@ -41,29 +53,20 @@ public class Player_Info : Character_Info
         return health;
     }
 
-    /*public int GetStrength()
-    {
-        return strength;
-    }
-
-    public int GetAgility()
-    {
-        return agility;
-    }
-
-    public int GetIntelligence()
-    {
-        return intelligence;
-    }*/
-
     public int GetStatPoints()
     {
         return statPoints;
     }
 
+    public Sprite GetPlayerSprite()
+    {
+        return playerSprite;
+    }
+
     public void SetPlayerLevel(int level)
     {
         playerLevel = level;
+        SetNextLevelExperience();
     }
 
     public void ReduceHealth(int amount)
@@ -81,29 +84,25 @@ public class Player_Info : Character_Info
         this.health = health;
     }
 
-    /*public void ModifyStrength(int amount)
+    public void SetExperience(int amount)
     {
-        strength += amount;
+        experience = amount;
     }
-
-    public void ModifyAgility(int amount)
-    {
-        agility += amount;
-    }
-
-    public void ModifyIntelligence(int amount)
-    {
-        intelligence += amount;
-    }*/
+    
 
     public void ModifyExperience(int amount)
     {
         experience += amount;
-        if(experience >= playerLevel * 10)
+        if(experience >= nextLevelExperience)
         {
             print("Player level increased");
             playerLevel++;
             statPoints += 3;
+            SetNextLevelExperience();
+            if(experience >= nextLevelExperience)
+            {
+                ModifyExperience(0);
+            }
         }
     }
 

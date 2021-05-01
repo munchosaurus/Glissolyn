@@ -8,13 +8,14 @@ public class Enemy_Find_player : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float raycastLength;
     [SerializeField] private Animator zombieAnimator;
-    [SerializeField] private GameObject playerObject;
+    private GameObject playerObject;
     private RaycastHit2D target;
     private bool shouldMove;
 
     private void Start()
     {
         shouldMove = true;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void LateUpdate()

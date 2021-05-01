@@ -35,6 +35,11 @@ public abstract class Quest : ScriptableObject
         return questID;
     }
 
+    public QuestButton GetQuestButton()
+    {
+        return questButton;
+    }
+
     public bool IsCompleted()
     {
         return isCompleted;

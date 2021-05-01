@@ -6,6 +6,7 @@ public class Grid_movement : MonoBehaviour
 {
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private GameObject rotation;
+    [SerializeField] private GameObject gridClaimer;
     [SerializeField] private Animator playerAnimator;
 
     private bool isMoving;
@@ -19,30 +20,6 @@ public class Grid_movement : MonoBehaviour
     {
         if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
-            /*if (Input.GetKey(KeyCode.W) && !isMoving) {
-                direction = Vector3.up;
-                StartCoroutine(MovePlayer(direction));
-            }
-
-            else if (Input.GetKey(KeyCode.A) && !isMoving) {
-                direction = Vector3.left;
-                StartCoroutine(MovePlayer(direction));
-            }
-
-            else if (Input.GetKey(KeyCode.D) && !isMoving)
-            {
-                direction = Vector3.right;
-                StartCoroutine(MovePlayer(direction));
-            }
-
-            else if (Input.GetKey(KeyCode.S) && !isMoving) {
-                direction = Vector3.down;
-                StartCoroutine(MovePlayer(direction));
-            }
-
-            if (!isMoving && currentFacing != direction) {
-                Rotate(direction);
-            }*/
             if (shouldMove && !isMoving)
             {
                 StartCoroutine(MovePlayer(direction));
@@ -87,6 +64,7 @@ public class Grid_movement : MonoBehaviour
             currentFacing = Vector3.zero;
         }
         isMoving = false;
+        gridClaimer.transform.parent = gameObject.transform;
     }
 
     private void Rotate(Vector3 direction) {
@@ -115,6 +93,8 @@ public class Grid_movement : MonoBehaviour
         {
             return false;
         }
+        gridClaimer.transform.parent = null;
+        gridClaimer.transform.position = targetPos;
         return true;
     }
 

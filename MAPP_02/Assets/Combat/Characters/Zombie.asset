@@ -20,7 +20,7 @@ MonoBehaviour:
   strength: 1
   agility: 1
   intelligence: 1
-  experienceBase: 1
+  experienceBase: 2
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
     level: 0

@@ -29,5 +29,6 @@ public class Game_Initializer : MonoBehaviour
         thePlayerInfo.SetPlayerLevel(playerStartingLevel);
         thePlayerInfo.SetHealth(playerStartingHealth);
         thePlayerInfo.SetName(Game_Controller.GetPlayerName());
+        characterScreen.Initialize();
     }
 }
