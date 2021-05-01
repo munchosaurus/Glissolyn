@@ -5,6 +5,8 @@ public class Character_Screen : MonoBehaviour
 {
     private readonly int INCREASE_BY_ONE = 1;
 
+    [SerializeField] Image playerImage;
+    [SerializeField] Text playerName;
     [SerializeField] Text strengthValue;
     [SerializeField] Text agilityValue;
     [SerializeField] Text intelligenceValue;
@@ -12,6 +14,10 @@ public class Character_Screen : MonoBehaviour
     [SerializeField] Button strengthIncreaseButton;
     [SerializeField] Button agilityIncreaseButton;
     [SerializeField] Button intelligenceIncreaseButton;
+    [SerializeField] Slider healthBar;
+    [SerializeField] Text healthBarValue;
+    [SerializeField] Slider experienceBar;
+    [SerializeField] Text experienceBarValue;
 
     private void ShowButtons(bool toggle)
     {
@@ -22,12 +28,17 @@ public class Character_Screen : MonoBehaviour
 
     private void UpdateValues()
     {
-        strengthValue.text = Game_Controller.GetPlayerInfo().GetBase().GetStrength().ToString();
-        agilityValue.text = Game_Controller.GetPlayerInfo().GetBase().GetAgility().ToString();
-        intelligenceValue.text = Game_Controller.GetPlayerInfo().GetBase().GetIntelligence().ToString();
-        statPointsValue.text = Game_Controller.GetPlayerInfo().GetStatPoints().ToString();
+        Player_Info thePlayerInfo = Game_Controller.GetPlayerInfo();
+        strengthValue.text = thePlayerInfo.GetBase().GetStrength().ToString();
+        agilityValue.text = thePlayerInfo.GetBase().GetAgility().ToString();
+        intelligenceValue.text = thePlayerInfo.GetBase().GetIntelligence().ToString();
+        statPointsValue.text = thePlayerInfo.GetStatPoints().ToString();
+        healthBar.value = thePlayerInfo.GetHealth()/thePlayerInfo.GetBase().GetMaxHP();
+        healthBarValue.text = thePlayerInfo.GetHealth().ToString() + "/" + thePlayerInfo.GetBase().GetMaxHP().ToString();
+        experienceBar.value = thePlayerInfo.GetExperience()/thePlayerInfo.GetNextLevelExperience();
+        experienceBarValue.text = thePlayerInfo.GetExperience().ToString() + "/" + thePlayerInfo.GetNextLevelExperience().ToString();
 
-        if(Game_Controller.GetPlayerInfo().GetStatPoints() > 0)
+        if (Game_Controller.GetPlayerInfo().GetStatPoints() > 0)
         {
             ShowButtons(true);
         }
@@ -35,6 +46,12 @@ public class Character_Screen : MonoBehaviour
         {
             ShowButtons(false);
         }
+    }
+
+    public void Initialize()
+    {
+        playerName.text = Game_Controller.GetPlayerInfo().GetName();
+        playerImage.sprite = Game_Controller.GetPlayerInfo().GetPlayerSprite();
     }
 
     public void IncreaseStrength()
