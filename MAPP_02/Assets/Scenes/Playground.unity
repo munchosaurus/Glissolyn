@@ -42200,7 +42200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346262, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: blockingLayer.m_Bits
-      value: 904
+      value: 920
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: name
@@ -46617,7 +46617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5405792326669331802, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
       propertyPath: blockingLayer.m_Bits
-      value: 904
+      value: 920
       objectReference: {fileID: 0}
     - target: {fileID: 5405792326669331803, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
       propertyPath: m_Name
@@ -59389,7 +59389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1355876444011128126, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
       propertyPath: blockingLayer.m_Bits
-      value: 904
+      value: 920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
@@ -69933,7 +69933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346262, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: blockingLayer.m_Bits
-      value: 904
+      value: 920
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: name
@@ -73375,6 +73375,10 @@ PrefabInstance:
     - target: {fileID: 5142961775365821882, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
       propertyPath: maximumDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142961775365821882, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
+      propertyPath: blockingLayer.m_Bits
+      value: 920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
@@ -79867,7 +79871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1355876444011128126, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
       propertyPath: blockingLayer.m_Bits
-      value: 904
+      value: 920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
@@ -82988,7 +82992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980801365}
   - component: {fileID: 1980801366}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Grid Claimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

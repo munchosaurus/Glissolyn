@@ -10,6 +10,7 @@ public class Dialogue_Box : MonoBehaviour
     private string theName;
     private string[] theDialogue;
     private int currentDialoguePart;
+    private bool npcIsTalking;
 
     /*
      * Updates what the dialogue will be, the image of the character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
@@ -22,6 +23,7 @@ public class Dialogue_Box : MonoBehaviour
         dialogueImage.sprite = theNPCInfo.GetDialogueSprite();
         theDialogue = theNPCInfo.GetDialogue();
         theName = theNPCInfo.GetName();
+        npcIsTalking = true;
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
@@ -30,6 +32,7 @@ public class Dialogue_Box : MonoBehaviour
 
     public void UpdateDialogue(string[] dialogue)
     {
+        npcIsTalking = false;
         theNPCInfo = null;
         theDialogue = dialogue;
         theName = "System";
@@ -50,15 +53,18 @@ public class Dialogue_Box : MonoBehaviour
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 Game_Controller.TogglePause(gameObject.activeInHierarchy);
-                if(theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove) && !npcmove.IsEnemy()) // Check if the NPC has a NPC_Movement script
+                if (npcIsTalking)
                 {
-                    npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
-                }
-                else if(theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
-                {
-                    Combat_Info.ChangeEnemy(eInfo);
-                    Game_Controller.ToggleCombatState(true);
-                    Game_Controller.GetBattleSystem().StartCombat();
+                    if (theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script and is not an enemy
+                    {
+                        npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
+                    }
+                    if (theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
+                    {
+                        Combat_Info.ChangeEnemy(eInfo);
+                        Game_Controller.ToggleCombatState(true);
+                        Game_Controller.GetBattleSystem().StartCombat();
+                    }
                 }
             }
             else // If it does

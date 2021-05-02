@@ -153,9 +153,10 @@ MonoBehaviour:
   walkCDLow: 2
   walkCDHigh: 6
   maximumDistance: 5
+  isEnemy: 0
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 392
+    m_Bits: 904
 --- !u!114 &1355876444011128115
 MonoBehaviour:
   m_ObjectHideFlags: 0
