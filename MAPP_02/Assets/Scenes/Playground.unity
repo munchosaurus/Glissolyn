@@ -78253,7 +78253,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 16
-      m_TileSpriteIndex: 19
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -79592,10 +79592,10 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: fbe14179da6c72048b96de66e6421186, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: fbe14179da6c72048b96de66e6421186, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 2d8d242cd7037014780f45cb0153ac14, type: 3}
   - m_RefCount: 1
@@ -84578,6 +84578,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4404693015667309123, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c41bbb573fa14914197cb963356635af, type: 3}
     - target: {fileID: 4404693015667309123, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
       propertyPath: m_SortingOrder
       value: 0
