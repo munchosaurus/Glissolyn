@@ -8,7 +8,7 @@ public class MainMenu_Introduction : MonoBehaviour
 	int storyNumber;
 	[SerializeField] private Text txt;
 	[SerializeField] private float timeToWait;
-	private string story1 = "Greetings brave warrior!\nWelcome to the world of Glyssolin.";
+	private string story1 = "Greetings brave warrior!\nWelcome to the world of Glissolyn.";
 	private string story2 = "Before you get started,\nplease allow the inhabitants\nof the world to know your name";
 	[SerializeField] private GameObject buttonToChangeTo;
 	[SerializeField] private GameObject nextButtonObject;
