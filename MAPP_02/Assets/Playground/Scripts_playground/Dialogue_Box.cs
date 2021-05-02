@@ -27,7 +27,7 @@ public class Dialogue_Box : MonoBehaviour
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
-        Game_Controller.TogglePause(gameObject.activeInHierarchy);
+        Game_Controller.SetPause(true);
     }
 
     public void UpdateDialogue(string[] dialogue)
@@ -39,7 +39,7 @@ public class Dialogue_Box : MonoBehaviour
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
-        Game_Controller.TogglePause(gameObject.activeInHierarchy);
+        Game_Controller.SetPause(true);
     }
 
     // Updates the dialogue text to show the next part of the dialogue. Or if the dialogue is over, deactivate the "Dialogue Box"-GameObject.
@@ -52,7 +52,7 @@ public class Dialogue_Box : MonoBehaviour
             if (currentDialoguePart >= theDialogue.Length) // Check if the position exists
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
-                Game_Controller.TogglePause(gameObject.activeInHierarchy);
+                Game_Controller.SetPause(gameObject.activeInHierarchy);
                 if (npcIsTalking)
                 {
                     if (theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script and is not an enemy

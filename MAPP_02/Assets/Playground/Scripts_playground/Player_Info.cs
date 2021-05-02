@@ -95,9 +95,9 @@ public class Player_Info : Character_Info
         experience += amount;
         if(experience >= nextLevelExperience)
         {
-            Game_Controller.GetDialogueBox().UpdateDialogue(new string[]{ "You leveled up!", "You've gained 3 stat points", "You are now level " + playerLevel});
             playerLevel++;
             statPoints += 3;
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel});
             SetNextLevelExperience();
             if(experience >= nextLevelExperience)
             {
@@ -117,10 +117,6 @@ public class Player_Info : Character_Info
         if (interactable != null && !Game_Controller.IsGamePaused())
         {
             interactable.GetComponent<NPC_Info>().Interact();
-            if (interactable.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove))
-            {
-                npcmove.TurnToPlayer(transform.position);
-            }
         }
         else
         {

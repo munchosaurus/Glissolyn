@@ -79,7 +79,7 @@ public static class Game_Controller
         return characterScreen;
     }
 
-    public static void TogglePause(bool toggle)
+    public static void SetPause(bool toggle)
     {
         if (toggle)
         {

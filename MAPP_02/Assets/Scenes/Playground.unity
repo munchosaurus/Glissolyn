@@ -41774,7 +41774,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117481373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -41782,12 +41782,12 @@ RectTransform:
   - {fileID: 1885872975}
   - {fileID: 1184904132}
   - {fileID: 1804623973}
-  m_Father: {fileID: 544913573}
-  m_RootOrder: 1
+  m_Father: {fileID: 1381521739}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -210, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &137318155
@@ -46904,6 +46904,10 @@ PrefabInstance:
       propertyPath: onlyFace
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638355, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: raycastLength
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3856926645240638365, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
       propertyPath: m_Name
       value: Zombie Prefab
@@ -46950,8 +46954,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 137318156}
-  - {fileID: 117481374}
-  - {fileID: 938501953}
+  - {fileID: 2095089727}
+  - {fileID: 1381521739}
   - {fileID: 878675604}
   - {fileID: 1695292470}
   - {fileID: 1787752311}
@@ -69334,6 +69338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerImage: {fileID: 1415581046}
   playerName: {fileID: 137318157}
+  playerLevelText: {fileID: 2095089728}
   strengthValue: {fileID: 1425790148}
   agilityValue: {fileID: 353113968}
   intelligenceValue: {fileID: 2138620340}
@@ -70911,7 +70916,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938501952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -70922,12 +70927,12 @@ RectTransform:
   - {fileID: 2138620339}
   - {fileID: 1406847092}
   - {fileID: 838465352}
-  m_Father: {fileID: 544913573}
-  m_RootOrder: 2
+  m_Father: {fileID: 1381521739}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 210, y: -20}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &953132562
@@ -72585,6 +72590,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342987526}
   m_CullTransparentMesh: 1
+--- !u!1 &1381521738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381521739}
+  m_Layer: 5
+  m_Name: Stats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1381521739
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381521738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 117481374}
+  - {fileID: 938501953}
+  m_Father: {fileID: 544913573}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &1397689807
 GameObject:
   m_ObjectHideFlags: 0
@@ -83703,15 +83745,15 @@ MonoBehaviour:
   dialogue:
   - Hi there stranger. Can you help me perhaps?
   - There are zombies roaming the outskirts of this village, they are really scary.
-  - Can you perhaps kill one of them?
+  - Can you perhaps get rid of them?
   questToGive: {fileID: 11400000, guid: 8de20115f9ae1414f979cb4db07bde91, type: 2}
   questActiveDialogue:
-  - Have you killed a zombie yet?
+  - Have you gotten rid of the zombies yet?
   questCompletionDialogue:
   - Have you kill... what is up with all that blood?
   - ....
-  - You killed a zombie?
-  - Yay, my hero!
+  - "You killed the zombies? I ment maybe you could help them relocate to Malm\xF6.."
+  - Oh anyway, good job. You are my hero, {playerName}!
   questCompletedDialogue:
   - Thank you for helping us!
 --- !u!114 &2055390745
@@ -84062,6 +84104,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!1 &2095089726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2095089727}
+  - component: {fileID: 2095089729}
+  - component: {fileID: 2095089728}
+  m_Layer: 5
+  m_Name: Player Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2095089727
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095089726}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 544913573}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -50}
+  m_SizeDelta: {x: 300, y: 50.27}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &2095089728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095089726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Lvl:'
+--- !u!222 &2095089729
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095089726}
+  m_CullTransparentMesh: 1
 --- !u!1 &2127799172
 GameObject:
   m_ObjectHideFlags: 0

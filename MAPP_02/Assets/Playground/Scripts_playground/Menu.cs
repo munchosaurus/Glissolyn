@@ -26,7 +26,7 @@ public class Menu : MonoBehaviour
     public void Toggle()
     {
         gameObject.SetActive(!gameObject.activeInHierarchy);
-        Game_Controller.TogglePause(gameObject.activeInHierarchy);
+        Game_Controller.SetPause(gameObject.activeInHierarchy);
     }
 
     public bool IsOpen()

@@ -61,7 +61,7 @@ public class QuestLog : MonoBehaviour
             currentOpenQuestButton.OnClick();
         }
         gameObject.SetActive(!gameObject.activeInHierarchy);
-        Game_Controller.TogglePause(gameObject.activeInHierarchy);
+        Game_Controller.SetPause(gameObject.activeInHierarchy);
     }
 
     public bool IsOpen()

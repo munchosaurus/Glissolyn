@@ -7,6 +7,7 @@ public class Character_Screen : MonoBehaviour
 
     [SerializeField] Image playerImage;
     [SerializeField] Text playerName;
+    [SerializeField] Text playerLevelText;
     [SerializeField] Text strengthValue;
     [SerializeField] Text agilityValue;
     [SerializeField] Text intelligenceValue;
@@ -37,7 +38,7 @@ public class Character_Screen : MonoBehaviour
         healthBarValue.text = thePlayerInfo.GetHealth().ToString() + "/" + thePlayerInfo.GetBase().GetMaxHP().ToString();
         experienceBar.value = thePlayerInfo.GetExperience()/thePlayerInfo.GetNextLevelExperience();
         experienceBarValue.text = thePlayerInfo.GetExperience().ToString() + "/" + thePlayerInfo.GetNextLevelExperience().ToString();
-
+        playerLevelText.text = "Lvl: " + thePlayerInfo.GetPlayerLevel().ToString();
         if (Game_Controller.GetPlayerInfo().GetStatPoints() > 0)
         {
             ShowButtons(true);
@@ -79,6 +80,7 @@ public class Character_Screen : MonoBehaviour
     {
         UpdateValues();
         gameObject.SetActive(!gameObject.activeInHierarchy);
+        Game_Controller.SetPause(gameObject.activeInHierarchy);
     }
 
     public bool IsOpen()
