@@ -95,7 +95,7 @@ public class Player_Info : Character_Info
         experience += amount;
         if(experience >= nextLevelExperience)
         {
-            print("Player level increased");
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[]{ "You leveled up!", "You've gained 3 stat points", "You are now level " + playerLevel});
             playerLevel++;
             statPoints += 3;
             SetNextLevelExperience();

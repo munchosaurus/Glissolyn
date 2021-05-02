@@ -7,6 +7,8 @@ public class Dialogue_Box : MonoBehaviour
     [SerializeField] private Image dialogueImage;
 
     private NPC_Info theNPCInfo;
+    private string theName;
+    private string[] theDialogue;
     private int currentDialoguePart;
 
     /*
@@ -16,8 +18,21 @@ public class Dialogue_Box : MonoBehaviour
      */
     public void UpdateDialogue(NPC_Info theNPCInfo)
     {
-        this.theNPCInfo = theNPCInfo;;
+        this.theNPCInfo = theNPCInfo;
         dialogueImage.sprite = theNPCInfo.GetDialogueSprite();
+        theDialogue = theNPCInfo.GetDialogue();
+        theName = theNPCInfo.GetName();
+        currentDialoguePart = 0;
+        BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
+        gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
+        Game_Controller.TogglePause(gameObject.activeInHierarchy);
+    }
+
+    public void UpdateDialogue(string[] dialogue)
+    {
+        theNPCInfo = null;
+        theDialogue = dialogue;
+        theName = "System";
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
@@ -31,11 +46,11 @@ public class Dialogue_Box : MonoBehaviour
         {
             currentDialoguePart++; // Increase the position in the dialogue we want to show to access the next part.
 
-            if (currentDialoguePart >= theNPCInfo.GetDialogue().Length) // Check if the position exists
+            if (currentDialoguePart >= theDialogue.Length) // Check if the position exists
             {
                 gameObject.SetActive(false); // If it doesnt, deactivate the Dialogue Box.
                 Game_Controller.TogglePause(gameObject.activeInHierarchy);
-                if(theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script
+                if(theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove) && !npcmove.IsEnemy()) // Check if the NPC has a NPC_Movement script
                 {
                     npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
                 }
@@ -57,6 +72,6 @@ public class Dialogue_Box : MonoBehaviour
 
     private void BuildDialogueText()
     {
-        dialogueText.text = theNPCInfo.GetName() + ": " + theNPCInfo.GetDialogue()[currentDialoguePart]; // Building a part of the dialogue like this "<Name of the speaker>: <Text>"
+        dialogueText.text = theName + ": " + theDialogue[currentDialoguePart]; // Building a part of the dialogue like this "<Name of the speaker>: <Text>"
     }
 }

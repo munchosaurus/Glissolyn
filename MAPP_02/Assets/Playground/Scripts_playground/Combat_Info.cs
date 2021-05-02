@@ -39,7 +39,8 @@ public static class Combat_Info
     {
         Game_Controller.GetQuestLog().UpdateKillQuestsWithEnemyType(enemy.GetBase());
         enemy.gameObject.SetActive(false);
-        Game_Controller.GetPlayerInfo().ModifyExperience(enemy.GetBase().GetExperienceBase() * ((enemy.GetLevel() * 2)/Game_Controller.GetPlayerInfo().GetPlayerLevel()));
+        int xpGained = enemy.GetBase().GetExperienceBase() * ((enemy.GetLevel() * 2) / Game_Controller.GetPlayerInfo().GetPlayerLevel());
+        Game_Controller.GetPlayerInfo().ModifyExperience(xpGained);
     }
 
     public static void EnemyWins()

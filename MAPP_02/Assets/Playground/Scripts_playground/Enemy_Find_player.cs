@@ -28,7 +28,6 @@ public class Enemy_Find_player : MonoBehaviour
         {
             if (!playerObject.GetComponent<Grid_movement>().GetMoving()) {
                 shouldMove = false;
-                print("Found target: " + target.transform.position);
                 StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));
                 gameObject.GetComponent<NPC_Info>().Interact();
             }

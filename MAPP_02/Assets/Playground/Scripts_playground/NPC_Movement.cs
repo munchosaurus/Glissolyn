@@ -10,6 +10,7 @@ public class NPC_Movement : MonoBehaviour
     [SerializeField] private int walkCDLow;
     [SerializeField] private int walkCDHigh;
     [SerializeField] private int maximumDistance;
+    [SerializeField] private bool isEnemy;
     private bool isMoving;
     private Vector3 originalPos, targetPos;
     private Vector3 facing;
@@ -58,6 +59,10 @@ public class NPC_Movement : MonoBehaviour
                     StartCoroutine(Move(direction));
                     gridClaimer.transform.parent = null;
                     gridClaimer.transform.position = transform.position + direction;
+                    if (isEnemy)
+                    {
+                        transform.Find("Rotation_direction").transform.position = gridClaimer.transform.position;
+                    }
                     
                     walkCooldown = Random.Range(walkCDLow, walkCDHigh);
                     walkTimer = 0;
@@ -171,5 +176,10 @@ public class NPC_Movement : MonoBehaviour
         {
             AnimateMovement(facing);
         }
+    }
+
+    public bool IsEnemy()
+    {
+        return isEnemy;
     }
 }
