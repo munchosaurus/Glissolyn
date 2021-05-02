@@ -85562,7 +85562,8 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 21300000, guid: 85957e6fa91110348a94a9bd23d05dd5, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4404693014683625834, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
 --- !u!114 &4603656982275812149
 MonoBehaviour:
