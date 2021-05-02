@@ -73,9 +73,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 413725789
+  m_SortingLayer: -2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.990566, b: 0.1492654, a: 1}
   m_FlipX: 0
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9169936492895367108}
   - component: {fileID: 1142629400789804177}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Grid Claimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

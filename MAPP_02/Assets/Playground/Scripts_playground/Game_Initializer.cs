@@ -11,12 +11,13 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject worldInterface;
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
+    [SerializeField] private List<NPC_Info> NPCs;
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Game_Controller.SetDialogueBox(theDialogueBox);
         Game_Controller.SetQuestLog(theQuestLog);
@@ -30,5 +31,9 @@ public class Game_Initializer : MonoBehaviour
         thePlayerInfo.SetHealth(playerStartingHealth);
         thePlayerInfo.SetName(Game_Controller.GetPlayerName());
         characterScreen.Initialize();
+        foreach(NPC_Info npc in NPCs)
+        {
+            npc.SetupDialogue();
+        }
     }
 }

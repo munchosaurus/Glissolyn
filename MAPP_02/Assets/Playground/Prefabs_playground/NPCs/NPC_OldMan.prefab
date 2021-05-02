@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &516937589229943047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3991708252437331418}
+  m_Layer: 9
+  m_Name: Grid Claimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3991708252437331418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516937589229943047}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2906143270388346269}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2906143270388346260
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +45,7 @@ GameObject:
   - component: {fileID: 2906143270388346257}
   - component: {fileID: 2906143270388346262}
   - component: {fileID: 2906143270388346263}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC_OldMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +62,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.53, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3991708252437331418}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,8 +123,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 413725789
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -765944837711664791, guid: 327fe8c9bf617644b912e77fb2efa271, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -151,7 +182,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2906143270388346262
 MonoBehaviour:
@@ -167,13 +198,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcAnimator: {fileID: 2906143270388346258}
   timeToMove: 0.75
-  gridClaimer: {fileID: 0}
+  gridClaimer: {fileID: 516937589229943047}
   walkCDLow: 2
   walkCDHigh: 6
   maximumDistance: 5
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 392
 --- !u!114 &2906143270388346263
 MonoBehaviour:
   m_ObjectHideFlags: 0
