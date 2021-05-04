@@ -7,10 +7,11 @@ public class Player_Info : Character_Info
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
 
+    private int maxHealth;
     private int health;
-    /*private int strength;
+    private int strength;
     private int agility;
-    private int intelligence;*/
+    private int intelligence;
 
     private int playerLevel; 
     private int statPoints;
@@ -53,6 +54,36 @@ public class Player_Info : Character_Info
         return health;
     }
 
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public void ModifyMaxHealthAdd(int amount)
+    {
+        maxHealth += amount;
+    }
+
+    public void ModifyMaxHealthMultiply(int amount)
+    {
+        maxHealth *= amount;
+    }
+
+    public int GetStrength()
+    {
+        return strength;
+    }
+
+    public int GetAgility()
+    {
+        return agility;
+    }
+
+    public int GetIntelligence()
+    {
+        return intelligence;
+    }
+
     public int GetStatPoints()
     {
         return statPoints;
@@ -83,12 +114,51 @@ public class Player_Info : Character_Info
     {
         this.health = health;
     }
+    
+    public void SetMaxHealth(int maxHealth)
+    {
+        this.maxHealth = maxHealth;
+    }
+
+    public void SetStrength(int strength)
+    {
+        this.strength = strength;
+    }
+
+    public void ModifyStrength(int amount)
+    {
+        strength += amount;
+    }
+
+    public void SetAgility(int agility)
+    {
+        this.agility = agility;
+    }
+
+    public void ModifyAgility(int amount)
+    {
+        agility += amount;
+    }
+
+    public void SetIntelligence(int intelligence)
+    {
+        this.intelligence = intelligence;
+    }
+
+    public void ModifyIntelligence(int amount)
+    {
+        intelligence += amount;
+    }
 
     public void SetExperience(int amount)
     {
         experience = amount;
     }
     
+    public void SetStatPoints(int amount)
+    {
+        statPoints = amount;
+    }
 
     public void ModifyExperience(int amount)
     {

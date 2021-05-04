@@ -9,13 +9,7 @@ public class Move
         set;
     }
 
-    public int PP {
-        get;
-        set;
-    }
-
     public Move(MoveBase _base) {
         Base = _base;
-        PP = _base.GetPP();
     }
 }

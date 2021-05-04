@@ -15,6 +15,5 @@ MonoBehaviour:
   name: Fireball
   description: 
   type: 4
+  statType: 2
   power: 9
-  accuracy: 1
-  PP: 5

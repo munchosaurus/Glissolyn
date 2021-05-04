@@ -30,13 +30,13 @@ public class Character_Screen : MonoBehaviour
     private void UpdateValues()
     {
         Player_Info thePlayerInfo = Game_Controller.GetPlayerInfo();
-        strengthValue.text = thePlayerInfo.GetBase().GetStrength().ToString();
-        agilityValue.text = thePlayerInfo.GetBase().GetAgility().ToString();
-        intelligenceValue.text = thePlayerInfo.GetBase().GetIntelligence().ToString();
+        strengthValue.text = thePlayerInfo.GetStrength().ToString();
+        agilityValue.text = thePlayerInfo.GetAgility().ToString();
+        intelligenceValue.text = thePlayerInfo.GetIntelligence().ToString();
         statPointsValue.text = thePlayerInfo.GetStatPoints().ToString();
-        healthBar.value = thePlayerInfo.GetHealth()/thePlayerInfo.GetBase().GetMaxHP();
-        healthBarValue.text = thePlayerInfo.GetHealth().ToString() + "/" + thePlayerInfo.GetBase().GetMaxHP().ToString();
-        experienceBar.value = thePlayerInfo.GetExperience()/thePlayerInfo.GetNextLevelExperience();
+        healthBar.value = (float) thePlayerInfo.GetHealth()/thePlayerInfo.GetMaxHealth();
+        healthBarValue.text = thePlayerInfo.GetHealth().ToString() + "/" + thePlayerInfo.GetMaxHealth().ToString();
+        experienceBar.value = (float) thePlayerInfo.GetExperience()/thePlayerInfo.GetNextLevelExperience();
         experienceBarValue.text = thePlayerInfo.GetExperience().ToString() + "/" + thePlayerInfo.GetNextLevelExperience().ToString();
         playerLevelText.text = "Lvl: " + thePlayerInfo.GetPlayerLevel().ToString();
         if (Game_Controller.GetPlayerInfo().GetStatPoints() > 0)
@@ -57,21 +57,21 @@ public class Character_Screen : MonoBehaviour
 
     public void IncreaseStrength()
     {
-        Game_Controller.GetPlayerInfo().GetBase().ModifyStrength(INCREASE_BY_ONE);
+        Game_Controller.GetPlayerInfo().ModifyStrength(INCREASE_BY_ONE);
         Game_Controller.GetPlayerInfo().SpendStatPoint();
         UpdateValues();
     }
 
     public void IncreaseAgility()
     {
-        Game_Controller.GetPlayerInfo().GetBase().ModifyAgility(INCREASE_BY_ONE);
+        Game_Controller.GetPlayerInfo().ModifyAgility(INCREASE_BY_ONE);
         Game_Controller.GetPlayerInfo().SpendStatPoint();
         UpdateValues();
     }
 
     public void IncreaseIntelligence()
     {
-        Game_Controller.GetPlayerInfo().GetBase().ModifyIntelligence(INCREASE_BY_ONE);
+        Game_Controller.GetPlayerInfo().ModifyIntelligence(INCREASE_BY_ONE);
         Game_Controller.GetPlayerInfo().SpendStatPoint();
         UpdateValues();
     }
