@@ -66,8 +66,9 @@ public class BattleSystem : MonoBehaviour
         int damage = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
         yield return dialogBox.TypeDialog($"You used ability: {move.Base.GetName()}.");
-        
-        
+        yield return new WaitForSeconds(1f);
+        yield return dialogBox.TypeDialog($"It deals {damage} damage!");
+
         bool isDead = EnemyUnit.Character.CurrentHP <= 0;
         yield return EnemyHud.UpdateHP();
 
