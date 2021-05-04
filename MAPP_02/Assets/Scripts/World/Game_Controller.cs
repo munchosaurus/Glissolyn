@@ -134,14 +134,4 @@ public static class Game_Controller
     {
         //TODO If-satser för om qcs == <ett QuestClearState> och vad som ska hända i så fall.
     }
-
-    public static string[] InsertPlayerName(string[] s)
-    {
-        for(int i = 0; i < s.Length; i++)
-        {
-            s[i] = s[i].Replace("{playerName}", playerName);
-        }
-
-        return s;
-    }
 }

@@ -11,7 +11,6 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject worldInterface;
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
-    [SerializeField] private List<NPC_Info> NPCs;
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
@@ -34,10 +33,6 @@ public class Game_Initializer : MonoBehaviour
         Combat_Info.Initialize();
         InitializePlayer();
         characterScreen.Initialize();
-        foreach(NPC_Info npc in NPCs)
-        {
-            npc.SetupDialogue();
-        }
     }
 
     private void InitializePlayer()
