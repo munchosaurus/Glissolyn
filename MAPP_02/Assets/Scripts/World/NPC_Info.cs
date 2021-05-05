@@ -4,6 +4,7 @@ public class NPC_Info : Character_Info
 {
     [SerializeField] protected Sprite npcDialogueSprite;
     [TextArea] [SerializeField] protected string[] dialogue;
+    [TextArea] [SerializeField] protected string[][] alternativeDialogue;
 
     public virtual void Interact()
     {
@@ -22,5 +23,10 @@ public class NPC_Info : Character_Info
     public Sprite GetDialogueSprite()
     {
         return npcDialogueSprite;
+    }
+
+    public void ChangeDialogue(int index) 
+    {
+        dialogue = alternativeDialogue[index];
     }
 }
