@@ -5,11 +5,6 @@ using UnityEngine;
 public class NPC_QuestGiver_Info : NPC_Info
 {
     [SerializeField] private Quest questToGive;
-    [TextArea] [SerializeField] private string[] questActiveDialogue;
-    [TextArea] [SerializeField] private string[] questCompletionDialogue;
-    [TextArea] [SerializeField] private string[] questCompletedDialogue;
-
-    private bool questIsCompleted;
 
     private void Start()
     {
@@ -19,9 +14,9 @@ public class NPC_QuestGiver_Info : NPC_Info
     override
     public void Interact()
     {
-        if (questIsCompleted)
+        if (questToGive.IsCompleted())
         {
-            dialogue = questCompletedDialogue;
+            dialogue = questToGive.GetQuestCompletedDialogue();
         }
         else if (!questToGive.IsCompleted() && !Game_Controller.GetQuestLog().HasQuest(questToGive))
         {
@@ -30,13 +25,19 @@ public class NPC_QuestGiver_Info : NPC_Info
         }
         else if (questToGive.CompleteQuest())
         {
-            dialogue = questCompletionDialogue;
-            questIsCompleted = true;
+            dialogue = questToGive.GetQuestCompletionDialogue();
         }
         else
         {
-            dialogue = questActiveDialogue;
+            dialogue = questToGive.GetQuestActiveDialogue();
         }
+
         base.Interact();
+
+        if (questToGive.IsCompleted() && questToGive.GetNextQuestInChain() != null)
+        {
+            questToGive = questToGive.GetNextQuestInChain();
+            Interact();
+        }
     }
 }

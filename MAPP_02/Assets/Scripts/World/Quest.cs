@@ -7,6 +7,12 @@ public abstract class Quest : ScriptableObject
     [SerializeField] protected int questID;
     [SerializeField] protected int experienceReward;
     [SerializeField] protected QuestClearState questClearState;
+    [SerializeField] protected Quest nextQuestInChain;
+
+    [TextArea] [SerializeField] private string[] questActiveDialogue;
+    [TextArea] [SerializeField] private string[] questCompletionDialogue;
+    [TextArea] [SerializeField] private string[] questCompletedDialogue;
+
     protected bool isCompleted = false;
     protected QuestButton questButton;
     protected string questText;
@@ -68,6 +74,26 @@ public abstract class Quest : ScriptableObject
             Game_Controller.GetPlayerInfo().ModifyExperience(experienceReward);
         }
         return isCompleted;
+    }
+
+    public virtual string[] GetQuestActiveDialogue()
+    {
+        return questActiveDialogue;
+    }
+
+    public virtual string[] GetQuestCompletionDialogue()
+    {
+        return questCompletionDialogue;
+    }
+
+    public virtual string[] GetQuestCompletedDialogue()
+    {
+        return questCompletedDialogue;
+    }
+
+    public virtual Quest GetNextQuestInChain()
+    {
+        return nextQuestInChain;
     }
 
     public abstract QuestType GetQuestType();
