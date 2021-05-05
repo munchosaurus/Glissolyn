@@ -24,7 +24,7 @@ public class QuestLog : MonoBehaviour
     {
         if (activeQuests.ContainsKey(id))
         {
-            Destroy(gameObject.transform.Find(activeQuests[id].GetQuestTitle()));
+            Destroy(activeQuests[id].GetQuestButton().gameObject);
             activeQuests.Remove(id);
         }
     }
