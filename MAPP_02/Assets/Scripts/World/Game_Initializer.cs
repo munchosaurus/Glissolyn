@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Game_Initializer : MonoBehaviour
 {
+    [SerializeField] private DataBase dataBase;
     [SerializeField] private Dialogue_Box theDialogueBox;
     [SerializeField] private QuestLog theQuestLog;
     [SerializeField] private Player_Info thePlayerInfo;
@@ -33,6 +34,7 @@ public class Game_Initializer : MonoBehaviour
         Combat_Info.Initialize();
         InitializePlayer();
         characterScreen.Initialize();
+        dataBase.ResetQuests();
     }
 
     private void InitializePlayer()

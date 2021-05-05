@@ -9,6 +9,7 @@ public abstract class Quest : ScriptableObject
     [SerializeField] protected QuestClearState questClearState;
     [SerializeField] protected Quest nextQuestInChain;
 
+    [TextArea] [SerializeField] private string[] questStartDialogue;
     [TextArea] [SerializeField] private string[] questActiveDialogue;
     [TextArea] [SerializeField] private string[] questCompletionDialogue;
     [TextArea] [SerializeField] private string[] questCompletedDialogue;
@@ -72,8 +73,14 @@ public abstract class Quest : ScriptableObject
         {
             Game_Controller.UpdateWorldToQuestClearState(questClearState);
             Game_Controller.GetPlayerInfo().ModifyExperience(experienceReward);
+            Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
         return isCompleted;
+    }
+
+    public virtual string[] GetQuestStartDialogue()
+    {
+        return questStartDialogue;
     }
 
     public virtual string[] GetQuestActiveDialogue()

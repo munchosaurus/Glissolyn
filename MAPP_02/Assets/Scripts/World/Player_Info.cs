@@ -7,6 +7,8 @@ public class Player_Info : Character_Info
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
 
+    [SerializeField] private bool enterGodMode;
+
     private int maxHealth;
     private int health;
     private int strength;
@@ -18,9 +20,41 @@ public class Player_Info : Character_Info
     private int experience;
     private int nextLevelExperience;
 
+    private void Start()
+    {
+        if (enterGodMode)
+        {
+            strength = 100;
+            agility = 100;
+            intelligence = 100;
+            SetPlayerLevel(100);
+            SetHealth(maxHealth);
+            ModifyExperience(0);
+            SetName("Chuck Norris");
+            Game_Controller.GetCharacterScreen().Initialize();
+        }
+    }
+
     private void SetNextLevelExperience()
     {
         nextLevelExperience = playerLevel * 10;
+    }
+
+    private void LevelUp()
+    {
+        experience -= nextLevelExperience;
+        playerLevel++;
+        statPoints += 3;
+
+        SetNextLevelExperience();
+        if (experience >= nextLevelExperience)
+        {
+            ModifyExperience(0);
+        }
+        else
+        {
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel });
+        }
     }
 
     public void SetName(string name)
@@ -98,6 +132,7 @@ public class Player_Info : Character_Info
     {
         playerLevel = level;
         SetNextLevelExperience();
+        SetMaxHealth(70 + (30 * playerLevel));
     }
 
     public void ReduceHealth(int amount)
@@ -113,6 +148,10 @@ public class Player_Info : Character_Info
     public void SetHealth(int health)
     {
         this.health = health;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
     
     public void SetMaxHealth(int maxHealth)
@@ -162,17 +201,17 @@ public class Player_Info : Character_Info
 
     public void ModifyExperience(int amount)
     {
-        experience += amount;
-        if(experience >= nextLevelExperience)
+        if (playerLevel < 100)
         {
-            playerLevel++;
-            statPoints += 3;
-            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel});
-            SetNextLevelExperience();
-            if(experience >= nextLevelExperience)
+            experience += amount;
+            if (experience >= nextLevelExperience)
             {
-                ModifyExperience(0);
+                LevelUp();
             }
+        }
+        else
+        {
+            experience = nextLevelExperience - 1;
         }
     }
 

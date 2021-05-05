@@ -42203,6 +42203,10 @@ PrefabInstance:
       value: 920
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
+      propertyPath: id
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: name
       value: Augustine I
       objectReference: {fileID: 0}
@@ -46233,17 +46237,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437419179}
   m_CullTransparentMesh: 1
---- !u!114 &438190824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
-  m_PrefabInstance: {fileID: 236577276}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &450558107
 GameObject:
   m_ObjectHideFlags: 0
@@ -46622,6 +46615,10 @@ PrefabInstance:
     - target: {fileID: 5405792326669331803, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
       propertyPath: m_Name
       value: Dutchy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405792326669331805, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
+      propertyPath: id
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5405792326669331805, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
       propertyPath: name
@@ -59368,6 +59365,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
+      propertyPath: id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
       propertyPath: name
       value: Marteus Kings
       objectReference: {fileID: 0}
@@ -59402,17 +59403,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1355876444011128114, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
   m_PrefabInstance: {fileID: 679347295}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &679347297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
-  m_PrefabInstance: {fileID: 679347295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &681735235
 GameObject:
   m_ObjectHideFlags: 0
@@ -69941,6 +69931,10 @@ PrefabInstance:
       value: 920
       objectReference: {fileID: 0}
     - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
+      propertyPath: id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
       propertyPath: name
       value: Old Man STacklind
       objectReference: {fileID: 0}
@@ -70015,17 +70009,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2906143270388346269, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
   m_PrefabInstance: {fileID: 829188398}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &829188400 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2906143270388346263, guid: c5fec86a820235748ba541e998dfb5e2, type: 3}
-  m_PrefabInstance: {fileID: 829188398}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &838465351
 GameObject:
   m_ObjectHideFlags: 0
@@ -71415,17 +71398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184904131}
   m_CullTransparentMesh: 1
---- !u!114 &1191846569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
-  m_PrefabInstance: {fileID: 1457154747}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1194240883
 GameObject:
   m_ObjectHideFlags: 0
@@ -73384,6 +73356,10 @@ PrefabInstance:
     - target: {fileID: 5142961775365821878, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5142961775365821879, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
+      propertyPath: id
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5142961775365821879, guid: 8c1709b325800c34bbce607e1c943f55, type: 3}
       propertyPath: name
@@ -79992,6 +79968,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
+      propertyPath: id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1355876444011128115, guid: f45420a7780e0794bbfe3803fdeb9651, type: 3}
       propertyPath: name
       value: Vain the Pain
       objectReference: {fileID: 0}
@@ -80837,6 +80817,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1859620336195012321, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
   m_PrefabInstance: {fileID: 1326331717}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614914332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1614914334}
+  - component: {fileID: 1614914333}
+  m_Layer: 0
+  m_Name: DataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1614914333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614914332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207b65de1f48ad5468b058ccc9619302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - id: 0
+    quest: {fileID: 11400000, guid: 8de20115f9ae1414f979cb4db07bde91, type: 2}
+  - id: 1
+    quest: {fileID: 11400000, guid: eb4b99d94a2c4034ead25718532970f2, type: 2}
+--- !u!4 &1614914334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614914332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.887775, y: 18.651667, z: -28.085264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1618505709
 GameObject:
   m_ObjectHideFlags: 0
@@ -81106,17 +81134,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664826499}
   m_CullTransparentMesh: 1
---- !u!114 &1667684405 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5405792326669331805, guid: c5776c147ac43c346a15e4f198bd10ad, type: 3}
-  m_PrefabInstance: {fileID: 482485487}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1672859077
 GameObject:
   m_ObjectHideFlags: 0
@@ -83841,21 +83858,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Mrs McDougal
+  id: 0
   npcDialogueSprite: {fileID: 21300000, guid: 833373ab17f84cd4bb5bcdbe49bfdcca, type: 3}
-  dialogue:
-  - Hi there stranger. Can you help me perhaps?
-  - There are zombies roaming the outskirts of this village, they are really scary.
-  - Can you perhaps get rid of them?
+  dialogue: []
   questToGive: {fileID: 11400000, guid: 8de20115f9ae1414f979cb4db07bde91, type: 2}
-  questActiveDialogue:
-  - Have you gotten rid of the zombies yet?
-  questCompletionDialogue:
-  - Have you kill... what is up with all that blood?
-  - ....
-  - "You killed the zombies? I ment maybe you could help them relocate to Malm\xF6.."
-  - Oh anyway, good job. You are my hero, {playerName}!
-  questCompletedDialogue:
-  - Thank you for helping us!
 --- !u!114 &2055390745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84034,6 +84040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b49f127be59ad47b4f6ba0b8306e5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataBase: {fileID: 1614914333}
   theDialogueBox: {fileID: 1338130969}
   theQuestLog: {fileID: 7842800081905593119}
   thePlayerInfo: {fileID: 1991329687}
@@ -84041,13 +84048,6 @@ MonoBehaviour:
   worldInterface: {fileID: 2048904058}
   battleSystem: {fileID: 1723494120}
   characterScreen: {fileID: 723308667}
-  NPCs:
-  - {fileID: 2055390744}
-  - {fileID: 679347297}
-  - {fileID: 829188400}
-  - {fileID: 1667684405}
-  - {fileID: 1191846569}
-  - {fileID: 438190824}
 --- !u!1 &2074496499
 GameObject:
   m_ObjectHideFlags: 0
@@ -84784,6 +84784,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4404693015667309121, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 664
+      objectReference: {fileID: 0}
     - target: {fileID: 4404693015667309122, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -84841,9 +84845,17 @@ PrefabInstance:
       value: Player_playground
       objectReference: {fileID: 0}
     - target: {fileID: 4404693015667309134, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
+      propertyPath: enterGodMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404693015667309134, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 21300000, guid: 85957e6fa91110348a94a9bd23d05dd5, type: 3}
+    - target: {fileID: 4404693015667309135, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4404693014683625834, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 03a702fc8abaf2440a00aa43728d7275, type: 3}
