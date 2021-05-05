@@ -24,11 +24,11 @@ public class BattleHud : MonoBehaviour
         this.character = character;
         nameText.text = character.Base.GetName();
         levelText.text = "Lvl: " + character.Level;
-        hpBar.SetHP((float)character.GetCurrentHP() / character.MaxHP());
+        hpBar.SetHP((float)character.GetCurrentHP() / character.GetMaxHP());
     }
 
     public IEnumerator UpdateHP()
     {
-        yield return hpBar.SmoothHPChange((float) character.GetCurrentHP() / character.MaxHP());
+        yield return hpBar.SmoothHPChange((float) character.GetCurrentHP() / character.GetMaxHP());
     }
 }

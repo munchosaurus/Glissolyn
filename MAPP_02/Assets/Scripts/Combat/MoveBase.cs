@@ -9,10 +9,9 @@ public class MoveBase : ScriptableObject
 
     [TextArea]
     [SerializeField] string description;
-    [SerializeField] CharacterType type;
+    [SerializeField] Type type;
+    [SerializeField] StatType statType;
     [SerializeField] int power;
-    [SerializeField] int accuracy;
-    [SerializeField] int PP;
 
     public string GetName()
     {
@@ -24,7 +23,7 @@ public class MoveBase : ScriptableObject
         return description;
     }
 
-    public new CharacterType GetType()
+    public new Type GetType()
     {
         return type;
     }
@@ -34,15 +33,15 @@ public class MoveBase : ScriptableObject
         return power;
     }
 
-    public int GetAccuracy()
+    public StatType GetStatType()
     {
-        return accuracy;
+        return statType;
     }
+}
 
-    public int GetPP()
-    {
-        return PP;
-    }
-
-
+public enum StatType
+{
+    STRENGTH,
+    AGILITY,
+    INTELLIGENCE
 }
