@@ -6,6 +6,7 @@ public class Player_Info : Character_Info
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
+    [SerializeField]private GameObject spawnPosition;
 
     private int maxHealth;
     private int health;
@@ -59,6 +60,11 @@ public class Player_Info : Character_Info
         return maxHealth;
     }
 
+    public void setSpawnPosition(GameObject spawn)
+    {
+        this.spawnPosition = spawn;
+    }
+
     public void ModifyMaxHealthAdd(int amount)
     {
         maxHealth += amount;
@@ -103,6 +109,10 @@ public class Player_Info : Character_Info
     public void ReduceHealth(int amount)
     {
         health -= amount;
+        if(health <= 0)
+        {
+            gameObject.transform.position = spawnPosition.transform.position;
+        }
     }
 
     public void IncreaseHealth(int amount)
