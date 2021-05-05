@@ -10,7 +10,7 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] public Sprite sprite;
 
-    [SerializeField] List<CharacterType> types;
+    [SerializeField] List<Type> types;
 
     [SerializeField] int maxHP;
     [SerializeField] int strength;
@@ -23,46 +23,6 @@ public class CharacterBase : ScriptableObject
     public void SetName(string name)
     {
         this.name = name;
-    }
-
-    public void SetMaxHP(int maxHP)
-    {
-        this.maxHP = maxHP;
-    }
-
-    public void ModifyMaxHP(int amount)
-    {
-        maxHP += amount;
-    }
-
-    public void SetStrength(int strength)
-    {
-        this.strength = strength;
-    }
-
-    public void ModifyStrength(int amount)
-    {
-        strength += amount;
-    }
-
-    public void SetAgility(int agility)
-    {
-        this.agility = agility;
-    }
-
-    public void ModifyAgility(int amount)
-    {
-        agility += amount;
-    }
-
-    public void SetIntelligence(int intelligence)
-    {
-        this.intelligence = intelligence;
-    }
-
-    public void ModifyIntelligence(int amount)
-    {
-        intelligence += amount;
     }
 
     public string GetName()
@@ -100,7 +60,7 @@ public class CharacterBase : ScriptableObject
         return experienceBase;
     }
 
-    public List<CharacterType> GetTypes() => types;
+    public List<Type> GetTypes() => types;
 
     public List<LearnableMoves> GetLearnableMoves()
     {
@@ -127,7 +87,7 @@ public class LearnableMoves
 }
 
 
-public enum CharacterType
+public enum Type
 {
     None,
     Undead,

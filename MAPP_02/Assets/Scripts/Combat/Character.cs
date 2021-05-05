@@ -1,22 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Character
 {
+    private int strength;
+    private int agility;
+    private int intelligence;
+
     public CharacterBase Base;
     public int Level;
+    public List<Type> weaknesses = new List<Type>();
+    public List<Type> strengths = new List<Type>();
 
     public int CurrentHP;
+    public int maxHP;
     public List<Move> Moves { get; set; }
 
-    //TODO konstruktor tar emot level, före spelare samt fiende
     public Character(CharacterBase Base, int level)
     {
         this.Base = Base;
         Level = level;
+        SetStats();
+        SetMaxHP();
         SetCurrentHP();
-       
+        
         Moves = new List<Move>();
 
         foreach (var move in Base.GetLearnableMoves())
@@ -33,16 +40,81 @@ public class Character
         }
     }
 
-    public int MaxHP()
+    private void SetStats()
     {
-        if (Base.GetTypes().Contains(CharacterType.Player))
+        if (!Base.GetTypes().Contains(Type.Player))
         {
-            return Base.GetMaxHP();
+            strength = Base.GetStrength() * Level;
+            agility = Base.GetAgility() * Level;
+            intelligence = Base.GetIntelligence() * Level;
         }
         else
         {
-            return (Base.GetMaxHP() * Level) / 5;
+            strength = Game_Controller.GetPlayerInfo().GetStrength();
+            agility = Game_Controller.GetPlayerInfo().GetAgility();
+            intelligence = Game_Controller.GetPlayerInfo().GetIntelligence();
         }
+    }
+
+    private void GenerateCounters(Type type)
+    {
+        
+        switch (type)
+        {
+            case (Type.Humanoid):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            case (Type.Beast):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            case (Type.Magical):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            case (Type.Monster):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            case (Type.Player):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            case (Type.Undead):
+                weaknesses.Add(Type.None);
+                strengths.Add(Type.None);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private int GetStat(StatType statType)
+    {
+        return statType switch
+        {
+            StatType.STRENGTH => strength,
+            StatType.AGILITY => agility,
+            StatType.INTELLIGENCE => intelligence,
+            _ => 1,
+        };
+    }
+
+    public void SetMaxHP()
+    {
+        if (Base.GetTypes().Contains(Type.Player))
+        {
+            maxHP = Game_Controller.GetPlayerInfo().GetMaxHealth();
+        }
+        else
+        {
+            maxHP = Base.GetMaxHP() + (strength * 5);
+        }
+    }
+    public int GetMaxHP()
+    {
+        return maxHP;
     }
 
     public int GetCurrentHP()
@@ -52,25 +124,24 @@ public class Character
 
     public void SetCurrentHP()
     {
-        if (Base.GetTypes().Contains(CharacterType.Player))
+        if (Base.GetTypes().Contains(Type.Player))
         {
             CurrentHP = Game_Controller.GetPlayerInfo().GetHealth();
         }
         else
         {
-            CurrentHP = MaxHP();
+            CurrentHP = GetMaxHP();
         }
     }
 
-    public bool TakeDamage(Move move, Character attacker)
+    public int TakeDamage(Move move, Character attacker)
     {
-        float modifiers = Random.Range(0.85f, 1f);
-        /*float a = (2 * character.Level + 10) / 250f;
-        float d = a * move.Base.GetPower() * ((float)character.Attack() /Defense())+ 2;*/
-        int damage = Mathf.FloorToInt(move.Base.GetPower() * modifiers);
-
+        float RNGModifier = Random.Range(0.85f, 1f);
+        float typeModifier = weaknesses.Contains(move.Base.GetType()) ? 0.5f : strengths.Contains(move.Base.GetType()) ? 1.5f : 1;
+        int damage = Mathf.FloorToInt((move.Base.GetPower() * attacker.GetStat(move.Base.GetStatType())) * RNGModifier * typeModifier); // Move power * The characer stat for the move * a random number between 0.85 and 1 * 0.5, 1 or 1.5 depending on Type weakness/strength
+        
         CurrentHP -= damage;
-        if (Base.GetTypes().Contains(CharacterType.Player))
+        if (Base.GetTypes().Contains(Type.Player))
         {
             Game_Controller.GetPlayerInfo().ReduceHealth(damage);
         }
@@ -78,9 +149,8 @@ public class Character
         if (GetCurrentHP() <= 0)
         {
             CurrentHP = 0;
-            return true;
         }
-        return false;
+        return damage;
     }
 
     public Move GetRandomMove()

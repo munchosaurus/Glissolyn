@@ -17,10 +17,12 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: aa0e95c222e039341b45a378035ff904, type: 3}
   types: 0400000001000000
   maxHP: 50
-  strength: 1
+  strength: 2
   agility: 1
   intelligence: 1
   experienceBase: 2
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
+  - moveBase: {fileID: 11400000, guid: 7fc2dbad8b9434f41bfc305d355ae2e9, type: 2}
     level: 0
+  - moveBase: {fileID: 11400000, guid: 515fe51c2ad8f7547bab5d2b192ee859, type: 2}
+    level: 5

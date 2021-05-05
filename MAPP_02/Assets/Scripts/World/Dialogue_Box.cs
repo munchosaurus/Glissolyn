@@ -78,6 +78,11 @@ public class Dialogue_Box : MonoBehaviour
 
     private void BuildDialogueText()
     {
-        dialogueText.text = theName + ": " + theDialogue[currentDialoguePart]; // Building a part of the dialogue like this "<Name of the speaker>: <Text>"
+        dialogueText.text = theName + ": " + InsertPlayerName(theDialogue[currentDialoguePart]); // Building a part of the dialogue like this "<Name of the speaker>: <Text>"
+    }
+
+    private string InsertPlayerName(string s)
+    {
+        return s.Replace("{playerName}", Game_Controller.GetPlayerName());
     }
 }

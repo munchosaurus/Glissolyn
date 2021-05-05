@@ -14,11 +14,6 @@ public class NPC_Info : Character_Info
         Game_Controller.GetDialogueBox().UpdateDialogue(this);
     }
 
-    public void SetupDialogue()
-    {
-        Game_Controller.InsertPlayerName(dialogue);
-    }
-
     public string[] GetDialogue()
     {
         return dialogue;
