@@ -63,12 +63,13 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(true);
 
         var move = PlayerUnit.Character.Moves[index];
-        EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        int damage = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
-        yield return dialogBox.TypeDialog($" You used ability: {move.Base.GetName()}");
-        yield return new WaitForSeconds(1.3f);
+        yield return dialogBox.TypeDialog($"You used ability: {move.Base.GetName()}.");
+        yield return new WaitForSeconds(1f);
+        yield return dialogBox.TypeDialog($"It deals {damage} damage!");
 
-        bool isDead = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        bool isDead = EnemyUnit.Character.CurrentHP <= 0;
         yield return EnemyHud.UpdateHP();
 
         if (isDead)
@@ -86,12 +87,13 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator EnemyMove()
     {
         var move = EnemyUnit.Character.GetRandomMove();
-        PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
+        int damage = PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
-        yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}");
-        yield return new WaitForSeconds(1.3f);
+        yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}.");
+        yield return new WaitForSeconds(1f);
+        yield return dialogBox.TypeDialog($"It deals {damage} damage!");
 
-        bool isDead = PlayerUnit.Character.TakeDamage(move, PlayerUnit.Character);
+        bool isDead = PlayerUnit.Character.CurrentHP <= 0;
         yield return PlayerHud.UpdateHP();
 
         if (isDead)
