@@ -46913,6 +46913,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8842686322438061489, guid: bf9b265aaedd502428c81eace97fdc90, type: 3}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
+      objectReference: {fileID: 0}
     - target: {fileID: 3856926645240638367, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.7320822
@@ -69234,6 +69242,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie Prefab (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
 --- !u!1 &723308663
@@ -71988,6 +72004,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie Prefab (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856926645240638366, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
 --- !u!1 &1297621007
@@ -72401,6 +72425,14 @@ PrefabInstance:
     - target: {fileID: 1859620336195012332, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
       propertyPath: m_Name
       value: Zombie Moving Prefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859620336195012335, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859620336195012335, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
       objectReference: {fileID: 0}
     - target: {fileID: 3190866919450253366, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
       propertyPath: walkCDLow
@@ -80040,6 +80072,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 953132563}
     m_Modifications:
+    - target: {fileID: 5950189865246363760, guid: 3ecfac959eb8ff84d886b0ef9d3a8ad2, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950189865246363760, guid: 3ecfac959eb8ff84d886b0ef9d3a8ad2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
+      objectReference: {fileID: 0}
     - target: {fileID: 5950189865246363763, guid: 3ecfac959eb8ff84d886b0ef9d3a8ad2, type: 3}
       propertyPath: m_Name
       value: Bear Moving Prefab
@@ -85000,6 +85040,14 @@ PrefabInstance:
     - target: {fileID: 1859620336195012332, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
       propertyPath: m_Name
       value: Zombie Moving Prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859620336195012335, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1859620336195012335, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 413725789
       objectReference: {fileID: 0}
     - target: {fileID: 3190866919450253366, guid: ee6728c58c9d03342abad661fc279e1c, type: 3}
       propertyPath: walkCDLow
