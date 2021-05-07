@@ -6,6 +6,7 @@ public class Player_Info : Character_Info
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
+    [SerializeField] private Vector2 startPos;
 
     [SerializeField] private bool enterGodMode;
 
@@ -19,6 +20,8 @@ public class Player_Info : Character_Info
     private int statPoints;
     private int experience;
     private int nextLevelExperience;
+
+    private Vector2 respawnPos;
 
     private void Start()
     {
@@ -231,5 +234,19 @@ public class Player_Info : Character_Info
         {
             Game_Controller.GetDialogueBox().NextDialoguePart();
         }
+    }
+
+    public Vector2 GetRespawnPos()
+    {
+        if(respawnPos == null)
+        {
+            return startPos;
+        }
+        return respawnPos;
+    }
+
+    public void GetRespawnPos(Vector2 newPos)
+    {
+        respawnPos = newPos;
     }
 }

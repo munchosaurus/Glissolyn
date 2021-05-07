@@ -12,6 +12,8 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud EnemyHud;
     [SerializeField] BattleDialogBox dialogBox;
 
+    private Player_Info thePlayerInfo;
+
     public void StartCombat()
     {
         dialogBox.SetDialog("");
@@ -100,7 +102,7 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"The {PlayerUnit.Character.Base.GetName()} died.");
             yield return new WaitForSeconds(2f);
-            EndBattle(true);
+            EndBattle(false);
         }
         else
         {
@@ -109,14 +111,18 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void EndBattle(bool IsBattleOver)
+    void EndBattle(bool PlayerWin)
     {
-        if (IsBattleOver)
+        if (PlayerWin) 
         {
             Combat_Info.PlayerWins();
-            //TODO Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
             EnemyUnit.Character.SetCurrentHP();
+        } else {
+            Combat_Info.EnemyWins();
+            Game_Controller.ToggleCombatState(false);
+            PlayerUnit.Character.CurrentHP = PlayerUnit.Character.GetMaxHP();
+            transform.position = thePlayerInfo.GetRespawnPos();
         }
     }
 
