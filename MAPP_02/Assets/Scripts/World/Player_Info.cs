@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player_Info : Character_Info
@@ -6,9 +7,10 @@ public class Player_Info : Character_Info
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
-    [SerializeField] private Vector2 startPos;
+    [SerializeField] private GameObject startPos;
 
     [SerializeField] private bool enterGodMode;
+    [SerializeField] private bool enterWeakassMode;
 
     private int maxHealth;
     private int health;
@@ -21,7 +23,7 @@ public class Player_Info : Character_Info
     private int experience;
     private int nextLevelExperience;
 
-    private Vector2 respawnPos;
+    private Vector3 respawnPos;
 
     private void Start()
     {
@@ -36,6 +38,19 @@ public class Player_Info : Character_Info
             SetName("Chuck Norris");
             Game_Controller.GetCharacterScreen().Initialize();
         }
+
+        if (enterWeakassMode)
+        {
+            strength = 1;
+            agility = 1;
+            intelligence = 1;
+            SetPlayerLevel(1);
+            SetHealth(5);
+            ModifyExperience(0);
+            SetName("Chuck Norris");
+            Game_Controller.GetCharacterScreen().Initialize();
+        }
+        transform.position = GetRespawnPos();
     }
 
     private void SetNextLevelExperience()
@@ -236,16 +251,19 @@ public class Player_Info : Character_Info
         }
     }
 
-    public Vector2 GetRespawnPos()
+    public Vector3 GetRespawnPos()
     {
-        if(respawnPos == null)
+        
+        if (respawnPos.Equals(new Vector3(0,0,0)))
         {
-            return startPos;
+            return startPos.transform.position;
+        } else
+        {
+            return respawnPos;
         }
-        return respawnPos;
     }
-
-    public void GetRespawnPos(Vector2 newPos)
+    
+    public void SetRespawnPos(Vector3 newPos)
     {
         respawnPos = newPos;
     }

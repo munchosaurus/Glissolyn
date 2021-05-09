@@ -13,6 +13,13 @@ public class NPC_Info : Character_Info
             npcmove.TurnToPlayer(GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().GetFacing());
         }
         Game_Controller.GetDialogueBox().UpdateDialogue(this);
+
+        if (CompareTag("Respawn"))
+        {
+            Vector3 temp = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-1, gameObject.transform.position.z);
+   
+            Game_Controller.GetPlayerInfo().SetRespawnPos(temp);
+        }
     }
 
     public string[] GetDialogue()

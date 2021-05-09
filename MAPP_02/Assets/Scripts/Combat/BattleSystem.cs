@@ -12,7 +12,13 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud EnemyHud;
     [SerializeField] BattleDialogBox dialogBox;
 
-    private Player_Info thePlayerInfo;
+    GameObject Player;
+
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("Player");
+    }
+
 
     public void StartCombat()
     {
@@ -118,11 +124,12 @@ public class BattleSystem : MonoBehaviour
             Combat_Info.PlayerWins();
             Game_Controller.ToggleCombatState(false);
             EnemyUnit.Character.SetCurrentHP();
-        } else {
+        } else if (PlayerWin == false){
             Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
-            PlayerUnit.Character.CurrentHP = PlayerUnit.Character.GetMaxHP();
-            transform.position = thePlayerInfo.GetRespawnPos();
+            Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
+            Vector3 temp = Game_Controller.GetPlayerInfo().GetRespawnPos();
+            Player.transform.position = temp;
         }
     }
 
