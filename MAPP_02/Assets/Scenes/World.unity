@@ -72629,6 +72629,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342987526}
   m_CullTransparentMesh: 1
+--- !u!95 &1358218791 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 147515021138095444, guid: ffd4239f2c856da418daec9a0fb1df1b, type: 3}
+  m_PrefabInstance: {fileID: 147515020722208731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1381521738
 GameObject:
   m_ObjectHideFlags: 0
@@ -83746,7 +83751,7 @@ MonoBehaviour:
   playerSprite: {fileID: 21300000, guid: 85957e6fa91110348a94a9bd23d05dd5, type: 3}
   startPos: {fileID: 2014491801}
   enterGodMode: 0
-  enterWeakassMode: 1
+  enterWeakassMode: 0
 --- !u!95 &1991329691
 Animator:
   serializedVersion: 3
@@ -84918,10 +84923,10 @@ PrefabInstance:
     - target: {fileID: 147515021138095441, guid: ffd4239f2c856da418daec9a0fb1df1b, type: 3}
       propertyPath: npcAnimator
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1358218791}
     - target: {fileID: 147515021138095441, guid: ffd4239f2c856da418daec9a0fb1df1b, type: 3}
       propertyPath: maximumDistance
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 147515021138095442, guid: ffd4239f2c856da418daec9a0fb1df1b, type: 3}
       propertyPath: m_RootOrder

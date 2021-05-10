@@ -124,7 +124,7 @@ public class BattleSystem : MonoBehaviour
             Combat_Info.PlayerWins();
             Game_Controller.ToggleCombatState(false);
             EnemyUnit.Character.SetCurrentHP();
-        } else if (PlayerWin == false){
+        } else {
             Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
             Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
