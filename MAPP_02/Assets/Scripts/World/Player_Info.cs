@@ -60,9 +60,11 @@ public class Player_Info : Character_Info
         return maxHealth;
     }
 
-    public void setSpawnPosition(GameObject spawn)
+    public void SetSpawnPosition(GameObject spawn)
     {
+        print("oii");
         this.spawnPosition = spawn;
+        
     }
 
     public void ModifyMaxHealthAdd(int amount)

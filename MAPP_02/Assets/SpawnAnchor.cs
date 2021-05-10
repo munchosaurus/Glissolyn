@@ -12,8 +12,8 @@ public class SpawnAnchor : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print("oii");
-            gameObject.GetComponent<Player_Info>().setSpawnPosition(spawner);
+            //print("oii");
+            collision.GetComponent<Player_Info>().SetSpawnPosition(spawner);
         }
     }
 

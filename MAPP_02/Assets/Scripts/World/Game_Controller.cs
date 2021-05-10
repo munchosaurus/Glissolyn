@@ -101,6 +101,7 @@ public static class Game_Controller
     {
         worldInterface.SetActive(!toggle);
         battleSystem.SetActive(toggle);
+        
 
         isCombatActive = toggle;
     }
