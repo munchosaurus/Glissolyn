@@ -46859,11 +46859,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3856926645240638352, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 3856926645240638352, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3856926645240638352, guid: cc9632b402d8a194cb9317e06b45a06f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -72460,6 +72460,7 @@ GameObject:
   - component: {fileID: 1335048504}
   - component: {fileID: 1335048503}
   - component: {fileID: 1335048505}
+  - component: {fileID: 1335048506}
   m_Layer: 5
   m_Name: EnemyUnit
   m_TagString: Untagged
@@ -72483,7 +72484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -660, y: 100}
+  m_AnchoredPosition: {x: -880, y: 100}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1335048503
@@ -72536,6 +72537,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2f38c89e8ae064095d3bed1feb1b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lerp: {fileID: 1335048506}
+--- !u!114 &1335048506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335048501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44979d587da3c142a12e50aeff1ebee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStartedLerping: 0
+  lerpTime: 0.4
+  startPos: {x: 160, y: 380, z: 0}
+  endPos: {x: 260, y: 380, z: 0}
 --- !u!114 &1338130969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80391,6 +80409,7 @@ GameObject:
   - component: {fileID: 1557096980}
   - component: {fileID: 1557096979}
   - component: {fileID: 1557096981}
+  - component: {fileID: 1557096982}
   m_Layer: 5
   m_Name: PlayerUnit
   m_TagString: Untagged
@@ -80414,7 +80433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 660, y: 100}
+  m_AnchoredPosition: {x: 880, y: 100}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1557096979
@@ -80467,6 +80486,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2f38c89e8ae064095d3bed1feb1b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lerp: {fileID: 1557096982}
+--- !u!114 &1557096982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557096977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44979d587da3c142a12e50aeff1ebee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStartedLerping: 0
+  lerpTime: 0.4
+  startPos: {x: 1100, y: 380, z: 0}
+  endPos: {x: 1000, y: 380, z: 0}
 --- !u!1 &1566424746
 GameObject:
   m_ObjectHideFlags: 0
