@@ -29,4 +29,4 @@ MonoBehaviour:
   questCompletedDialogue:
   - 'Thank you so much for helping! '
   amountToKill: 1
-  enemyToKill: {fileID: 11400000, guid: f6d1ad9e0187c0b4aa51195e9c74c8b8, type: 2}
+  enemyToKill: {fileID: 11400000, guid: 298166fffd6791441a15e527487442eb, type: 2}
