@@ -63974,92 +63974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681735235}
   m_CullTransparentMesh: 1
---- !u!1001 &684311371
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2128756535}
-    m_Modifications:
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: name
-      value: Mom
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: dialogue.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: dialogue.Array.data[0]
-      value: Good morning son!
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: dialogue.Array.data[1]
-      value: I recieved word from Old man Sherman in Wakefield that he had something
-        important to tell you
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: dialogue.Array.data[2]
-      value: Now, head through the forest glade and meet him in the village
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422362, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: dialogue.Array.data[3]
-      value: Just.. remember.. please be careful
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422363, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_Name
-      value: Mom
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -60.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6058653314179422437, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-      propertyPath: maximumDistance
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
 --- !u!1 &686319734
 GameObject:
   m_ObjectHideFlags: 0
@@ -85660,11 +85574,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618505709}
   m_CullTransparentMesh: 1
---- !u!4 &1641091375 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6058653314179422432, guid: 37ea38160086fc7459faeecf60fc8f81, type: 3}
-  m_PrefabInstance: {fileID: 684311371}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1661822264
 GameObject:
   m_ObjectHideFlags: 0
@@ -89382,8 +89291,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1641091375}
+  m_Children: []
   m_Father: {fileID: 1240402801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
