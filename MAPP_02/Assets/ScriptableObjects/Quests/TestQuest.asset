@@ -10,12 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aab85dddf9563f24499eac71029dfdb6, type: 3}
-  m_Name: McDougal's Zombies
+  m_Name: TestQuest
   m_EditorClassIdentifier: 
-  questTitle: McDougal's Zombies
-  questDescription: Mrs McDougal wants you to Kill a Zombie.
-  questID: 0
+  questTitle: This is a test
+  questDescription: Test description
+  questID: 1
   experienceReward: 10
   questClearState: 0
-  amountToKill: 5
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - Now go do a test quest!
+  questActiveDialogue:
+  - You have the test quest.
+  questCompletionDialogue:
+  - You completed the test quest.
+  questCompletedDialogue:
+  - You have completed the test quest.
+  amountToKill: 1
   enemyToKill: {fileID: 11400000, guid: f6d1ad9e0187c0b4aa51195e9c74c8b8, type: 2}

@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Player_Info : Character_Info
@@ -6,7 +7,10 @@ public class Player_Info : Character_Info
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
-    [SerializeField]private GameObject spawnPosition;
+    [SerializeField] private GameObject startPos;
+
+    [SerializeField] private bool enterGodMode;
+    [SerializeField] private bool enterWeakassMode;
 
     private int maxHealth;
     private int health;
@@ -19,9 +23,56 @@ public class Player_Info : Character_Info
     private int experience;
     private int nextLevelExperience;
 
+    private Vector3 respawnPos;
+
+    private void Start()
+    {
+        if (enterGodMode)
+        {
+            strength = 100;
+            agility = 100;
+            intelligence = 100;
+            SetPlayerLevel(100);
+            SetHealth(maxHealth);
+            ModifyExperience(0);
+            SetName("Chuck Norris");
+            Game_Controller.GetCharacterScreen().Initialize();
+        }
+
+        if (enterWeakassMode)
+        {
+            strength = 1;
+            agility = 1;
+            intelligence = 1;
+            SetPlayerLevel(1);
+            SetHealth(5);
+            ModifyExperience(0);
+            SetName("Chuck Norris");
+            Game_Controller.GetCharacterScreen().Initialize();
+        }
+        transform.position = GetRespawnPos();
+    }
+
     private void SetNextLevelExperience()
     {
         nextLevelExperience = playerLevel * 10;
+    }
+
+    private void LevelUp()
+    {
+        experience -= nextLevelExperience;
+        playerLevel++;
+        statPoints += 3;
+
+        SetNextLevelExperience();
+        if (experience >= nextLevelExperience)
+        {
+            ModifyExperience(0);
+        }
+        else
+        {
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel });
+        }
     }
 
     public void SetName(string name)
@@ -58,13 +109,6 @@ public class Player_Info : Character_Info
     public int GetMaxHealth()
     {
         return maxHealth;
-    }
-
-    public void SetSpawnPosition(GameObject spawn)
-    {
-        print("oii");
-        this.spawnPosition = spawn;
-        
     }
 
     public void ModifyMaxHealthAdd(int amount)
@@ -106,15 +150,12 @@ public class Player_Info : Character_Info
     {
         playerLevel = level;
         SetNextLevelExperience();
+        SetMaxHealth(70 + (30 * playerLevel));
     }
 
     public void ReduceHealth(int amount)
     {
         health -= amount;
-        if(health <= 0)
-        {
-            gameObject.transform.position = spawnPosition.transform.position;
-        }
     }
 
     public void IncreaseHealth(int amount)
@@ -125,6 +166,10 @@ public class Player_Info : Character_Info
     public void SetHealth(int health)
     {
         this.health = health;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
     }
     
     public void SetMaxHealth(int maxHealth)
@@ -174,17 +219,17 @@ public class Player_Info : Character_Info
 
     public void ModifyExperience(int amount)
     {
-        experience += amount;
-        if(experience >= nextLevelExperience)
+        if (playerLevel < 100)
         {
-            playerLevel++;
-            statPoints += 3;
-            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel});
-            SetNextLevelExperience();
-            if(experience >= nextLevelExperience)
+            experience += amount;
+            if (experience >= nextLevelExperience)
             {
-                ModifyExperience(0);
+                LevelUp();
             }
+        }
+        else
+        {
+            experience = nextLevelExperience - 1;
         }
     }
 
@@ -200,16 +245,26 @@ public class Player_Info : Character_Info
         {
             interactable.GetComponent<NPC_Info>().Interact();
         }
-        else if(interactable!= null && !Game_Controller.IsGamePaused() && Game_Controller.IsCombatActive())
-        {
-            interactable.GetComponent<NPC_Info>().Interact();
-            Game_Controller.RunTransition();
-           
-        }
-
         else
         {
             Game_Controller.GetDialogueBox().NextDialoguePart();
         }
+    }
+
+    public Vector3 GetRespawnPos()
+    {
+        
+        if (respawnPos.Equals(new Vector3(0,0,0)))
+        {
+            return startPos.transform.position;
+        } else
+        {
+            return respawnPos;
+        }
+    }
+    
+    public void SetRespawnPos(Vector3 newPos)
+    {
+        respawnPos = newPos;
     }
 }
