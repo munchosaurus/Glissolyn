@@ -200,6 +200,13 @@ public class Player_Info : Character_Info
         {
             interactable.GetComponent<NPC_Info>().Interact();
         }
+        else if(interactable!= null && !Game_Controller.IsGamePaused() && Game_Controller.IsCombatActive())
+        {
+            interactable.GetComponent<NPC_Info>().Interact();
+            Game_Controller.RunTransition();
+           
+        }
+
         else
         {
             Game_Controller.GetDialogueBox().NextDialoguePart();

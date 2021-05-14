@@ -16,6 +16,7 @@ public static class Game_Controller
     private static Character_Screen characterScreen;
     private static GameObject worldInterface;
     private static GameObject battleSystem;
+    private static GameObject transition;
 
     private static string playerName;
 
@@ -49,6 +50,11 @@ public static class Game_Controller
         battleSystem = bs;
     }
 
+    public static void SetTransition(GameObject t)
+    {
+        transition = t;
+    }
+
     public static void SetCharacterScreen(Character_Screen cs)
     {
         characterScreen = cs;
@@ -72,6 +78,11 @@ public static class Game_Controller
     public static Menu GetMenu()
     {
         return theMenu;
+    }
+
+    public static void RunTransition()
+    {
+        transition.GetComponent<Transition>().RunTransition();
     }
 
     public static Character_Screen GetCharacterScreen()
@@ -104,6 +115,8 @@ public static class Game_Controller
         
 
         isCombatActive = toggle;
+
+        
     }
 
     public static bool IsCombatActive()
