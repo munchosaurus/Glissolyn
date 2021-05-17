@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aab85dddf9563f24499eac71029dfdb6, type: 3}
-  m_Name: McDougal's Dinner
+  m_Name: McDougal's Stew
   m_EditorClassIdentifier: 
-  questTitle: McDougal's Dinner
-  questDescription: Mrs McDougal wants you to kill a bear.
+  questTitle: McDougal's Stew
+  questDescription: Mrs McDougal wants you to kill two bears.
   questID: 0
   experienceReward: 10
   questClearState: 0
-  nextQuestInChain: {fileID: 11400000, guid: eb4b99d94a2c4034ead25718532970f2, type: 2}
+  nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - Hi there stranger. Can you help me perhaps?
   - I need bear meat for the stew im making.
-  - Can you perhaps kill one for me?
+  - Can you perhaps kill two bears for me and bring me the meat back?
   questActiveDialogue:
-  - Did you manage to kill a bear yet?
+  - Did you manage to kill the bears yet?
   questCompletionDialogue:
   - 'Thank you! My husband loves Bear Stew! '
   questCompletedDialogue:
   - 'Thank you so much for helping! '
-  amountToKill: 1
-  enemyToKill: {fileID: 11400000, guid: f6d1ad9e0187c0b4aa51195e9c74c8b8, type: 2}
+  amountToKill: 2
+  enemyToKill: {fileID: 11400000, guid: 298166fffd6791441a15e527487442eb, type: 2}

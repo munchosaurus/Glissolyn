@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e12393470cedb84985ee24bbbad45f1, type: 3}
   m_Name: Bite
   m_EditorClassIdentifier: 
-  name: 
+  name: Bite
   description: 
   type: 3
   statType: 0
