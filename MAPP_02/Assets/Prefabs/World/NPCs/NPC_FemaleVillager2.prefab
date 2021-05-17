@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Female2
   id: 0
-  npcDialogueSprite: {fileID: 21300000, guid: 833373ab17f84cd4bb5bcdbe49bfdcca, type: 3}
+  npcDialogueSprite: {fileID: 21300000, guid: 306e61fcd43559e498b991b03e7f9979, type: 3}
   dialogue:
   - Hi there!
   - My name is Simon the Dev, welcome to this demo version of Glissolyn.
