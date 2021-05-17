@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Quest", menuName = "Quest/Create new Interaction quest")]
@@ -14,6 +14,22 @@ public class Quest_InteractionQuest : Quest
         hasBeenInteractedWith = false;
         objectiveText = "";
         base.Init();
+    }
+
+    override
+    public void Init(int[] loadValues)
+    {
+        hasBeenInteractedWith = loadValues[2] == 1;
+        BuildQuestText();
+        base.Init(loadValues);
+    }
+
+    override
+    public int[] GetSaveValues()
+    {
+        saveValues = new int[3];
+        saveValues[2] = hasBeenInteractedWith ? 1 : 0;
+        return base.GetSaveValues();
     }
 
     override
@@ -35,6 +51,11 @@ public class Quest_InteractionQuest : Quest
             objectiveText = "You have interacted with " + objectToInteractWith;
         }
         questText = questDescription + "\n\n" + objectiveText;
+    }
+
+    public bool HasBeenInteractedWith()
+    {
+        return hasBeenInteractedWith;
     }
 
     override

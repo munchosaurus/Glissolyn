@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour
 
     public void SaveGameClick()
     {
-        // TODO
+        Game_Controller.GetDataBase().SaveGame();
     }
 
     public void SettingsClick()

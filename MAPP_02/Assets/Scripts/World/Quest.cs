@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Quest : ScriptableObject
@@ -17,10 +18,29 @@ public abstract class Quest : ScriptableObject
     protected bool isCompleted = false;
     protected QuestButton questButton;
     protected string questText;
+    protected int[] saveValues;
 
     public virtual void Init()
     {
         isCompleted = false;
+    }
+
+    public virtual void Init(int[] loadValues)
+    {
+        if (loadValues[0] == 1)
+        {
+            Game_Controller.GetQuestLog().AddQuest(this);
+            Debug.Log("Added quest: " + questTitle);
+        }
+        isCompleted = loadValues[1] == 1;
+    }
+
+    public virtual int[] GetSaveValues()
+    {
+        saveValues[0] = Game_Controller.GetQuestLog().HasQuest(this) ? 1 : 0;
+        saveValues[1] =  isCompleted ? 1 : 0;
+
+        return saveValues;
     }
 
     // Return the questTitle-string

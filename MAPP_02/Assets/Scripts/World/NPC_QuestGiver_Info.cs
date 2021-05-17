@@ -8,7 +8,7 @@ public class NPC_QuestGiver_Info : NPC_Info
 
     private void Start()
     {
-        questToGive.Init();
+        //questToGive.Init(); TODO
     }
 
     override

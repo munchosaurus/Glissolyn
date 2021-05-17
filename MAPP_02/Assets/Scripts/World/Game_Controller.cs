@@ -9,6 +9,7 @@ public static class Game_Controller
 
     private static bool isGamePaused;
     private static bool isCombatActive;
+    private static bool isLoaded;
     private static Dialogue_Box theDialogueBox;
     private static QuestLog theQuestLog;
     private static Player_Info thePlayerInfo;
@@ -16,6 +17,7 @@ public static class Game_Controller
     private static Character_Screen characterScreen;
     private static GameObject worldInterface;
     private static GameObject battleSystem;
+    private static DataBase dataBase;
 
     private static string playerName;
 
@@ -54,6 +56,11 @@ public static class Game_Controller
         characterScreen = cs;
     }
 
+    public static void SetDataBase(DataBase db)
+    {
+        dataBase = db;
+    }
+
     public static QuestLog GetQuestLog()
     {
         return theQuestLog;
@@ -77,6 +84,11 @@ public static class Game_Controller
     public static Character_Screen GetCharacterScreen()
     {
         return characterScreen;
+    }
+
+    public static DataBase GetDataBase()
+    {
+        return dataBase;
     }
 
     public static void SetPause(bool toggle)
@@ -133,5 +145,15 @@ public static class Game_Controller
     public static void UpdateWorldToQuestClearState(QuestClearState qcs)
     {
         //TODO If-satser för om qcs == <ett QuestClearState> och vad som ska hända i så fall.
+    }
+
+    public static void LoadGame()
+    {
+        isLoaded = true;
+    }
+
+    public static bool IsLoaded()
+    {
+        return isLoaded;
     }
 }

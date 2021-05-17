@@ -31,10 +31,22 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetWorldInterface(worldInterface);
         Game_Controller.SetBattleSystem(battleSystem);
         Game_Controller.SetCharacterScreen(characterScreen);
+        Game_Controller.SetDataBase(dataBase);
+
+        if (Game_Controller.IsLoaded())
+        {
+            print("Game was loaded");
+            dataBase.LoadGame();
+        }
+        else
+        {
+            print("Game was not loaded");
+            dataBase.ResetQuests();
+        }
         Combat_Info.Initialize();
         InitializePlayer();
         characterScreen.Initialize();
-        dataBase.ResetQuests();
+        
     }
 
     private void InitializePlayer()
