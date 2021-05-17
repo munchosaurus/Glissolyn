@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: This is a test
   questDescription: Test description
-  questID: 2
+  questID: 3
   experienceReward: 10
   questClearState: 0
   nextQuestInChain: {fileID: 0}
