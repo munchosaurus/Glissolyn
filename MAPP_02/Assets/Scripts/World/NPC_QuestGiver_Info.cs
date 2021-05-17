@@ -22,7 +22,6 @@ public class NPC_QuestGiver_Info : NPC_Info
         {
             dialogue = questToGive.GetQuestStartDialogue();
             Game_Controller.GetQuestLog().AddQuest(questToGive);
-            Game_Controller.GetQuestLog().SetCurrentOpenQuestButton(questToGive.GetQuestButton());
         }
         else if (questToGive.CompleteQuest())
         {
@@ -32,7 +31,6 @@ public class NPC_QuestGiver_Info : NPC_Info
             {
                 questToGive = questToGive.GetNextQuestInChain();
                 Game_Controller.GetQuestLog().AddQuest(questToGive);
-                Game_Controller.GetQuestLog().SetCurrentOpenQuestButton(questToGive.GetQuestButton());
 
                 var moreDialogue = questToGive.GetQuestStartDialogue();
                 var tempArray = new string[dialogue.Length + moreDialogue.Length];

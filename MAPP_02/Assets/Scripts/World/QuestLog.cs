@@ -18,12 +18,20 @@ public class QuestLog : MonoBehaviour
         activeQuests.Add(quest.GetQuestID(), quest);
         Button theQuestButton = Instantiate(questButtonPrefab, transform.Find("Quest List Area").transform.Find("Viewport").transform.Find("Content")); // Create a new Quest Button prefeb as a child to the "Content"-GameObject under the "Quest List Area"-GameObject.
         theQuestButton.GetComponent<QuestButton>().Initialize(quest); // Add the information from the Quest-object to the "Quest Button"-GameObject.
+        if(currentOpenQuestButton == null)
+        {
+            currentOpenQuestButton = quest.GetQuestButton();
+        }
     }
 
     public void RemoveQuest(int id)
     {
         if (activeQuests.ContainsKey(id))
         {
+            if(currentOpenQuestButton == activeQuests[id].GetQuestButton())
+            {
+                gameObject.transform.Find("Quest Text Area").GetComponentInChildren<Text>().text = "";
+            }
             Destroy(activeQuests[id].GetQuestButton().gameObject);
             activeQuests.Remove(id);
         }

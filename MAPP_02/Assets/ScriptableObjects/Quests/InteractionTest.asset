@@ -24,5 +24,6 @@ MonoBehaviour:
   - Gogo, go talk to him now
   questCompletionDialogue:
   - Great
-  questCompletedDialogue: []
+  questCompletedDialogue:
+  - Quest is complete
   objectToInteractWith: Vain the Pain
