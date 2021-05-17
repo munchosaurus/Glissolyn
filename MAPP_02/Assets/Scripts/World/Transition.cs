@@ -22,5 +22,12 @@ public class Transition : MonoBehaviour
         print("run");
     }
 
+    public void RunTransitionEnd()
+    {
+        transition.SetTrigger("End");
+
+        print("RUN2");
+    }
+
 
 }

@@ -80,9 +80,11 @@ public static class Game_Controller
         return theMenu;
     }
 
-    public static void RunTransition()
+  
+
+    public static void RunTransitionEnd()
     {
-        transition.GetComponent<Transition>().RunTransition();
+        transition.GetComponent<Transition>().RunTransitionEnd();
     }
 
     public static Character_Screen GetCharacterScreen()
