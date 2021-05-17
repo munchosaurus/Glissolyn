@@ -23,7 +23,6 @@ public class NPC_Info : Character_Info
 
         if (CompareTag("Quest")) {
             Game_Controller.GetQuestLog().UpdateQuestAfterInteraction(gameObject.name);
-            print(gameObject.name);
         }
     }
 
