@@ -24,5 +24,6 @@ MonoBehaviour:
   - Gogo, go talk to him now
   questCompletionDialogue:
   - Great
-  questCompletedDialogue: []
+  questCompletedDialogue:
+  - You are the beest
   objectToInteractWith: Vain the Pain
