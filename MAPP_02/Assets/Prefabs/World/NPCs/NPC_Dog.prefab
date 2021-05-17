@@ -167,7 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Doggie
-  npcDialogueSprite: {fileID: 21300000, guid: 833373ab17f84cd4bb5bcdbe49bfdcca, type: 3}
+  id: 0
+  npcDialogueSprite: {fileID: 21300000, guid: 918ca535e3e636446a8f241485edd23a, type: 3}
   dialogue: []
 --- !u!114 &5405792326669331802
 MonoBehaviour:

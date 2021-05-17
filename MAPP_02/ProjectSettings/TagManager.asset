@@ -9,7 +9,7 @@ TagManager:
   - Dialogue Box
   - BattleSystem
   - World Interface
-  - Transition
+  - Quest
   layers:
   - Default
   - TransparentFX

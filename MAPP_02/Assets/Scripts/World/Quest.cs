@@ -109,7 +109,8 @@ public abstract class Quest : ScriptableObject
 public enum QuestType
 {
     QuestTypeError,
-    KILL_QUEST
+    KILL_QUEST,
+    INTERACTION_QUEST
 }
 
 public enum QuestClearState
