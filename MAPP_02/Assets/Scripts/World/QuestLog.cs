@@ -49,6 +49,19 @@ public class QuestLog : MonoBehaviour
         }
     }
 
+    public void UpdateQuestAfterInteraction(string name)
+    {
+        foreach (KeyValuePair<int, Quest> entry in activeQuests)
+        {
+            if (entry.Value.GetQuestType() == QuestType.INTERACTION_QUEST)
+            {
+                Quest_InteractionQuest q = entry.Value as Quest_InteractionQuest;
+                q.CheckInteraction(name);
+                
+            }
+        }
+    }
+
     public void SetCurrentOpenQuestButton(QuestButton questButton)
     {
         currentOpenQuestButton = questButton;

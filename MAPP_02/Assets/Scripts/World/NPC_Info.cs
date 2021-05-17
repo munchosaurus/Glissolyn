@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class NPC_Info : Character_Info
@@ -14,11 +15,15 @@ public class NPC_Info : Character_Info
         }
         Game_Controller.GetDialogueBox().UpdateDialogue(this);
 
-        if (CompareTag("Respawn"))
+        if (gameObject.name.Contains("Old Man"))
         {
             Vector3 temp = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-1, gameObject.transform.position.z);
-   
             Game_Controller.GetPlayerInfo().SetRespawnPos(temp);
+        }
+
+        if (CompareTag("Quest")) {
+            Game_Controller.GetQuestLog().UpdateQuestAfterInteraction(gameObject.name);
+            print(gameObject.name);
         }
     }
 
