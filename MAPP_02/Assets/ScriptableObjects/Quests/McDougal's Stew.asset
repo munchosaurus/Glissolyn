@@ -21,7 +21,7 @@ MonoBehaviour:
   questStartDialogue:
   - Hi there stranger. Can you help me perhaps?
   - I need bear meat for the stew im making.
-  - Can you perhaps kill two bears for me and bring me the meat back?
+  - Can you perhaps kill two bears for me and bring me the meat?
   questActiveDialogue:
   - Did you manage to kill the bears yet?
   questCompletionDialogue:
