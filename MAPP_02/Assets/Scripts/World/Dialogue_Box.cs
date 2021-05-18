@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class Dialogue_Box : MonoBehaviour
     private string[] theDialogue;
     private int currentDialoguePart;
     private bool npcIsTalking;
+    
 
     /*
      * Updates what the dialogue will be, the image of the character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
@@ -61,9 +63,14 @@ public class Dialogue_Box : MonoBehaviour
                     }
                     if (theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
                     {
+                        Game_Controller.RunTransitionEnd();
+                        
+                        
+
                         Combat_Info.ChangeEnemy(eInfo);
                         Game_Controller.ToggleCombatState(true);
                         Game_Controller.GetBattleSystem().StartCombat();
+                        
                     }
                 }
             }
@@ -85,4 +92,6 @@ public class Dialogue_Box : MonoBehaviour
     {
         return s.Replace("{playerName}", Game_Controller.GetPlayerName());
     }
+
+  
 }

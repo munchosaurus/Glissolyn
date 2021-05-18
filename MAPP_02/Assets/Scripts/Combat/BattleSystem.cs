@@ -123,10 +123,12 @@ public class BattleSystem : MonoBehaviour
         {
             Combat_Info.PlayerWins();
             Game_Controller.ToggleCombatState(false);
+            Game_Controller.RunTransitionEnd(); //test
             EnemyUnit.Character.SetCurrentHP();
         } else {
             Combat_Info.EnemyWins();
             Game_Controller.ToggleCombatState(false);
+            Game_Controller.RunTransitionEnd(); //test
             Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
             Vector3 temp = Game_Controller.GetPlayerInfo().GetRespawnPos();
             Player.transform.position = temp;
@@ -140,6 +142,7 @@ public class BattleSystem : MonoBehaviour
             dialogBox.EnableActionSelector(false);
             Game_Controller.ToggleCombatState(false);
             EnemyUnit.Character.SetCurrentHP();
+            Game_Controller.RunTransitionEnd();
         }
     }
 }

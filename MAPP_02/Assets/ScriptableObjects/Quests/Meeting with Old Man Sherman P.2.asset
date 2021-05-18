@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
+  m_Name: Meeting with Old Man Sherman P.2
+  m_EditorClassIdentifier: 
+  questTitle: Discovering the Altars
+  questDescription: Old man Sherman has asked you to go to the weird altar like structure
+    with the means to destroy it.
+  questID: 2
+  experienceReward: 10
+  questClearState: 0
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - '{playerName} you must listen to me!
+
+    Take the sceptre that you were handed
+    earlier and hit the crystal with it.
+
+'
+  - 'There is no time to explain, run!
+
+'
+  questActiveDialogue:
+  - Hurry {playerName}!
+  questCompletionDialogue:
+  - 'I am so happy to see you returned {playerName}!
+
+    I see you have been damaged,
+    please allow me to attend to your wounds.
+
+'
+  - I am a member of the Order of the Sacred flame. If you ever find yourself in
+    need of healing your wounds,
+  - please come see any of us in the Order. We have all grown quite weary, we might
+    be old but we still hold our healing powers.
+  - And don't worry, if you ever would be knocked out by any of the foul creatures
+    that do exist. The person who finds you will know to bring you to any
+  - of the members of the order.
+  - You must now head to the village of Wigston through the northern passage of here.
+  - Seek out a military officer and inform him of what you have seen.
+  questCompletedDialogue:
+  - Hey there!
+  objectToInteractWith: Minor Crystal
