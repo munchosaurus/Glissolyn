@@ -11,9 +11,13 @@ public class Transition : MonoBehaviour
         transition.SetTrigger("Start");
     }
 
-    public void RunTransitionEnd()
+    public void ToggleBattleSystem()
     {
-        transition.SetTrigger("End");
-        print("End");
+        Game_Controller.ToggleCombatState(!Game_Controller.IsCombatActive());
+
+        if (Game_Controller.GetBattleSystem().gameObject.activeInHierarchy)
+        {
+            Game_Controller.GetBattleSystem().StartCombat();
+        }
     }
 }

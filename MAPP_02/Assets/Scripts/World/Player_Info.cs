@@ -205,9 +205,9 @@ public class Player_Info : Character_Info
     public void SetHealth(int health)
     {
         this.health = health;
-        if(health > maxHealth)
+        if(this.health > maxHealth)
         {
-            health = maxHealth;
+            this.health = maxHealth;
         }
     }
     

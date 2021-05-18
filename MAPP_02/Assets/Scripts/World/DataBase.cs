@@ -86,7 +86,6 @@ public class DataBase : MonoBehaviour
 
             while ((line = reader.ReadLine()) != null)
             {
-                print(line);
                 if (line[0] == 'q')
                 {
                     string[] split = line.Split('.');

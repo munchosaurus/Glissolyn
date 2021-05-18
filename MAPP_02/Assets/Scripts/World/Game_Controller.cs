@@ -90,9 +90,9 @@ public static class Game_Controller
         return transition;
     }
 
-    public static void RunTransitionEnd()
+    public static void RunTransition()
     {
-        transition.GetComponentInChildren<Transition>().RunTransitionEnd();
+        transition.GetComponentInChildren<Transition>().RunTransition();
     }
 
     public static Character_Screen GetCharacterScreen()
