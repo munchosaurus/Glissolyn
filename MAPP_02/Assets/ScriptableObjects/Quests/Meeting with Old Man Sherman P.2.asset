@@ -20,14 +20,14 @@ MonoBehaviour:
   questClearState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
-  - '{playername} you must listen to me!
+  - '{playerName} you must listen to me!
 
     Take the sceptre that you were handed
     earlier and hit the crystal with it.
 
 '
   questActiveDialogue:
-  - Hurry {playername}!
+  - Hurry {playerName}!
   questCompletionDialogue:
   - 'I am so happy to see you returned {playername}!
 
@@ -44,5 +44,6 @@ MonoBehaviour:
   - of the members of the order.
   - You must now head to the village of Wigston through the northern passage of here.
   - Seek out a military officer and inform him of what you have seen.
-  questCompletedDialogue: []
+  questCompletedDialogue:
+  - Hey there!
   objectToInteractWith: Minor Crystal

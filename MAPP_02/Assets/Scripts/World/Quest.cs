@@ -104,17 +104,17 @@ public abstract class Quest : ScriptableObject
     }
 
     public abstract QuestType GetQuestType();
-}
+    }
 
-public enum QuestType
-{
+    public enum QuestType
+    {
     QuestTypeError,
     KILL_QUEST,
     INTERACTION_QUEST
-}
+    }
 
-public enum QuestClearState
-{
+    public enum QuestClearState
+    {
     NONE,
     OPEN_VILLAGE_EXIT
-}
+    }
