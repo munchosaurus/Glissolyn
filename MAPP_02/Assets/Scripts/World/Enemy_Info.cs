@@ -10,8 +10,6 @@ public class Enemy_Info : NPC_Info
     public void Interact()
     {
         base.Interact();
-        GetComponentInChildren<Transition>().RunTransition();
-        
     }
 
     public CharacterBase GetBase()

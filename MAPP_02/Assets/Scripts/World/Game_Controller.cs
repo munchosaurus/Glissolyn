@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 public static class Game_Controller
 {
     private static readonly int MAIN_MENU_SCENE_ID = 0;
-    //private static readonly int WORLD_SCENE_ID = 1;
-    //private static readonly int COMBAT_SCENE_ID = 2;
 
     private static bool isGamePaused;
     private static bool isCombatActive;
@@ -87,11 +85,14 @@ public static class Game_Controller
         return theMenu;
     }
 
-  
+    public static GameObject GetTransition()
+    {
+        return transition;
+    }
 
     public static void RunTransitionEnd()
     {
-        transition.GetComponent<Transition>().RunTransitionEnd();
+        transition.GetComponentInChildren<Transition>().RunTransitionEnd();
     }
 
     public static Character_Screen GetCharacterScreen()
@@ -127,10 +128,7 @@ public static class Game_Controller
         worldInterface.SetActive(!toggle);
         battleSystem.SetActive(toggle);
         
-
         isCombatActive = toggle;
-
-        
     }
 
     public static bool IsCombatActive()

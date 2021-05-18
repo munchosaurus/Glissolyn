@@ -12,6 +12,7 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject worldInterface;
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
+    [SerializeField] private GameObject transition;
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
@@ -32,6 +33,7 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetBattleSystem(battleSystem);
         Game_Controller.SetCharacterScreen(characterScreen);
         Game_Controller.SetDataBase(dataBase);
+        Game_Controller.SetTransition(transition);
 
         if (Game_Controller.IsLoaded())
         {

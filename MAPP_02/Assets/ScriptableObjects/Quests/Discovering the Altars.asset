@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
-  m_Name: Meeting with Old Man Sherman P.2
+  m_Name: Discovering the Altars
   m_EditorClassIdentifier: 
   questTitle: Discovering the Altars
   questDescription: Old man Sherman has asked you to go to the weird altar like structure
