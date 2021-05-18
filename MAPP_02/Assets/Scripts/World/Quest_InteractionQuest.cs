@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Quest", menuName = "Quest/Create new Interaction quest")]
 public class Quest_InteractionQuest : Quest
 {
+    
     [SerializeField] private string objectToInteractWith;
     private string objectiveText;
     private bool hasBeenInteractedWith;

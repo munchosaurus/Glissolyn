@@ -22,7 +22,6 @@ public class NPC_QuestGiver_Info : NPC_Info
         {
             dialogue = questToGive.GetQuestStartDialogue();
             Game_Controller.GetQuestLog().AddQuest(questToGive);
-            Game_Controller.GetQuestLog().SetCurrentOpenQuestButton(questToGive.GetQuestButton());
         }
         else if (questToGive.CompleteQuest())
         {
@@ -32,7 +31,6 @@ public class NPC_QuestGiver_Info : NPC_Info
             {
                 questToGive = questToGive.GetNextQuestInChain();
                 Game_Controller.GetQuestLog().AddQuest(questToGive);
-                Game_Controller.GetQuestLog().SetCurrentOpenQuestButton(questToGive.GetQuestButton());
 
                 var moreDialogue = questToGive.GetQuestStartDialogue();
                 var tempArray = new string[dialogue.Length + moreDialogue.Length];
@@ -44,6 +42,16 @@ public class NPC_QuestGiver_Info : NPC_Info
         else
         {
             dialogue = questToGive.GetQuestActiveDialogue();
+        }
+        if (gameObject.name.Contains("Old Man"))
+        {
+            Vector3 temp = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1, gameObject.transform.position.z);
+            Game_Controller.GetPlayerInfo().SetRespawnPos(temp);
+        }
+
+        if (CompareTag("Quest"))
+        {
+            Game_Controller.GetQuestLog().UpdateQuestAfterInteraction(gameObject.name);
         }
 
         base.Interact();

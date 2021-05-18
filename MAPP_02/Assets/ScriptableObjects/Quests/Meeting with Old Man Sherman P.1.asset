@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
+  m_Name: Meeting with Old Man Sherman P.1
+  m_EditorClassIdentifier: 
+  questTitle: Meeting Old Man Sherman
+  questDescription: Old Man Sherman has asked you to visit the open area to the east
+    to investigate the object Silk eye Joe had found.
+  questID: 1
+  experienceReward: 4
+  questClearState: 0
+  nextQuestInChain: {fileID: 11400000, guid: 4627430c2da9d754fac4c682993277bb, type: 2}
+  questStartDialogue:
+  - "Ahh, {playerName} how good to see you.\nI haven\u2019t seen your mom in a while,
+    I hope she\u2019s doing okay..."
+  - 'Oh! What it is that I wanted to talk to you about?
+
+    I wanted to talk to
+    you about your father.'
+  - 'As you know he was a warrior fighting for the people of Eldham.
+
+    After being
+    defeated on the battlefield, he asked me to hold on to '
+  - This sceptre I am holding right here until you came of age. Please take it.
+  - Now while you are here, I talked to Silk eye Joe earlier and he mentioned a strange
+    object to the east. Could you go have a further look dear boy?
+  questActiveDialogue:
+  - Have you interacted with the strange object yet?
+  questCompletionDialogue:
+  - "Oh {playerName}, weird light pulsating into the ground?\nA what? It can\u2019t
+    be...\n"
+  questCompletedDialogue:
+  - Quest is complete
+  objectToInteractWith: Minor Crystal
