@@ -26,10 +26,13 @@ MonoBehaviour:
     earlier and hit the crystal with it.
 
 '
+  - 'There is no time to explain, run!
+
+'
   questActiveDialogue:
   - Hurry {playerName}!
   questCompletionDialogue:
-  - 'I am so happy to see you returned {playername}!
+  - 'I am so happy to see you returned {playerName}!
 
     I see you have been damaged,
     please allow me to attend to your wounds.
