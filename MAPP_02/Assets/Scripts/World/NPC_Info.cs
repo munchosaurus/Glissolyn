@@ -7,6 +7,24 @@ public class NPC_Info : Character_Info
     [TextArea] [SerializeField] protected string[] dialogue;
     [TextArea] [SerializeField] protected string[][] alternativeDialogue;
 
+    protected int[] saveValues;
+
+    public virtual void Init(int[] loadValues)
+    {
+        gameObject.SetActive(loadValues[0] == 1);
+        transform.position = new Vector3(loadValues[1] + 0.5f, loadValues[2] + 0.5f, 0);
+    }
+
+    public virtual int[] GetSaveValues()
+    {
+        saveValues = new int[3];
+        saveValues[0] = gameObject.activeInHierarchy ? 1 : 0;
+        saveValues[1] = (int)transform.position.x;
+        saveValues[2] = (int)transform.position.y;
+
+        return saveValues;
+    }
+
     public virtual void Interact()
     {
         if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove))

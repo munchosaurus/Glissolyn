@@ -8,7 +8,10 @@ public class NPC_QuestGiver_Info : NPC_Info
 
     private void Start()
     {
-        //questToGive.Init(); TODO
+        while(questToGive.IsCompleted() && questToGive.GetNextQuestInChain() != null)
+        {
+            questToGive = questToGive.GetNextQuestInChain();
+        }
     }
 
     override
