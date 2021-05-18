@@ -6,7 +6,6 @@ public class NPC_Info : Character_Info
     [SerializeField] protected Sprite npcDialogueSprite;
     [TextArea] [SerializeField] protected string[] dialogue;
     [TextArea] [SerializeField] protected string[][] alternativeDialogue;
-    
 
     protected int[] saveValues;
 
@@ -42,7 +41,6 @@ public class NPC_Info : Character_Info
 
         if (CompareTag("Quest")) {
             Game_Controller.GetQuestLog().UpdateQuestAfterInteraction(gameObject.name);
-            
         }
     }
 

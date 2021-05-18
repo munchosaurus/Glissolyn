@@ -10,7 +10,6 @@ TagManager:
   - BattleSystem
   - World Interface
   - Quest
-  - Enemy
   layers:
   - Default
   - TransparentFX
