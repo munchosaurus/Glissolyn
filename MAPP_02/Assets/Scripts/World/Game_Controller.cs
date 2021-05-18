@@ -18,6 +18,7 @@ public static class Game_Controller
     private static GameObject worldInterface;
     private static GameObject battleSystem;
     private static DataBase dataBase;
+    private static GameObject transition;
 
     private static string playerName;
 
@@ -51,6 +52,11 @@ public static class Game_Controller
         battleSystem = bs;
     }
 
+    public static void SetTransition(GameObject t)
+    {
+        transition = t;
+    }
+
     public static void SetCharacterScreen(Character_Screen cs)
     {
         characterScreen = cs;
@@ -79,6 +85,13 @@ public static class Game_Controller
     public static Menu GetMenu()
     {
         return theMenu;
+    }
+
+  
+
+    public static void RunTransitionEnd()
+    {
+        transition.GetComponent<Transition>().RunTransitionEnd();
     }
 
     public static Character_Screen GetCharacterScreen()
@@ -113,8 +126,11 @@ public static class Game_Controller
     {
         worldInterface.SetActive(!toggle);
         battleSystem.SetActive(toggle);
+        
 
         isCombatActive = toggle;
+
+        
     }
 
     public static bool IsCombatActive()
@@ -144,7 +160,7 @@ public static class Game_Controller
 
     public static void UpdateWorldToQuestClearState(QuestClearState qcs)
     {
-        //TODO If-satser för om qcs == <ett QuestClearState> och vad som ska hända i så fall.
+        //TODO If-satser fï¿½r om qcs == <ett QuestClearState> och vad som ska hï¿½nda i sï¿½ fall.
     }
 
     public static void LoadGame()

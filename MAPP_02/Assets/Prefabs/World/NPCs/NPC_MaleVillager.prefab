@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1355876444011128114}
   - component: {fileID: 1355876444011128113}
   - component: {fileID: 1355876444011128112}
+  - component: {fileID: 6242804144913466176}
   - component: {fileID: 1355876444011128127}
   - component: {fileID: 1355876444011128126}
   - component: {fileID: 1355876444011128115}
@@ -109,6 +110,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6242804144913466176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355876444011128125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b462e9c7165e441a50cadee5c2a863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  id: 0
+  npcDialogueSprite: {fileID: 0}
+  dialogue: []
+  questToGive: {fileID: 0}
 --- !u!61 &1355876444011128127
 BoxCollider2D:
   m_ObjectHideFlags: 0
