@@ -36,7 +36,8 @@ MonoBehaviour:
   questActiveDialogue:
   - Have you interacted with the strange object yet?
   questCompletionDialogue:
-  - "Oh {playerName}\nA what? It can\u2019t be...\n"
+  - "Oh {playerName}, weird light pulsating into the ground?\nA what? It can\u2019t
+    be...\n"
   questCompletedDialogue:
   - Quest is complete
   objectToInteractWith: Minor Crystal
