@@ -75,7 +75,7 @@ public class BattleSystem : MonoBehaviour
         int damage = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
         yield return dialogBox.TypeDialog($"You used ability: {move.Base.GetName()}.");
-        PlayerUnit.lerp.GoLerp();
+        //PlayerUnit.lerp.GoLerp();
 
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
@@ -101,7 +101,7 @@ public class BattleSystem : MonoBehaviour
         int damage = PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
         yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}.");
-        EnemyUnit.lerp.GoLerp();
+        //EnemyUnit.lerp.GoLerp();
 
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
