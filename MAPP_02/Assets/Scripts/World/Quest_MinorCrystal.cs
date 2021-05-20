@@ -7,6 +7,7 @@ public class Quest_MinorCrystal : NPC_Info
     [SerializeField] protected Quest quest;
     [TextArea] [SerializeField] protected string[] dialogueQuest;
     [SerializeField] GameObject objectToActivate;
+    [SerializeField] GameObject objectBlocking;
 
     override
     public void Interact()
@@ -16,12 +17,11 @@ public class Quest_MinorCrystal : NPC_Info
         {
             dialogue = dialogueQuest;
             objectToActivate.SetActive(true);
-            GameObject.Find("Minor Crystal").SetActive(false);
+            objectBlocking.SetActive(false);
+            gameObject.SetActive(false);
+            //GameObject.Find("Minor Crystal").SetActive(false);
         }
         base.Interact();
-        //if (Game_Controller.GetQuestLog().HasQuest(quest)) 
-        //{
 
-        //}
     }
 }
