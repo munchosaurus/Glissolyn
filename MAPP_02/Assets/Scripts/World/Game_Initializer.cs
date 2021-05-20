@@ -12,6 +12,7 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject worldInterface;
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
+    [SerializeField] private GameObject transition;
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
@@ -31,10 +32,22 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetWorldInterface(worldInterface);
         Game_Controller.SetBattleSystem(battleSystem);
         Game_Controller.SetCharacterScreen(characterScreen);
+        Game_Controller.SetDataBase(dataBase);
+        Game_Controller.SetTransition(transition);
+
+        if (Game_Controller.IsLoaded())
+        {
+            print("Game was loaded");
+            dataBase.LoadGame();
+            Game_Controller.SetPause(false);
+        }
+        else
+        {
+            print("Game was not loaded");
+            dataBase.ResetQuests();
+            InitializePlayer();
+        }
         Combat_Info.Initialize();
-        InitializePlayer();
-        characterScreen.Initialize();
-        dataBase.ResetQuests();
     }
 
     private void InitializePlayer()
@@ -48,5 +61,6 @@ public class Game_Initializer : MonoBehaviour
         thePlayerInfo.SetExperience(playerStartingExperience);
         thePlayerInfo.SetStatPoints(playerStartingStatPoints);
         thePlayerInfo.SetName(Game_Controller.GetPlayerName());
+        characterScreen.Initialize();
     }
 }

@@ -5,29 +5,19 @@ using UnityEngine;
 public class Transition : MonoBehaviour
 {
     [SerializeField] private Animator transition;
-    //Game_Controller.set
-
-    private void Start()
-    {
-        Game_Controller.SetTransition(gameObject);
-        
-    }
-
 
     public void RunTransition()
     {
         transition.SetTrigger("Start");
-
-        
-        print("run");
     }
 
-    public void RunTransitionEnd()
+    public void ToggleBattleSystem()
     {
-        transition.SetTrigger("End");
+        Game_Controller.ToggleCombatState(!Game_Controller.IsCombatActive());
 
-        print("RUN2");
+        if (Game_Controller.GetBattleSystem().gameObject.activeInHierarchy)
+        {
+            Game_Controller.GetBattleSystem().StartCombat();
+        }
     }
-
-
 }

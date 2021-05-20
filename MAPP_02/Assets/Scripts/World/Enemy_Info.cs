@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Info : NPC_Info
@@ -12,8 +10,6 @@ public class Enemy_Info : NPC_Info
     public void Interact()
     {
         base.Interact();
-        GetComponentInChildren<Transition>().RunTransition();
-        
     }
 
     public CharacterBase GetBase()

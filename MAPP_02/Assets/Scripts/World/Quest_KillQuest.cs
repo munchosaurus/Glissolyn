@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "Quest", menuName = "Quest/Create new Kill Quest")]
 public class Quest_KillQuest : Quest
@@ -14,6 +15,22 @@ public class Quest_KillQuest : Quest
         killed = 0;
         objectiveText = "";
         base.Init();
+    }
+
+    override
+    public void Init(int[] loadValues)
+    {
+        killed = loadValues[2];
+        BuildQuestText();
+        base.Init(loadValues);
+    }
+
+    override
+    public int[] GetSaveValues()
+    {
+        saveValues = new int[3];
+        saveValues[2] = killed;
+        return base.GetSaveValues();
     }
 
     override

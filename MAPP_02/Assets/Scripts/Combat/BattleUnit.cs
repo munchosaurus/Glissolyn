@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BattleUnit : MonoBehaviour
 {  
     public Character Character { get; set; }
+    public Lerp lerp;
 
     public void Setup(CharacterBase _base, int level)
     {

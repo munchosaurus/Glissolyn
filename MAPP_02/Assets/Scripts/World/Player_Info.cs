@@ -24,6 +24,7 @@ public class Player_Info : Character_Info
     private int nextLevelExperience;
 
     private Vector3 respawnPos;
+    private int[] saveValues;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class Player_Info : Character_Info
             ModifyExperience(0);
             SetName("Chuck Norris");
             Game_Controller.GetCharacterScreen().Initialize();
+            transform.position = GetRespawnPos();
         }
 
         if (enterWeakassMode)
@@ -49,8 +51,9 @@ public class Player_Info : Character_Info
             ModifyExperience(0);
             SetName("Chuck Norris");
             Game_Controller.GetCharacterScreen().Initialize();
+            transform.position = GetRespawnPos();
         }
-        transform.position = GetRespawnPos();
+        
     }
 
     private void SetNextLevelExperience()
@@ -73,6 +76,42 @@ public class Player_Info : Character_Info
         {
             Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel });
         }
+    }
+
+    public void Init(string name, int[] loadValues)
+    {
+        SetName(name);
+        transform.position = new Vector3(loadValues[0] + 0.5f, loadValues[1] + 0.5f, 0);
+        maxHealth = loadValues[2];
+        SetHealth(loadValues[3]);
+        strength = loadValues[4];
+        agility = loadValues[5];
+        intelligence = loadValues[6];
+        SetPlayerLevel(loadValues[7]);
+        ModifyExperience(0);
+        statPoints = loadValues[8];
+        experience = loadValues[9];
+        respawnPos = new Vector3(loadValues[10] + 0.5f, loadValues[11] + 0.5f, 0);
+        Game_Controller.GetCharacterScreen().Initialize();
+    }
+
+    public int[] GetSaveValues()
+    {
+        saveValues = new int[12];
+        saveValues[0] = (int)transform.position.x;
+        saveValues[1] = (int)transform.position.y;
+        saveValues[2] = maxHealth;
+        saveValues[3] = health;
+        saveValues[4] = strength;
+        saveValues[5] = agility;
+        saveValues[6] = intelligence;
+        saveValues[7] = playerLevel;
+        saveValues[8] = statPoints;
+        saveValues[9] = experience;
+        saveValues[10] = (int)respawnPos.x;
+        saveValues[11] = (int)respawnPos.y;
+
+        return saveValues;
     }
 
     public void SetName(string name)
@@ -166,9 +205,9 @@ public class Player_Info : Character_Info
     public void SetHealth(int health)
     {
         this.health = health;
-        if(health > maxHealth)
+        if(this.health > maxHealth)
         {
-            health = maxHealth;
+            this.health = maxHealth;
         }
     }
     

@@ -14,6 +14,7 @@ public class BattleSystem : MonoBehaviour
 
     GameObject Player;
 
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -74,6 +75,8 @@ public class BattleSystem : MonoBehaviour
         int damage = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
         yield return dialogBox.TypeDialog($"You used ability: {move.Base.GetName()}.");
+        PlayerUnit.lerp.GoLerp();
+
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
 
@@ -98,6 +101,8 @@ public class BattleSystem : MonoBehaviour
         int damage = PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
         yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}.");
+        EnemyUnit.lerp.GoLerp();
+
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
 
@@ -122,13 +127,11 @@ public class BattleSystem : MonoBehaviour
         if (PlayerWin) 
         {
             Combat_Info.PlayerWins();
-            Game_Controller.ToggleCombatState(false);
-            Game_Controller.RunTransitionEnd(); //test
+            Game_Controller.RunTransition();
             EnemyUnit.Character.SetCurrentHP();
         } else {
             Combat_Info.EnemyWins();
-            Game_Controller.ToggleCombatState(false);
-            Game_Controller.RunTransitionEnd(); //test
+            Game_Controller.RunTransition();
             Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
             Vector3 temp = Game_Controller.GetPlayerInfo().GetRespawnPos();
             Player.transform.position = temp;
@@ -140,9 +143,8 @@ public class BattleSystem : MonoBehaviour
         if (run)
         {
             dialogBox.EnableActionSelector(false);
-            Game_Controller.ToggleCombatState(false);
             EnemyUnit.Character.SetCurrentHP();
-            Game_Controller.RunTransitionEnd();
+            Game_Controller.RunTransition();
         }
     }
 }
