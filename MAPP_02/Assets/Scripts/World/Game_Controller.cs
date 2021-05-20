@@ -4,11 +4,10 @@ using UnityEngine.SceneManagement;
 public static class Game_Controller
 {
     private static readonly int MAIN_MENU_SCENE_ID = 0;
-    //private static readonly int WORLD_SCENE_ID = 1;
-    //private static readonly int COMBAT_SCENE_ID = 2;
 
     private static bool isGamePaused;
     private static bool isCombatActive;
+    private static bool isLoaded;
     private static Dialogue_Box theDialogueBox;
     private static QuestLog theQuestLog;
     private static Player_Info thePlayerInfo;
@@ -16,6 +15,8 @@ public static class Game_Controller
     private static Character_Screen characterScreen;
     private static GameObject worldInterface;
     private static GameObject battleSystem;
+    private static DataBase dataBase;
+    private static GameObject transition;
 
     private static string playerName;
 
@@ -49,9 +50,19 @@ public static class Game_Controller
         battleSystem = bs;
     }
 
+    public static void SetTransition(GameObject t)
+    {
+        transition = t;
+    }
+
     public static void SetCharacterScreen(Character_Screen cs)
     {
         characterScreen = cs;
+    }
+
+    public static void SetDataBase(DataBase db)
+    {
+        dataBase = db;
     }
 
     public static QuestLog GetQuestLog()
@@ -74,9 +85,24 @@ public static class Game_Controller
         return theMenu;
     }
 
+    public static GameObject GetTransition()
+    {
+        return transition;
+    }
+
+    public static void RunTransition()
+    {
+        transition.GetComponentInChildren<Transition>().RunTransition();
+    }
+
     public static Character_Screen GetCharacterScreen()
     {
         return characterScreen;
+    }
+
+    public static DataBase GetDataBase()
+    {
+        return dataBase;
     }
 
     public static void SetPause(bool toggle)
@@ -101,7 +127,7 @@ public static class Game_Controller
     {
         worldInterface.SetActive(!toggle);
         battleSystem.SetActive(toggle);
-
+        
         isCombatActive = toggle;
     }
 
@@ -132,6 +158,16 @@ public static class Game_Controller
 
     public static void UpdateWorldToQuestClearState(QuestClearState qcs)
     {
-        //TODO If-satser för om qcs == <ett QuestClearState> och vad som ska hända i så fall.
+        //TODO If-satser fï¿½r om qcs == <ett QuestClearState> och vad som ska hï¿½nda i sï¿½ fall.
+    }
+
+    public static void LoadGame()
+    {
+        isLoaded = true;
+    }
+
+    public static bool IsLoaded()
+    {
+        return isLoaded;
     }
 }

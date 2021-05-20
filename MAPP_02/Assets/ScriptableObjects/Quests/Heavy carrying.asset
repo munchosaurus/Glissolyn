@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
+  m_Name: Heavy carrying
+  m_EditorClassIdentifier: 
+  questTitle: Heavy Carrying
+  questDescription: James who is stuck with all his junk on the path to Wigston needs
+    your help with delivering a package to Lady Frost.
+  questID: 0
+  experienceReward: 5
+  questClearState: 0
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - Oh hey there! Yeah I have found myself in quite the pickle here..
+  - I was on my way from Wakefield to Wigston when I heard a strange yell from this
+    lovely forest glade.
+  - My wagon unfortunately was damaged from the rocky path, now I am stuck here with
+    all my goods.
+  - "Could you be a good boy and help me carry this package? \n"
+  - Ahh great! What did you say your name was again?
+  - '{playerName} alright. Please deliver the package to Lady Frost in Wigston. She
+    is an elderly lady.'
+  questActiveDialogue:
+  - Do not peek inside the package...
+  questCompletionDialogue:
+  - "Thank you very much {playerName}! You didn't peek inside the package did you?
+    \nHmm.. Good. Now here take some experience."
+  - Do not forget that you can become stronger from using the levels you gain from
+    experience points. You can gain experience from quests battling foul creatures.
+  questCompletedDialogue:
+  - Now what should I do with the rest of my shit?
+  objectToInteractWith: Lady Frost
