@@ -31,11 +31,9 @@ public class QuestLog : MonoBehaviour
             if(currentOpenQuestButton == activeQuests[id].GetQuestButton())
             {
                 gameObject.transform.Find("Quest Text Area").GetComponentInChildren<Text>().text = "";
-                currentOpenQuestButton = null;
             }
             Destroy(activeQuests[id].GetQuestButton().gameObject);
             activeQuests.Remove(id);
-            
         }
     }
 
