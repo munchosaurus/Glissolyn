@@ -37,6 +37,7 @@ public class NPC_Info : Character_Info
         if (gameObject.name.Contains("Old Man"))
         {
             Vector3 temp = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y-1, gameObject.transform.position.z);
+            Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
             Game_Controller.GetPlayerInfo().SetRespawnPos(temp);
         }
 

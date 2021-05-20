@@ -15,12 +15,13 @@ public class Quest_MinorCrystal : NPC_Info
         if (Game_Controller.GetQuestLog().HasQuest(quest))
         {
             dialogue = dialogueQuest;
-        }
-        base.Interact();
-        if (Game_Controller.GetQuestLog().HasQuest(quest)) 
-        {
             objectToActivate.SetActive(true);
             GameObject.Find("Minor Crystal").SetActive(false);
         }
+        base.Interact();
+        //if (Game_Controller.GetQuestLog().HasQuest(quest)) 
+        //{
+
+        //}
     }
 }
