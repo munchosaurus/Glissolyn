@@ -12,6 +12,7 @@ public class MainMenu_ColorSelection : MonoBehaviour
     // Drag & drop handle
     public UnityEngine.UI.Image hair;
 
+    [SerializeField] Animator[] animators = new Animator[6];
     Color[] colors = new Color[]
     {
         new Color(1, 0, 0),
