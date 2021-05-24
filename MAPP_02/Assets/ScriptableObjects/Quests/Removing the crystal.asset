@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
   m_Name: Removing the crystal
   m_EditorClassIdentifier: 
-  questTitle: 
+  questTitle: Removing the crystal
   questDescription: Lieutenant has asked you to go to the southwestern hunting grounds
     right by the hunting cabin where Hunter Jackson resides.
   questID: 5
@@ -29,7 +29,7 @@ MonoBehaviour:
   - Stride carefully though, the paths are filled with more enemies than you might
     be able to handle
   questActiveDialogue:
-  - Hurry {playerName} !
+  - Hurry {playerName}!
   questCompletionDialogue:
   - You did it, you truly did it! Here, take some experience points. Also, I happen
     to be a mage and I have noticed that the zombies and

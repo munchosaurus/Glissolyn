@@ -21,8 +21,7 @@ MonoBehaviour:
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - Oh hey there! Yeah I have found myself in quite the pickle here..
-  - I was on my way from Wakefield to Wigston when I heard a strange yell from this
-    lovely forest glade.
+  - I was on my way from Eldham to Wigston. I was simply walking on the rocky path.
   - My wagon unfortunately was damaged from the rocky path, now I am stuck here with
     all my goods.
   - "Could you be a good boy and help me carry this package? \n"
