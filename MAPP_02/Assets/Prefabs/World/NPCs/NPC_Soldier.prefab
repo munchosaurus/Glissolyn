@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7290655685671544481}
   - component: {fileID: 7290655685671544480}
   - component: {fileID: 7290655685671544483}
-  - component: {fileID: 7290655685671544482}
   - component: {fileID: 7290655685671544493}
+  - component: {fileID: 2789536885714281642}
   m_Layer: 7
-  m_Name: Footman John
+  m_Name: NPC_Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,23 +157,6 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 904
---- !u!114 &7290655685671544482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7290655685671544492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b462e9c7165e441a50cadee5c2a863, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Lieutenant Spark
-  id: 11
-  npcDialogueSprite: {fileID: 21300000, guid: 5466f15111fc3df4fbf00dcd16e00901, type: 3}
-  dialogue: []
-  questToGive: {fileID: 11400000, guid: 8de20115f9ae1414f979cb4db07bde91, type: 2}
 --- !u!95 &7290655685671544493
 Animator:
   serializedVersion: 3
@@ -193,6 +176,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2789536885714281642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7290655685671544492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b2616cc9696f04a9b3e71abce93470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Private Name
+  id: 11
+  npcDialogueSprite: {fileID: 21300000, guid: 5466f15111fc3df4fbf00dcd16e00901, type: 3}
+  dialogue: []
 --- !u!1 &7290655685747933678
 GameObject:
   m_ObjectHideFlags: 0
