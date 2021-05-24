@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
+  m_Name: Removing the crystal
+  m_EditorClassIdentifier: 
+  questTitle: 
+  questDescription: Lieutenant has asked you to go to the southwestern hunting grounds
+    right by the hunting cabin where Hunter Jackson resides.
+  questID: 5
+  experienceReward: 10
+  questClearState: 0
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - '{playerName}, I believe you might be our only chance.
+
+    The crystal must
+    be stopped. Could you go southwest of the city'
+  - and destroy the crystal the same way you did back home in Wakefield? I understand
+    that it is much I am asking of you. I truly wish there was another way.
+  - Stride carefully though, the paths are filled with more enemies than you might
+    be able to handle
+  questActiveDialogue:
+  - Hurry {playerName} !
+  questCompletionDialogue:
+  - You did it, you truly did it! Here, take some experience points. Also, I happen
+    to be a mage and I have noticed that the zombies and
+  - other creatures are weak against fire. Please, use the attack Fireball as much
+    as you will.
+  - Now, we will send some of our forces back up to Eldham, where the true threat
+    is.. Why don't you go ahead and do the same?
+  questCompletedDialogue:
+  - I am so happy you were here.
+  objectToInteractWith: Medium Crystal
