@@ -163,10 +163,18 @@ public static class Game_Controller
 
     public static void UpdateWorldToQuestClearState(QuestClearState qcs)
     {
-        if(qcs == QuestClearState.OPEN_ELDHAM_EAST_EXIT)
+        switch(qcs)
         {
-            dataBase.GetNpcByID(42).gameObject.SetActive(false);
-            dataBase.GetNpcByID(43).gameObject.SetActive(false);
+            case QuestClearState.OPEN_ELDHAM_EAST_EXIT:
+                dataBase.GetNpcByID(42).gameObject.SetActive(false);
+                dataBase.GetNpcByID(43).gameObject.SetActive(false);
+                break;
+            case QuestClearState.ELDHAM_PURIFIED:
+                dataBase.GetNpcByID(44).gameObject.SetActive(false);
+                dataBase.GetNpcByID(45).gameObject.SetActive(false);
+                break;
+            default:
+                break;
         }
     }
 
