@@ -22,6 +22,7 @@ public class QuestLog : MonoBehaviour
         {
             currentOpenQuestButton = quest.GetQuestButton();
         }
+        Game_Controller.UpdateWorldToQuestClearState(quest.GetQuestPickUpState());
     }
 
     public void RemoveQuest(int id)

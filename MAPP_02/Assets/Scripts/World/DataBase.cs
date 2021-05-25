@@ -9,6 +9,28 @@ public class DataBase : MonoBehaviour
     [SerializeField] private List<NPCEntry> npcs;
     [SerializeField] private List<EnemyEntry> enemies;
 
+    private List<float> timers = new List<float>();
+    private List<Enemy_Info> deadEnemies = new List<Enemy_Info>();
+
+    void Update()
+    {
+        if (timers.Count > 0)
+        {
+            for (int i = 0; i < timers.Count; i++)
+            {
+                timers[i] -= Time.deltaTime;
+                print("The timer at " + i + " is " + timers[i]);
+                if (timers[i] <= 0)
+                {
+                    print("Timer is up, removing " + deadEnemies[i].gameObject.name);
+                    deadEnemies[i].gameObject.SetActive(true);
+                    deadEnemies.RemoveAt(i);
+                    timers.RemoveAt(i);
+                }
+            }
+        }
+    }
+
     public void ResetQuests()
     {
         foreach(QuestEntry quest in quests)
@@ -30,6 +52,12 @@ public class DataBase : MonoBehaviour
     public Enemy_Info GetEnemyByID(int id)
     {
         return enemies.Find(i => i.GetId() == id).GetEnemyInfo();
+    }
+
+    public void StartEnemyRespawnTimer(Enemy_Info enemy)
+    {
+        timers.Add(30);
+        deadEnemies.Add(enemy);
     }
 
     public void SaveGame()

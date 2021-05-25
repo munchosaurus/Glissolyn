@@ -158,7 +158,11 @@ public static class Game_Controller
 
     public static void UpdateWorldToQuestClearState(QuestClearState qcs)
     {
-        //TODO If-satser f�r om qcs == <ett QuestClearState> och vad som ska h�nda i s� fall.
+        if(qcs == QuestClearState.OPEN_ELDHAM_EAST_EXIT)
+        {
+            dataBase.GetNpcByID(42).gameObject.SetActive(false);
+            dataBase.GetNpcByID(43).gameObject.SetActive(false);
+        }
     }
 
     public static void LoadGame()
