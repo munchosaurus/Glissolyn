@@ -5,36 +5,36 @@ using UnityEngine;
 
 public class DataBase : MonoBehaviour
 {
-    [SerializeField] private List<QuestEntry> quests;
-    [SerializeField] private List<NPCEntry> npcs;
-    [SerializeField] private List<EnemyEntry> enemies;
+    [SerializeField] private List<Quest> quests;
+    [SerializeField] private List<NPC_Info> npcs;
+    [SerializeField] private List<Enemy_Info> enemies;
 
     public void ResetQuests()
     {
-        foreach(QuestEntry quest in quests)
+        foreach(Quest quest in quests)
         {
-            quest.GetQuest().Init();
+            quest.Init();
         }
     }
 
     public Quest GetQuestByID(int id)
     {
-        return quests.Find(i => i.GetId() == id).GetQuest();
+        return quests[id];
     }
 
     public NPC_Info GetNpcByID(int id)
     {
-        return npcs.Find(i => i.GetId() == id).GetNpcInfo();
+        return npcs[id];
     }
 
     public Enemy_Info GetEnemyByID(int id)
     {
-        return enemies.Find(i => i.GetId() == id).GetEnemyInfo();
+        return enemies[id];
     }
 
     public void SaveGame()
     {
-        using (StreamWriter writer = new StreamWriter(File.Open(Application.dataPath + "/save.txt", FileMode.Create))) {
+        /*using (StreamWriter writer = new StreamWriter(File.Open(Application.dataPath + "/save.txt", FileMode.Create))) {
             foreach (QuestEntry questEntry in quests)
             {
                 writer.Write("q" + questEntry.GetId() + ".");
@@ -75,12 +75,12 @@ public class DataBase : MonoBehaviour
                 writer.Write(pValues[i] + ".");
             }
             writer.WriteLine();
-        }
+        }*/
     }
 
     public void LoadGame()
     {
-        using (StreamReader reader = new StreamReader(File.Open(Application.dataPath + "/save.txt", FileMode.Open)))
+        /*using (StreamReader reader = new StreamReader(File.Open(Application.dataPath + "/save.txt", FileMode.Open)))
         {
             string line;
 
@@ -134,7 +134,7 @@ public class DataBase : MonoBehaviour
                     Game_Controller.GetPlayerInfo().Init(name, values);
                 }
             }
-        }
+        }*/
     }
 }
 
