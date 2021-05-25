@@ -9,32 +9,42 @@ public class Enemy_Find_player : MonoBehaviour
     [SerializeField] private float raycastLength;
     [SerializeField] private Animator zombieAnimator;
     private GameObject playerObject;
-    private RaycastHit2D target;
-    private bool shouldMove;
+    private bool timerActive;
+    private float timer;
 
     private void Start()
     {
-        shouldMove = true;
         playerObject = GameObject.FindGameObjectWithTag("Player");
     }
 
-    private void LateUpdate()
+    private void Update()
     {
-        if(!target)
+        if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
-            target = Physics2D.Raycast(transform.position, directionObject.localPosition, raycastLength, playerLayer);
-        }
-        else if (shouldMove)
-        {
-            if (!playerObject.GetComponent<Grid_movement>().GetMoving()) {
-                shouldMove = false;
-                StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition));
-                gameObject.GetComponent<NPC_Info>().Interact();
+            RaycastHit2D target = Physics2D.Raycast(transform.position, directionObject.localPosition, raycastLength, playerLayer);
+
+            if (timer <= 0 && target)
+            {
+                if (!playerObject.GetComponent<Grid_movement>().GetMoving())
+                {
+                    Game_Controller.SetPause(true);
+                    StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition, target.distance));
+                    gameObject.GetComponent<NPC_Info>().Interact();
+                    timer = 5;
+                }
+            }
+            else if (timerActive)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timerActive = false;
+                }
             }
         }
     }
 
-    private IEnumerator Move(Vector3 direction)
+    private IEnumerator Move(Vector3 direction, float distance)
     {
         float elapsedTime = 0;
         Vector3 originalPos = transform.position;
@@ -56,10 +66,21 @@ public class Enemy_Find_player : MonoBehaviour
         }
         while (elapsedTime < timeToMove)
         {
-            transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * target.distance));
+            transform.position = Vector3.Lerp(originalPos, direction, (elapsedTime / timeToMove * distance));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         transform.position = direction;
+    }
+
+    public void StartTimer()
+    {
+        timerActive = true;
+    }
+
+    public void StartTimer(int timer)
+    {
+        this.timer = timer;
+        timerActive = true;
     }
 }

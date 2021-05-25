@@ -28,32 +28,34 @@ public class Player_Info : Character_Info
 
     private void Start()
     {
-        if (enterGodMode)
+        if (!Game_Controller.IsLoaded())
         {
-            strength = 100;
-            agility = 100;
-            intelligence = 100;
-            SetPlayerLevel(100);
-            SetHealth(maxHealth);
-            ModifyExperience(0);
-            SetName("Chuck Norris");
-            Game_Controller.GetCharacterScreen().Initialize();
-            transform.position = GetRespawnPos();
+            if (enterGodMode)
+            {
+                strength = 100;
+                agility = 100;
+                intelligence = 100;
+                SetPlayerLevel(100);
+                SetHealth(maxHealth);
+                ModifyExperience(0);
+                SetName("Chuck Norris");
+                Game_Controller.GetCharacterScreen().Initialize();
+            }else if (enterWeakassMode)
+            {
+                strength = 1;
+                agility = 1;
+                intelligence = 1;
+                SetPlayerLevel(1);
+                SetHealth(5);
+                ModifyExperience(0);
+                SetName("Chuck Norris");
+                Game_Controller.GetCharacterScreen().Initialize();
+            }
+            else
+            {
+                transform.position = respawnPos;
+            }
         }
-
-        if (enterWeakassMode)
-        {
-            strength = 1;
-            agility = 1;
-            intelligence = 1;
-            SetPlayerLevel(1);
-            SetHealth(5);
-            ModifyExperience(0);
-            SetName("Chuck Norris");
-            Game_Controller.GetCharacterScreen().Initialize();
-            transform.position = GetRespawnPos();
-        }
-        
     }
 
     private void SetNextLevelExperience()

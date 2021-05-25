@@ -8,6 +8,7 @@ public abstract class Quest : ScriptableObject
     [SerializeField] protected int questID;
     [SerializeField] protected int experienceReward;
     [SerializeField] protected QuestClearState questClearState;
+    [SerializeField] protected QuestClearState questPickUpState;
     [SerializeField] protected Quest nextQuestInChain;
 
     [TextArea] [SerializeField] private string[] questStartDialogue;
@@ -122,8 +123,13 @@ public abstract class Quest : ScriptableObject
         return nextQuestInChain;
     }
 
-    public abstract QuestType GetQuestType();
+    public QuestClearState GetQuestPickUpState()
+    {
+        return questPickUpState;
     }
+
+    public abstract QuestType GetQuestType();
+}
 
     public enum QuestType
     {
@@ -135,5 +141,7 @@ public abstract class Quest : ScriptableObject
     public enum QuestClearState
     {
     NONE,
-    OPEN_VILLAGE_EXIT
+    OPEN_VILLAGE_EXIT,
+    OPEN_ELDHAM_EAST_EXIT,
+    ELDHAM_PURIFIED,
     }

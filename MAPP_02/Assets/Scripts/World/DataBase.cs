@@ -5,40 +5,40 @@ using UnityEngine;
 
 public class DataBase : MonoBehaviour
 {
-    [SerializeField] private List<QuestEntry> quests;
-    [SerializeField] private List<NPCEntry> npcs;
-    [SerializeField] private List<EnemyEntry> enemies;
+    [SerializeField] private List<Quest> quests;
+    [SerializeField] private List<NPC_Info> npcs;
+    [SerializeField] private List<Enemy_Info> enemies;
 
     public void ResetQuests()
     {
-        foreach(QuestEntry quest in quests)
+        foreach(Quest quest in quests)
         {
-            quest.GetQuest().Init();
+            quest.Init();
         }
     }
 
     public Quest GetQuestByID(int id)
     {
-        return quests.Find(i => i.GetId() == id).GetQuest();
+        return quests[id];
     }
 
     public NPC_Info GetNpcByID(int id)
     {
-        return npcs.Find(i => i.GetId() == id).GetNpcInfo();
+        return npcs[id];
     }
 
     public Enemy_Info GetEnemyByID(int id)
     {
-        return enemies.Find(i => i.GetId() == id).GetEnemyInfo();
+        return enemies[id];
     }
 
     public void SaveGame()
     {
         using (StreamWriter writer = new StreamWriter(File.Open(Application.dataPath + "/save.txt", FileMode.Create))) {
-            foreach (QuestEntry questEntry in quests)
+            foreach (Quest quest in quests)
             {
-                writer.Write("q" + questEntry.GetId() + ".");
-                int[] values = questEntry.GetQuest().GetSaveValues();
+                writer.Write("q" + quests.IndexOf(quest) + ".");
+                int[] values = quest.GetSaveValues();
                 for(int i = 0; i < values.Length; i++)
                 {
                     writer.Write(values[i] + ".");
@@ -46,10 +46,10 @@ public class DataBase : MonoBehaviour
                 writer.WriteLine();
             }
 
-            foreach (NPCEntry npcEntry in npcs)
+            foreach (NPC_Info npc in npcs)
             {
-                writer.Write("n" + npcEntry.GetId() + ".");
-                int[] values = npcEntry.GetNpcInfo().GetSaveValues();
+                writer.Write("n" + npcs.IndexOf(npc) + ".");
+                int[] values = npc.GetSaveValues();
                 for(int i = 0; i < values.Length; i++)
                 {
                     writer.Write(values[i] + ".");
@@ -57,10 +57,10 @@ public class DataBase : MonoBehaviour
                 writer.WriteLine();
             }
 
-            foreach (EnemyEntry eEntry in enemies)
+            foreach (Enemy_Info enemy in enemies)
             {
-                writer.Write("e" + eEntry.GetId() + ".");
-                int[] values = eEntry.GetEnemyInfo().GetSaveValues();
+                writer.Write("e" + enemies.IndexOf(enemy) + ".");
+                int[] values = enemy.GetSaveValues();
                 for (int i = 0; i < values.Length; i++)
                 {
                     writer.Write(values[i] + ".");
@@ -135,56 +135,5 @@ public class DataBase : MonoBehaviour
                 }
             }
         }
-    }
-}
-
-[System.Serializable]
-public class QuestEntry
-{
-    [SerializeField] int id;
-    [SerializeField] Quest quest;
-
-    public int GetId()
-    {
-        return id;
-    }
-
-    public Quest GetQuest()
-    {
-        return quest;
-    }
-}
-
-[System.Serializable]
-public class NPCEntry
-{
-    [SerializeField] int id;
-    [SerializeField] NPC_Info npcInfo;
-
-    public int GetId()
-    {
-        return id;
-    }
-
-    public NPC_Info GetNpcInfo()
-    {
-        return npcInfo;
-    }
-}
-
-[System.Serializable]
-public class EnemyEntry
-{
-    [SerializeField] int id;
-    [SerializeField] Enemy_Info eInfo;
-
-    public int GetId()
-    {
-        return id;
-    }
-    
-    public Enemy_Info GetEnemyInfo()
-    {
-        return eInfo;
     }
 }

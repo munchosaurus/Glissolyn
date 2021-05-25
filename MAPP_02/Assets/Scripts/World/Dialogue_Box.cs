@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Dialogue_Box : MonoBehaviour
 {
+    [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Text dialogueText;
     [SerializeField] private Image dialogueImage;
 
@@ -21,6 +22,7 @@ public class Dialogue_Box : MonoBehaviour
      */
     public void UpdateDialogue(NPC_Info theNPCInfo)
     {
+        Game_Controller.SetPause(true);
         this.theNPCInfo = theNPCInfo;
         dialogueImage.sprite = theNPCInfo.GetDialogueSprite();
         theDialogue = theNPCInfo.GetDialogue();
@@ -29,11 +31,11 @@ public class Dialogue_Box : MonoBehaviour
         currentDialoguePart = 0;
         BuildDialogueText(); // Set the dialogue text to the first part of the dialogue.
         gameObject.SetActive(true); // Activate the GameObject that this script is attached to (which is the "Dialogue Box"-GameObject.
-        Game_Controller.SetPause(true);
     }
 
     public void UpdateDialogue(string[] dialogue)
     {
+        dialogueImage.sprite = defaultSprite;
         npcIsTalking = false;
         theNPCInfo = null;
         theDialogue = dialogue;
@@ -65,7 +67,6 @@ public class Dialogue_Box : MonoBehaviour
                     {
                         Game_Controller.RunTransition();
                         Combat_Info.ChangeEnemy(eInfo);
-                        
                     }
                 }
             }
@@ -73,7 +74,10 @@ public class Dialogue_Box : MonoBehaviour
             {
                 BuildDialogueText(); // Set the dialogue text to be the next part of the dialogue.
             }
+            
+
         }
+        
 
         return gameObject.activeInHierarchy;
     }

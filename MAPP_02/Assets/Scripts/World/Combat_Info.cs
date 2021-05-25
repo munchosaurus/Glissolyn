@@ -38,9 +38,17 @@ public static class Combat_Info
     public static void PlayerWins()
     {
         Game_Controller.GetQuestLog().UpdateKillQuestsWithEnemyType(enemy.GetBase());
-        enemy.gameObject.SetActive(false);
+        enemy.Die();
         int xpGained = enemy.GetBase().GetExperienceBase() * ((enemy.GetLevel() * 2) / Game_Controller.GetPlayerInfo().GetPlayerLevel());
         Game_Controller.GetPlayerInfo().ModifyExperience(xpGained);
+        Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You gained " + xpGained + " experience!"});
+    }
+
+    public static void CombatEnded()
+    {
+        if(enemy.gameObject.TryGetComponent<Enemy_Find_player>(out Enemy_Find_player efp)){
+            efp.StartTimer();
+        }
     }
 
     public static void EnemyWins()

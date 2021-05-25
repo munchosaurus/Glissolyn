@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
+  m_Name: Purifying Eldham
+  m_EditorClassIdentifier: 
+  questTitle: Purifying Eldham
+  questDescription: The Marshal has asked you to destroy a crystal to the east.
+  questID: 0
+  experienceReward: 30
+  questClearState: 3
+  questPickUpState: 2
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - I dont have time for you, boy!..
+  - Wait.. you look familiar... Whats your name, boy?
+  - '{playerName}? So its true.'
+  - People have been talking about a young lad running around with a sceptre smashing
+    up crystals.
+  - I just assumed people were living a lie... you see.
+  - A few years before you were born Glissolyn was attacked by a group of Witches.
+  - These witches wanted to corrupt the land in order to further their evil deeds.
+  - Luckily a hero arose to fight them off with a sceptre imbued with magical powers.
+  - That hero was...
+  - ...Your father.
+  - I served with him in the milita back then.
+  - I was but a lowly private and he was my senior officer. A great man. I owe him
+    my life.
+  - All of Glissolyn does...
+  - And I'm getting the feeling that soon they will be indebted to you as well.
+  - Haha, well said. A hero does not seek out danger for praise or reward.
+  - Your father had the same attitude, he would be proud of you.
+  - Oh well enough chatting! There is a crystal to the east of here and we had no
+    luck getting to it.
+  - Go take care of it will ya?
+  questActiveDialogue:
+  - I would love to tell you more about your father, but it will have to wait until
+    the crisis is over.
+  questCompletionDialogue:
+  - Great job, i knew i could count on you!
+  - The next step will be to travel north across the wall into the witches swamp.
+  - I'm guessing the wall must have been broken through for there to be witches on
+    this side.
+  - So be prepared, there are surely dangers ahead.
+  questCompletedDialogue:
+  - Hurry, we need to end this.
+  objectToInteractWith: Large Crystal

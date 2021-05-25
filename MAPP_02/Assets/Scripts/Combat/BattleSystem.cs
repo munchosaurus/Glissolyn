@@ -86,7 +86,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"The {EnemyUnit.Character.Base.GetName()} died.");
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             EndBattle(true);
         }
         else
@@ -142,6 +142,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (run)
         {
+            
             dialogBox.EnableActionSelector(false);
             EnemyUnit.Character.SetCurrentHP();
             Game_Controller.RunTransition();
