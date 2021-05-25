@@ -44,6 +44,13 @@ public static class Combat_Info
         Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You gained " + xpGained + " experience!"});
     }
 
+    public static void CombatEnded()
+    {
+        if(enemy.gameObject.TryGetComponent<Enemy_Find_player>(out Enemy_Find_player efp)){
+            efp.StartTimer();
+        }
+    }
+
     public static void EnemyWins()
     {
         //TODO - Do stuff when enemy wins.

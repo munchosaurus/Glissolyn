@@ -122,6 +122,11 @@ public static class Game_Controller
     {
         return isGamePaused;
     }
+    
+    public static void ToggleWorldInterface(bool toggle)
+    {
+        worldInterface.SetActive(toggle);
+    }
 
     public static void ToggleCombatState(bool toggle)
     {

@@ -11,13 +11,22 @@ public class Transition : MonoBehaviour
         transition.SetTrigger("Start");
     }
 
+    public void ToggleWorldInterface()
+    {
+        Game_Controller.ToggleWorldInterface(false);
+    }
+
     public void ToggleBattleSystem()
     {
         Game_Controller.ToggleCombatState(!Game_Controller.IsCombatActive());
-
         if (Game_Controller.GetBattleSystem().gameObject.activeInHierarchy)
         {
             Game_Controller.GetBattleSystem().StartCombat();
+        }
+        else
+        {
+            Combat_Info.CombatEnded();
+            print("Combat ended");
         }
     }
 }
