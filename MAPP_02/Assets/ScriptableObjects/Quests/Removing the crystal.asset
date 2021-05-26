@@ -34,8 +34,9 @@ MonoBehaviour:
   questCompletionDialogue:
   - You did it, you truly did it! Here, take some experience points. This city is
     now safe. For now..
-  - Now, we will send some of our forces back up to Eldham, where the true threat
-    is.. Why don't you go ahead and do the same?
+  - 'Now, we will send some of our forces back up to Eldham, where the true threat
+    is.. Why don''t you go ahead and do the same? Talk to the Marshal. '
+  - You can find him around the fortress in the city.
   questCompletedDialogue:
   - Make sure to go visit Eldham now boy!
   objectToInteractWith: Medium Crystal
