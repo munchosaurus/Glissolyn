@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab85dddf9563f24499eac71029dfdb6, type: 3}
+  m_Name: Slaying the wolves
+  m_EditorClassIdentifier: 
+  questTitle: Slaying the wolves
+  questDescription: Lumber Jack has asked you to take care of the wolves that are
+    in the way of him performing his duty. Kill them and get back to him.
+  questID: 0
+  experienceReward: 8
+  questClearState: 0
+  questPickUpState: 0
+  nextQuestInChain: {fileID: 0}
+  questStartDialogue:
+  - 'Hello boy!
+
+    I can''t seem to understand where these damn wolves are coming
+    from.'
+  - Could you perhaps help me out? I would really need some help with clearing the
+    forest glade north of us, I need to get that wood!
+  questActiveDialogue:
+  - Have you killed them yet?
+  questCompletionDialogue:
+  - Ahhh thank you very much! Here, take some experience
+  questCompletedDialogue:
+  - I love wood.
+  amountToKill: 5
+  enemyToKill: {fileID: 11400000, guid: edccefcfdcb67f44eac19ee17fd239d6, type: 2}

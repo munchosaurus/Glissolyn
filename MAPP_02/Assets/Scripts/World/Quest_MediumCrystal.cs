@@ -8,6 +8,8 @@ public class Quest_MediumCrystal : NPC_Info
     [TextArea] [SerializeField] protected string[] dialogueQuest;
     [SerializeField] private GameObject objectOneToDestroy;
     [SerializeField] private GameObject objectTwoToDestroy;
+    [SerializeField] private GameObject objectThreeToDestroy;
+    [SerializeField] private GameObject objectFourToDestroy;
 
 
     override
@@ -19,6 +21,8 @@ public class Quest_MediumCrystal : NPC_Info
             dialogue = dialogueQuest;
             objectOneToDestroy.SetActive(false);
             objectTwoToDestroy.SetActive(false);
+            objectThreeToDestroy.SetActive(false);
+            objectFourToDestroy.SetActive(false);
             gameObject.SetActive(false);
         }
         base.Interact();
