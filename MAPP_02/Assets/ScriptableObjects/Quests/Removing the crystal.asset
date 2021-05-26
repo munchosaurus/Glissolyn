@@ -18,6 +18,7 @@ MonoBehaviour:
   questID: 5
   experienceReward: 10
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - '{playerName}, I believe you might be our only chance.
@@ -27,16 +28,15 @@ MonoBehaviour:
   - and destroy the crystal the same way you did back home in Wakefield? I understand
     that it is much I am asking of you. I truly wish there was another way.
   - Stride carefully though, the paths are filled with more enemies than you might
-    be able to handle
+    be able to handle.
   questActiveDialogue:
   - Hurry {playerName}!
   questCompletionDialogue:
-  - You did it, you truly did it! Here, take some experience points. Also, I happen
-    to be a mage and I have noticed that the zombies and
-  - other creatures are weak against fire. Please, use the attack Fireball as much
-    as you will.
-  - Now, we will send some of our forces back up to Eldham, where the true threat
-    is.. Why don't you go ahead and do the same?
+  - You did it, you truly did it! Here, take some experience points. This city is
+    now safe. For now..
+  - 'Now, we will send some of our forces back up to Eldham, where the true threat
+    is.. Why don''t you go ahead and do the same? Talk to the Marshal. '
+  - You can find him around the fortress in the city.
   questCompletedDialogue:
-  - I am so happy you were here.
+  - Make sure to go visit Eldham now boy!
   objectToInteractWith: Medium Crystal
