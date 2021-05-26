@@ -28,7 +28,7 @@ public class MainMenu_NameSelection : MonoBehaviour
     public void SetName() {
         playerName = inputField.GetComponent<Text>().text;
         textDisplay.GetComponent<Text>().text = "Welcome " + playerName + "! " +
-            "Press ENTER WORLD to start exploring the world of Glyssolin!";
+            "Press ENTER WORLD to start exploring the world of Glissolyn!";
         inputFieldToDisable.SetActive(false);
         enterButtonToHide.SetActive(false);
         startGameButton.SetActive(true);
