@@ -21,7 +21,7 @@ MonoBehaviour:
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - I dont have time for you, boy!..
-  - Wait.. you look familiar... Whats your name, boy?
+  - Wait.. you look familiar... What's your name, boy?
   - '{playerName}? So its true.'
   - People have been talking about a young lad running around with a sceptre smashing
     up crystals.
@@ -43,9 +43,9 @@ MonoBehaviour:
   - Go take care of it will ya?
   questActiveDialogue:
   - I would love to tell you more about your father, but it will have to wait until
-    the crisis is over.
+    the crisis is over. Now go east and smash it.
   questCompletionDialogue:
-  - Great job, i knew i could count on you!
+  - Great job, I knew I could count on you!
   - The next step will be to travel north across the wall into the witches swamp.
   - I'm guessing the wall must have been broken through for there to be witches on
     this side.
