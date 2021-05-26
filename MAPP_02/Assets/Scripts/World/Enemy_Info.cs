@@ -42,6 +42,10 @@ public class Enemy_Info : NPC_Info
         timer = 30;
         transform.position = new Vector3(transform.position.x, transform.position.y, -20);
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        if(gameObject.TryGetComponent<Enemy_Find_player>(out Enemy_Find_player efp))
+        {
+            efp.enabled = false;
+        }
     }
     
     public void Respawn()
@@ -51,6 +55,7 @@ public class Enemy_Info : NPC_Info
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         if(gameObject.TryGetComponent<Enemy_Find_player>(out Enemy_Find_player efp))
         {
+            efp.enabled = true;
             efp.StartTimer(3);
         }
     }

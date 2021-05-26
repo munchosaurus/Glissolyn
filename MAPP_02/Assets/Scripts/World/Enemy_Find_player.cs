@@ -36,6 +36,7 @@ public class Enemy_Find_player : MonoBehaviour
             else if (timerActive)
             {
                 timer -= Time.deltaTime;
+                print(timer);
                 if (timer <= 0)
                 {
                     timerActive = false;
