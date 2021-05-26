@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Big Zombie
   description: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 2858dbee3570f974bbb26e9e79ce62ec, type: 3}
   types: 020000000400000001000000
   maxHP: 70
   strength: 5
