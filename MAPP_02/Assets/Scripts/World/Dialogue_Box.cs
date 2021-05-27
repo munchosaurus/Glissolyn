@@ -62,6 +62,9 @@ public class Dialogue_Box : MonoBehaviour
                     if (theNPCInfo.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove)) // Check if the NPC has a NPC_Movement script and is not an enemy
                     {
                         npcmove.TurnBackToPreviousFacing(); // If it does then its not an enemy and we should make it turn back to where it was facing before.
+                    } else if(theNPCInfo.TryGetComponent<Enemy_rotate>(out Enemy_rotate er))
+                    {
+                        er.resetFacing();
                     }
                     if (theNPCInfo.TryGetComponent<Enemy_Info>(out Enemy_Info eInfo))
                     {

@@ -8,13 +8,13 @@ public class Enemy_Find_player : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float raycastLength;
     [SerializeField] private Animator zombieAnimator;
-    private GameObject playerObject;
+    private Grid_movement playerMovement;
     private bool timerActive;
     private float timer;
 
     private void Start()
     {
-        playerObject = GameObject.FindGameObjectWithTag("Player");
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>();       
     }
 
     private void Update()
@@ -22,10 +22,10 @@ public class Enemy_Find_player : MonoBehaviour
         if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
             RaycastHit2D target = Physics2D.Raycast(transform.position, directionObject.localPosition, raycastLength, playerLayer);
-
             if (timer <= 0 && target)
             {
-                if (!playerObject.GetComponent<Grid_movement>().GetMoving())
+                playerMovement.StopMoving();
+                if (!playerMovement.GetMoving())
                 {
                     Game_Controller.SetPause(true);
                     StartCoroutine(Move(target.transform.position - directionObject.transform.localPosition, target.distance));
@@ -36,7 +36,6 @@ public class Enemy_Find_player : MonoBehaviour
             else if (timerActive)
             {
                 timer -= Time.deltaTime;
-                print(timer);
                 if (timer <= 0)
                 {
                     timerActive = false;

@@ -65,6 +65,7 @@ public class Grid_movement : MonoBehaviour
         }
         isMoving = false;
         gridClaimer.transform.parent = gameObject.transform;
+        yield return 1;
     }
 
     private void Rotate(Vector3 direction) {
