@@ -41,7 +41,6 @@ public static class Combat_Info
         enemy.Die();
         int xpGained = enemy.GetBase().GetExperienceBase() * ((enemy.GetLevel() * 2) / Game_Controller.GetPlayerInfo().GetPlayerLevel());
         Game_Controller.GetPlayerInfo().ModifyExperience(xpGained);
-        Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You gained " + xpGained + " experience!"});
     }
 
     public static void CombatEnded()

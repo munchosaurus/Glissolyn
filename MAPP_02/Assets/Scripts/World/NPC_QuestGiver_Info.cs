@@ -26,9 +26,10 @@ public class NPC_QuestGiver_Info : NPC_Info
             dialogue = questToGive.GetQuestStartDialogue();
             Game_Controller.GetQuestLog().AddQuest(questToGive);
         }
-        else if (questToGive.CompleteQuest())
+        else if (questToGive.CanBeCompleted())
         {
             dialogue = questToGive.GetQuestCompletionDialogue();
+            Quest tempQUest = questToGive;
 
             if (questToGive.GetNextQuestInChain() != null)
             {
@@ -41,6 +42,8 @@ public class NPC_QuestGiver_Info : NPC_Info
                 moreDialogue.CopyTo(tempArray, dialogue.Length);
                 dialogue = tempArray;
             }
+
+            tempQUest.CompleteQuest();
         }
         else
         {

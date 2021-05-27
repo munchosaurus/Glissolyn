@@ -51,15 +51,14 @@ public class Quest_KillQuest : Quest
     }
     
     override
-    public bool CompleteQuest()
+    public bool CanBeCompleted()
     {
         if(killed == amountToKill)
         {
             isCompleted = true;
-            Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
 
-        return base.CompleteQuest();
+        return isCompleted;
     }
 
     public int GetKilled()

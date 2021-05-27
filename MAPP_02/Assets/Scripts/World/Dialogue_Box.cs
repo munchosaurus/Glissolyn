@@ -13,12 +13,10 @@ public class Dialogue_Box : MonoBehaviour
     private string[] theDialogue;
     private int currentDialoguePart;
     private bool npcIsTalking;
-    
 
     /*
      * Updates what the dialogue will be, the image of the character talking, makes sure it starts from the beginning and activates the "Dialogue Box"-GameObject.
-     * Parameters: dialogue - An array of strings, each string consisting of one part of the dialogue to be shown.
-     *            sprite   - The dialogue sprite from the character that is talking.
+     * Parameters: theNPCInfo - A reference to what NPC is talking.
      */
     public void UpdateDialogue(NPC_Info theNPCInfo)
     {
@@ -77,10 +75,7 @@ public class Dialogue_Box : MonoBehaviour
             {
                 BuildDialogueText(); // Set the dialogue text to be the next part of the dialogue.
             }
-            
-
         }
-        
 
         return gameObject.activeInHierarchy;
     }
@@ -94,6 +89,4 @@ public class Dialogue_Box : MonoBehaviour
     {
         return s.Replace("{playerName}", Game_Controller.GetPlayerName());
     }
-
-  
 }

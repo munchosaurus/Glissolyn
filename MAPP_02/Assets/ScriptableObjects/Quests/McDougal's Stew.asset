@@ -16,7 +16,9 @@ MonoBehaviour:
   questDescription: Mrs McDougal wants you to kill two bears.
   questID: 0
   experienceReward: 10
+  statPointsReward: 2
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - Hi there stranger. Can you help me perhaps?

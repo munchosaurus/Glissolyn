@@ -17,7 +17,9 @@ MonoBehaviour:
     your help with delivering a package to Lady Frost.
   questID: 0
   experienceReward: 5
+  statPointsReward: 1
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - Oh hey there! Yeah I have found myself in quite the pickle here..

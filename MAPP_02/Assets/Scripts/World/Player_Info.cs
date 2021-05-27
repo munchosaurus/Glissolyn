@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ public class Player_Info : Character_Info
     [SerializeField] private LayerMask interactableLayer;
     [SerializeField] private CharacterBase Base;
     [SerializeField] private Sprite playerSprite;
-    [SerializeField] private GameObject startPos;
+    [SerializeField] private Transform startPos;
 
     [SerializeField] private bool enterGodMode;
     [SerializeField] private bool enterWeakassMode;
@@ -53,6 +55,7 @@ public class Player_Info : Character_Info
             }
             else
             {
+                respawnPos = startPos.position;
                 transform.position = respawnPos;
             }
         }
@@ -79,6 +82,38 @@ public class Player_Info : Character_Info
             Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel });
         }
     }
+
+    private IEnumerator ModifyExperienceCoroutineHack(int amount)
+    {
+        yield return new WaitForFixedUpdate();
+        while (Game_Controller.GetDialogueBox().gameObject.activeInHierarchy)
+        {
+            yield return null;
+        }
+
+        if (playerLevel < 100)
+        {
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You gained " + amount + " experience!" });
+
+            yield return new WaitForFixedUpdate();
+
+            while (Game_Controller.GetDialogueBox().gameObject.activeInHierarchy)
+            {
+                yield return null;
+            }
+
+            experience += amount;
+            if (experience >= nextLevelExperience)
+            {
+                LevelUp();
+            }
+        }
+        else
+        {
+            experience = nextLevelExperience - 1;
+        }
+    }
+
 
     public void Init(string name, int[] loadValues)
     {
@@ -260,18 +295,12 @@ public class Player_Info : Character_Info
 
     public void ModifyExperience(int amount)
     {
-        if (playerLevel < 100)
-        {
-            experience += amount;
-            if (experience >= nextLevelExperience)
-            {
-                LevelUp();
-            }
-        }
-        else
-        {
-            experience = nextLevelExperience - 1;
-        }
+        StartCoroutine(ModifyExperienceCoroutineHack(amount));
+    }
+
+    public void GiveStatPoints(int amount)
+    {
+        statPoints += amount;
     }
 
     public void SpendStatPoint()
@@ -297,7 +326,7 @@ public class Player_Info : Character_Info
         
         if (respawnPos.Equals(new Vector3(0,0,0)))
         {
-            return startPos.transform.position;
+            return transform.position;
         } else
         {
             return respawnPos;

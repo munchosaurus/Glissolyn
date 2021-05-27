@@ -16,9 +16,9 @@ public class Game_Initializer : MonoBehaviour
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
-    private int playerStartingStrength = 1;
-    private int playerStartingAgility = 1;
-    private int playerStartingIntelligence = 1;
+    private int playerStartingStrength = 3;
+    private int playerStartingAgility = 3;
+    private int playerStartingIntelligence = 3;
     private int playerStartingExperience = 0;
     private int playerStartingStatPoints = 0;
 

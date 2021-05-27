@@ -17,6 +17,7 @@ MonoBehaviour:
     in the way of him performing his duty. Kill them and get back to him.
   questID: 0
   experienceReward: 8
+  statPointsReward: 2
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}

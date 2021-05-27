@@ -16,8 +16,10 @@ MonoBehaviour:
   questDescription: Old Man Sherman has asked you to visit the open area to the east
     to investigate the object Silk eye Joe had found.
   questID: 1
-  experienceReward: 4
+  experienceReward: 6
+  statPointsReward: 0
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 11400000, guid: 4627430c2da9d754fac4c682993277bb, type: 2}
   questStartDialogue:
   - "Ahh, {playerName} how good to see you.\nI haven\u2019t seen your mom in a while,
@@ -31,8 +33,9 @@ MonoBehaviour:
     After being
     defeated on the battlefield, he asked me to hold on to '
   - This sceptre I am holding right here until you came of age. Please take it.
-  - Now while you are here, I talked to Silk eye Joe earlier and he mentioned a strange
-    object to the east. Could you go have a further look dear boy?
+  - 'Now while you are here, I talked to Silk eye Joe earlier and he mentioned a
+    strange object to the east. '
+  - Could you go have a further look dear boy?
   questActiveDialogue:
   - Have you interacted with the strange object yet?
   questCompletionDialogue:

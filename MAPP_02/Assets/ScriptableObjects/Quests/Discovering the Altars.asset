@@ -17,6 +17,7 @@ MonoBehaviour:
     with the means to destroy it.
   questID: 2
   experienceReward: 10
+  statPointsReward: 4
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}

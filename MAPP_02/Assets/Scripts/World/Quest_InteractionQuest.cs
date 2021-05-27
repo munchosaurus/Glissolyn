@@ -60,15 +60,13 @@ public class Quest_InteractionQuest : Quest
     }
 
     override
-    public bool CompleteQuest()
+    public bool CanBeCompleted()
     {
         if (hasBeenInteractedWith)
         {
             isCompleted = true;
-            Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
-
-        return base.CompleteQuest();
+        return isCompleted;
     }
 
 
