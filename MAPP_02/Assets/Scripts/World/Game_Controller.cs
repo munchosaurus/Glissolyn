@@ -17,8 +17,18 @@ public static class Game_Controller
     private static GameObject battleSystem;
     private static DataBase dataBase;
     private static GameObject transition;
-
+    private static int playerColor;
     private static string playerName;
+
+    public static int GetPlayerColor()
+    {
+        return playerColor;
+    }
+
+    public static void SetPlayerColor(int c)
+    {
+        playerColor = c;
+    }
 
     public static void SetDialogueBox(Dialogue_Box db)
     {

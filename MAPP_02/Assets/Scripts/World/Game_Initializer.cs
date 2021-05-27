@@ -13,6 +13,10 @@ public class Game_Initializer : MonoBehaviour
     [SerializeField] private GameObject battleSystem;
     [SerializeField] private Character_Screen characterScreen;
     [SerializeField] private GameObject transition;
+    [SerializeField] private Animator animator;
+
+
+
 
     private int playerStartingLevel = 1;
     private int playerStartingHealth = 100;
@@ -35,6 +39,7 @@ public class Game_Initializer : MonoBehaviour
         Game_Controller.SetDataBase(dataBase);
         Game_Controller.SetTransition(transition);
 
+
         if (Game_Controller.IsLoaded())
         {
             print("Game was loaded");
@@ -48,6 +53,17 @@ public class Game_Initializer : MonoBehaviour
             InitializePlayer();
         }
         Combat_Info.Initialize();
+
+        if(Game_Controller.GetPlayerColor() == 0)
+        {
+            animator.runtimeAnimatorController = Resources.Load("Animation/Gray") as RuntimeAnimatorController;
+        } else
+        {
+            animator.runtimeAnimatorController = Resources.Load("Animation/PlayerAnimations") as RuntimeAnimatorController;
+        }
+
+
+
     }
 
     private void InitializePlayer()

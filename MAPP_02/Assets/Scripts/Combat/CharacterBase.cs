@@ -20,6 +20,7 @@ public class CharacterBase : ScriptableObject
 
     [SerializeField] List<LearnableMoves> learnableMoves;
 
+
     public void SetName(string name)
     {
         this.name = name;

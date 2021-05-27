@@ -1,32 +1,41 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenu_ColorSelection : MonoBehaviour
 {
-
+    public bool hairGray;
+    public int playerColor;
 
     // Drag & drop slider
     public UnityEngine.UI.Slider slider;
 
     // Drag & drop handle
-    public UnityEngine.UI.Image hair;
+    public UnityEngine.UI.Image playerImageBlue;
+    public UnityEngine.UI.Image playerImageGray;
 
-    [SerializeField] Animator[] animators = new Animator[6];
-    Color[] colors = new Color[]
+    public void Start()
     {
-        new Color(1, 0, 0),
-        new Color(1, 1, 0),
-        new Color(0, 1, 0),
-        new Color(0, 1, 1),
-        new Color(0, 0, 1),
-        new Color(1, 0, 1)
-    };
+        playerColor = 0;
+    }
 
     public void Update()
     {
+        if(slider.value > 0)
+        {
+            playerColor = 0;
+            playerImageBlue.enabled = false;
+            playerImageGray.enabled = true;
+            hairGray = true;
+        } else
+        {
+            playerColor = 1;
+            playerImageGray.enabled = false;
+            playerImageBlue.enabled = true;
+            hairGray = false;
+        }
 
-        hair.color = colors[(int)slider.value];
+        Game_Controller.SetPlayerColor(playerColor);
+
     }
-
 }
