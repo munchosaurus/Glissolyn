@@ -36,16 +36,20 @@ public class Last_Crystal : NPC_Info
                 Vector3 distanceDifference = new Vector3(0, 1);
 
                 witch.transform.position = player.transform.position + distanceDifference;
+           
             
             
                 interactCounter++;
+            print(interactCounter);
             }
                 
             
-            else
-            {
-                this.gameObject.SetActive(false);
-            }
+            else if(interactCounter!=0 && witch.GetComponent<BoxCollider2D>().enabled.Equals(false)){
+            this.gameObject.SetActive(false);
+        }
+            
+                
+            
            
        // }
         base.Interact();
