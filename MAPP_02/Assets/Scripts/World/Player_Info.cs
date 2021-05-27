@@ -349,7 +349,7 @@ public class Player_Info : Character_Info
     private IEnumerator FadeOut(int id)
     {
         float currentTime = 0;
-        float duration = 0.5f;
+        float duration = 0.3f;
         float currentVol;
 
         audioMixer.GetFloat("volume", out currentVol);
@@ -375,7 +375,7 @@ public class Player_Info : Character_Info
 
         float currentTime = 0;
         float duration = 3;
-        float targetVol = 0.5f;
+        float targetVol = 0.3f;
         float currentVol;
 
         audioMixer.GetFloat("volume", out currentVol);

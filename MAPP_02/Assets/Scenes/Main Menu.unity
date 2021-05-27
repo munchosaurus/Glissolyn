@@ -2527,6 +2527,7 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 30c8d3eb261adad4798431366c754214, type: 2}
   overlay: {fileID: 269761882}
   mainMenuPanel: {fileID: 3705848}
+  sceneToLoad: 1
 --- !u!82 &1198223199
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2539,7 +2540,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 30c8d3eb261adad4798431366c754214, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1f20d35f9e916ee49b9fa7c9b05dffee, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

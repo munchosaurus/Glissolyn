@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-
+    [SerializeField] Settings settings;
     public void LoadGameClick()
     {
-        // TODO
+        Game_Controller.LoadGame();
+        Game_Controller.GoToWorld();
     }
 
     public void SaveGameClick()
@@ -15,7 +16,7 @@ public class Menu : MonoBehaviour
 
     public void SettingsClick()
     {
-        // TODO
+        settings.Toggle();
     }
 
     public void QuitClick()

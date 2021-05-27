@@ -9,6 +9,7 @@ public class AudioThingy : MonoBehaviour
     [SerializeField] AudioMixer audioMixer;
     [SerializeField] Image overlay;
     [SerializeField] GameObject mainMenuPanel;
+    [SerializeField] int sceneToLoad;
 
     // Start is called before the first frame update
     void Start()
