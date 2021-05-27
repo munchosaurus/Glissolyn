@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2a71fe918c69b94bbd1ebfc4c289dac, type: 3}
+  m_Name: Witch
+  m_EditorClassIdentifier: 
+  name: Witch
+  description: 
+  sprite: {fileID: 21300000, guid: 0d268733ba9a7c34fb44e9a3a1f6307e, type: 3}
+  types: 
+  maxHP: 100
+  strength: 10
+  agility: 8
+  intelligence: 10
+  experienceBase: 8
+  learnableMoves:
+  - moveBase: {fileID: 11400000, guid: 8d60a511054577e4fa0f7122e9e342dd, type: 2}
+    level: 5
+  - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
+    level: 7

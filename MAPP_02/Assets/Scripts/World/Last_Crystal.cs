@@ -25,17 +25,19 @@ public class Last_Crystal : NPC_Info
     public void Interact()
     {
 
-        if (Game_Controller.GetQuestLog().HasQuest(quest))
-        {
+       // if (Game_Controller.GetQuestLog().HasQuest(quest))
+       // {
 
 
             if (interactCounter == 0)
             {
                 witch.SetActive(true);
                 dialog = dialogue;
-                Vector3 distanceDifference = new Vector3(1, 1);
+                Vector3 distanceDifference = new Vector3(0, 1);
 
-                witch.transform.position = player.transform.position - distanceDifference;
+                witch.transform.position = player.transform.position + distanceDifference;
+            
+            
                 interactCounter++;
             }
                 
@@ -45,16 +47,12 @@ public class Last_Crystal : NPC_Info
                 this.gameObject.SetActive(false);
             }
            
-        }
+       // }
         base.Interact();
 
     }
 
-    private void ActivateWitch()
-    {
-        
-
-    }
+   
 
 
     
