@@ -23,6 +23,6 @@ MonoBehaviour:
   experienceBase: 2
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 7fc2dbad8b9434f41bfc305d355ae2e9, type: 2}
-    level: 0
-  - moveBase: {fileID: 11400000, guid: 515fe51c2ad8f7547bab5d2b192ee859, type: 2}
-    level: 5
+    level: 3
+  - moveBase: {fileID: 11400000, guid: c15e25cd95c2eb74b8a10f604072043f, type: 2}
+    level: 1

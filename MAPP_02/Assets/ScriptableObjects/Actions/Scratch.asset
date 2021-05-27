@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e12393470cedb84985ee24bbbad45f1, type: 3}
-  m_Name: Laser Beam
+  m_Name: Scratch
   m_EditorClassIdentifier: 
-  name: Laser Beam
+  name: Scratch
   description: 
-  type: 5
-  statType: 2
-  power: 100
+  type: 3
+  statType: 1
+  power: 4
