@@ -10,7 +10,8 @@ public class Settings : MonoBehaviour
 
     private void Start()
     {
-        audioSlider.value = audioSource.volume;
+        desiredAudioValue = PlayerPrefs.GetFloat("Volume");
+        audioSlider.value = desiredAudioValue;
     }
     private void Update()
     {
@@ -23,12 +24,9 @@ public class Settings : MonoBehaviour
         audioSource.volume = audioSlider.value;
     }
 
-    public float[] GetSaveValues()
+    private void OnDisable()
     {
-        float[] saveValues = new float[1];
-        saveValues[0] = audioSlider.value;
-
-        return saveValues;
+        PlayerPrefs.SetFloat("Volume", desiredAudioValue);
     }
 
     public void Toggle()

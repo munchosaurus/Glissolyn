@@ -52,6 +52,7 @@ public static class Combat_Info
 
     public static void EnemyWins()
     {
-        //TODO - Do stuff when enemy wins.
+        Game_Controller.GetDataBase().SetCurrentAudioID(4);
+        Game_Controller.GetPlayerInfo().Respawn();
     }
 }

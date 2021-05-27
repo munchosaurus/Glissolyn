@@ -43,8 +43,8 @@ public class Game_Initializer : MonoBehaviour
         else
         {
             dataBase.ResetQuests();
-            dataBase.SetCurrentAudioID(4);
             InitializePlayer();
+            Game_Controller.GetDataBase().SetCurrentAudioID(4);
         }
         Combat_Info.Initialize();
     }

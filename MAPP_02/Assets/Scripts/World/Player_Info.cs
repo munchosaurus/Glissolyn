@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -21,7 +22,7 @@ public class Player_Info : Character_Info
     private int agility;
     private int intelligence;
 
-    private int playerLevel; 
+    private int playerLevel;
     private int statPoints;
     private int experience;
     private int nextLevelExperience;
@@ -31,6 +32,10 @@ public class Player_Info : Character_Info
 
     private void Start()
     {
+        audioMixer.SetFloat("volume", -80);
+
+        gameObject.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+
         if (!Game_Controller.IsLoaded())
         {
             if (enterGodMode)
@@ -51,7 +56,7 @@ public class Player_Info : Character_Info
                 SetPlayerLevel(1);
                 SetHealth(5);
                 ModifyExperience(0);
-                SetName("Chuck Norris");
+                SetName("Fragile Dude");
                 Game_Controller.GetCharacterScreen().Initialize();
             }
             else
@@ -59,9 +64,10 @@ public class Player_Info : Character_Info
                 respawnPos = startPos.position;
                 transform.position = respawnPos;
             }
-
-            StartCoroutine(FadeIn(Game_Controller.GetDataBase().GetCurrentAudioID()));
+            StartCoroutine(FadeIn());
         }
+
+        
     }
 
     private void SetNextLevelExperience()
@@ -78,7 +84,10 @@ public class Player_Info : Character_Info
         SetNextLevelExperience();
         if (experience >= nextLevelExperience)
         {
-            ModifyExperience(0);
+            if (playerLevel < 100)
+            {
+                LevelUp();
+            }
         }
         else
         {
@@ -122,15 +131,14 @@ public class Player_Info : Character_Info
     {
         SetName(name);
         transform.position = new Vector3(loadValues[0] + 0.5f, loadValues[1] + 0.5f, 0);
-        maxHealth = loadValues[2];
-        SetHealth(loadValues[3]);
-        strength = loadValues[4];
-        agility = loadValues[5];
-        intelligence = loadValues[6];
-        SetPlayerLevel(loadValues[7]);
-        ModifyExperience(0);
-        statPoints = loadValues[8];
-        experience = loadValues[9];
+        strength = loadValues[2];
+        agility = loadValues[3];
+        intelligence = loadValues[4];
+        SetPlayerLevel(loadValues[5]);
+        statPoints = loadValues[6];
+        experience = loadValues[7];
+        maxHealth = loadValues[8];
+        SetHealth(loadValues[9]);
         respawnPos = new Vector3(loadValues[10] + 0.5f, loadValues[11] + 0.5f, 0);
         Game_Controller.GetCharacterScreen().Initialize();
     }
@@ -140,14 +148,14 @@ public class Player_Info : Character_Info
         saveValues = new int[12];
         saveValues[0] = (int)transform.position.x;
         saveValues[1] = (int)transform.position.y;
-        saveValues[2] = maxHealth;
-        saveValues[3] = health;
-        saveValues[4] = strength;
-        saveValues[5] = agility;
-        saveValues[6] = intelligence;
-        saveValues[7] = playerLevel;
-        saveValues[8] = statPoints;
-        saveValues[9] = experience;
+        saveValues[2] = strength;
+        saveValues[3] = agility;
+        saveValues[4] = intelligence;
+        saveValues[5] = playerLevel;
+        saveValues[6] = statPoints;
+        saveValues[7] = experience;
+        saveValues[8] = maxHealth;
+        saveValues[9] = health;
         saveValues[10] = (int)respawnPos.x;
         saveValues[11] = (int)respawnPos.y;
 
@@ -324,16 +332,10 @@ public class Player_Info : Character_Info
         }
     }
 
-    public Vector3 GetRespawnPos()
+    public void Respawn()
     {
-        
-        if (respawnPos.Equals(new Vector3(0,0,0)))
-        {
-            return transform.position;
-        } else
-        {
-            return respawnPos;
-        }
+        transform.position = respawnPos;
+        health = maxHealth;
     }
     
     public void SetRespawnPos(Vector3 newPos)
@@ -367,9 +369,52 @@ public class Player_Info : Character_Info
         StartCoroutine(FadeIn(id));
     }
 
+    private IEnumerator FadeOut()
+    {
+        float currentTime = 0;
+        float duration = 0.3f;
+        float currentVol;
+
+        audioMixer.GetFloat("volume", out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(0, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
+        gameObject.GetComponent<AudioSource>().Stop();
+    }
+
     private IEnumerator FadeIn(int id)
     {
         gameObject.GetComponent<AudioSource>().clip = Game_Controller.GetDataBase().GetMUsicByID(id);
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<AudioSource>().loop = true;
+
+        float currentTime = 0;
+        float duration = 3;
+        float targetVol = 0.3f;
+        float currentVol;
+
+        audioMixer.GetFloat("volume", out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(targetVol, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeIn()
+    {
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<AudioSource>().loop = true;
 

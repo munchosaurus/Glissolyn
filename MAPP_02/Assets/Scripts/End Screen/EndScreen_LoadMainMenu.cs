@@ -8,7 +8,7 @@ public class EndScreen_LoadMainMenu : MonoBehaviour
 
     public void FinishGame()
     {
-        SceneManager.LoadScene(0);
+        Game_Controller.GoToMainMenu();
     }
 
     public void QuitGame()

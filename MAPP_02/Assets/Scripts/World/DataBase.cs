@@ -95,6 +95,7 @@ public class DataBase : MonoBehaviour
             writer.WriteLine();
 
             writer.WriteLine($"m.{currentAudioID}");
+            PlayerPrefs.Save();
         }
     }
 
@@ -159,6 +160,19 @@ public class DataBase : MonoBehaviour
                     Game_Controller.GetPlayerInfo().ChangeMusic(musicID);
                 }
             }
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            PlayerPrefs.Save();
         }
     }
 }
