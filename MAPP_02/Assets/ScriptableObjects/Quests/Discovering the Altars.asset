@@ -18,6 +18,7 @@ MonoBehaviour:
   questID: 2
   experienceReward: 10
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - '{playerName} you must listen to me!
@@ -43,8 +44,8 @@ MonoBehaviour:
   - please come see any of us in the Order. We have all grown quite weary, we might
     be old but we still hold our healing powers.
   - And don't worry, if you ever would be knocked out by any of the foul creatures
-    that do exist. The person who finds you will know to bring you to any
-  - of the members of the order.
+    that do exist. The person
+  - who finds you will know to bring you to any of the members of the order.
   - You must now head to the village of Wigston through the northern passage of here.
   - Seek out a military officer and inform him of what you have seen.
   questCompletedDialogue:
