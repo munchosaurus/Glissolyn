@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_LoadGame : MonoBehaviour
 {
+    [SerializeField] AudioThingy audioThingy;
     public void LoadGame()
     {
         Game_Controller.LoadGame();
-        SceneManager.LoadScene(1);
+        StartCoroutine(audioThingy.FadeOut());
     }
 }

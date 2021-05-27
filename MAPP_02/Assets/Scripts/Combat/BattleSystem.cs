@@ -25,6 +25,13 @@ public class BattleSystem : MonoBehaviour
     {
         dialogBox.SetDialog("");
         StartCoroutine(SetupBattle());
+        if (Combat_Info.GetEnemy().GetTypes().Contains(Type.Player))
+        {
+            Game_Controller.GetPlayerInfo().ChangeMusic(1);
+        } else
+        {
+            Game_Controller.GetPlayerInfo().ChangeMusic(2);
+        }
     }
 
     public IEnumerator SetupBattle()

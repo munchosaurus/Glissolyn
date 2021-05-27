@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Player_Info : Character_Info
 {
@@ -13,6 +12,8 @@ public class Player_Info : Character_Info
 
     [SerializeField] private bool enterGodMode;
     [SerializeField] private bool enterWeakassMode;
+
+    [SerializeField] private AudioMixer audioMixer;
 
     private int maxHealth;
     private int health;
@@ -58,6 +59,8 @@ public class Player_Info : Character_Info
                 respawnPos = startPos.position;
                 transform.position = respawnPos;
             }
+
+            StartCoroutine(FadeIn(Game_Controller.GetDataBase().GetCurrentAudioID()));
         }
     }
 
@@ -336,5 +339,55 @@ public class Player_Info : Character_Info
     public void SetRespawnPos(Vector3 newPos)
     {
         respawnPos = newPos;
+    }
+
+    public void ChangeMusic(int id)
+    {
+        StartCoroutine(FadeOut(id));
+    }
+
+    private IEnumerator FadeOut(int id)
+    {
+        float currentTime = 0;
+        float duration = 0.5f;
+        float currentVol;
+
+        audioMixer.GetFloat("volume", out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(0, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
+        gameObject.GetComponent<AudioSource>().Stop();
+        StartCoroutine(FadeIn(id));
+    }
+
+    private IEnumerator FadeIn(int id)
+    {
+        gameObject.GetComponent<AudioSource>().clip = Game_Controller.GetDataBase().GetMUsicByID(id);
+        gameObject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<AudioSource>().loop = true;
+
+        float currentTime = 0;
+        float duration = 3;
+        float targetVol = 0.5f;
+        float currentVol;
+
+        audioMixer.GetFloat("volume", out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(targetVol, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
     }
 }
