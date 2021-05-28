@@ -52,7 +52,7 @@ public class DataBase : MonoBehaviour
 
     public void SaveGame()
     {
-        using (StreamWriter writer = new StreamWriter(File.Open(Application.dataPath + "/save.txt", FileMode.Create))) {
+        using (StreamWriter writer = new StreamWriter(File.Open(Application.persistentDataPath + "/save.txt", FileMode.Create))) {
             foreach (Quest quest in quests)
             {
                 writer.Write("q" + quests.IndexOf(quest) + ".");
@@ -101,7 +101,7 @@ public class DataBase : MonoBehaviour
 
     public void LoadGame()
     {
-        using (StreamReader reader = new StreamReader(File.Open(Application.dataPath + "/save.txt", FileMode.Open)))
+        using (StreamReader reader = new StreamReader(File.Open(Application.persistentDataPath + "/save.txt", FileMode.Open)))
         {
             string line;
 

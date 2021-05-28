@@ -19,7 +19,15 @@ public class AudioThingy : MonoBehaviour
     {
         audioSlider = audioObject.GetComponentInChildren<Slider>();
         audioMixer.SetFloat("volume", -80);
-        sliderValue = PlayerPrefs.GetFloat("Volume");
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            sliderValue = PlayerPrefs.GetFloat("Volume");
+        }
+        else
+        {
+            sliderValue = 0.5f;
+        }
+
         audioSlider.value = sliderValue;
         gameObject.GetComponent<AudioSource>().volume = sliderValue;
         StartCoroutine(FadeIn());

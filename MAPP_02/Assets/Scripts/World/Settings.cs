@@ -10,7 +10,15 @@ public class Settings : MonoBehaviour
 
     private void Start()
     {
-        desiredAudioValue = PlayerPrefs.GetFloat("Volume");
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            desiredAudioValue = PlayerPrefs.GetFloat("Volume");
+        }
+        else
+        {
+            desiredAudioValue = 0.5f;
+        }
+        
         audioSlider.value = desiredAudioValue;
     }
     private void Update()

@@ -34,8 +34,15 @@ public class Player_Info : Character_Info
     private void Start()
     {
         audioMixer.SetFloat("volume", -80);
+        Debug.Log(Application.persistentDataPath);
 
-        gameObject.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            gameObject.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Volume");
+        } else
+        {
+            gameObject.GetComponent<AudioSource>().volume = 0.5f;
+        }
 
         if (!Game_Controller.IsLoaded())
         {
@@ -313,7 +320,10 @@ public class Player_Info : Character_Info
     public void GiveStatPoints(int amount)
     {
         statPoints += amount;
-        Game_Controller.GetCharacterScreen().ShowNewStatPointIcon();
+        if(amount > 0)
+        {
+            Game_Controller.GetCharacterScreen().ShowNewStatPointIcon();
+        }
     }
 
     public void SpendStatPoint()

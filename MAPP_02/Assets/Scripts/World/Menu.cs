@@ -33,7 +33,7 @@ public class Menu : MonoBehaviour
 
     public void Toggle()
     {
-        if (!new FileInfo(Application.dataPath + "/save.txt").Exists)
+        if (!new FileInfo(Application.persistentDataPath + "/save.txt").Exists)
         {
             loadButton.interactable = false;
         }
