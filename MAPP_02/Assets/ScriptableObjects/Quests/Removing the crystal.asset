@@ -16,8 +16,7 @@ MonoBehaviour:
   questDescription: Lieutenant has asked you to go to the southwestern hunting grounds
     right by the hunting cabin where Hunter Jackson resides.
   questID: 5
-  experienceReward: 10
-  statPointsReward: 4
+  experienceReward: 25
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}

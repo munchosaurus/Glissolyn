@@ -7,7 +7,6 @@ public abstract class Quest : ScriptableObject
     [TextArea] [SerializeField] protected string questDescription;
     [SerializeField] protected int questID;
     [SerializeField] protected int experienceReward;
-    [SerializeField] protected int statPointsReward;
     [SerializeField] protected QuestClearState questClearState;
     [SerializeField] protected QuestClearState questPickUpState;
     [SerializeField] protected Quest nextQuestInChain;
@@ -96,7 +95,6 @@ public abstract class Quest : ScriptableObject
         {
             Game_Controller.UpdateWorldToQuestClearState(questClearState);
             Game_Controller.GetPlayerInfo().ModifyExperience(experienceReward);
-            Game_Controller.GetPlayerInfo().GiveStatPoints(statPointsReward);
             Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
     }

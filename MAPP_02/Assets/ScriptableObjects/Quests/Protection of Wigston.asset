@@ -16,8 +16,9 @@ MonoBehaviour:
   questDescription: Lieutenant Spark has reported that Footman John has a report
     on the status of the crystal that is plaguing Hunter Jacksons hunting grounds.
   questID: 4
-  experienceReward: 2
+  experienceReward: 5
   questClearState: 0
+  questPickUpState: 0
   nextQuestInChain: {fileID: 11400000, guid: 215aae5b2e1da084ba99d98daef7b8c8, type: 2}
   questStartDialogue:
   - 'Ahh hello there. young man.

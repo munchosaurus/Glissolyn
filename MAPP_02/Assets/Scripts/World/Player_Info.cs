@@ -79,10 +79,10 @@ public class Player_Info : Character_Info
     private void LevelUp()
     {
         experience -= nextLevelExperience;
-        playerLevel++;
-        statPoints += 3;
+        GiveStatPoints(3);
+        SetPlayerLevel(playerLevel + 1);
+        health = maxHealth;
 
-        SetNextLevelExperience();
         if (experience >= nextLevelExperience)
         {
             if (playerLevel < 100)
@@ -92,7 +92,7 @@ public class Player_Info : Character_Info
         }
         else
         {
-            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel });
+            Game_Controller.GetDialogueBox().UpdateDialogue(new string[] { "You leveled up!", "You now have " + statPoints + " stat points!", "You are now level " + playerLevel + "!"});
         }
     }
 
@@ -136,7 +136,7 @@ public class Player_Info : Character_Info
         agility = loadValues[3];
         intelligence = loadValues[4];
         SetPlayerLevel(loadValues[5]);
-        statPoints = loadValues[6];
+        GiveStatPoints(loadValues[6]);
         experience = loadValues[7];
         maxHealth = loadValues[8];
         SetHealth(loadValues[9]);
@@ -313,6 +313,7 @@ public class Player_Info : Character_Info
     public void GiveStatPoints(int amount)
     {
         statPoints += amount;
+        Game_Controller.GetCharacterScreen().ShowNewStatPointIcon();
     }
 
     public void SpendStatPoint()

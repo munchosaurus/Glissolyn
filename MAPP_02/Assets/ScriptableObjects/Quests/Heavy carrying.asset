@@ -15,9 +15,8 @@ MonoBehaviour:
   questTitle: Heavy Carrying
   questDescription: James who is stuck with all his junk on the path to Wigston needs
     your help with delivering a package to Lady Frost.
-  questID: 0
-  experienceReward: 5
-  statPointsReward: 1
+  questID: 3
+  experienceReward: 10
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}
