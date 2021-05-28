@@ -109,7 +109,7 @@ public class Character
         }
         else
         {
-            maxHP = Base.GetMaxHP() + (strength * 5);
+            maxHP = Mathf.FloorToInt(Base.GetMaxHP() + Base.GetMaxHP() * ((float)Level / 3));
         }
     }
     public int GetMaxHP()
@@ -138,8 +138,8 @@ public class Character
     {
         float RNGModifier = Random.Range(0.85f, 1f);
         float typeModifier = 1;
-        typeModifier -= weaknesses.Contains(move.Base.GetType()) ? 0.5f : 0;
-        typeModifier += strengths.Contains(move.Base.GetType()) ? 0.5f : 0;
+        typeModifier += weaknesses.Contains(move.Base.GetType()) ? 0.5f : 0;
+        typeModifier -= strengths.Contains(move.Base.GetType()) ? 0.5f : 0;
 
         int damage = Mathf.FloorToInt((move.Base.GetPower() * attacker.GetStat(move.Base.GetStatType())) * RNGModifier * typeModifier); // Move power * The characer stat for the move * a random number between 0.85 and 1 * 0.5, 1 or 1.5 depending on Type weakness/strength
         

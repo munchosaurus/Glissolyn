@@ -39,7 +39,7 @@ public static class Combat_Info
     {
         Game_Controller.GetQuestLog().UpdateKillQuestsWithEnemyType(enemy.GetBase());
         enemy.Die();
-        int xpGained = enemy.GetBase().GetExperienceBase() * ((enemy.GetLevel() * 2) / Game_Controller.GetPlayerInfo().GetPlayerLevel());
+        int xpGained = Mathf.FloorToInt(enemy.GetBase().GetExperienceBase() * ((float) (enemy.GetLevel() * 2) / Game_Controller.GetPlayerInfo().GetPlayerLevel()) + 1);
         Game_Controller.GetPlayerInfo().ModifyExperience(xpGained);
     }
 

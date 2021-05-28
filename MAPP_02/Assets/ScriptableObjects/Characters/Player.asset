@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a71fe918c69b94bbd1ebfc4c289dac, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  name: Chuck Norris
+  name: 
   description: 
   sprite: {fileID: 21300000, guid: 0077aca4ae59334469f2e2c6915d5540, type: 3}
   types: 0700000004000000
@@ -24,9 +24,9 @@ MonoBehaviour:
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 7fc2dbad8b9434f41bfc305d355ae2e9, type: 2}
     level: 1
-  - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
-    level: 3
   - moveBase: {fileID: 11400000, guid: 515fe51c2ad8f7547bab5d2b192ee859, type: 2}
     level: 1
+  - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
+    level: 3
   - moveBase: {fileID: 11400000, guid: 8d60a511054577e4fa0f7122e9e342dd, type: 2}
-    level: 10
+    level: 6
