@@ -25,33 +25,34 @@ public class Last_Crystal : NPC_Info
     public void Interact()
     {
 
-       // if (Game_Controller.GetQuestLog().HasQuest(quest))
-       // {
+        if (Game_Controller.GetQuestLog().HasQuest(quest))
+        {
 
 
             if (interactCounter == 0)
             {
                 witch.SetActive(true);
                 dialog = dialogue;
-                Vector3 distanceDifference = new Vector3(0, 1);
-
-                witch.transform.position = player.transform.position + distanceDifference;
-           
-            
-            
+                Vector3 distanceDifference = new Vector3(1, 0);
+                if (player.transform.position.x < gameObject.transform.position.x)
+                {
+                    witch.transform.position = player.transform.position - distanceDifference;
+                }
+                else
+                {
+                    witch.transform.position = player.transform.position + distanceDifference;
+                }
+                print(interactCounter);
                 interactCounter++;
-            print(interactCounter);
             }
-                
-            
             else if(interactCounter!=0 && witch.GetComponent<BoxCollider2D>().enabled.Equals(false)){
-            this.gameObject.SetActive(false);
-        }
+                this.gameObject.SetActive(false);
+            }
             
                 
             
            
-       // }
+        }
         base.Interact();
 
     }
