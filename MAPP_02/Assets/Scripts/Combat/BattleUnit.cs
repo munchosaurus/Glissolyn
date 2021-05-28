@@ -6,11 +6,16 @@ using UnityEngine.UI;
 public class BattleUnit : MonoBehaviour
 {  
     public Character Character { get; set; }
-    public Lerp lerp;
+    [SerializeField] Animator playerMoveAnimator;
 
     public void Setup(CharacterBase _base, int level)
     {
         Character = new Character(_base, level);
         GetComponent<Image>().sprite = Character.Base.sprite;
+    }
+
+    public void PerformMove(string moveName)
+    {
+        playerMoveAnimator.SetTrigger(moveName);
     }
 }
