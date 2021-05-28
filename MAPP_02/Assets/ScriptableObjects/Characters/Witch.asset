@@ -22,7 +22,5 @@ MonoBehaviour:
   intelligence: 6
   experienceBase: 8
   learnableMoves:
-  - moveBase: {fileID: 11400000, guid: 8d60a511054577e4fa0f7122e9e342dd, type: 2}
-    level: 3
   - moveBase: {fileID: 11400000, guid: 2d3cb7b8c036d3545a3cdb4a95d9fc87, type: 2}
-    level: 4
+    level: 0

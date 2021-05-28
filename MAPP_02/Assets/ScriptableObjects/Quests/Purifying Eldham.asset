@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: Purifying Eldham
   questDescription: The Marshal has asked you to destroy a crystal to the east.
-  questID: 0
+  questID: 7
   experienceReward: 30
-  statPointsReward: 0
   questClearState: 4
   questPickUpState: 2
   nextQuestInChain: {fileID: 0}

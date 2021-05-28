@@ -19,6 +19,7 @@ public class Character_Screen : MonoBehaviour
     [SerializeField] Text healthBarValue;
     [SerializeField] Slider experienceBar;
     [SerializeField] Text experienceBarValue;
+    [SerializeField] GameObject newStatPointsIcon;
 
     private void ShowButtons(bool toggle)
     {
@@ -79,8 +80,14 @@ public class Character_Screen : MonoBehaviour
     public void Toggle()
     {
         UpdateValues();
+        newStatPointsIcon.SetActive(false);
         gameObject.SetActive(!gameObject.activeInHierarchy);
         Game_Controller.SetPause(gameObject.activeInHierarchy);
+    }
+
+    public void ShowNewStatPointIcon()
+    {
+        newStatPointsIcon.SetActive(true);
     }
 
     public bool IsOpen()

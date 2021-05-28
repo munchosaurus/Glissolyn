@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questTitle: McDougal's Stew
   questDescription: Mrs McDougal wants you to kill two bears.
-  questID: 0
+  questID: 2
   experienceReward: 10
-  statPointsReward: 2
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}

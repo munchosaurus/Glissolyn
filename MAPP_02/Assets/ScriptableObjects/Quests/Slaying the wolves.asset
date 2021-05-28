@@ -15,9 +15,8 @@ MonoBehaviour:
   questTitle: Slaying the wolves
   questDescription: Lumber Jack has asked you to take care of the wolves that are
     in the way of him performing his duty. Kill them and get back to him.
-  questID: 0
-  experienceReward: 8
-  statPointsReward: 2
+  questID: 6
+  experienceReward: 20
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}

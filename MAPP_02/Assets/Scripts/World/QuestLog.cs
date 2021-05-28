@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class QuestLog : MonoBehaviour
 {
     [SerializeField] private Button questButtonPrefab;
+    [SerializeField] private GameObject newQuestIcon;
 
     private Dictionary<int, Quest> activeQuests = new Dictionary<int, Quest>();
     private QuestButton currentOpenQuestButton;
@@ -23,6 +24,7 @@ public class QuestLog : MonoBehaviour
             currentOpenQuestButton = quest.GetQuestButton();
         }
         Game_Controller.UpdateWorldToQuestClearState(quest.GetQuestPickUpState());
+        newQuestIcon.SetActive(true);
     }
 
     public void RemoveQuest(int id)
@@ -84,6 +86,7 @@ public class QuestLog : MonoBehaviour
         {
             currentOpenQuestButton.OnClick();
         }
+        newQuestIcon.SetActive(false);
         gameObject.SetActive(!gameObject.activeInHierarchy);
         Game_Controller.SetPause(gameObject.activeInHierarchy);
     }

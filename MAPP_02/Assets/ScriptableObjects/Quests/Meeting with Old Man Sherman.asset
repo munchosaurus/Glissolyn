@@ -15,9 +15,8 @@ MonoBehaviour:
   questTitle: Meeting With Old Man Sherman
   questDescription: Old Man Sherman has asked you to visit the open area to the east
     to investigate the object Silk eye Joe had found.
-  questID: 1
+  questID: 0
   experienceReward: 6
-  statPointsReward: 0
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 11400000, guid: 4627430c2da9d754fac4c682993277bb, type: 2}

@@ -15,9 +15,8 @@ MonoBehaviour:
   questTitle: Discovering the Altars
   questDescription: Old man Sherman has asked you to go to the weird altar like structure
     with the means to destroy it.
-  questID: 2
-  experienceReward: 10
-  statPointsReward: 4
+  questID: 1
+  experienceReward: 15
   questClearState: 0
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}
