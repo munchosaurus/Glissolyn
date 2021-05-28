@@ -42,6 +42,7 @@ public class AudioThingy : MonoBehaviour
         }
         audioSlider.value = sliderValue;
         gameObject.GetComponent<AudioSource>().volume = sliderValue;
+        PlayerPrefs.SetFloat("Volume", sliderValue);
     }
 
     public IEnumerator FadeOut()

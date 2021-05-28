@@ -39,6 +39,11 @@ public class Settings : MonoBehaviour
 
     public void Toggle()
     {
+        if (gameObject.activeInHierarchy)
+        {
+            PlayerPrefs.SetFloat("Volume", desiredAudioValue);
+        }
+        
         gameObject.SetActive(!gameObject.activeInHierarchy);
     }
 }

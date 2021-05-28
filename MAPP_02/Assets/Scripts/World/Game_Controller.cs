@@ -144,6 +144,7 @@ public static class Game_Controller
 
     public static void GoToMainMenu()
     {
+        PlayerPrefs.SetFloat("Volume", thePlayerInfo.gameObject.GetComponent<AudioSource>().volume);
         SceneManager.LoadScene(MAIN_MENU_SCENE_ID);
         SetPause(false);
     }
@@ -156,6 +157,7 @@ public static class Game_Controller
 
     public static void GoToEndScreen()
     {
+        PlayerPrefs.SetFloat("Volume", thePlayerInfo.gameObject.GetComponent<AudioSource>().volume);
         SceneManager.LoadScene(END_SCREEN_SCENE_ID);
         SetPause(false);
     }

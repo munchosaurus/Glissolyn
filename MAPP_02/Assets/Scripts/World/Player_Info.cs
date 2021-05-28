@@ -34,7 +34,6 @@ public class Player_Info : Character_Info
     private void Start()
     {
         audioMixer.SetFloat("volume", -80);
-        Debug.Log(Application.persistentDataPath);
 
         if (PlayerPrefs.HasKey("Volume"))
         {
