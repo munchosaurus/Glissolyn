@@ -46,7 +46,7 @@ public class Enemy_rotate : MonoBehaviour
 
 
         // Changes position of the child object rotationKnob which will be used to detect players
-    private void ChangeFacing(Facing direction) {
+    public void ChangeFacing(Facing direction) {
         switch (direction)
         {
             case Facing.UP:
@@ -101,6 +101,14 @@ public class Enemy_rotate : MonoBehaviour
     public void resetFacing()
     {
         ChangeFacing(availableDirections[facingIndex]);
+    }
+
+    public void SetOnlyFace(Facing direction)
+    {
+        onlyFace = direction;
+        availableDirections = new List<Facing>();
+        availableDirections.Add(onlyFace);
+        ChangeFacing(onlyFace);
     }
 }
 

@@ -147,4 +147,5 @@ public abstract class Quest : ScriptableObject
     OPEN_VILLAGE_EXIT,
     OPEN_ELDHAM_EAST_EXIT,
     ELDHAM_PURIFIED,
+    END_GAME
     }

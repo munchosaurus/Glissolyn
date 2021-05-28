@@ -8,7 +8,7 @@ public class Last_Crystal : NPC_Info
     private int interactCounter;
     [SerializeField] GameObject witch;
     [SerializeField] protected Quest quest;
-    [TextArea] [SerializeField] protected string[] dialog;
+    [TextArea] [SerializeField] protected string[] questDialogue;
     [SerializeField] GameObject player;
 
 
@@ -31,27 +31,26 @@ public class Last_Crystal : NPC_Info
 
             if (interactCounter == 0)
             {
-                witch.SetActive(true);
-                dialog = dialogue;
                 Vector3 distanceDifference = new Vector3(1, 0);
                 if (player.transform.position.x < gameObject.transform.position.x)
                 {
                     witch.transform.position = player.transform.position - distanceDifference;
+                    witch.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.RIGHT);
                 }
                 else
                 {
                     witch.transform.position = player.transform.position + distanceDifference;
+                    witch.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.LEFT);
                 }
-                print(interactCounter);
                 interactCounter++;
+                witch.SetActive(true);
             }
             else if(interactCounter!=0 && witch.GetComponent<BoxCollider2D>().enabled.Equals(false)){
-                this.gameObject.SetActive(false);
+                dialogue = questDialogue;
+                gameObject.tag = "Quest";
+                gameObject.SetActive(false);
+                Game_Controller.UpdateWorldToQuestClearState(QuestClearState.ELDHAM_PURIFIED);
             }
-            
-                
-            
-           
         }
         base.Interact();
 

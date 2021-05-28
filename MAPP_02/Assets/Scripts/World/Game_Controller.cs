@@ -187,10 +187,20 @@ public static class Game_Controller
             case QuestClearState.OPEN_ELDHAM_EAST_EXIT:
                 dataBase.GetNpcByID(42).gameObject.SetActive(false);
                 dataBase.GetNpcByID(43).gameObject.SetActive(false);
-                break;
-            case QuestClearState.ELDHAM_PURIFIED:
                 dataBase.GetNpcByID(44).gameObject.SetActive(false);
                 dataBase.GetNpcByID(45).gameObject.SetActive(false);
+                break;
+            case QuestClearState.ELDHAM_PURIFIED:
+                dataBase.GetEnemyByID(52).gameObject.SetActive(false);
+                dataBase.GetEnemyByID(53).gameObject.SetActive(false);
+                dataBase.GetEnemyByID(54).gameObject.SetActive(false);
+                dataBase.GetEnemyByID(55).gameObject.SetActive(false);
+                dataBase.GetEnemyByID(56).gameObject.SetActive(false);
+                dataBase.GetEnemyByID(57).gameObject.SetActive(false);
+                dataBase.GetNpcByID(27).transform.position = new Vector3(94.5f, 173.5f, 0);
+                break;
+            case QuestClearState.END_GAME:
+                thePlayerInfo.FinishGame();
                 break;
             default:
                 break;

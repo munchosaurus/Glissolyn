@@ -61,7 +61,10 @@ public class NPC_QuestGiver_Info : NPC_Info
         }
 
         base.Interact();
+    }
 
-        
+    public void SetQuestToGive(Quest quest)
+    {
+        questToGive = quest;
     }
 }

@@ -15,11 +15,11 @@ MonoBehaviour:
   name: Witch
   description: 
   sprite: {fileID: 21300000, guid: 0d268733ba9a7c34fb44e9a3a1f6307e, type: 3}
-  types: 
+  types: 0600000005000000
   maxHP: 100
-  strength: 10
-  agility: 8
-  intelligence: 10
+  strength: 3
+  agility: 3
+  intelligence: 6
   experienceBase: 8
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: 8d60a511054577e4fa0f7122e9e342dd, type: 2}

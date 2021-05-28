@@ -16,7 +16,8 @@ MonoBehaviour:
   questDescription: The Marshal has asked you to destroy a crystal to the east.
   questID: 0
   experienceReward: 30
-  questClearState: 3
+  statPointsReward: 0
+  questClearState: 4
   questPickUpState: 2
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
@@ -45,11 +46,14 @@ MonoBehaviour:
   - I would love to tell you more about your father, but it will have to wait until
     the crisis is over.
   questCompletionDialogue:
-  - Great job, i knew i could count on you!
+  - Private Dancer told me you were fighting a witch so i came here as fast as i
+    could.
+  - I saw the battle, great job! I knew i could count on you.
   - The next step will be to travel north across the wall into the witches swamp.
-  - I'm guessing the wall must have been broken through for there to be witches on
-    this side.
-  - So be prepared, there are surely dangers ahead.
+  - But sadly there is no way to get there.
+  - Maybe in the future there will be a way for you to take the fight to the witchs'
+    doorstep.
+  - (Probably in the form of some expensive DLC after we get bought by EA)
   questCompletedDialogue:
-  - Hurry, we need to end this.
+  - What are you still doing here?
   objectToInteractWith: Large Crystal

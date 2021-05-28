@@ -95,6 +95,7 @@ public enum Type
     Beast,
     Humanoid,
     Magical,
+    Boss,
     Player
 }
 

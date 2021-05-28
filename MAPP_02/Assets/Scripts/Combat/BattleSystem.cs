@@ -13,7 +13,7 @@ public class BattleSystem : MonoBehaviour
     {
         dialogBox.SetDialog("");
         StartCoroutine(SetupBattle());
-        if (Combat_Info.GetEnemy().GetTypes().Contains(Type.Player))
+        if (Combat_Info.GetEnemy().GetTypes().Contains(Type.Boss))
         {
             Game_Controller.GetPlayerInfo().ChangeMusic(1);
         } else

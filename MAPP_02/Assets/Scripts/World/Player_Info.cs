@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Player_Info : Character_Info
 {
@@ -15,6 +15,7 @@ public class Player_Info : Character_Info
     [SerializeField] private bool enterWeakassMode;
 
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Image overlay;
 
     private int maxHealth;
     private int health;
@@ -64,7 +65,7 @@ public class Player_Info : Character_Info
                 respawnPos = startPos.position;
                 transform.position = respawnPos;
             }
-            StartCoroutine(FadeIn());
+            StartCoroutine(FadeInScene());
         }
 
         
@@ -345,16 +346,15 @@ public class Player_Info : Character_Info
 
     public void ChangeMusic(int id)
     {
-        StartCoroutine(FadeOut(id));
+        StartCoroutine(FadeOutMusic(id));
     }
 
-    private IEnumerator FadeOut(int id)
+    private IEnumerator FadeOutMusic(int id)
     {
         float currentTime = 0;
         float duration = 0.3f;
-        float currentVol;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(0, 0.0001f, 1);
 
@@ -366,30 +366,41 @@ public class Player_Info : Character_Info
             yield return null;
         }
         gameObject.GetComponent<AudioSource>().Stop();
-        StartCoroutine(FadeIn(id));
+        StartCoroutine(FadeInMusic(id));
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOutScene()
     {
+        yield return new WaitForSecondsRealtime(0.5f);
+        while (Game_Controller.GetDialogueBox().gameObject.activeInHierarchy)
+        {
+            yield return null;
+        }
+        overlay.gameObject.SetActive(true);
         float currentTime = 0;
         float duration = 0.3f;
-        float currentVol;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        Color targetColor;
+
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(0, 0.0001f, 1);
 
         while (currentTime < duration)
         {
+            targetColor = overlay.color;
+            targetColor.a = Mathf.Lerp(0, 1, currentTime / duration);
             currentTime += Time.deltaTime;
             float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
             audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            overlay.color = targetColor;
             yield return null;
         }
         gameObject.GetComponent<AudioSource>().Stop();
+        Game_Controller.GoToEndScreen();
     }
 
-    private IEnumerator FadeIn(int id)
+    private IEnumerator FadeInMusic(int id)
     {
         gameObject.GetComponent<AudioSource>().clip = Game_Controller.GetDataBase().GetMUsicByID(id);
         gameObject.GetComponent<AudioSource>().Play();
@@ -398,9 +409,8 @@ public class Player_Info : Character_Info
         float currentTime = 0;
         float duration = 3;
         float targetVol = 0.3f;
-        float currentVol;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(targetVol, 0.0001f, 1);
 
@@ -411,9 +421,10 @@ public class Player_Info : Character_Info
             audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
             yield return null;
         }
+        
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeInScene()
     {
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<AudioSource>().loop = true;
@@ -421,18 +432,28 @@ public class Player_Info : Character_Info
         float currentTime = 0;
         float duration = 3;
         float targetVol = 0.3f;
-        float currentVol;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        Color targetColor;
+
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(targetVol, 0.0001f, 1);
 
         while (currentTime < duration)
         {
+            targetColor = overlay.color;
+            targetColor.a = Mathf.Lerp(1, 0, currentTime / duration);
             currentTime += Time.deltaTime;
             float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
             audioMixer.SetFloat("volume", Mathf.Log10(newVol) * 20);
+            overlay.color = targetColor;
             yield return null;
         }
+        overlay.gameObject.SetActive(false);
+    }
+
+    public void FinishGame()
+    {
+        StartCoroutine(FadeOutScene());
     }
 }

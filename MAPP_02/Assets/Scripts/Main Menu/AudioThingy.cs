@@ -42,11 +42,10 @@ public class AudioThingy : MonoBehaviour
         overlay.gameObject.SetActive(true);
         float currentTime = 0;
         float duration = 2f;
-        float currentVol;
 
         Color targetColor;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(0, 0.0001f, 1);
 
@@ -71,11 +70,10 @@ public class AudioThingy : MonoBehaviour
         float currentTime = 0;
         float duration = 3;
         float targetVol = 0.3f;
-        float currentVol;
 
         Color targetColor;
 
-        audioMixer.GetFloat("volume", out currentVol);
+        audioMixer.GetFloat("volume", out float currentVol);
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(targetVol, 0.0001f, 1);
 
