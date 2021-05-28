@@ -23,6 +23,10 @@ public class Character
         SetStats();
         SetMaxHP();
         SetCurrentHP();
+        foreach(Type type in Base.GetTypes())
+        {
+            GenerateCounters(type);
+        }
         
         Moves = new List<Move>();
 
@@ -62,28 +66,24 @@ public class Character
         switch (type)
         {
             case (Type.Humanoid):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
+                weaknesses.Add(Type.Undead);
+                strengths.Add(Type.Monster);
                 break;
             case (Type.Beast):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
+                weaknesses.Add(Type.Monster);
+                strengths.Add(Type.Magical);
                 break;
             case (Type.Magical):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
+                weaknesses.Add(Type.Beast);
+                strengths.Add(Type.Undead);
                 break;
             case (Type.Monster):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
-                break;
-            case (Type.Player):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
+                weaknesses.Add(Type.Humanoid);
+                strengths.Add(Type.Beast);
                 break;
             case (Type.Undead):
-                weaknesses.Add(Type.None);
-                strengths.Add(Type.None);
+                weaknesses.Add(Type.Magical);
+                strengths.Add(Type.Humanoid);
                 break;
             default:
                 break;
@@ -97,7 +97,7 @@ public class Character
             StatType.STRENGTH => strength,
             StatType.AGILITY => agility,
             StatType.INTELLIGENCE => intelligence,
-            _ => 1,
+            _ => throw new System.NotImplementedException()
         };
     }
 
@@ -137,7 +137,10 @@ public class Character
     public int TakeDamage(Move move, Character attacker)
     {
         float RNGModifier = Random.Range(0.85f, 1f);
-        float typeModifier = weaknesses.Contains(move.Base.GetType()) ? 0.5f : strengths.Contains(move.Base.GetType()) ? 1.5f : 1;
+        float typeModifier = 1;
+        typeModifier -= weaknesses.Contains(move.Base.GetType()) ? 0.5f : 0;
+        typeModifier += strengths.Contains(move.Base.GetType()) ? 0.5f : 0;
+
         int damage = Mathf.FloorToInt((move.Base.GetPower() * attacker.GetStat(move.Base.GetStatType())) * RNGModifier * typeModifier); // Move power * The characer stat for the move * a random number between 0.85 and 1 * 0.5, 1 or 1.5 depending on Type weakness/strength
         
         CurrentHP -= damage;
