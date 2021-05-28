@@ -8,6 +8,9 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud PlayerHud;
     [SerializeField] BattleHud EnemyHud;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] Animator enemyAnimator;
+    
 
     public void StartCombat()
     {
@@ -70,7 +73,8 @@ public class BattleSystem : MonoBehaviour
         int damage = EnemyUnit.Character.TakeDamage(move, PlayerUnit.Character);
 
         yield return dialogBox.TypeDialog($"You used ability: {move.Base.GetName()}.");
-        //PlayerUnit.lerp.GoLerp();
+
+        playerAnimator.SetTrigger(move.Base.GetName());
 
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
@@ -97,7 +101,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}.");
         //EnemyUnit.lerp.GoLerp();
-
+        enemyAnimator.SetTrigger(move.Base.GetName());
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
 
