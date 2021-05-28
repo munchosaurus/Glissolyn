@@ -8,6 +8,9 @@ public class DataBase : MonoBehaviour
     [SerializeField] private List<Quest> quests;
     [SerializeField] private List<NPC_Info> npcs;
     [SerializeField] private List<Enemy_Info> enemies;
+    [SerializeField] private List<AudioClip> music;
+
+    private int currentAudioID;
 
     public void ResetQuests()
     {
@@ -30,6 +33,21 @@ public class DataBase : MonoBehaviour
     public Enemy_Info GetEnemyByID(int id)
     {
         return enemies[id];
+    }
+
+    public AudioClip GetMUsicByID(int id)
+    {
+        return music[id];
+    }
+
+    public void SetCurrentAudioID(int id)
+    {
+        currentAudioID = id;
+    }
+
+    public int GetCurrentAudioID()
+    {
+        return currentAudioID;
     }
 
     public void SaveGame()
@@ -75,6 +93,9 @@ public class DataBase : MonoBehaviour
                 writer.Write(pValues[i] + ".");
             }
             writer.WriteLine();
+
+            writer.WriteLine($"m.{currentAudioID}");
+            PlayerPrefs.Save();
         }
     }
 
@@ -94,11 +115,11 @@ public class DataBase : MonoBehaviour
                     int[] values = new int[split.Length - 1];
                     for (int i = 0; i < values.Length; i++)
                     {
-                        Int32.TryParse(split[i+1], out values[i]);
+                        Int32.TryParse(split[i + 1], out values[i]);
                     }
                     GetQuestByID(id).Init(values);
                 }
-                else if(line[0] == 'n')
+                else if (line[0] == 'n')
                 {
                     string[] split = line.Split('.');
                     int id;
@@ -132,8 +153,26 @@ public class DataBase : MonoBehaviour
                         Int32.TryParse(split[i + 1], out values[i]);
                     }
                     Game_Controller.GetPlayerInfo().Init(name, values);
+                } else if (line[0] == 'm')
+                {
+                    String[] split = line.Split('.');
+                    Int32.TryParse(split[1], out int musicID);
+                    Game_Controller.GetPlayerInfo().ChangeMusic(musicID);
                 }
             }
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            PlayerPrefs.Save();
         }
     }
 }

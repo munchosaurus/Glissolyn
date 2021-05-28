@@ -35,8 +35,11 @@ MonoBehaviour:
   questCompletionDialogue:
   - "Thank you very much {playerName}! You didn't peek inside the package did you?
     \nHmm.. Good. Now here take some experience."
-  - Do not forget that you can become stronger from using the levels you gain from
-    experience points. You can gain experience from quests battling foul creatures.
+  - 'Do not forget that you can become stronger from using the levels you gain from
+    experience points. '
+  - You can gain experience from quests battling foul creatures. Simply open the
+    Player menu
+  - then go on to choose what attributes you wish to strenghten.
   questCompletedDialogue:
   - Now what should I do with the rest of my shit?
   objectToInteractWith: Lady Frost

@@ -1,21 +1,29 @@
+using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
+    [SerializeField] Settings settings;
+    [SerializeField] Button loadButton;
 
     public void LoadGameClick()
     {
-        // TODO
+
+        Game_Controller.LoadGame();
+        Game_Controller.GoToWorld();
+
     }
 
     public void SaveGameClick()
     {
         Game_Controller.GetDataBase().SaveGame();
+        loadButton.interactable = true;
     }
 
     public void SettingsClick()
     {
-        // TODO
+        settings.Toggle();
     }
 
     public void QuitClick()
@@ -25,6 +33,10 @@ public class Menu : MonoBehaviour
 
     public void Toggle()
     {
+        if (!new FileInfo(Application.dataPath + "/save.txt").Exists)
+        {
+            loadButton.interactable = false;
+        }
         gameObject.SetActive(!gameObject.activeInHierarchy);
         Game_Controller.SetPause(gameObject.activeInHierarchy);
     }

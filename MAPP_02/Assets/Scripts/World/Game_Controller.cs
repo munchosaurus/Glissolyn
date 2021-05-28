@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public static class Game_Controller
 {
     private static readonly int MAIN_MENU_SCENE_ID = 0;
+    private static readonly int WORLD_SCENE_ID = 1;
+    private static readonly int END_SCREEN_SCENE_ID = 2;
 
     private static bool isGamePaused;
     private static bool isCombatActive;
@@ -17,7 +19,6 @@ public static class Game_Controller
     private static GameObject battleSystem;
     private static DataBase dataBase;
     private static GameObject transition;
-
     private static string playerName;
 
     public static void SetDialogueBox(Dialogue_Box db)
@@ -144,11 +145,29 @@ public static class Game_Controller
     public static void GoToMainMenu()
     {
         SceneManager.LoadScene(MAIN_MENU_SCENE_ID);
+        SetPause(false);
+    }
+
+    public static void GoToWorld()
+    {
+        SceneManager.LoadScene(WORLD_SCENE_ID);
+        SetPause(false);
+    }
+
+    public static void GoToEndScreen()
+    {
+        SceneManager.LoadScene(END_SCREEN_SCENE_ID);
+        SetPause(false);
     }
 
     public static string GetPlayerName()
     {
         return playerName;
+    }
+    
+    public static GameObject GetWorldInterface()
+    {
+        return worldInterface;
     }
 
     public static void SetPlayerName(string pn)

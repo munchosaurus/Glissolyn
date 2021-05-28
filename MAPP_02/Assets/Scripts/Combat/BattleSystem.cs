@@ -1,8 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
-
 
 public class BattleSystem : MonoBehaviour
 {
@@ -12,19 +9,17 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud EnemyHud;
     [SerializeField] BattleDialogBox dialogBox;
 
-    GameObject Player;
-
-
-    private void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-
     public void StartCombat()
     {
         dialogBox.SetDialog("");
         StartCoroutine(SetupBattle());
+        if (Combat_Info.GetEnemy().GetTypes().Contains(Type.Player))
+        {
+            Game_Controller.GetPlayerInfo().ChangeMusic(1);
+        } else
+        {
+            Game_Controller.GetPlayerInfo().ChangeMusic(2);
+        }
     }
 
     public IEnumerator SetupBattle()
@@ -111,7 +106,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isDead)
         {
-            yield return dialogBox.TypeDialog($"The {PlayerUnit.Character.Base.GetName()} died.");
+            yield return dialogBox.TypeDialog($"{PlayerUnit.Character.Base.GetName()} died.");
             yield return new WaitForSeconds(2f);
             EndBattle(false);
         }
@@ -132,9 +127,6 @@ public class BattleSystem : MonoBehaviour
         } else {
             Combat_Info.EnemyWins();
             Game_Controller.RunTransition();
-            Game_Controller.GetPlayerInfo().SetHealth(Game_Controller.GetPlayerInfo().GetMaxHealth());
-            Vector3 temp = Game_Controller.GetPlayerInfo().GetRespawnPos();
-            Player.transform.position = temp;
         }
     }
 

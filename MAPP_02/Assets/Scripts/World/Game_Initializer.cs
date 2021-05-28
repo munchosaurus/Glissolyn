@@ -37,15 +37,14 @@ public class Game_Initializer : MonoBehaviour
 
         if (Game_Controller.IsLoaded())
         {
-            print("Game was loaded");
             dataBase.LoadGame();
             Game_Controller.SetPause(false);
         }
         else
         {
-            print("Game was not loaded");
             dataBase.ResetQuests();
             InitializePlayer();
+            Game_Controller.GetDataBase().SetCurrentAudioID(4);
         }
         Combat_Info.Initialize();
     }

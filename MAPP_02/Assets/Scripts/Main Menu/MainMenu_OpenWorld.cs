@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_OpenWorld : MonoBehaviour
 {
+    [SerializeField] AudioThingy audioThingy;
     public void StartPlaying() {
-        SceneManager.LoadScene(1);
+        StartCoroutine(audioThingy.FadeOut());
     }
 }

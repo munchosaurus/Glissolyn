@@ -26,7 +26,7 @@ public class Transition : MonoBehaviour
         else
         {
             Combat_Info.CombatEnded();
-            print("Combat ended");
+            Game_Controller.GetPlayerInfo().ChangeMusic(Game_Controller.GetDataBase().GetCurrentAudioID());
         }
     }
 }
