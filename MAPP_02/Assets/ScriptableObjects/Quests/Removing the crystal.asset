@@ -25,8 +25,9 @@ MonoBehaviour:
 
     The crystal must
     be stopped. Could you go southwest of the city'
-  - and destroy the crystal the same way you did back home in Wakefield? I understand
+  - go and destroy the crystal the same way you did back home in Wakefield? I understand
     that it is much I am asking of you. I truly wish there was another way.
+  - you, but it has to be done.
   - Stride carefully though, the paths are filled with more enemies than you might
     be able to handle.
   questActiveDialogue:
@@ -36,7 +37,10 @@ MonoBehaviour:
     now safe. For now..
   - 'Now, we will send some of our forces back up to Eldham, where the true threat
     is.. Why don''t you go ahead and do the same? Talk to the Marshal. '
-  - You can find him around the fortress in the city.
+  - 'same, meet with the Marshal in Eldham.
+
+    You can find him around the fortress
+    in the city.'
   questCompletedDialogue:
   - Make sure to go visit Eldham now boy!
   objectToInteractWith: Medium Crystal
