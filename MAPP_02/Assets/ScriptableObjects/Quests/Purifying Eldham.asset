@@ -15,9 +15,9 @@ MonoBehaviour:
   questTitle: Purifying Eldham
   questDescription: The Marshal has asked you to destroy a crystal to the east.
   questID: 7
-  experienceReward: 30
-  questClearState: 4
-  questPickUpState: 2
+  experienceReward: 0
+  questClearState: 5
+  questPickUpState: 3
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
   - I dont have time for you, boy!..
@@ -55,4 +55,4 @@ MonoBehaviour:
   - (Probably in the form of some expensive DLC after we get bought by EA)
   questCompletedDialogue:
   - What are you still doing here?
-  objectToInteractWith: Large Crystal
+  objectToInteractWith: Enormous Crystal

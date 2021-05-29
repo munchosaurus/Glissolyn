@@ -4,6 +4,7 @@ public class Enemy_Info : NPC_Info
 {
     [SerializeField] CharacterBase Base;
     [SerializeField] int level;
+    [SerializeField] bool isBoss;
 
     private float timer;
     private bool dead;
@@ -61,6 +62,10 @@ public class Enemy_Info : NPC_Info
 
     public void Die()
     {
+        if (isBoss)
+        {
+            gameObject.SetActive(false);
+        }
         dead = true;
         timer = 30;
         transform.position = new Vector3(transform.position.x, transform.position.y, -20);

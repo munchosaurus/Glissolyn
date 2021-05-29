@@ -38,7 +38,6 @@ public class Game_Initializer : MonoBehaviour
         if (Game_Controller.IsLoaded())
         {
             dataBase.LoadGame();
-            Game_Controller.SetPause(false);
         }
         else
         {
@@ -47,6 +46,7 @@ public class Game_Initializer : MonoBehaviour
             Game_Controller.GetDataBase().SetCurrentAudioID(4);
         }
         Combat_Info.Initialize();
+        Game_Controller.GetPlayerInfo().gameObject.SetActive(true);
     }
 
     private void InitializePlayer()

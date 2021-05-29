@@ -12,6 +12,7 @@ public class NPC_QuestGiver_Info : NPC_Info
         {
             questToGive = questToGive.GetNextQuestInChain();
         }
+        questToGive.SetWhoGaveQuest(this);
     }
 
     override
@@ -29,11 +30,13 @@ public class NPC_QuestGiver_Info : NPC_Info
         else if (questToGive.CanBeCompleted())
         {
             dialogue = questToGive.GetQuestCompletionDialogue();
-            Quest tempQUest = questToGive;
+            Game_Controller.GetQuestLog().RemoveQuest(questToGive.GetQuestID());
+            Quest tempQuest = questToGive;
 
             if (questToGive.GetNextQuestInChain() != null)
             {
                 questToGive = questToGive.GetNextQuestInChain();
+                questToGive.SetWhoGaveQuest(this);
                 Game_Controller.GetQuestLog().AddQuest(questToGive);
 
                 var moreDialogue = questToGive.GetQuestStartDialogue();
@@ -43,7 +46,7 @@ public class NPC_QuestGiver_Info : NPC_Info
                 dialogue = tempArray;
             }
 
-            tempQUest.CompleteQuest();
+            tempQuest.CompleteQuest();
         }
         else
         {

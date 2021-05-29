@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99fbb21b5fd00c849b6fb3ab7718e076, type: 3}
-  m_Name: Discovering the Altars
+  m_Name: Discovering the Crystals
   m_EditorClassIdentifier: 
-  questTitle: Discovering the Altars
-  questDescription: Old man Sherman has asked you to go to the weird altar like structure
-    with the means to destroy it.
+  questTitle: Discovering the Crystals
+  questDescription: 'Old man Sherman has asked you to go to the weird crystal-like
+    structure with the means to destroy it. '
   questID: 1
   experienceReward: 15
-  questClearState: 0
+  questClearState: 1
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
@@ -51,4 +51,4 @@ MonoBehaviour:
   - Seek out a military officer and inform him of what you have seen.
   questCompletedDialogue:
   - Hey there!
-  objectToInteractWith: Minor Crystal
+  objectToInteractWith: Mysterious Object

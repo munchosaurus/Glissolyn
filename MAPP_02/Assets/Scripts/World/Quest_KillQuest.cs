@@ -40,14 +40,20 @@ public class Quest_KillQuest : Quest
         {
             killed++;
         }
-        questButton.UpdateQuestText(GetQuestText());
+        base.UpdateQuest();
     }
 
     override
     protected void BuildQuestText()
     {
         objectiveText = enemyToKill.GetName() + ": " + killed + "/" + amountToKill;
-        questText = questDescription + "\n\n" + objectiveText;
+        if (killed >= amountToKill)
+        {
+            questText = questDescription  + "\nReturn to " + whoGaveTheQuest.GetName() + "\n\n" + objectiveText;  ;
+        } else
+        {
+            questText = questDescription + "\n\n" + objectiveText;
+        }
     }
     
     override

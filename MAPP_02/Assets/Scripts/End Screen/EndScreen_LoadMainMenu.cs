@@ -12,6 +12,7 @@ public class EndScreen_LoadMainMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.SetFloat("Volume", audioSource.volume);
         Application.Quit();
     }
 }

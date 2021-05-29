@@ -17,9 +17,7 @@ public class Quest_MinorCrystal : NPC_Info
         {
             dialogue = dialogueQuest;
             objectToActivate.SetActive(true);
-            objectBlocking.SetActive(false);
             gameObject.SetActive(false);
-            //GameObject.Find("Minor Crystal").SetActive(false);
         }
         base.Interact();
 

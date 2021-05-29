@@ -17,7 +17,7 @@ MonoBehaviour:
     right by the hunting cabin where Hunter Jackson resides.
   questID: 5
   experienceReward: 25
-  questClearState: 0
+  questClearState: 2
   questPickUpState: 0
   nextQuestInChain: {fileID: 0}
   questStartDialogue:
@@ -43,4 +43,4 @@ MonoBehaviour:
     in the city.'
   questCompletedDialogue:
   - Make sure to go visit Eldham now boy!
-  objectToInteractWith: Medium Crystal
+  objectToInteractWith: Wigston Crystal

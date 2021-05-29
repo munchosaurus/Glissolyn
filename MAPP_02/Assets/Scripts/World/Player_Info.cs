@@ -71,10 +71,8 @@ public class Player_Info : Character_Info
                 respawnPos = startPos.position;
                 transform.position = respawnPos;
             }
-            StartCoroutine(FadeInScene());
         }
-
-        
+        StartCoroutine(FadeInScene());
     }
 
     private void SetNextLevelExperience()
@@ -402,8 +400,6 @@ public class Player_Info : Character_Info
         overlay.gameObject.SetActive(true);
         while (currentTime < duration)
         {
-            
-            print(Time.timeScale);
             targetColor = overlay.color;
             targetColor.a = Mathf.Lerp(0, 1, currentTime / duration);
             currentTime += Time.deltaTime;

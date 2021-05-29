@@ -16,6 +16,7 @@ public abstract class Quest : ScriptableObject
     [TextArea] [SerializeField] private string[] questCompletionDialogue;
     [TextArea] [SerializeField] private string[] questCompletedDialogue;
 
+    protected NPC_Info whoGaveTheQuest;
     protected bool isCompleted = false;
     protected QuestButton questButton;
     protected string questText;
@@ -84,7 +85,9 @@ public abstract class Quest : ScriptableObject
 
     public virtual void UpdateQuest()
     {
+        BuildQuestText();
         questButton.UpdateQuestText(questText);
+        Game_Controller.GetQuestLog().ShowNewQuestIcon();
     }
 
     public abstract bool CanBeCompleted();
@@ -95,7 +98,6 @@ public abstract class Quest : ScriptableObject
         {
             Game_Controller.UpdateWorldToQuestClearState(questClearState);
             Game_Controller.GetPlayerInfo().ModifyExperience(experienceReward);
-            Game_Controller.GetQuestLog().RemoveQuest(questID);
         }
     }
 
@@ -129,7 +131,13 @@ public abstract class Quest : ScriptableObject
         return questPickUpState;
     }
 
+    public void SetWhoGaveQuest(NPC_Info who)
+    {
+        whoGaveTheQuest = who;
+    }
+
     public abstract QuestType GetQuestType();
+
 }
 
     public enum QuestType
@@ -142,8 +150,10 @@ public abstract class Quest : ScriptableObject
     public enum QuestClearState
     {
     NONE,
-    OPEN_VILLAGE_EXIT,
+    OPEN_WAKEFIELD_EXIT,
+    OPEN_ELDHAM_ENTRANCE,
     OPEN_ELDHAM_EAST_EXIT,
     ELDHAM_PURIFIED,
-    END_GAME
+    END_GAME,
+    SPAWN_WITCH
     }

@@ -37,7 +37,7 @@ public class Quest_InteractionQuest : Quest
     public void UpdateQuest()
     {
         hasBeenInteractedWith = true;
-        questButton.UpdateQuestText(GetQuestText());
+        base.UpdateQuest();
     }
 
     override
@@ -46,12 +46,14 @@ public class Quest_InteractionQuest : Quest
         if (!hasBeenInteractedWith)
         {
             objectiveText = "You have not yet interacted with " + objectToInteractWith;
+            questText = questDescription + "\n\n" + objectiveText;
 
         }
         else {
             objectiveText = "You have interacted with " + objectToInteractWith;
+            questText = questDescription + "\n\nReturn to " + whoGaveTheQuest.GetName() + "\n\n" + objectiveText;
         }
-        questText = questDescription + "\n\n" + objectiveText;
+        
     }
 
     public bool HasBeenInteractedWith()
@@ -78,7 +80,7 @@ public class Quest_InteractionQuest : Quest
 
     public void CheckInteraction(string name) {
         
-        if (objectToInteractWith.Equals(name)) {
+        if (objectToInteractWith.Equals(name) && !hasBeenInteractedWith) {
             UpdateQuest();
         }
     }

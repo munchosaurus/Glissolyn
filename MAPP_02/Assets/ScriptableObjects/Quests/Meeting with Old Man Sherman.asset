@@ -31,7 +31,7 @@ MonoBehaviour:
 
     After being
     defeated on the battlefield, he asked me to hold on to '
-  - he asked me to hold on to this sceptre I am howlind until you came of age.
+  - he asked me to hold on to this sceptre until you came of age.
   - Please take it.
   - 'Now while you are here, I talked to Silk eye Joe earlier and he mentioned a
     strange object to the east. '
@@ -43,4 +43,4 @@ MonoBehaviour:
     be...\n"
   questCompletedDialogue:
   - Quest is complete
-  objectToInteractWith: Minor Crystal
+  objectToInteractWith: Mysterious Object

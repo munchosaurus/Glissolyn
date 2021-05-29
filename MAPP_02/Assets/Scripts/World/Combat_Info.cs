@@ -9,6 +9,7 @@ public static class Combat_Info
     public static void Initialize()
     {
         player = Game_Controller.GetPlayerInfo().GetBase();
+        enemy = null;
     }
 
     public static void ChangeEnemy(Enemy_Info enemyInfo)

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,23 @@ public static class Game_Controller
     private static DataBase dataBase;
     private static GameObject transition;
     private static string playerName;
+
+    private static List<int> questClearStatesRun = new List<int>();
+
+    public static int[] GetSaveValues()
+    {
+        return questClearStatesRun.ToArray();
+    }
+
+    public static void Init(int[] loadValues)
+    {
+        questClearStatesRun.Clear();
+        foreach(int i in loadValues)
+        {
+            UpdateWorldToQuestClearState((QuestClearState) i);
+        }
+        isLoaded = false;
+    }
 
     public static void SetDialogueBox(Dialogue_Box db)
     {
@@ -185,6 +203,15 @@ public static class Game_Controller
     {
         switch(qcs)
         {
+            case QuestClearState.OPEN_WAKEFIELD_EXIT:
+                dataBase.GetNpcByID(6).gameObject.SetActive(false);
+                break;
+            case QuestClearState.OPEN_ELDHAM_ENTRANCE:
+                dataBase.GetNpcByID(21).gameObject.SetActive(false);
+                dataBase.GetNpcByID(22).gameObject.SetActive(false);
+                dataBase.GetNpcByID(47).gameObject.SetActive(false);
+                dataBase.GetNpcByID(48).gameObject.SetActive(false);
+                break;
             case QuestClearState.OPEN_ELDHAM_EAST_EXIT:
                 dataBase.GetNpcByID(42).gameObject.SetActive(false);
                 dataBase.GetNpcByID(43).gameObject.SetActive(false);
@@ -203,9 +230,30 @@ public static class Game_Controller
             case QuestClearState.END_GAME:
                 thePlayerInfo.FinishGame();
                 break;
+            case QuestClearState.SPAWN_WITCH:
+                Vector3 distanceDifference = new Vector3(1, 0);
+                Enemy_Info theWitch = dataBase.GetEnemyByID(58);
+                theWitch.gameObject.SetActive(true);
+                if (thePlayerInfo.gameObject.transform.position.x < theWitch.gameObject.transform.position.x)
+                {
+                    theWitch.gameObject.transform.position = thePlayerInfo.gameObject.transform.position - distanceDifference;
+                    theWitch.gameObject.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.RIGHT);
+                }
+                else
+                {
+                    theWitch.gameObject.transform.position = thePlayerInfo.gameObject.transform.position + distanceDifference;
+                    theWitch.gameObject.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.LEFT);
+                }
+                break;
             default:
                 break;
         }
+        questClearStatesRun.Add((int)qcs);
+    }
+
+    public static bool HasQuestClearStateBeenRun(QuestClearState qcs)
+    {
+        return questClearStatesRun.Contains((int) qcs);
     }
 
     public static void LoadGame()

@@ -8,9 +8,12 @@ public class MainMenu_LoadGame : MonoBehaviour
 
     private void Awake()
     {
-        if (!new FileInfo(Application.dataPath + "/save.txt").Exists)
+        if (!new FileInfo(Application.persistentDataPath + "/save.txt").Exists)
         {
             gameObject.GetComponent<Button>().interactable = false;
+        } else
+        {
+            gameObject.GetComponent<Button>().interactable = true;
         }
     }
     public void LoadGame()

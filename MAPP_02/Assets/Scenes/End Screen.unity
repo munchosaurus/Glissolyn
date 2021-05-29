@@ -847,7 +847,6 @@ GameObject:
   - component: {fileID: 396204365}
   - component: {fileID: 396204366}
   - component: {fileID: 396204364}
-  - component: {fileID: 396204367}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -957,7 +956,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 396204367}
+      - m_Target: {fileID: 656330459}
         m_TargetAssemblyTypeName: EndScreen_LoadMainMenu, Assembly-CSharp
         m_MethodName: FinishGame
         m_Mode: 1
@@ -969,18 +968,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &396204367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396204362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba8090eaa73b0714198644d8b6ccf64f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &444431100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656330458}
+  - component: {fileID: 656330459}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -1428,6 +1416,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &656330459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656330457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8090eaa73b0714198644d8b6ccf64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 163131689}
 --- !u!1 &701433045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3241,7 +3242,6 @@ GameObject:
   - component: {fileID: 1586278206}
   - component: {fileID: 1586278204}
   - component: {fileID: 1586278205}
-  - component: {fileID: 1586278203}
   m_Layer: 5
   m_Name: Exit Game
   m_TagString: Untagged
@@ -3269,18 +3269,6 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 20}
   m_SizeDelta: {x: 200, y: 120}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1586278203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586278201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba8090eaa73b0714198644d8b6ccf64f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1586278204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3325,7 +3313,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1586278203}
+      - m_Target: {fileID: 656330459}
         m_TargetAssemblyTypeName: EndScreen_LoadMainMenu, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1

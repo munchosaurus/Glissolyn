@@ -24,7 +24,7 @@ public class QuestLog : MonoBehaviour
             currentOpenQuestButton = quest.GetQuestButton();
         }
         Game_Controller.UpdateWorldToQuestClearState(quest.GetQuestPickUpState());
-        newQuestIcon.SetActive(true);
+        ShowNewQuestIcon();
     }
 
     public void RemoveQuest(int id)
@@ -57,6 +57,7 @@ public class QuestLog : MonoBehaviour
                 if(q.GetEnemyToKill() == _base)
                 {
                     q.UpdateQuest();
+
                 }
             }
         }
@@ -94,5 +95,10 @@ public class QuestLog : MonoBehaviour
     public bool IsOpen()
     {
         return gameObject.activeInHierarchy;
+    }
+
+    public void ShowNewQuestIcon()
+    {
+        newQuestIcon.SetActive(true);
     }
 }
