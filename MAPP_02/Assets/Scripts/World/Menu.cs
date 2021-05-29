@@ -28,6 +28,7 @@ public class Menu : MonoBehaviour
 
     public void QuitClick()
     {
+        PlayerPrefs.SetFloat("Volume", Game_Controller.GetPlayerInfo().gameObject.GetComponent<AudioSource>().volume);
         Game_Controller.GoToMainMenu();
     }
 

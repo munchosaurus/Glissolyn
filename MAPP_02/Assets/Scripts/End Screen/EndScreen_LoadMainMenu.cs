@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class EndScreen_LoadMainMenu : MonoBehaviour
 {
-
+    [SerializeField] AudioSource audioSource;
     public void FinishGame()
     {
+        PlayerPrefs.SetFloat("Volume", audioSource.volume);
         Game_Controller.GoToMainMenu();
     }
 

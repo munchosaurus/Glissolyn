@@ -144,7 +144,6 @@ public static class Game_Controller
 
     public static void GoToMainMenu()
     {
-        PlayerPrefs.SetFloat("Volume", thePlayerInfo.gameObject.GetComponent<AudioSource>().volume);
         SceneManager.LoadScene(MAIN_MENU_SCENE_ID);
         SetPause(false);
     }

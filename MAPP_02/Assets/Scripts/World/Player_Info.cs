@@ -313,7 +313,10 @@ public class Player_Info : Character_Info
 
     public void ModifyExperience(int amount)
     {
-        StartCoroutine(ModifyExperienceCoroutineHack(amount));
+        if (amount != 0)
+        {
+            StartCoroutine(ModifyExperienceCoroutineHack(amount));
+        }
     }
 
     public void GiveStatPoints(int amount)
@@ -382,11 +385,7 @@ public class Player_Info : Character_Info
     private IEnumerator FadeOutScene()
     {
         yield return new WaitForSecondsRealtime(0.5f);
-        while (Game_Controller.GetDialogueBox().gameObject.activeInHierarchy)
-        {
-            yield return null;
-        }
-        overlay.gameObject.SetActive(true);
+        
         float currentTime = 0;
         float duration = 0.3f;
 
@@ -396,8 +395,15 @@ public class Player_Info : Character_Info
         currentVol = Mathf.Pow(10, currentVol / 20);
         float targetValue = Mathf.Clamp(0, 0.0001f, 1);
 
+        while (Game_Controller.GetDialogueBox().gameObject.activeInHierarchy)
+        {
+            yield return null;
+        }
+        overlay.gameObject.SetActive(true);
         while (currentTime < duration)
         {
+            
+            print(Time.timeScale);
             targetColor = overlay.color;
             targetColor.a = Mathf.Lerp(0, 1, currentTime / duration);
             currentTime += Time.deltaTime;
