@@ -23,8 +23,7 @@ public class NPC_Movement : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        spawnPos = gameObject.transform.position;
+        player = Game_Controller.GetPlayerInfo().gameObject;
     }
 
     void Update()
@@ -34,6 +33,7 @@ public class NPC_Movement : MonoBehaviour
             
             if (Vector3.Distance(player.transform.position, transform.position) <= 20f && walkTimer >= walkCooldown && !isMoving)
             {
+                
                 List<int> bannedNumbers = new List<int>();
                 int movementNumber;
                 do
@@ -51,9 +51,7 @@ public class NPC_Movement : MonoBehaviour
                     walkCooldown = 5;
                 }
 
-
                 Vector3 direction = GetDirection(movementNumber);
-
                 if (IsWalkable(transform.position + direction) && Vector3.Distance(transform.position + direction, spawnPos) <= maximumDistance)
                 {
                     StartCoroutine(Move(direction));
@@ -181,5 +179,10 @@ public class NPC_Movement : MonoBehaviour
     public bool IsEnemy()
     {
         return isEnemy;
+    }
+
+    public void SetSpawnPos(Vector3 spawnPos)
+    {
+        this.spawnPos = spawnPos;
     }
 }

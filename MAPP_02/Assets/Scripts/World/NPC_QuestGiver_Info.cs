@@ -5,14 +5,25 @@ using UnityEngine;
 public class NPC_QuestGiver_Info : NPC_Info
 {
     [SerializeField] private Quest questToGive;
+    [SerializeField] private GameObject hasQuestIcon;
 
     private void Start()
+    {
+        if (questToGive.IsCompleted() || Game_Controller.GetQuestLog().HasQuest(questToGive))
+        {
+            hasQuestIcon.SetActive(false);
+        }
+    }
+
+    override
+    public void Init(int[] loadValues)
     {
         while(questToGive.IsCompleted() && questToGive.GetNextQuestInChain() != null)
         {
             questToGive = questToGive.GetNextQuestInChain();
         }
         questToGive.SetWhoGaveQuest(this);
+        base.Init(loadValues);
     }
 
     override
@@ -26,6 +37,7 @@ public class NPC_QuestGiver_Info : NPC_Info
         {
             dialogue = questToGive.GetQuestStartDialogue();
             Game_Controller.GetQuestLog().AddQuest(questToGive);
+            hasQuestIcon.SetActive(false);
         }
         else if (questToGive.CanBeCompleted())
         {

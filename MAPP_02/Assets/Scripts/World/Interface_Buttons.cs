@@ -6,7 +6,7 @@ public class Interface_Buttons : MonoBehaviour
 
     private void Start()
     {
-        playerMovementScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>();
+        playerMovementScript = Game_Controller.GetPlayerInfo().gameObject.GetComponent<Grid_movement>();
     }
 
     public void UpClick()

@@ -36,7 +36,6 @@ public static class Game_Controller
         {
             UpdateWorldToQuestClearState((QuestClearState) i);
         }
-        isLoaded = false;
     }
 
     public static void SetDialogueBox(Dialogue_Box db)
@@ -248,7 +247,10 @@ public static class Game_Controller
             default:
                 break;
         }
-        questClearStatesRun.Add((int)qcs);
+        if((int) qcs != 0)
+        {
+            questClearStatesRun.Add((int)qcs);
+        }
     }
 
     public static bool HasQuestClearStateBeenRun(QuestClearState qcs)
@@ -259,6 +261,11 @@ public static class Game_Controller
     public static void LoadGame()
     {
         isLoaded = true;
+    }
+
+    public static void LoadingDone()
+    {
+        isLoaded = false;
     }
 
     public static bool IsLoaded()

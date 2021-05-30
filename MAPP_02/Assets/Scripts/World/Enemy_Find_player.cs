@@ -14,7 +14,8 @@ public class Enemy_Find_player : MonoBehaviour
 
     private void Start()
     {
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>();       
+        playerMovement = Game_Controller.GetPlayerInfo().gameObject.GetComponent<Grid_movement>();
+        StartTimer(1.5f);
     }
 
     private void Update()
@@ -78,7 +79,7 @@ public class Enemy_Find_player : MonoBehaviour
         timerActive = true;
     }
 
-    public void StartTimer(int timer)
+    public void StartTimer(float timer)
     {
         this.timer = timer;
         timerActive = true;

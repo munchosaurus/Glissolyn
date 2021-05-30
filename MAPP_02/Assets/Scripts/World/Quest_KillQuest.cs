@@ -21,7 +21,6 @@ public class Quest_KillQuest : Quest
     public void Init(int[] loadValues)
     {
         killed = loadValues[2];
-        BuildQuestText();
         base.Init(loadValues);
     }
 
@@ -49,7 +48,7 @@ public class Quest_KillQuest : Quest
         objectiveText = enemyToKill.GetName() + ": " + killed + "/" + amountToKill;
         if (killed >= amountToKill)
         {
-            questText = questDescription  + "\nReturn to " + whoGaveTheQuest.GetName() + "\n\n" + objectiveText;  ;
+            questText = questDescription  + "\n\nReturn to " + whoGaveTheQuest.GetName() + "\n\n" + objectiveText;  ;
         } else
         {
             questText = questDescription + "\n\n" + objectiveText;

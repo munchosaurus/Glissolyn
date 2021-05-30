@@ -29,17 +29,28 @@ public class Enemy_Info : NPC_Info
         transform.position = new Vector3(loadValues[1] + 0.5f, loadValues[2] + 0.5f, 0);
         dead = loadValues[3] == 1;
         timer = loadValues[4];
+        spawnPos = new Vector3(loadValues[5] + 0.5f, loadValues[6] + 0.5f, 0);
+        if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcm))
+        {
+            npcm.SetSpawnPos(spawnPos);
+        }
+        if (dead)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -20);
+        }
     }
 
     override
     public int[] GetSaveValues()
     {
-        saveValues = new int[5];
+        saveValues = new int[7];
         saveValues[0] = gameObject.activeInHierarchy ? 1 : 0;
         saveValues[1] = (int)transform.position.x;
         saveValues[2] = (int)transform.position.y;
         saveValues[3] = dead ? 1 : 0;
-        saveValues[4] = (int) timer;
+        saveValues[4] = (int)timer;
+        saveValues[5] = (int)spawnPos.x;
+        saveValues[6] = (int)spawnPos.y;
 
         return saveValues;
     }
@@ -79,7 +90,7 @@ public class Enemy_Info : NPC_Info
     public void Respawn()
     {
         dead = false;
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        transform.position = spawnPos;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
         if(gameObject.TryGetComponent<Enemy_Find_player>(out Enemy_Find_player efp))
         {

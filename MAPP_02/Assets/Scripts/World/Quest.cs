@@ -32,8 +32,10 @@ public abstract class Quest : ScriptableObject
         if (loadValues[0] == 1)
         {
             Game_Controller.GetQuestLog().AddQuest(this);
+            BuildQuestText();
         }
         isCompleted = loadValues[1] == 1;
+        
     }
 
     public virtual int[] GetSaveValues()

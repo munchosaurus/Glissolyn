@@ -6,22 +6,37 @@ public class NPC_Info : Character_Info
     [SerializeField] protected Sprite npcDialogueSprite;
     [TextArea] [SerializeField] protected string[] dialogue;
     [TextArea] [SerializeField] protected string[][] alternativeDialogue;
-    
 
     protected int[] saveValues;
+    protected Vector3 spawnPos = new Vector3(0, 0, -50);
+
+    private void Start()
+    {
+        if (spawnPos.z == -50)
+        {
+            spawnPos = gameObject.transform.position;
+            if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcm))
+            {
+                npcm.SetSpawnPos(spawnPos);
+            }
+        }
+    }
 
     public virtual void Init(int[] loadValues)
     {
         gameObject.SetActive(loadValues[0] == 1);
         transform.position = new Vector3(loadValues[1] + 0.5f, loadValues[2] + 0.5f, 0);
+        spawnPos = new Vector3(loadValues[3], loadValues[4], 0);
     }
 
     public virtual int[] GetSaveValues()
     {
-        saveValues = new int[3];
+        saveValues = new int[5];
         saveValues[0] = gameObject.activeInHierarchy ? 1 : 0;
         saveValues[1] = (int)transform.position.x;
         saveValues[2] = (int)transform.position.y;
+        saveValues[3] = (int)spawnPos.x;
+        saveValues[4] = (int)spawnPos.y;
 
         return saveValues;
     }
@@ -30,7 +45,7 @@ public class NPC_Info : Character_Info
     {
         if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcmove))
         {
-            npcmove.TurnToPlayer(GameObject.FindGameObjectWithTag("Player").GetComponent<Grid_movement>().GetFacing());
+            npcmove.TurnToPlayer(Game_Controller.GetPlayerInfo().gameObject.GetComponent<Grid_movement>().GetFacing());
         }
         Game_Controller.GetDialogueBox().UpdateDialogue(this);
 

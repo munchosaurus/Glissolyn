@@ -9,10 +9,8 @@ public class Menu : MonoBehaviour
 
     public void LoadGameClick()
     {
-
         Game_Controller.LoadGame();
         Game_Controller.GoToWorld();
-
     }
 
     public void SaveGameClick()

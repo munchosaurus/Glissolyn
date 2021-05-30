@@ -21,7 +21,6 @@ public class Quest_InteractionQuest : Quest
     public void Init(int[] loadValues)
     {
         hasBeenInteractedWith = loadValues[2] == 1;
-        BuildQuestText();
         base.Init(loadValues);
     }
 

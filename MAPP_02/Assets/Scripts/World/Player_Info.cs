@@ -72,6 +72,7 @@ public class Player_Info : Character_Info
                 transform.position = respawnPos;
             }
         }
+        Game_Controller.LoadingDone();
         StartCoroutine(FadeInScene());
     }
 
@@ -442,7 +443,7 @@ public class Player_Info : Character_Info
         gameObject.GetComponent<AudioSource>().loop = true;
 
         float currentTime = 0;
-        float duration = 3;
+        float duration = 1.5f;
         float targetVol = 0.3f;
 
         Color targetColor;
