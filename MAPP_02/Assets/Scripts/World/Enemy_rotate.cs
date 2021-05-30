@@ -24,7 +24,6 @@ public class Enemy_rotate : MonoBehaviour
         {
             SetAvailableDirections();
         }
-
         facingIndex = 0;
     }
 
@@ -32,7 +31,11 @@ public class Enemy_rotate : MonoBehaviour
     {
         if (!Game_Controller.IsGamePaused() && !Game_Controller.IsCombatActive())
         {
-            if (timer > rotationCoolDown)
+            if (Vector3.Distance(transform.position, Game_Controller.GetPlayerInfo().transform.position) <= 1)
+            {
+                RotateToPlayer();
+            }
+            else if (timer > rotationCoolDown)
             {
                 ChangeFacing(availableDirections[facingIndex]);
                 timer = 0;
@@ -44,6 +47,27 @@ public class Enemy_rotate : MonoBehaviour
         }
     }
 
+    private void RotateToPlayer()
+    {
+        Vector3 distance = Game_Controller.GetPlayerInfo().transform.position - transform.position;
+        Debug.Log(distance);
+        if (distance.Equals(Vector3.up))
+        {
+            ChangeFacing(Facing.UP);
+        }
+        else if (distance.Equals(Vector3.down))
+        {
+            ChangeFacing(Facing.DOWN);
+        }
+        else if(distance.Equals(Vector3.left))
+        {
+            ChangeFacing(Facing.LEFT);
+        }
+        else if(distance.Equals(Vector3.right))
+        {
+            ChangeFacing(Facing.RIGHT);
+        }
+    }
 
         // Changes position of the child object rotationKnob which will be used to detect players
     public void ChangeFacing(Facing direction) {

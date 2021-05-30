@@ -12,10 +12,17 @@ public class Enemy_Find_player : MonoBehaviour
     private bool timerActive;
     private float timer;
 
+    private void Awake()
+    {
+        if (Game_Controller.IsLoaded())
+        {
+            StartTimer(1.5f);
+        }
+    }
+
     private void Start()
     {
         playerMovement = Game_Controller.GetPlayerInfo().gameObject.GetComponent<Grid_movement>();
-        StartTimer(1.5f);
     }
 
     private void Update()

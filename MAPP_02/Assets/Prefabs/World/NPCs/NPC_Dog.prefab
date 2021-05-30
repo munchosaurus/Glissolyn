@@ -170,6 +170,7 @@ MonoBehaviour:
   id: 0
   npcDialogueSprite: {fileID: 21300000, guid: 918ca535e3e636446a8f241485edd23a, type: 3}
   dialogue: []
+  spawnPos: {x: 0, y: 0, z: -50}
 --- !u!114 &5405792326669331802
 MonoBehaviour:
   m_ObjectHideFlags: 0

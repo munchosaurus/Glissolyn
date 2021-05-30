@@ -190,7 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallLayer:
     serializedVersion: 2
-    m_Bits: 152
+    m_Bits: 664
   rotation: {fileID: 4404693014683625836}
   gridClaimer: {fileID: 465238129776394954}
   playerAnimator: {fileID: 4404693015667309132}
@@ -207,12 +207,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: The Player
+  id: 0
   interactChecker: {fileID: 4404693014683625835}
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
   Base: {fileID: 11400000, guid: 04d7aa9084d44854f93ca0f246b53c36, type: 2}
   playerSprite: {fileID: 0}
+  startPos: {fileID: 0}
+  enterGodMode: 0
+  enterWeakassMode: 0
+  audioMixer: {fileID: 0}
+  overlay: {fileID: 0}
 --- !u!50 &4404693015667309120
 Rigidbody2D:
   serializedVersion: 4

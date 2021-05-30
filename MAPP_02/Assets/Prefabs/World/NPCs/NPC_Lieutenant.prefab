@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4105627390502650202}
   - component: {fileID: 4105627390502650197}
   m_Layer: 7
-  m_Name: Lieutenant Spark
+  m_Name: NPC_Lieutenant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   isEnemy: 0
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 904
+    m_Bits: 920
 --- !u!114 &4105627390502650202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +230,9 @@ MonoBehaviour:
   id: 11
   npcDialogueSprite: {fileID: 21300000, guid: 4740a3b2e2c2a9647a950ba0e776726a, type: 3}
   dialogue: []
+  spawnPos: {x: 0, y: 0, z: -50}
   questToGive: {fileID: 11400000, guid: 8de20115f9ae1414f979cb4db07bde91, type: 2}
+  hasQuestIcon: {fileID: 0}
 --- !u!95 &4105627390502650197
 Animator:
   serializedVersion: 3

@@ -23,9 +23,10 @@ public class Last_Crystal : NPC_Info
                 gameObject.tag = "Quest";
                 gameObject.SetActive(false);
                 Game_Controller.UpdateWorldToQuestClearState(QuestClearState.ELDHAM_PURIFIED);
+                base.Interact();
             }
         }
-        base.Interact();
+        
 
     }
 

@@ -45,12 +45,12 @@ public class Enemy_Info : NPC_Info
     {
         saveValues = new int[7];
         saveValues[0] = gameObject.activeInHierarchy ? 1 : 0;
-        saveValues[1] = (int)transform.position.x;
-        saveValues[2] = (int)transform.position.y;
+        saveValues[1] = Mathf.FloorToInt(transform.position.x);
+        saveValues[2] = Mathf.FloorToInt(transform.position.y);
         saveValues[3] = dead ? 1 : 0;
-        saveValues[4] = (int)timer;
-        saveValues[5] = (int)spawnPos.x;
-        saveValues[6] = (int)spawnPos.y;
+        saveValues[4] = Mathf.FloorToInt(timer);
+        saveValues[5] = Mathf.FloorToInt(spawnPos.x);
+        saveValues[6] = Mathf.FloorToInt(spawnPos.y);
 
         return saveValues;
     }
@@ -97,5 +97,10 @@ public class Enemy_Info : NPC_Info
             efp.enabled = true;
             efp.StartTimer(3);
         }
+    }
+
+    public bool GetIsBoss()
+    {
+        return isBoss;
     }
 }

@@ -57,7 +57,6 @@ public class QuestLog : MonoBehaviour
                 if(q.GetEnemyToKill() == _base)
                 {
                     q.UpdateQuest();
-
                 }
             }
         }

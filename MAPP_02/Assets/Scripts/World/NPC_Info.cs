@@ -8,7 +8,7 @@ public class NPC_Info : Character_Info
     [TextArea] [SerializeField] protected string[][] alternativeDialogue;
 
     protected int[] saveValues;
-    protected Vector3 spawnPos = new Vector3(0, 0, -50);
+    [SerializeField] protected Vector3 spawnPos = new Vector3(0, 0, -50);
 
     private void Start()
     {
@@ -26,17 +26,21 @@ public class NPC_Info : Character_Info
     {
         gameObject.SetActive(loadValues[0] == 1);
         transform.position = new Vector3(loadValues[1] + 0.5f, loadValues[2] + 0.5f, 0);
-        spawnPos = new Vector3(loadValues[3], loadValues[4], 0);
+        spawnPos = new Vector3(loadValues[3] + 0.5f, loadValues[4] + 0.5f, 0);
+        if (gameObject.TryGetComponent<NPC_Movement>(out NPC_Movement npcm))
+        {
+            npcm.SetSpawnPos(spawnPos);
+        }
     }
 
     public virtual int[] GetSaveValues()
     {
         saveValues = new int[5];
         saveValues[0] = gameObject.activeInHierarchy ? 1 : 0;
-        saveValues[1] = (int)transform.position.x;
-        saveValues[2] = (int)transform.position.y;
-        saveValues[3] = (int)spawnPos.x;
-        saveValues[4] = (int)spawnPos.y;
+        saveValues[1] = Mathf.FloorToInt(transform.position.x);
+        saveValues[2] = Mathf.FloorToInt(transform.position.y);
+        saveValues[3] = Mathf.FloorToInt(spawnPos.x);
+        saveValues[4] = Mathf.FloorToInt(spawnPos.y);
 
         return saveValues;
     }

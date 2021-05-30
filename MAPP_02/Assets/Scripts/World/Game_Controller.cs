@@ -34,7 +34,7 @@ public static class Game_Controller
         questClearStatesRun.Clear();
         foreach(int i in loadValues)
         {
-            UpdateWorldToQuestClearState((QuestClearState) i);
+            questClearStatesRun.Add(i);
         }
     }
 
@@ -232,16 +232,15 @@ public static class Game_Controller
             case QuestClearState.SPAWN_WITCH:
                 Vector3 distanceDifference = new Vector3(1, 0);
                 Enemy_Info theWitch = dataBase.GetEnemyByID(58);
+                NPC_Info theCrystal = dataBase.GetNpcByID(52);
                 theWitch.gameObject.SetActive(true);
-                if (thePlayerInfo.gameObject.transform.position.x < theWitch.gameObject.transform.position.x)
+                if (thePlayerInfo.gameObject.transform.position.x < theCrystal.gameObject.transform.position.x)
                 {
                     theWitch.gameObject.transform.position = thePlayerInfo.gameObject.transform.position - distanceDifference;
-                    theWitch.gameObject.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.RIGHT);
                 }
                 else
                 {
                     theWitch.gameObject.transform.position = thePlayerInfo.gameObject.transform.position + distanceDifference;
-                    theWitch.gameObject.GetComponent<Enemy_rotate>().SetOnlyFace(Facing.LEFT);
                 }
                 break;
             default:

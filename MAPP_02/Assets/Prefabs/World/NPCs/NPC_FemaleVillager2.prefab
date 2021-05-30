@@ -176,6 +176,7 @@ MonoBehaviour:
   - Hi there!
   - My name is Simon the Dev, welcome to this demo version of Glissolyn.
   - Feel free to look around.
+  spawnPos: {x: 0, y: 0, z: -50}
 --- !u!95 &1113315199921578428
 Animator:
   serializedVersion: 3

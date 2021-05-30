@@ -22,6 +22,11 @@ public static class Combat_Info
         return enemy.GetBase();
     }
 
+    public static Enemy_Info GetEnemyInfo()
+    {
+        return enemy;
+    }
+
     public static CharacterBase GetPlayer()
     {
         return player;

@@ -213,7 +213,7 @@ MonoBehaviour:
   isEnemy: 0
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 904
+    m_Bits: 920
 --- !u!114 &5142961775365821879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +233,7 @@ MonoBehaviour:
   - Hi there!
   - My name is Simon the Dev, welcome to this demo version of Glissolyn.
   - Feel free to look around.
+  spawnPos: {x: 0, y: 0, z: -50}
 --- !u!95 &5766068061843949525
 Animator:
   serializedVersion: 3

@@ -34,22 +34,7 @@ public class NPC_Movement : MonoBehaviour
             if (Vector3.Distance(player.transform.position, transform.position) <= 20f && walkTimer >= walkCooldown && !isMoving)
             {
                 
-                List<int> bannedNumbers = new List<int>();
-                int movementNumber;
-                do
-                {
-                    movementNumber = Random.Range(0, 4);
-                    if (!IsWalkable(transform.position + GetDirection(movementNumber)))
-                    {
-                        bannedNumbers.Add(movementNumber);
-                    }
-                } while (bannedNumbers.Contains(movementNumber) && bannedNumbers.Count < 4);
-
-                if(bannedNumbers.Count >= 4)
-                {
-                    walkTimer = 0;
-                    walkCooldown = 5;
-                }
+                int movementNumber = Random.Range(0, 4);
 
                 Vector3 direction = GetDirection(movementNumber);
                 if (IsWalkable(transform.position + direction) && Vector3.Distance(transform.position + direction, spawnPos) <= maximumDistance)
@@ -95,19 +80,14 @@ public class NPC_Movement : MonoBehaviour
 
     private Vector3 GetDirection(int i)
     {
-        switch (i)
+        return i switch
         {
-            case 0:
-                return Vector3.up;
-            case 1:
-                return Vector3.left;
-            case 2:
-                return Vector3.right;
-            case 3:
-                return Vector3.down;
-            default:
-                return Vector3.zero;
-        }
+            0 => Vector3.up,
+            1 => Vector3.left,
+            2 => Vector3.right,
+            3 => Vector3.down,
+            _ => Vector3.zero,
+        };
     }
 
     private bool IsWalkable(Vector3 targetPos)

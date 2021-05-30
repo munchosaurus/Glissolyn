@@ -37,13 +37,12 @@ public class BattleSystem : MonoBehaviour
         //$ möjliggör att man kan lägga till värden i strängen.
         yield return dialogBox.TypeDialog($"You encountered a {EnemyUnit.Character.Base.GetName()}!");
         yield return new WaitForSeconds(1.5f);
-        PlayerAction();
-
+        StartCoroutine(PlayerAction());
     }
 
-    public void PlayerAction()
+    public IEnumerator PlayerAction()
     {
-        StartCoroutine(dialogBox.TypeDialog("Choose an action"));
+        yield return dialogBox.TypeDialog("Choose an action");
         dialogBox.EnableActionSelector(true);
         
     }
@@ -100,7 +99,6 @@ public class BattleSystem : MonoBehaviour
         int damage = PlayerUnit.Character.TakeDamage(move, EnemyUnit.Character);
 
         yield return dialogBox.TypeDialog($"{EnemyUnit.Character.Base.name} used ability: {move.Base.GetName()}.");
-        //EnemyUnit.lerp.GoLerp();
         enemyAnimator.SetTrigger(move.Base.GetName());
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"It deals {damage} damage!");
@@ -116,8 +114,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-
-            PlayerAction();
+            StartCoroutine(PlayerAction());
         }
     }
 
@@ -134,14 +131,28 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    private IEnumerator YouCantRun()
+    {
+        yield return dialogBox.TypeDialog("You cant escape!");
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(PlayerAction());
+    }
+
     public void Run(bool run)
     {
         if (run)
         {
-            
+            if (Combat_Info.GetEnemyInfo().GetIsBoss())
+            {
+                StartCoroutine(YouCantRun());
+            }
+            else
+            {
+                
+                EnemyUnit.Character.SetCurrentHP();
+                Game_Controller.RunTransition();
+            }
             dialogBox.EnableActionSelector(false);
-            EnemyUnit.Character.SetCurrentHP();
-            Game_Controller.RunTransition();
         }
     }
 }

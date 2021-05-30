@@ -56,7 +56,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.4277344}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1.4277344}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1.4277344}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -170,8 +170,10 @@ MonoBehaviour:
   npcDialogueSprite: {fileID: 21300000, guid: 95b865c83c81bf141a9b70422f570331, type: 3}
   dialogue:
   - BLUUUURGHHH!
+  spawnPos: {x: 0, y: 0, z: -50}
   Base: {fileID: 11400000, guid: 150718b6110f3b64f9f8d127e612834a, type: 2}
   level: 3
+  isBoss: 0
 --- !u!114 &7840089883922271410
 MonoBehaviour:
   m_ObjectHideFlags: 0

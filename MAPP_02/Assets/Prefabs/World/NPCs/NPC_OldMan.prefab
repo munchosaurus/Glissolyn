@@ -205,7 +205,7 @@ MonoBehaviour:
   isEnemy: 0
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 904
+    m_Bits: 920
 --- !u!114 &2906143270388346263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,3 +223,4 @@ MonoBehaviour:
   npcDialogueSprite: {fileID: 21300000, guid: 3ec41cb2d92a9d44fa76043f0f3b2295, type: 3}
   dialogue:
   - oii
+  spawnPos: {x: 0, y: 0, z: -50}

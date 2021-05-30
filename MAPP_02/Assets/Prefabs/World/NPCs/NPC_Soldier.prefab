@@ -156,7 +156,7 @@ MonoBehaviour:
   isEnemy: 0
   blockingLayer:
     serializedVersion: 2
-    m_Bits: 904
+    m_Bits: 920
 --- !u!95 &7290655685671544493
 Animator:
   serializedVersion: 3
@@ -192,6 +192,7 @@ MonoBehaviour:
   id: 11
   npcDialogueSprite: {fileID: 21300000, guid: 5466f15111fc3df4fbf00dcd16e00901, type: 3}
   dialogue: []
+  spawnPos: {x: 0, y: 0, z: -50}
 --- !u!1 &7290655685747933678
 GameObject:
   m_ObjectHideFlags: 0

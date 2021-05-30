@@ -75,6 +75,7 @@ public class Player_Info : Character_Info
         Game_Controller.LoadingDone();
         StartCoroutine(FadeInScene());
     }
+    
 
     private void SetNextLevelExperience()
     {
@@ -152,8 +153,8 @@ public class Player_Info : Character_Info
     public int[] GetSaveValues()
     {
         saveValues = new int[12];
-        saveValues[0] = (int)transform.position.x;
-        saveValues[1] = (int)transform.position.y;
+        saveValues[0] = Mathf.FloorToInt(transform.position.x);
+        saveValues[1] = Mathf.FloorToInt(transform.position.y);
         saveValues[2] = strength;
         saveValues[3] = agility;
         saveValues[4] = intelligence;
@@ -162,8 +163,8 @@ public class Player_Info : Character_Info
         saveValues[7] = experience;
         saveValues[8] = maxHealth;
         saveValues[9] = health;
-        saveValues[10] = (int)respawnPos.x;
-        saveValues[11] = (int)respawnPos.y;
+        saveValues[10] = Mathf.FloorToInt(respawnPos.x);
+        saveValues[11] = Mathf.FloorToInt(respawnPos.y);
 
         return saveValues;
     }

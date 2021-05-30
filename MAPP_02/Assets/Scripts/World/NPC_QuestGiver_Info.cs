@@ -13,6 +13,7 @@ public class NPC_QuestGiver_Info : NPC_Info
         {
             hasQuestIcon.SetActive(false);
         }
+        questToGive.SetWhoGaveQuest(this);
     }
 
     override
